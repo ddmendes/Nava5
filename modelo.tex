@@ -1,0 +1,168 @@
+\documentclass[10pt, a4paper, titlepage]{article}
+
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{listings}
+
+\lstset{
+    breaklines=true,
+    numbers=left,
+    numberstyle=\tiny,
+    frame=single
+}
+\renewcommand{\lstlistingname}{Código fonte}
+\renewcommand{\lstlistlistingname}{Códigos fontes}
+
+\newcommand{\defaultfigwidth}[0]{10cm}
+
+
+\title{Prática 4}
+\author{Davi~Diório~Mendes \and Nivaldo~Henrique~Bondança}
+
+\begin{document}
+
+\maketitle
+
+\listoffigures
+\newpage
+
+\lstlistoflistings
+\newpage
+
+
+\textbf{1.} Desenhe um inversor com $W_n = 7$ e verifique com o DRC.\\
+        (inclua layout no relatório).
+
+Vamos fazer a extração do circuito via o CALIBRE. Para isso execute o comando CALIBRE > PEX. Verifique a opção \emph{Outputs - Netlist: From = layout} (a outra possibilidade, \emph{Schematic}, faz com que o PEX procure nomes dos nós em um esquemático que não existe no momento).
+
+Através da fórmula:
+\begin{equation}
+    W_p = \frac{\mu_N}{\mu_P} \cdot W_n
+\end{equation}
+definimos $W_p = 20,55 \mu m$. O \emph{layout} do inversor está na figura \ref{figInversorQ1}.
+\begin{figure}[!hb]
+    \centering
+    \includegraphics[scale=0.4]{q01figura1.png}
+    \caption{\emph{Layout} do inversor}
+    \label{figInversorQ1}
+\end{figure}
+
+\textbf{2.} *Na opção \emph{Outputs - Extraction type}, há várias opções para extração \emph{(C + CC, R, R + C, R + C + CC)}. O que significa cada um destes tipos de extração?
+
+O PEX invoca a extração de elementos parasitas do circuito. As opções dos tipos de extração são explicadas a seguir:
+\begin{itemize}
+    \item \textbf{C + CC:} Neste modelo são extraídos os capacitores parasitas entre o substrato e a rede, as conexões de uma rede e seus efeitos de acoplamento com outras redes. Isso é feito para cada rede e não há modelagem de resistências.
+    \item \textbf{R:} Análise das resistências parasitas nas conexões do circuito.
+    \item \textbf{R + C:} Trata das capacitâncias de uma rede de conexões e da resistência parasita, que é dividida em diversas resistências proporcionando uma resistência por rede. Para modelar o efeito de capacitâncias de acoplamento, a capacitância parasita também é dividida em pequenos segmentos que se ligam ao substrato.
+    \item \textbf{R + C + CC:} Similar ao modelo R + C, porém a divisão da capacitância parasita modela a capacitância de acoplamento e a que vai para o terra separadamente.
+\end{itemize}
+
+\textbf{3.} Execute a extração para os casos C + CC, R, R + C + CC. Veja os arquivos de saída e verifique o que, para cada uma das opções, é acrescentado ou tirado (verificar os arquivos que são adcionados pelo comando \verb|.include|).
+
+\textbf{4.} *Extraia com a opção C + CC. Prepare o arquivo para simulação e simule o circuito com parâmetros típicos. Determine a \textbf{máxima frequência de operação}, os \textbf{atrasos na propagação} (para \textbf{subida} e \textbf{descida}) e o \textbf{consumo de potência} do circuito.
+Considere:
+\begin{itemize}
+    \item Capacitância de saída de 50fF;
+    \item $V_{DD} = 3V$;
+    \item o sinal de entrada com $(tempo\, de\, subida) = (tempo\, de\, descida) = 1\%$ do período.
+\end{itemize}
+
+Certifique-se de que a frequência escolhida é conveniente para o que deseja.
+
+Obs: para determinar a máxima frequência, certifique-se de que a saída atinja níveis satisfatórios. Utilize, para isto, comandos semelhantes a:\\
+        \begin{verbatim}
+.meas tran MinZero find v(out) when v(in)=2.95 fall=5
+.meas tran MaxUm   find v(out) when v(in)=0.05 rise=5
+        \end{verbatim}
+
+A potência consumida e dada por:
+\begin{equation}
+P_{ot} = \frac{1}{T} \int\limits_T i \cdot V_{DD} \, \mathrm{d}t \label{equPotenciaConsumida}
+\end{equation}
+onde $T$ é um intervalo de tempo e $i$ é a corrente no circuito.
+
+Use o comando \verb|.meas| para calcular a potência (verifique na pg. 10.155 e seguintes do manual --- local/tools/mentor/shared/pdfdocs/eldo\_ur.pdf).\\
+(inclua no relatório linhas de comando e de sinais de entrada dos arquivos de simulação e figura com os sinais de entrada\slash saída para a frequência máxima de operação).
+
+Como critério, adotou-se uma margem de 5\% de erro em relação ao nível alto de tensão. Desta forma obteve-se uma frequência máxima de operação de $3,8 GHz$, conforme figura \ref{figFreqQ4}. O código adotado para calcular a máxima frequência de operação se encontra no código fonte \ref{cod_inversores_q4}.
+
+Os atrasos na propagação do circuito, assim como especificado na figura \ref{figAtrasoQ4}, são $41,7ps$ e $50,9ps$ para subida e descida, respectivamente. Os valores aqui descritos diferem levemente com os da figura \ref{figAtrasoQ4} pois foram gerados pela simulação.
+
+Para calcular a potência consumida tratou-se $V_{DD}$ como constante na equação \ref{equPotenciaConsumida}, obtendo:
+\begin{equation}
+P_{ot} = \frac{1}{T} \int\limits_T i \cdot V_{DD} \, \mathrm{d}t = V_{DD} \cdot \frac{1}{T} \int\limits_T i \, \mathrm{d}t = V_{DD} \cdot I_{media}
+\end{equation}
+dado que a corrente média obtida na simulação foi $1,09mA$ e a tensão de alimentação $3V$, então a potência consumida foi de $3,27mW$
+
+\begin{figure}[!hb]
+    \centering
+    \includegraphics[width=\defaultfigwidth]{q04figura2.jpg}
+    \caption{Saída do inversor x Frequência de operação do circuito, análise C~+~CC}
+    \label{figFreqQ4}
+\end{figure}
+
+\begin{figure}[!hb]
+    \centering
+    \includegraphics[width=\defaultfigwidth]{q04figura3.jpg}
+    \caption{Tempos de descida e subida do circuito, análise C + CC}
+    \label{figAtrasoQ4}
+\end{figure}
+
+\begin{lstlisting}[caption=Inversor com análise para definir a máxima frequência de operação\, análise C + CC, label=cod_inversores_q4]
+*Inversores
+
+*** parametros do pulso ***
+.PARAM frequencia=3.8GHz
+.PARAM periodo='1/frequencia'
+.PARAM delay=0s
+.PARAM tSubida='0.01*periodo'
+.PARAM tDescida='0.01*periodo'
+.PARAM larguraPulso='0.49*periodo'
+
+.include "lab4.q1.pex.netlist"
+
+Xinv IN OUT VDD 0 LAB4.Q1
+Cl OUT 0 50fF
+
+Vdd VDD 0 3V
+Vin IN  0 PULSE (0 3 delay tSubida tDescida larguraPulso periodo)
+.TRAN 1ps '20*periodo' '5*periodo' 0.1ps SWEEP frequencia INCR 100MEGHz 2GHz 8GHz
+
+.MEAS TRAN MinZero FIND v(OUT) WHEN V(IN)=2.95 FALL=5
+.MEAS TRAN MaxUm   FIND v(OUT) WHEN V(IN)=0.05 RISE=5
+
+.MEAS TRAN DEL_H2L TRIG V(IN) VAL=1.5V RISE=5 TARG V(OUT) VAL=1.5 FALL=5
+.MEAS TRAN DEL_L2H TRIG V(IN) VAL=1.5V FALL=5 TARG V(OUT) VAL=1.5 RISE=5
+
+.MEAS TRAN CORRENTE_MEDIA AVG I(VDD) FROM='10*periodo' TO='11*periodo'
+
+.PROBE TRAN V(IN) V(OUT) V(VDD)
+
+.END
+\end{lstlisting}
+
+\textbf{5.} *Observe no \verb|ezwave| as correntes que passam pelos transistores. Coloque no relatório o gráfico das correntes junto com as tensões e justifique o comportamento das correntes.
+
+O gráfico das correntes que passam pelos transistores doesistor está descrito na figura \ref{figCorrenteQ5}.
+
+Nas transições dos valores de tensão, um dos transistores é cortado, ficando com um valor de corrente bastante baixo, enquanto o outro passa conduzir. Também, durante esta transição, há um pequeno momento em que ambos os transistores estão conduzindo, gerando picos no gráfico de corrente representado na figura \ref{figCorrenteQ5}.
+
+\begin{figure}[!hb]
+    \centering
+    \includegraphics[width=10cm]{q05figura4.jpg}
+    \caption{Tensão de entrada, de saída e correntes de dreno nos transistores}
+    \label{figCorrenteQ5}
+\end{figure}
+
+\textbf{6.} *Extraia agora com a opção R+C+CC. Prepare o arquivo para simulação e simule o circuito com parâmetros típicos. Determine a máxima freqüência de operação, os atraso na propagação (para subida e descida) e o consumo de potência do circuito. Compare com o resultado anterior (o quanto piorou e se houve aumento expressivo no tempo de simulação).\\
+        (inclua no relatório linhas de comando e de sinais de entrada dos arquivos de simulação e figura com os sinais de entrada\slash saída para a máxima freqüência de operação)
+
+De forma análoga ao exercício 4, a frequência máxima de operação é de $3,55GHz$, assim como demonstra a figura \ref{figQ6}. O código adotado para calcular a máxima frequência de operação se encontra no código fonte \ref{codQ6}. Os sinais de entrada\slash saída estão representados na figura \ref{fig2Q6}. Os atrasos na propagação do circuito são $41,0ps$ e $63,0ps$ para subida e descida, respectivamente (valores gerados pela simulação). A corrente média, obtida pelo simulador, foi de $1,02mA$. Como a tensão de alimentação é de $3V$, então a pot~encia consumida foi de $3,06mW$.
+
+Comparando com os resulados, ao adicionar resistências parasitas na análise o circuito tornou-se um pouco menos eficiente, pois a potência e a frequência máxima de operação diminuem.
+
+
+
+\end{document}
