@@ -1,0 +1,230 @@
+\input{relatorio}
+
+\begin{document}
+
+\renewcommand{\titulo}{Projeto 6}
+\makecover
+\makelists
+
+Nesta experiência é dada continuidade ao que foi ensinado no semestre
+anterior. Seré visto aqui como se extrai o \emph{netlist} para simulação já a
+partir do esquemático, permitindo a verificação da sua funcionalidade.
+Também será visto como fazer a comparação entre \emph{layout} e esquemático. Por
+fim é introduzida a simulação do tipo Monte Carlo que possibilita analisar
+o comportamento dos circuitos com as variações dos parâmetros dos
+transistores.
+
+
+\textbf{1.} *Considere a porta lógica \emph{CMOS} estática que implementa a função 
+   lógica $\overline{(ab+c)}$. Tendo o transistor \emph{NMOS} de menor dimensão um 
+   $W = 2 \mu m$ e $L = 0,35 \mu m$, determine as dimensões de todos transistores 
+   de forma que:
+\begin{lsienumerate}
+    \item (atraso de propagação na descida com ABC = "110") = (atraso de
+      propagação na descida com ABC = "001") = (pior atraso de propagação na
+      subida);
+    \item Todos transistores \emph{PMOS} tenham as mesmas dimensões.
+\end{lsienumerate}
+(deixe indicado os valores usados).
+
+\textbf{2.} Faça o circuito esquemático da porta \emph{CMOS} e gere seu símbolo. Faça   todas as verificações necessárias no esquemático e no símbolo não deixando nenhum 
+   erro ou \emph{warning}. Não esqueça de ligar o \emph{bulk} dos transistores.
+
+\textbf{3.} Crie para o esquemático um \emph{designview} point para poder gerar 
+   arquivos para simulação e comparar com \emph{layout}. Para isso execute o comando 
+   \textbf{ \emph{Hit-Kit Utilites -- Create Viewpoint} } na parte superior da 
+   janela do \emph{Design Architecture}. No menu que aparece coloque o nome de seu 
+   arquivo esquemático no \emph{Design Path}. Deixe a opção \emph{device}.
+
+\textbf{4.} Agora gere um arquivo \emph{netlist} para o \emph{ELDO}. Para isso entre
+   no \emph{Simulation} mode (coluna esquerda da janela do \emph{Design Architecture}
+   , último comando). No menu selecione o \emph{vpt\_c35b4\_device}, que foi gerado 
+   no item anterior, e dê \emph{OK}.
+
+Obs.: A partir da nova janela podemos retornar à  anterior executando
+novamente o último comando da coluna à esquerda.
+
+\textbf{5.} *Gere o \emph{netlist} executando o comando apropriado na coluna à 
+   esquerda. Com outro comando nessa coluna, o \emph{ASCII Results}, verifique os 
+   resultados na opção \emph{view netlist}. Acrescente o \emph{netlist} ao relatório.
+
+\textbf{6.} *Como são calculadas as áreas e perímetros de dreno e \emph{source} no 
+   circuito extraído pelo esquemático (relação usada)?
+
+\textbf{7.} Observe que no \emph{netlist} não aparecem as capacitâncias parasitas 
+   que são geradas quando é feita a extração do \emph{layout}. Prepare um arquivo 
+   para simulação e, com os parâmetros típicos, $V_{DD} = 3V$, determine o atraso de
+   propagação na subida \emph{versus} capacitância de carga (entrada com onda 
+   quadrada com \emph{rise/fall time} pequenos (1\% do período, por exemplo)). 
+   Escolha os sinais de entrada de forma a obter a pior situação, ao menos cinco 
+   valores para a capacitância de carga, e escolha o período dos sinais de forma a 
+   obter resultados corretos. Faça o mesmo para o atraso de propagação na descida 
+   \emph{versus} capacitância de carga.
+
+\textbf{8.} *Apresente os gráficos da questão anterior e copie os comandos de medida
+   e sinais de entrada que usou no \emph{ELDO}.
+
+\textbf{9.} Faça agora o \emph{layout} da porta (utilize o \emph{designview point} 
+   gerado para geração). No \emph{layout} deve-se tomar cuidado com:
+\begin{lsitemize}
+    \item área total do circuito;
+    \item o uso correto dos metais e poli como camadas de conexão;
+    \item a posição dos \emph{ports} de entrada e saída.
+\end{lsitemize}
+   Faça a verificação com o \emph{DRC (CALIBRE)} e elimine todos os erros.
+
+Obs.: Veja as opções do \textbf{ \emph{Route -- ARoute Commands -- Setup -- Display} } para melhor fazer o roteamento manual.
+
+\textbf{10.} Utilize o comando \textbf{ \emph{Connectivity -- port -- Add to Port} } 
+   para ampliar as áreas dos \emph{ports}. Para isso selecione o \emph{shape} que 
+   deseja acrescentar a um \emph{port} e então execute o comando.
+
+\textbf{11.} *Como se pode acrescentar aos \emph{ports} $V_{DD}$ e $V_{SS}$ as 
+   regiões de \emph{source} dos transistores sem transformarmos os transistores 
+   em \emph{flatten}?
+
+\textbf{12.} Uma vez acrescentadas aos \emph{ports} todas as regiões desejadas, faça 
+   nova verificação com o \emph{DRC}.
+
+\textbf{13.} Vamos agora fazer a última verificação do circuito: comparação entre o
+   \emph{layout} e o esquemático que o gerou (\emph{Layout vs. Schematic} ou 
+   simplesmente \emph{LVS}). Para isso, dentro do \emph{ICStation} feche o circuito
+   lógico associado ao \emph{layout} (\textbf{ \emph{File -- Logic -- close} }, 
+   menu superior). Execute então os comandos \emph{IcTrace(M)} e \emph{LVS} (menu à 
+   direita). No menu que aparece complete o \emph{source name} (nome do 
+   \emph{netlist} para comparar que esta no
+   \verb|... logic.view/name/.../vpt_c35b4_device|) e na opção \emph{Abort on 
+   Supply Error}, deixe \emph{NO}. Verifique a função das outras opções que estão 
+   disponíveis.
+
+\textbf{14.} Ao dar o \emph{OK}, é feita a comparação entre os \emph{netlists} 
+   extraídos do \emph{layout} e do esquemático. Para ver se há ou não erros execute 
+   o comando \textbf{ \emph{IcTrace(M) -- LVS -- Report -- LVS} }. Verifique também 
+   as outras opções no menu de \emph{Report}. Caso não houver erros aparecerá a 
+   \emph{"carinha feliz"} se houver, serão fornecidas informações sobre os erros.
+
+\textbf{15.} Para determinar onde estão os erros pode ser usado o comando 
+   \textbf{ \emph{IcTrace(M) -- discreps.} } A opção \emph{first} aí mostra o 
+   primeiro erro; a opção \emph{next}, o próximo. Caso tenha tido algum erro tente 
+   achá-lo com esses comandos; se não teve erros, modifique o \emph{layout} (apague 
+   alguma conexão) para poder praticar (caso não pratique na aula poderá ter 
+   surpresas na prova).
+
+Obs.: o comando \emph{discreps} deixa selecionada uma ou mais regiões do circuito.
+Essas regiões selecionadas são deselecionadas apenas pelo comando
+\textbf{ \emph{IcTrace(M) -- unshow -- all} }. Algo similar acontece com o \emph{DRC}.
+Obs.: O comando \textbf{ \emph{IcTrace(M) -- netlist} } também serve, como o 
+\emph{PEX (CALIBRE)}, para gerar \emph{netlists} para o \emph{ELDO}.
+
+\textbf{16.} *Uma vez feitas as verificações com \emph{DRC} e \emph{LVS}, caso não 
+   tenha sido encontrado nenhum erro, o \emph{layout} estará pronto para uso. Agora, 
+   extraia o circuito de simulação a partir do \emph{layout} (opção C+CC) e repita as
+   simulações feitas no item 7. Apresente os gráficos com resultados (gere uma figura
+   do \emph{layout} e inclua no trabalho).
+
+\textbf{17.} *Para as curvas atraso de propagação na subida e descida \emph{versus}
+   carga, geradas a partir do \emph{layout}, calcule as inclinações e o pontos de
+   cruzamento com o eixo Y (eixo de tempo).
+
+\textbf{18.} *Comente as diferenças entre os resultados encontrados nas questões 8 e
+   16/17? Dê as razões para elas.
+
+\textbf{19.} *Faça um inversor com $W_N = 2 \mu m$ e $L_N = 0,35 \mu m$. Faça o 
+   esquemático, símbolo e \emph{layout}. Passe as verificações no esquemático e 
+   símbolo. O \emph{layout} deve ser feito com cuidado para ter área pequena, 
+   utilização correta de metais/poli e \emph{ports} de tamanho conveniente. Passe o 
+   \emph{DRC} no \emph{layout} e faça o \emph{LVS} deixando a célula pronta para uso.
+   Acrescente ao relatório o \emph{layout} feito.
+
+\textbf{20.} A partir das duas células desenhadas, monte o esquemático de uma nova
+   célula que executa a função lógica $(ab+c)$. Gere o seu símbolo e faça
+   todas as verificações necessárias.
+
+Obs.: antes de realizar o item 20, deve-se acrescentar aos símbolos
+anteriores a propriedade \emph{phy\_comp} com a posição do \emph{layout} de cada 
+célula.
+
+\textbf{21.} Gere a partir do esquemático o arquivo para simulação com o \emph{ELDO}
+   (acrescente o \emph{netlist} ao relatório). Simule com os parâmetros típicos,
+   $V_{DD} = 3V$, e determine o atraso de propagação na subida \emph{versus}
+   capacitância de carga (entrada com onda quadrada com \emph{rise/fall time}
+   igual a 1\%). Escolha os sinais de entrada de forma a obter a pior
+   situação, ao menos cinco valores para a capacitância de carga e escolha
+   o período dos sinais de forma a obter resultados corretos. Faça o mesmo
+   para o atraso de propagação na descida \emph{versus} capacitância de carga.
+
+\textbf{22.} *Desenhe os gráficos da questão anterior e copie os comandos de medida
+   e sinais de entrada que usou no \emph{ELDO}.
+
+\textbf{23.} Faça o \emph{layout} final da célula. Utilize nas linhas de metal que 
+   ligam o $V_{DD}$ e o $V_{SS}$ largura sempre superior ou igual a $1,0 \mu m$. Par
+   isso veja e utilize o comando \textbf{ \emph{Route -- ARoutre NEt Classe -- Edit} } 
+   que permite especificar as características de conexão de qualquer sinal. Utilize 
+   a opção \emph{New/Edit} para fornecer as características desejadas e a opção 
+   \emph{Assign} para associá-las a um sinal (e apenas um). Coloque os sinais de 
+   $V_{DD}$ e o $V_{SS}$ com metais de $1,0 \mu m$.
+
+Obs.: Veja que quando se esta executando o comando \textbf{ \emph{Route -- Iroute Commands -- Run} }, a tecla \emph{w} pode ser utilizada para alterar a largura da linha
+desenhada.
+
+\textbf{24.} *Termine layout da célula, passe o \emph{DRC} e faça o \emph{LVS}. Gere 
+   uma figura do \emph{layout} mostrando todos os níveis e inclua no trabalho.
+
+\textbf{25.} *Agora extraia o circuito de simulação a partir do \emph{layout} (opção 
+   C+CC) e repita as simulações feitas no item 22. Apresente gráficos e tabelas
+   com os resultados.
+
+\textbf{26.} *Para as curvas tempo de propagação na subida e descida geradas a
+   partir do \emph{layout}, calcule as inclinações e os pontos de cruzamento com o
+   eixo Y (eixo de tempo).
+
+\textbf{27.} *Gere novamente os tempos de propagação na subida e descida utilizando
+   agora os comandos (faça os ajustes necessários para seu circuito)
+\begin{lstlisting}
+Va  a 0 3V
+Vb  b 0 0
+Vc  c 0 pulse (0 3 0 1p 1p 2n 4n)
+. tran 1n 40n 0n 1p
+.meas tran delayF trig v(c) val=1.5  fall=6   targ v(out) val=1.5 fall=6
+.meas tran delayR trig v(c) val=1.5  rise=6  targ v(out) val=1.5 rise=6
+Cl out 0 30fF
+\end{lstlisting}
+
+\textbf{28.} *Vamos realizar agora a \emph{simulação de Monte Carlo}. Nesta simulação
+   são realizadas, na verdade, várias simulações com parâmetros diferentes e
+   podemos conhecer o comportamento do circuito para diversas condições de
+   fabricação. Utiilizando os comandos abaixo realize \emph{Monte Carlo} (faça os
+   ajustes necessários para seu circuito, não coloque no arquivo o modelo
+   do transistor). Forneça os gráficos da tensão em \emph{c} e na saída (valor
+   típico e piores casos) e os gráficos do número de saídas \emph{versus delayF} e
+   \emph{delayR}.
+
+
+\begin{lstlisting}
+Va  a 0 3V
+Vb  b 0 0
+Vc  c 0 pulse (0 3 0 1p 1p 2n 4n)
+. tran 1n 30n 0n 10p
+.meas tran delayF trig v(c) val=1.5  fall=5   targ v(out) val=1.5 fall=5
+.meas tran delayR trig v(c) val=1.5  rise=5  targ v(out) val=1.5 rise=5
+Cl out 0 30fF
+
+.option SST_MTHREAD=1
+* MONTE CARLO
+.MC 100 NBBINS=20
+.INCLUDE /local/tools/dkit/ams_3.70_mgc/eldo/c35/profile.opt
+.LIB /local/tools/dkit/ams_3.70_mgc/eldo/c35/wc53.lib mc
+\end{lstlisting}
+
+\textbf{29.} *Utilize o comando \textbf{ \emph{Report -- Windows} } do 
+   \emph{ICStation} para determinar o tamanho da célula (coloque o tamanho de sua 
+   célula no relatório).
+
+
+\lyxline{}
+\begin{verbatim}
+manual do Mentor-ELDO: /local/tools/mentor/shared/pdfdocs/eldo_ur.pdf
+modelos dos transistores: /local/tools/dkit/ams_3.70_mgc/eldo/c35.
+\end{verbatim}
+
+\end{document}
