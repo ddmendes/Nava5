@@ -3,6 +3,7 @@
 \begin{document}
 
 \renewcommand{\titulo}{Projeto 6}
+\pagenumbering{arabic}
 \makecover
 \makelists
 
@@ -25,9 +26,165 @@ transistores.
       subida);
     \item Todos transistores \emph{PMOS} tenham as mesmas dimensões.
 \end{lsienumerate}
-(deixe indicado os valores usados).
+(deixe indicado os valores usados)
 
-\textbf{2.} Faça o circuito esquemático da porta \emph{CMOS} e gere seu símbolo. Faça   todas as verificações necessárias no esquemático e no símbolo não deixando nenhum 
+\begin{figure}[!hb]
+    \caption{Porta lógica \emph{CMOS}. Implementa a função $\overline{AB + C}$.}
+    \label{figPortaLogicaQ1}
+    \begin{center}
+        \begin{tikzpicture}
+           
+            %vcc
+            \draw   (-0.3, 3.8) -- (0  , 4.1)
+                                -- (0.3, 3.8);
+            \draw (0, 4.1) -- (0, 3.4);
+
+            %bloco P
+            \draw   (-1.5, 3.4) -- ( 1.5, 3.4)
+                                -- ( 1.5, 2.9)
+                                -- ( 1.8, 2.9) %M2
+                                -- ( 1.8, 2.2)
+                                -- ( 1.5, 2.2)
+                                -- ( 1.5, 1.7)
+                                -- (-1.5, 1.7)
+                                -- (-1.5, 2.2)
+                                -- (-1.8, 2.2) %M1
+                                -- (-1.8, 2.9)
+                                -- (-1.5, 2.9)
+                                -- (-1.5, 3.4);
+
+            \draw  (0, 1.7) -- (0, 1.2  )
+                            -- (0.3, 1.2) %M3
+                            -- (0.3, 0.5)
+                            -- (0  , 0.5)
+                            -- (0  , 0  );
+
+            \draw     (-2 , 2.2 ) -- (-2  , 2.9 ); %M1
+            \draw     (-2 , 2.55) -- (-2.5, 2.55) node [anchor=east] {A};
+            \filldraw (-1.8, 2.9) -- (-1.7, 3   )
+                                  -- (-1.7, 2.8 )
+                                  -- cycle;
+            \draw     ( 2 , 2.2 ) -- ( 2  , 2.9 ); %M2
+            \draw     ( 2 , 2.55) -- ( 2.5, 2.55) node [anchor=west] {B};
+            \filldraw ( 1.8, 2.9) -- ( 1.7, 3   )
+                                  -- ( 1.7, 2.8 )
+                                  -- cycle;
+            \draw     (0.5, 1.2 ) -- ( 0.5, 0.5 ); %M3
+            \draw     (0.5, 0.85) -- ( 1  , 0.85) node [anchor=west] {C};
+            \filldraw (0.3, 1.2 ) -- ( 0.2, 1.3 )
+                                  -- ( 0.2, 1.1 )
+                                  -- cycle;
+
+            %bloco N
+            \draw  (1.5, 0) -- (-1.5,  0   ) 
+                            -- (-1.5, -0.5 )
+                            -- (-1.8, -0.5 ) %M4
+                            -- (-1.8, -1.2 )
+                            -- (-1.5, -1.2 )
+                            -- (-1.5, -2.2 )
+                            -- (-1.8, -2.2 ) %M5
+                            -- (-1.8, -2.9 )
+                            -- (-1.5, -2.9 )
+                            -- (-1.5, -3.4 )
+                            -- ( 1.5, -3.4 )
+                            -- ( 1.5, -2.05)
+                            -- ( 1.8, -2.05) %M6
+                            -- ( 1.8, -1.35)
+                            -- ( 1.5, -1.35)
+                            -- ( 1.5, 0    );
+        
+            \draw     (-2  , -0.5 ) -- (-2  , -1.2 ); %M4
+            \draw     (-2  , -0.85) -- (-2.5, -0.85) node [anchor=east] {A};
+            \filldraw (-1.5, -1.2 ) -- (-1.6, -1.1 )
+                                    -- (-1.6, -1.3 )
+                                    -- cycle;
+            \draw     (-2  , -2.2 ) -- (-2  , -2.9 ); %M5
+            \draw     (-2  , -2.55) -- (-2.5, -2.55) node [anchor=east] {B};
+            \filldraw (-1.5, -2.9 ) -- (-1.6, -3   )
+                                    -- (-1.6, -2.8 )
+                                    -- cycle;
+            \draw     ( 2  , -2.05) -- ( 2  , -1.35); %M6
+            \draw     ( 2  , -1.7 ) -- ( 2.5, -1.7 ) node [anchor=west] {C};
+            \filldraw ( 1.5, -2.05) -- ( 1.6, -2.15)
+                                    -- ( 1.6, -1.95)
+                                    -- cycle;
+
+            %terra
+            \draw ( 0  , -3.4) -- (0  , -3.9);
+            \draw (-0.5, -3.9) -- (0.5, -3.9);
+            \draw (-0.3, -4.1) -- (0.3, -4.1);
+            \draw (-0.1, -4.3) -- (0.1, -4.3);
+        \end{tikzpicture}
+    \end{center}
+\end{figure}
+
+Seja o tempo de propagação dado pela seguinte relação:
+\begin{equation}
+    t_p = \frac{1,6 \cdot C_L}{\mu \cdot \left( \frac{W}{L} \right) \cdot C_{ox} \cdot V_{DD}}
+\end{equation}
+
+No caso 110, teremos os transistores $M_4$ e $M_5$ abertos, realizando a descida do 
+sinal. Para o cálculo tempo de propagação na descida, teremos um transistor equivalente
+com as seguintes dimensões:
+\begin{eqnarray}
+    W_{eq} & = & W_{M_4,M_5}\\
+    L_{eq} & = & 2 \cdot L
+\end{eqnarray}
+
+Por outro lado, no caso 001, somente o transistor $M_6$ abre. Desta forma as dimensões
+equivalentes são as mesmas dimensões do transistor $M_6$:
+\begin{eqnarray}
+    W_{eq} & = & W_{M_6}\\
+    L_{eq} & = & L
+\end{eqnarray}
+
+Desta forma temos:
+\begin{eqnarray}
+    t_{pHL(110)} & = & \frac{1,6 \cdot C_L}{\mu_N \cdot \left( \frac{W_{M_4,M_5}}{2 \cdot L} 
+                                        \right) \cdot C_{ox} \cdot V_{DD}} \label{eqntphl110q1}\\
+%
+    t_{pHL(001)} & = & \frac{1,6 \cdot C_L}{\mu_N \cdot \left( \frac{W_{M_6}}{L} \right) 
+                                                \cdot C_{ox} \cdot V_{DD}} \label{eqntphl001q1}
+\end{eqnarray}
+e, ao igualarmos (\ref{eqntphl110q1}) e (\ref{eqntphl001q1}), eliminaremos todas as variáveis não 
+abordadas até o momento, obtendo a relação:
+\begin{eqnarray}
+    \frac{W_{M_4,M_5}}{2 \cdot L} & = & \frac{W_{M_6}}{L}\\
+    \Rightarrow W_{M_4,M_5} & = & 2 \cdot W_{M_6}
+\end{eqnarray}
+
+Como $W_{M_6} < W_{M_4,M_5} \Rightarrow W_{M_6} = 2 \mu m$. Logo:
+\begin{equation}
+    W_{M_4,M_5} = 2 \cdot 2 \mu m = 4 \mu m
+\end{equation}
+\begin{equation}
+    \Rightarrow W_{M_4} = W_{M_5} = 4 \mu m
+\end{equation}
+
+Para o análise dos transistores \emph{PMOS}, tomamos como os piores casos $ABC = 101$ ou 
+$ABC = 011$. Os transistores equivalente --- utilizado no cálculo do tempo de propagação --- 
+de ambos os casos possuem as mesmas dimensões, mostradas a seguir:
+\begin{eqnarray}
+    W_{eq} & = & W_P\\
+    L_{eq} & = & 2 \cdot L
+\end{eqnarray}
+
+Desta forma, podemos modelar o pior atraso de propagação na subida como:
+\begin{equation}
+    t_{pLH(101|011)} = \frac{1,6 \cdot C_L}{\mu_P \cdot \left( \frac{W_P}{2 \cdot L} 
+                                        \right) \cdot C_{ox} \cdot V_{DD}} \label{eqntplhq1}
+\end{equation}
+
+Igualando as equações (\ref{eqntphl001q1}) e (\ref{eqntplhq1}), analogamente ao que foi feito
+para os trnasistores \emph{NMOS}, podemos calcular $W_P$:
+\begin{eqnarray}
+    W_P & = & \frac{\mu_N}{\mu_P} \cdot W_{M_6}\\
+    \Rightarrow W_P & = & ???12,70 \mu m
+\end{eqnarray}
+para $\mu_N = XXcm^2/Vs$ e $\mu_P = XXcm^2/Vs$.
+
+\textbf{2.} Faça o circuito esquemático da porta \emph{CMOS} e gere seu símbolo. Faça
+   todas as verificações necessárias no esquemático e no símbolo não deixando nenhum 
    erro ou \emph{warning}. Não esqueça de ligar o \emph{bulk} dos transistores.
 
 \textbf{3.} Crie para o esquemático um \emph{designview} point para poder gerar 
