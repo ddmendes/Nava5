@@ -16,9 +16,9 @@ o comportamento dos circuitos com as variações dos parâmetros dos
 transistores.
 
 
-\textbf{1.} *Considere a porta lógica \emph{CMOS} estática que implementa a função 
-   lógica $\overline{(ab+c)}$. Tendo o transistor \emph{NMOS} de menor dimensão um 
-   $W = 2 \mu m$ e $L = 0,35 \mu m$, determine as dimensões de todos transistores 
+\textbf{1.} *Considere a porta lógica \emph{CMOS} estática que implementa a função
+   lógica $\overline{(AB+C)}$. Tendo o transistor \emph{NMOS} de menor dimensão um
+   $W = 2 \mu m$ e $L = 0,35 \mu m$, determine as dimensões de todos transistores
    de forma que:
 \begin{lsienumerate}
     \item (atraso de propagação na descida com ABC = "110") = (atraso de
@@ -33,7 +33,7 @@ transistores.
     \label{figPortaLogicaQ1}
     \begin{center}
         \begin{tikzpicture}
-           
+
             %vcc
             \draw   (-0.3, 3.8) -- (0  , 4.1)
                                 -- (0.3, 3.8);
@@ -79,7 +79,7 @@ transistores.
                                   -- cycle;
 
             %bloco N
-            \draw  (1.5, 0) -- (-1.5,  0   ) 
+            \draw  (1.5, 0) -- (-1.5,  0   )
                             -- (-1.5, -0.5 )
                             -- (-1.8, -0.5 ) %M4
                             -- (-1.8, -1.2 )
@@ -95,7 +95,7 @@ transistores.
                             -- ( 1.8, -1.35)
                             -- ( 1.5, -1.35)
                             -- ( 1.5, 0    );
-        
+
             \draw     (-2  , -0.5 ) -- (-2  , -1.2 ); %M4
             \draw     (-2  , -0.85) -- (-2.5, -0.85) node [anchor=east] {A};
             \draw     (-1.5, -0.85) node [anchor=west] {$M_4$};
@@ -103,7 +103,7 @@ transistores.
                                     -- (-1.6, -1.3 )
                                     -- cycle;
             \draw     (-2  , -2.2 ) -- (-2  , -2.9 ); %M5
-            \draw     (-2  , -2.55) -- (-2.5, -2.55) node [anchor=west] {B};
+            \draw     (-2  , -2.55) -- (-2.5, -2.55) node [anchor=east] {B};
             \draw     (-1.5, -2.55) node [anchor=west] {$M_5$};
             \filldraw (-1.5, -2.9 ) -- (-1.6, -3   )
                                     -- (-1.6, -2.8 )
@@ -129,7 +129,7 @@ Seja o tempo de propagação dado pela seguinte relação:
     t_p = \frac{1,6 \cdot C_L}{\mu \cdot \left( \frac{W}{L} \right) \cdot C_{ox} \cdot V_{DD}}
 \end{equation}
 
-No caso 110, teremos os transistores $M_4$ e $M_5$ abertos, realizando a descida do 
+No caso 110, teremos os transistores $M_4$ e $M_5$ abertos, realizando a descida do
 sinal. Para o cálculo tempo de propagação na descida, teremos um transistor equivalente
 com as seguintes dimensões:
 \begin{eqnarray}
@@ -146,13 +146,13 @@ equivalentes são as mesmas dimensões do transistor $M_6$:
 
 Desta forma temos:
 \begin{eqnarray}
-    t_{pHL(110)} & = & \frac{1,6 \cdot C_L}{\mu_N \cdot \left( \frac{W_{M_4,M_5}}{2 \cdot L} 
+    t_{pHL(110)} & = & \frac{1,6 \cdot C_L}{\mu_N \cdot \left( \frac{W_{M_4,M_5}}{2 \cdot L}
                                         \right) \cdot C_{ox} \cdot V_{DD}} \label{eqntphl110q1}\\
 %
-    t_{pHL(001)} & = & \frac{1,6 \cdot C_L}{\mu_N \cdot \left( \frac{W_{M_6}}{L} \right) 
+    t_{pHL(001)} & = & \frac{1,6 \cdot C_L}{\mu_N \cdot \left( \frac{W_{M_6}}{L} \right)
                                                 \cdot C_{ox} \cdot V_{DD}} \label{eqntphl001q1}
 \end{eqnarray}
-e, ao igualarmos (\ref{eqntphl110q1}) e (\ref{eqntphl001q1}), eliminaremos todas as variáveis não 
+e, ao igualarmos (\ref{eqntphl110q1}) e (\ref{eqntphl001q1}), eliminaremos todas as variáveis não
 abordadas até o momento, obtendo a relação:
 \begin{eqnarray}
     \frac{W_{M_4,M_5}}{2 \cdot L} & = & \frac{W_{M_6}}{L}\\
@@ -167,8 +167,8 @@ Como $W_{M_6} < W_{M_4,M_5} \Rightarrow W_{M_6} = 2 \mu m$. Logo:
     \Rightarrow W_{M_4} = W_{M_5} = 4 \mu m
 \end{equation}
 
-Para o análise dos transistores \emph{PMOS}, tomamos como os piores casos $ABC = 101$ ou 
-$ABC = 011$. Os transistores equivalente --- utilizado no cálculo do tempo de propagação --- 
+Para o análise dos transistores \emph{PMOS}, tomamos como os piores casos $ABC = 101$ ou
+$ABC = 011$. Os transistores equivalente --- utilizado no cálculo do tempo de propagação ---
 de ambos os casos possuem as mesmas dimensões, mostradas a seguir:
 \begin{eqnarray}
     W_{eq} & = & W_P\\
@@ -177,57 +177,92 @@ de ambos os casos possuem as mesmas dimensões, mostradas a seguir:
 
 Desta forma, podemos modelar o pior atraso de propagação na subida como:
 \begin{equation}
-    t_{pLH(101|011)} = \frac{1,6 \cdot C_L}{\mu_P \cdot \left( \frac{W_P}{2 \cdot L} 
+    t_{pLH(101|011)} = \frac{1,6 \cdot C_L}{\mu_P \cdot \left( \frac{W_P}{2 \cdot L}
                                         \right) \cdot C_{ox} \cdot V_{DD}} \label{eqntplhq1}
 \end{equation}
 
 Igualando as equações (\ref{eqntphl001q1}) e (\ref{eqntplhq1}), analogamente ao que foi feito
 para os trnasistores \emph{NMOS}, podemos calcular $W_P$:
 \begin{eqnarray}
-    W_P & = & \frac{\mu_N}{\mu_P} \cdot W_{M_6}\\
-    \Rightarrow W_P & = & ???12,70 \mu m
+    W_P & = & 2 \cdot \frac{\mu_N}{\mu_P} \cdot W_{M_6}\\
+    \Rightarrow W_P & \approx & 12,90 \mu m
 \end{eqnarray}
-para $\mu_N = XXcm^2/Vs$ e $\mu_P = XXcm^2/Vs$.
+para $\mu_N = 476cm^2/Vs$ e $\mu_P = 148cm^2/Vs$.
 
 \textbf{2.} Faça o circuito esquemático da porta \emph{CMOS} e gere seu símbolo. Faça
-   todas as verificações necessárias no esquemático e no símbolo não deixando nenhum 
+   todas as verificações necessárias no esquemático e no símbolo não deixando nenhum
    erro ou \emph{warning}. Não esqueça de ligar o \emph{bulk} dos transistores.
 
-\textbf{3.} Crie para o esquemático um \emph{designview} point para poder gerar 
-   arquivos para simulação e comparar com \emph{layout}. Para isso execute o comando 
-   \textbf{ \emph{Hit-Kit Utilites -- Create Viewpoint} } na parte superior da 
-   janela do \emph{Design Architecture}. No menu que aparece coloque o nome de seu 
+\textbf{3.} Crie para o esquemático um \emph{designview point} para poder gerar
+   arquivos para simulação e comparar com \emph{layout}. Para isso execute o comando
+   \textbf{ \emph{Hit-Kit Utilites -- Create Viewpoint} } na parte superior da
+   janela do \emph{Design Architecture}. No menu que aparece coloque o nome de seu
    arquivo esquemático no \emph{Design Path}. Deixe a opção \emph{device}.
 
 \textbf{4.} Agora gere um arquivo \emph{netlist} para o \emph{ELDO}. Para isso entre
-   no \emph{Simulation} mode (coluna esquerda da janela do \emph{Design Architecture}
-   , último comando). No menu selecione o \emph{vpt\_c35b4\_device}, que foi gerado 
+   no \emph{Simulation mode} (coluna esquerda da janela do \emph{Design Architecture}
+   , último comando). No menu selecione o \emph{vpt\_c35b4\_device}, que foi gerado
    no item anterior, e dê \emph{OK}.
 
 Obs.: A partir da nova janela podemos retornar à  anterior executando
 novamente o último comando da coluna à esquerda.
 
-\textbf{5.} *Gere o \emph{netlist} executando o comando apropriado na coluna à 
-   esquerda. Com outro comando nessa coluna, o \emph{ASCII Results}, verifique os 
+\textbf{5.} *Gere o \emph{netlist} executando o comando apropriado na coluna à
+   esquerda. Com outro comando nessa coluna, o \emph{ASCII Results}, verifique os
    resultados na opção \emph{view netlist}. Acrescente o \emph{netlist} ao relatório.
 
-\textbf{6.} *Como são calculadas as áreas e perímetros de dreno e \emph{source} no 
+\textbf{6.} *Como são calculadas as áreas e perímetros de dreno e \emph{source} no
    circuito extraído pelo esquemático (relação usada)?
 
-\textbf{7.} Observe que no \emph{netlist} não aparecem as capacitâncias parasitas 
-   que são geradas quando é feita a extração do \emph{layout}. Prepare um arquivo 
+   **** XA = \emph{Diffusion Lenght} ****
+
+   Conforme o manual \emph{ELDO equations}, temos que:
+   \begin{eqnarray}
+        AS & = & W \cdot XA\\
+        AD & = & W \cdot XA\\
+        PS & = & W + 2 \cdot XA\\
+        PD & = & W + 2 \cdot XA,
+   \end{eqnarray}
+   onde $AS$ é a area de \emph{source}, $AD$ é a área de dreno, $PS$ é o perímetro
+   de \emph{source}, $PD$ é o perímetro de dreno e $XA$ é o comprimento da difusão.
+   Neste caso o comprimento da difusão é \mbox{$XA=0.85\mu m$}.
+
+\textbf{7.} Observe que no \emph{netlist} não aparecem as capacitâncias parasitas
+   que são geradas quando é feita a extração do \emph{layout}. Prepare um arquivo
    para simulação e, com os parâmetros típicos, $V_{DD} = 3V$, determine o atraso de
-   propagação na subida \emph{versus} capacitância de carga (entrada com onda 
-   quadrada com \emph{rise/fall time} pequenos (1\% do período, por exemplo)). 
-   Escolha os sinais de entrada de forma a obter a pior situação, ao menos cinco 
-   valores para a capacitância de carga, e escolha o período dos sinais de forma a 
-   obter resultados corretos. Faça o mesmo para o atraso de propagação na descida 
+   propagação na subida \emph{versus} capacitância de carga (entrada com onda
+   quadrada com \emph{rise/fall time} pequenos (1\% do período, por exemplo)).
+   Escolha os sinais de entrada de forma a obter a pior situação, ao menos cinco
+   valores para a capacitância de carga, e escolha o período dos sinais de forma a
+   obter resultados corretos. Faça o mesmo para o atraso de propagação na descida
    \emph{versus} capacitância de carga.
 
 \textbf{8.} *Apresente os gráficos da questão anterior e copie os comandos de medida
    e sinais de entrada que usou no \emph{ELDO}.
 
-\textbf{9.} Faça agora o \emph{layout} da porta (utilize o \emph{designview point} 
+    Os atrasos medidos na questão anterior podem ser vistos na imagem \ref{imgApcQ8}.
+    Os comandos utilizados em suas medidas estão disponíveis no Código Fonte \ref{lstMeasureQ8}.
+    As formas de onda dos sinais de entrada $A$, $B$ e $C$ estão na imagem \ref{imgSinEntQ8}.
+
+    \img{Atraso de subida e descida por capacitância de carga.}{imgApcQ8}{atraso_por_capacitancia_q8.jpg}
+
+    \begin{lstlisting}[caption=Comandos utilizados para a medição de atraso de subida e descida por capacitância de carga., label=lstMeasureQ8]
+.PARAM cload=100f
+Cl S VSS cload
+
+.PARAM frequencia=230MegHz
+.PARAM periodo='1/frequencia'
+.PARAM vStep=50f
+.PARAM vInit=100f
+.PARAM vEnd=300f
+
+.TRAN 1ns '20*periodo' '5*periodo' 0.1ns SWEEP cload INCR vStep vInit vEnd
+
+.MEAS TRAN DEL_H2L TRIG V(B) VAL=1.5V RISE=5 TARG V(S) VAL=1.5 FALL=5
+.MEAS TRAN DEL_L2H TRIG V(B) VAL=1.5V FALL=5 TARG V(S) VAL=1.5 RISE=5
+    \end{lstlisting}
+
+\textbf{9.} Faça agora o \emph{layout} da porta (utilize o \emph{designview point}
    gerado para geração). No \emph{layout} deve-se tomar cuidado com:
 \begin{lsitemize}
     \item área total do circuito;
@@ -239,49 +274,49 @@ novamente o último comando da coluna à esquerda.
 Obs.: Veja as opções do \textbf{ \emph{Route -- ARoute Commands -- Setup -- Display} }
 para melhor fazer o roteamento manual.
 
-\textbf{10.} Utilize o comando \textbf{ \emph{Connectivity -- port -- Add to Port} } 
-   para ampliar as áreas dos \emph{ports}. Para isso selecione o \emph{shape} que 
+\textbf{10.} Utilize o comando \textbf{ \emph{Connectivity -- port -- Add to Port} }
+   para ampliar as áreas dos \emph{ports}. Para isso selecione o \emph{shape} que
    deseja acrescentar a um \emph{port} e então execute o comando.
 
-\textbf{11.} *Como se pode acrescentar aos \emph{ports} $V_{DD}$ e $V_{SS}$ as 
-   regiões de \emph{source} dos transistores sem transformarmos os transistores 
+\textbf{11.} *Como se pode acrescentar aos \emph{ports} $V_{DD}$ e $V_{SS}$ as
+   regiões de \emph{source} dos transistores sem transformarmos os transistores
    em \emph{flatten}?
 
-\textbf{12.} Uma vez acrescentadas aos \emph{ports} todas as regiões desejadas, faça 
+\textbf{12.} Uma vez acrescentadas aos \emph{ports} todas as regiões desejadas, faça
    nova verificação com o \emph{DRC}.
 
 \textbf{13.} Vamos agora fazer a última verificação do circuito: comparação entre o
-   \emph{layout} e o esquemático que o gerou (\emph{Layout vs. Schematic} ou 
+   \emph{layout} e o esquemático que o gerou (\emph{Layout vs. Schematic} ou
    simplesmente \emph{LVS}). Para isso, dentro do \emph{ICStation} feche o circuito
-   lógico associado ao \emph{layout} (\textbf{ \emph{File -- Logic -- close} }, 
-   menu superior). Execute então os comandos \emph{IcTrace(M)} e \emph{LVS} (menu à 
-   direita). No menu que aparece complete o \emph{source name} (nome do 
+   lógico associado ao \emph{layout} (\textbf{ \emph{File -- Logic -- close} },
+   menu superior). Execute então os comandos \emph{IcTrace(M)} e \emph{LVS} (menu à
+   direita). No menu que aparece complete o \emph{source name} (nome do
    \emph{netlist} para comparar que esta no
-   \verb|... logic.view/name/.../vpt_c35b4_device|) e na opção \emph{Abort on 
-   Supply Error}, deixe \emph{NO}. Verifique a função das outras opções que estão 
+   \verb|... logic.view/name/.../vpt_c35b4_device|) e na opção \emph{Abort on
+   Supply Error}, deixe \emph{NO}. Verifique a função das outras opções que estão
    disponíveis.
 
-\textbf{14.} Ao dar o \emph{OK}, é feita a comparação entre os \emph{netlists} 
-   extraídos do \emph{layout} e do esquemático. Para ver se há ou não erros execute 
-   o comando \textbf{ \emph{IcTrace(M) -- LVS -- Report -- LVS} }. Verifique também 
-   as outras opções no menu de \emph{Report}. Caso não houver erros aparecerá a 
+\textbf{14.} Ao dar o \emph{OK}, é feita a comparação entre os \emph{netlists}
+   extraídos do \emph{layout} e do esquemático. Para ver se há ou não erros execute
+   o comando \textbf{ \emph{IcTrace(M) -- LVS -- Report -- LVS} }. Verifique também
+   as outras opções no menu de \emph{Report}. Caso não houver erros aparecerá a
    \emph{"carinha feliz"} se houver, serão fornecidas informações sobre os erros.
 
-\textbf{15.} Para determinar onde estão os erros pode ser usado o comando 
-   \textbf{ \emph{IcTrace(M) -- discreps.} } A opção \emph{first} aí mostra o 
-   primeiro erro; a opção \emph{next}, o próximo. Caso tenha tido algum erro tente 
-   achá-lo com esses comandos; se não teve erros, modifique o \emph{layout} (apague 
-   alguma conexão) para poder praticar (caso não pratique na aula poderá ter 
+\textbf{15.} Para determinar onde estão os erros pode ser usado o comando
+   \textbf{ \emph{IcTrace(M) -- discreps.} } A opção \emph{first} aí mostra o
+   primeiro erro; a opção \emph{next}, o próximo. Caso tenha tido algum erro tente
+   achá-lo com esses comandos; se não teve erros, modifique o \emph{layout} (apague
+   alguma conexão) para poder praticar (caso não pratique na aula poderá ter
    surpresas na prova).
 
 Obs.: o comando \emph{discreps} deixa selecionada uma ou mais regiões do circuito.
 Essas regiões selecionadas são deselecionadas apenas pelo comando
 \textbf{ \emph{IcTrace(M) -- unshow -- all} }. Algo similar acontece com o \emph{DRC}.
-Obs.: O comando \textbf{ \emph{IcTrace(M) -- netlist} } também serve, como o 
+Obs.: O comando \textbf{ \emph{IcTrace(M) -- netlist} } também serve, como o
 \emph{PEX (CALIBRE)}, para gerar \emph{netlists} para o \emph{ELDO}.
 
-\textbf{16.} *Uma vez feitas as verificações com \emph{DRC} e \emph{LVS}, caso não 
-   tenha sido encontrado nenhum erro, o \emph{layout} estará pronto para uso. Agora, 
+\textbf{16.} *Uma vez feitas as verificações com \emph{DRC} e \emph{LVS}, caso não
+   tenha sido encontrado nenhum erro, o \emph{layout} estará pronto para uso. Agora,
    extraia o circuito de simulação a partir do \emph{layout} (opção C+CC) e repita as
    simulações feitas no item 7. Apresente os gráficos com resultados (gere uma figura
    do \emph{layout} e inclua no trabalho).
@@ -293,10 +328,10 @@ Obs.: O comando \textbf{ \emph{IcTrace(M) -- netlist} } também serve, como o
 \textbf{18.} *Comente as diferenças entre os resultados encontrados nas questões 8 e
    16/17? Dê as razões para elas.
 
-\textbf{19.} *Faça um inversor com $W_N = 2 \mu m$ e $L_N = 0,35 \mu m$. Faça o 
-   esquemático, símbolo e \emph{layout}. Passe as verificações no esquemático e 
-   símbolo. O \emph{layout} deve ser feito com cuidado para ter área pequena, 
-   utilização correta de metais/poli e \emph{ports} de tamanho conveniente. Passe o 
+\textbf{19.} *Faça um inversor com $W_N = 2 \mu m$ e $L_N = 0,35 \mu m$. Faça o
+   esquemático, símbolo e \emph{layout}. Passe as verificações no esquemático e
+   símbolo. O \emph{layout} deve ser feito com cuidado para ter área pequena,
+   utilização correta de metais/poli e \emph{ports} de tamanho conveniente. Passe o
    \emph{DRC} no \emph{layout} e faça o \emph{LVS} deixando a célula pronta para uso.
    Acrescente ao relatório o \emph{layout} feito.
 
@@ -305,7 +340,7 @@ Obs.: O comando \textbf{ \emph{IcTrace(M) -- netlist} } também serve, como o
    todas as verificações necessárias.
 
 Obs.: antes de realizar o item 20, deve-se acrescentar aos símbolos
-anteriores a propriedade \emph{phy\_comp} com a posição do \emph{layout} de cada 
+anteriores a propriedade \emph{phy\_comp} com a posição do \emph{layout} de cada
 célula.
 
 \textbf{21.} Gere a partir do esquemático o arquivo para simulação com o \emph{ELDO}
@@ -320,21 +355,21 @@ célula.
 \textbf{22.} *Desenhe os gráficos da questão anterior e copie os comandos de medida
    e sinais de entrada que usou no \emph{ELDO}.
 
-\textbf{23.} Faça o \emph{layout} final da célula. Utilize nas linhas de metal que 
+\textbf{23.} Faça o \emph{layout} final da célula. Utilize nas linhas de metal que
    ligam o $V_{DD}$ e o $V_{SS}$ largura sempre superior ou igual a $1,0 \mu m$. Par
-   isso veja e utilize o comando \textbf{ \emph{Route -- ARoutre NEt Classe -- Edit} } 
-   que permite especificar as características de conexão de qualquer sinal. Utilize 
-   a opção \emph{New/Edit} para fornecer as características desejadas e a opção 
-   \emph{Assign} para associá-las a um sinal (e apenas um). Coloque os sinais de 
+   isso veja e utilize o comando \textbf{ \emph{Route -- ARoutre NEt Classe -- Edit} }
+   que permite especificar as características de conexão de qualquer sinal. Utilize
+   a opção \emph{New/Edit} para fornecer as características desejadas e a opção
+   \emph{Assign} para associá-las a um sinal (e apenas um). Coloque os sinais de
    $V_{DD}$ e o $V_{SS}$ com metais de $1,0 \mu m$.
 
 Obs.: Veja que quando se esta executando o comando \textbf{ \emph{Route -- Iroute Commands -- Run} }, a tecla \emph{w} pode ser utilizada para alterar a largura da linha
 desenhada.
 
-\textbf{24.} *Termine layout da célula, passe o \emph{DRC} e faça o \emph{LVS}. Gere 
+\textbf{24.} *Termine layout da célula, passe o \emph{DRC} e faça o \emph{LVS}. Gere
    uma figura do \emph{layout} mostrando todos os níveis e inclua no trabalho.
 
-\textbf{25.} *Agora extraia o circuito de simulação a partir do \emph{layout} (opção 
+\textbf{25.} *Agora extraia o circuito de simulação a partir do \emph{layout} (opção
    C+CC) e repita as simulações feitas no item 22. Apresente gráficos e tabelas
    com os resultados.
 
@@ -380,8 +415,8 @@ Cl out 0 30fF
 .LIB /local/tools/dkit/ams_3.70_mgc/eldo/c35/wc53.lib mc
 \end{lstlisting}
 
-\textbf{29.} *Utilize o comando \textbf{ \emph{Report -- Windows} } do 
-   \emph{ICStation} para determinar o tamanho da célula (coloque o tamanho de sua 
+\textbf{29.} *Utilize o comando \textbf{ \emph{Report -- Windows} } do
+   \emph{ICStation} para determinar o tamanho da célula (coloque o tamanho de sua
    célula no relatório).
 
 
