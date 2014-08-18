@@ -278,25 +278,77 @@ novamente o último comando da coluna à esquerda.
     Os comandos utilizados em suas medidas estão disponíveis no Código Fonte \ref{lstMeasureQ8}.
     As formas de onda dos sinais de entrada $A$, $B$ e $C$ estão na imagem \ref{imgSinEntQ8}.
 
-    \img{Atraso de subida e descida por capacitância de carga.}{imgApcQ8}{atraso_por_capacitancia_q8.jpg}
-
-    \img{Sinais de entrada e saída da porta lógica}{imgSinEntQ8}{sinais_entrada_saida_q8.jpg}
-
     \begin{lstlisting}[caption=Comandos utilizados para a medição de atraso de subida e descida por capacitância de carga., label=lstMeasureQ8]
+*
+* .CONNECT statements
+*
+.CONNECT GROUND 0
+
+* ELDO netlist generated with ICnet by 'cad' on Wed Aug 13 2014 at 14:50:34
+
+*
+* Globals.
+*
+.global VDD VSS
+
+*
+* MAIN CELL: Component pathname : $lab6/default.group/logic.views/ex2
+*
+    M_PMOS_C S C N$209 VDD MODP w=1.290000e-05 l=3.500000e-07 as=1.096500e-11
++  ad=1.096500e-11 ps=1.460000e-05 pd=1.460000e-05 nrs=3.294574e-02 nrd=3.294574e-02
+    M_PMOS_B N$209 B VDD VDD MODP w=1.290000e-05 l=3.500000e-07 as=1.096500e-11
++  ad=1.096500e-11 ps=1.460000e-05 pd=1.460000e-05 nrs=3.294574e-02 nrd=3.294574e-02
+    M_PMOS_A N$209 A VDD VDD MODP w=1.290000e-05 l=3.500000e-07 as=1.096500e-11
++  ad=1.096500e-11 ps=1.460000e-05 pd=1.460000e-05 nrs=3.294574e-02 nrd=3.294574e-02
+    M_NMOS_C S C VSS VSS MODN w=2.000000e-06 l=3.500000e-07 as=1.700000e-12
++  ad=1.700000e-12 ps=3.700000e-06 pd=3.700000e-06 nrs=2.125000e-01 nrd=2.125000e-01
+    M_NMOS_B N$207 B VSS VSS MODN w=4.000000e-06 l=3.500000e-07 as=3.400000e-12
++  ad=3.400000e-12 ps=5.700000e-06 pd=5.700000e-06 nrs=1.062500e-01 nrd=1.062500e-01
+    M_NMOS_A S A N$207 VSS MODN w=4.000000e-06 l=3.500000e-07 as=3.400000e-12
++  ad=3.400000e-12 ps=5.700000e-06 pd=5.700000e-06 nrs=1.062500e-01 nrd=1.062500e-01
+*
 .PARAM cload=100f
 Cl S VSS cload
 
+*** pulso ***
+.PARAM tvdd=3V
 .PARAM frequencia=230MegHz
 .PARAM periodo='1/frequencia'
+.PARAM delay=0s
+.PARAM tSubida='0.01*periodo'
+.PARAM tDescida='0.01*periodo'
+.PARAM larguraPulso='0.49*periodo'
+.PARAM valto='tvdd'
+.PARAM vbaixo=0V
+
+*** varredura ***
 .PARAM vStep=50f
 .PARAM vInit=100f
 .PARAM vEnd=300f
 
-.TRAN 1ns '20*periodo' '5*periodo' 0.1ns SWEEP cload INCR vStep vInit vEnd
+Vcc VDD VSS tvdd
+Vgnd VSS 0  0
 
+Va A VSS tvdd
+Vb B VSS PULSE (vbaixo valto delay tSubida tDescida larguraPulso periodo)
+Vc C VSS 0
+
+.TRAN 1ns '20*periodo' '5*periodo' 0.1ns SWEEP cload INCR vStep vInit vEnd
+.PROBE TRANS V(A) V(B) V(C) V(S)
+
+*** Delay ***
 .MEAS TRAN DEL_H2L TRIG V(B) VAL=1.5V RISE=5 TARG V(S) VAL=1.5 FALL=5
 .MEAS TRAN DEL_L2H TRIG V(B) VAL=1.5V FALL=5 TARG V(S) VAL=1.5 RISE=5
+
+.INC '~/para_prova/tipico.mod'
+
+.end
+
     \end{lstlisting}
+    \img{Atraso de subida e descida por capacitância de carga obtido pela simulação do 
+        \emph{viewpoint}.}{imgApcQ8}{atraso_por_capacitancia_q8.jpg}
+    \img{Sinais de entrada e saída utilizados na simulação do \emph{viewpoint}.}{imgSinEntQ8}{sinais_entrada_saida_q8.jpg}
+
 
 \textbf{9.} Faça agora o \emph{layout} da porta (utilize o \emph{designview point}
    gerado para geração). No \emph{layout} deve-se tomar cuidado com:
@@ -369,9 +421,52 @@ Obs.: O comando \textbf{ \emph{IcTrace(M) -- netlist} } também serve, como o
 
    \img{Sinais de entrada e de saída da porta lógica.}{imgSinEntQ16}{sinais_entrada_saida_q16}
 
+   \img[0.35]{\emph{Layout} da porta lógica apresentada na figura \ref{figPortaLogicaQ1}.}{imgLayoutQ16}{layout_q16.png}
+
 \textbf{17.} *Para as curvas atraso de propagação na subida e descida \emph{versus}
    carga, geradas a partir do \emph{layout}, calcule as inclinações e o pontos de
    cruzamento com o eixo Y (eixo de tempo).
+
+    A partir dos dados da figura \ref{imgApcQ16}, obtemos:
+    \begin{equation}
+        \alpha_D = \frac{\Delta y}{\Delta x} = 1386,8
+    \end{equation}
+    \begin{equation}
+        \alpha_S = \frac{\Delta y}{\Delta x} = 1335,8
+    \end{equation}
+    onde $\alpha_D$ e $\alpha_S$ são os coeficientes angulares dos atrasos de descida e
+    subida, respectivamente.
+
+    Seja a o atraso de descida dado por:
+    \begin{equation}
+        y_D = 1386,8 \cdot x_D + y_{0D}
+    \end{equation}
+    Substituindo um ponto na fórmula, podemos obter $y_0$:
+    \begin{equation}
+        y_{0D} = 497,42\cdot10^{-12} - 1386,8 \cdot 250\cdot10^{-15} = 0.15\cdot10^{-9}
+    \end{equation}
+
+    Analogamente, calcula-se o $y_0$ de subida:
+    \begin{equation}
+        y_{0S} = 438,8\cdot10^{-12} - 1335,8 \cdot 250\cdot10^{-15} = 0.10\cdot10^{-9}
+    \end{equation}
+
+    Os resultados destes cálculos estão condensados na tabela \ref{tabCalQ17}.
+    \begin{table}[!hb]
+            \caption{Coeficientes angular e linear para as curvas de atraso de descida e subida
+                por capacitância de carga.}
+            \label{tabCalQ17}
+            \centering
+        \begin{tabular}{|l|r|r|}
+            \hline 
+                                &   Atraso de Descida   &   Atraso de Subida    \\
+            \hline 
+            Coeficiente Angular &               1386,8  &               1335,8  \\
+            \hline 
+            Coeficiente Linear  &   $0,15\cdot10^{-9}$  &   $0,10\cdot10^{-9}$  \\
+            \hline
+        \end{tabular}
+    \end{table}
 
 \textbf{18.} *Comente as diferenças entre os resultados encontrados nas questões 8 e
    16/17? Dê as razões para elas.
