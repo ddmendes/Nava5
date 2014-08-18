@@ -25,6 +25,13 @@
 \usepackage{color}
 \usepackage{epigraph}
 \usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{ \textit{\disciplina} }
+\chead{}
+\rhead{ \textit{\titulo} }
 
 %Condensar listas
 %less spaced itemize
@@ -50,12 +57,13 @@
 \usepackage{listings}
 \lstset{
     breaklines=true,
+    basicstyle=\ttfamily\scriptsize,
     numbers=left,
     numberstyle=\tiny,
     frame=single
 }
-\renewcommand{\lstlistingname}{Código fonte}
-\renewcommand{\lstlistlistingname}{Códigos fontes}
+\renewcommand{\lstlistingname}{Código Fonte}
+\renewcommand{\lstlistlistingname}{Códigos Fontes}
 
 %Inserção de imagens
 %\img{proportional width [optional]}{caption}{label}{path}
@@ -125,8 +133,6 @@ bookmarksopen=true, %controls the level of opening in the bookmark
 \include{capa}
 \end{titlepage}
 }
-
-\pagenumbering{Roman}
 
 \newcommand{\makelists}{
 \listoffigures

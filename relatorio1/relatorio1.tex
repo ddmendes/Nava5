@@ -29,8 +29,6 @@ transistores.
 (deixe indicado os valores usados)
 
 \begin{figure}[!hb]
-    \caption{Porta lógica \emph{CMOS}. Implementa a função $\overline{AB + C}$.}
-    \label{figPortaLogicaQ1}
     \begin{center}
         \begin{tikzpicture}
 
@@ -122,6 +120,8 @@ transistores.
             \draw (-0.1, -4.3) -- (0.1, -4.3);
         \end{tikzpicture}
     \end{center}
+    \caption{Porta lógica \emph{CMOS}. Implementa a função $\overline{AB + C}$.}
+    \label{figPortaLogicaQ1}
 \end{figure}
 
 Seja o tempo de propagação dado pela seguinte relação:
@@ -211,10 +211,44 @@ novamente o último comando da coluna à esquerda.
    esquerda. Com outro comando nessa coluna, o \emph{ASCII Results}, verifique os
    resultados na opção \emph{view netlist}. Acrescente o \emph{netlist} ao relatório.
 
+    O \emph{netlist} gerado automaticamente a partir do \emph{viewpoint} está descrito
+    no código fonte \ref{lst_porta_logica_q5}.
+
+   \begin{lstlisting}[caption=\emph{Netlist} gerado a partir do \emph{viewpoint}, label=lst_porta_logica_q5]
+*
+* .CONNECT statements
+*
+.CONNECT GROUND 0
+
+
+* ELDO netlist generated with ICnet by 'cad' on Wed Aug 13 2014 at 16:18:27
+
+*
+* Globals.
+*
+.global VDD VSS
+
+*
+* MAIN CELL: Component pathname : $lab6/default.group/logic.views/ex2
+*
+    M_PMOS_C S C N$209 VDD MODP w=1.290000e-05 l=3.500000e-07 as=1.096500e-11
++  ad=1.096500e-11 ps=1.460000e-05 pd=1.460000e-05 nrs=3.294574e-02 nrd=3.294574e-02
+    M_PMOS_B N$209 B VDD VDD MODP w=1.290000e-05 l=3.500000e-07 as=1.096500e-11
++  ad=1.096500e-11 ps=1.460000e-05 pd=1.460000e-05 nrs=3.294574e-02 nrd=3.294574e-02
+    M_PMOS_A N$209 A VDD VDD MODP w=1.290000e-05 l=3.500000e-07 as=1.096500e-11
++  ad=1.096500e-11 ps=1.460000e-05 pd=1.460000e-05 nrs=3.294574e-02 nrd=3.294574e-02
+    M_NMOS_C S C VSS VSS MODN w=2.000000e-06 l=3.500000e-07 as=1.700000e-12
++  ad=1.700000e-12 ps=3.700000e-06 pd=3.700000e-06 nrs=2.125000e-01 nrd=2.125000e-01
+    M_NMOS_B N$207 B VSS VSS MODN w=4.000000e-06 l=3.500000e-07 as=3.400000e-12
++  ad=3.400000e-12 ps=5.700000e-06 pd=5.700000e-06 nrs=1.062500e-01 nrd=1.062500e-01
+    M_NMOS_A S A N$207 VSS MODN w=4.000000e-06 l=3.500000e-07 as=3.400000e-12
++  ad=3.400000e-12 ps=5.700000e-06 pd=5.700000e-06 nrs=1.062500e-01 nrd=1.062500e-01
+*
+.end
+   \end{lstlisting}
+
 \textbf{6.} *Como são calculadas as áreas e perímetros de dreno e \emph{source} no
    circuito extraído pelo esquemático (relação usada)?
-
-   **** XA = \emph{Diffusion Lenght} ****
 
    Conforme o manual \emph{ELDO equations}, temos que:
    \begin{eqnarray}
@@ -245,6 +279,8 @@ novamente o último comando da coluna à esquerda.
     As formas de onda dos sinais de entrada $A$, $B$ e $C$ estão na imagem \ref{imgSinEntQ8}.
 
     \img{Atraso de subida e descida por capacitância de carga.}{imgApcQ8}{atraso_por_capacitancia_q8.jpg}
+
+    \img{Sinais de entrada e saída da porta lógica}{imgSinEntQ8}{sinais_entrada_saida_q8.jpg}
 
     \begin{lstlisting}[caption=Comandos utilizados para a medição de atraso de subida e descida por capacitância de carga., label=lstMeasureQ8]
 .PARAM cload=100f
@@ -281,6 +317,10 @@ para melhor fazer o roteamento manual.
 \textbf{11.} *Como se pode acrescentar aos \emph{ports} $V_{DD}$ e $V_{SS}$ as
    regiões de \emph{source} dos transistores sem transformarmos os transistores
    em \emph{flatten}?
+
+   Para adicionar o \emph{source} ao $V_{DD}$ ou ao $V_{SS}$ deve-se adicionar um novo
+   \emph{shape} de metal 1, sobre o metal do \emph{source}. Este shape pode ser adicionado
+   aos ports $V_{DD}$ ou $V_{SS}$.
 
 \textbf{12.} Uma vez acrescentadas aos \emph{ports} todas as regiões desejadas, faça
    nova verificação com o \emph{DRC}.
@@ -320,6 +360,14 @@ Obs.: O comando \textbf{ \emph{IcTrace(M) -- netlist} } também serve, como o
    extraia o circuito de simulação a partir do \emph{layout} (opção C+CC) e repita as
    simulações feitas no item 7. Apresente os gráficos com resultados (gere uma figura
    do \emph{layout} e inclua no trabalho).
+
+   O gráfico com os atrasos de subida e descida estão na figura \ref{imgApcQ16} e os
+   sinais de entrada e saída estão na figura \ref{imgSinEntQ16}. O layout pode ser visto
+   na figura \ref{imgLayoutQ16}.
+
+   \img{Atraso de subida e descida por capacitância de carga.}{imgApcQ16}{atraso_por_capacitancia_q16.jpg}
+
+   \img{Sinais de entrada e de saída da porta lógica.}{imgSinEntQ16}{sinais_entrada_saida_q16}
 
 \textbf{17.} *Para as curvas atraso de propagação na subida e descida \emph{versus}
    carga, geradas a partir do \emph{layout}, calcule as inclinações e o pontos de
