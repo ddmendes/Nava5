@@ -1,0 +1,31 @@
+Porta logica negada
+
+
+
+	Xp A B C S VDD VSS EXVINTE
+	Cl S VSS 30fF
+
+*** pulso ***
+.PARAM tvdd=3V
+
+VDD VDD 0 tvdd
+VSS VSS 0 0
+VIN VIN 0 PULSE (0 3 0 1p 1p 2n 4n)
+
+.CONNECT A VDD
+.CONNECT B VSS
+.CONNECT C VIN
+
+
+.TRAN 1n 40n 0n 1p
+ 
+*** Delay ***
+.MEAS TRAN DEL_H2H TRIG V(C) VAL=1.5V RISE=6 TARG V(S) VAL=1.5 RISE=6
+.MEAS TRAN DEL_L2L TRIG V(C) VAL=1.5V FALL=6 TARG V(S) VAL=1.5 FALL=6
+
+.PROBE TRANS V(A) V(B) V(C) V(S)
+*
+.include "exvinte.pex.netlist"
+.include "~/para_prova/tipico.mod"
+
+.end

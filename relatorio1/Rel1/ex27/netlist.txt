@@ -1,0 +1,73 @@
+*
+* .CONNECT statements
+*
+.CONNECT GROUND 0
+
+
+* ELDO netlist generated with ICnet by 'cad' on Mon Aug 18 2014 at 11:31:24
+
+*
+* Globals.
+*
+.global VDD VSS
+
+*
+* Component pathname : $lab_seis/default.group/logic.views/inversor
+*
+.subckt INVERSOR  OUT IN
+
+        M_2 OUT IN VSS VSS MODN w=2.000000e-06 l=3.500000e-07 as=1.700000e-12
++  ad=1.700000e-12 ps=3.700000e-06 pd=3.700000e-06 nrs=2.125000e-01 nrd=2.125000e-01
+        M_1 OUT IN VDD VDD MODP w=6.450000e-06 l=3.500000e-07 as=5.482500e-12
++  ad=5.482500e-12 ps=8.150000e-06 pd=8.150000e-06 nrs=6.589147e-02 nrd=6.589147e-02
+.ends INVERSOR
+
+*
+* Component pathname : $lab_seis/default.group/logic.views/exdois
+*
+.subckt EXDOIS  S A B C
+
+        M3 N$209 B VDD VDD MODP w=1.290000e-05 l=3.500000e-07 as=1.096500e-11
++  ad=1.096500e-11 ps=1.460000e-05 pd=1.460000e-05 nrs=3.294574e-02 nrd=3.294574e-02
+        M2 N$209 A VDD VDD MODP w=1.290000e-05 l=3.500000e-07 as=1.096500e-11
++  ad=1.096500e-11 ps=1.460000e-05 pd=1.460000e-05 nrs=3.294574e-02 nrd=3.294574e-02
+        M_4 S C N$209 VDD MODP w=1.290000e-05 l=3.500000e-07 as=1.096500e-11
++  ad=1.096500e-11 ps=1.460000e-05 pd=1.460000e-05 nrs=3.294574e-02 nrd=3.294574e-02
+        M_3 S C VSS VSS MODN w=2.000000e-06 l=3.500000e-07 as=1.700000e-12
++  ad=1.700000e-12 ps=3.700000e-06 pd=3.700000e-06 nrs=2.125000e-01 nrd=2.125000e-01
+        M1 N$207 B VSS VSS MODN w=4.000000e-06 l=3.500000e-07 as=3.400000e-12
++  ad=3.400000e-12 ps=5.700000e-06 pd=5.700000e-06 nrs=1.062500e-01 nrd=1.062500e-01
+        M_1 S A N$207 VSS MODN w=4.000000e-06 l=3.500000e-07 as=3.400000e-12
++  ad=3.400000e-12 ps=5.700000e-06 pd=5.700000e-06 nrs=1.062500e-01 nrd=1.062500e-01
+.ends EXDOIS
+
+*
+* MAIN CELL: Component pathname : $lab_seis/default.group/logic.views/exvinte
+*
+
+
+        X_INVERSOR2 S N$5 INVERSOR
+        X_EXDOIS2 N$5 A B C EXDOIS
+	Cl S VSS 30fF
+
+.PARAM tvdd=3V
+
+VDD VDD 0 tvdd
+VSS VSS 0 0
+VIN VIN 0 PULSE (0 3 0 1p 1p 2n 4n)
+
+.CONNECT A VDD
+.CONNECT B VSS
+.CONNECT C VIN
+
+.TRAN 1n 40n 0n 1p
+
+*** Delay ***
+.MEAS TRAN DEL_H2H TRIG V(C) VAL=1.5V RISE=6 TARG V(S) VAL=1.5 RISE=6
+.MEAS TRAN DEL_L2L TRIG V(C) VAL=1.5V FALL=6 TARG V(S) VAL=1.5 FALL=6
+
+.PROBE TRANS V(A) V(B) V(C) V(S)
+*
+.include "~/para_prova/tipico.mod"
+
+.end

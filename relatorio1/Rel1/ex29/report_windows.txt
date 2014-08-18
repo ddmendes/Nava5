@@ -1,0 +1,18 @@
+Report Windows
+
+Selectable Layers: 0-4097, 4101, 4104-4106, 4109-4112, 4117-4167, 4190-4224
+
+IC Windows
+
+ 
+Name   Snap   Minor  Major   Grid            Offset      Cull  Active  Iconified
+                             Snap (X,Y)      (X,Y)
+********************************************************************************
+IC 0   On     1      10      0.050, 0.050    0.000, 0.000      
+                                                         5     Yes     Window 
+     --- View Extent:    [[-24.892, -9.612],[43.680,39.182]] 
+     --- Cell Extent:    [[-1.693, 0.969],[20.481,28.600]] 
+     --- Top Cell:       $lab_seis/default.group/layout.views/exvinte/exvinte 
+     --- Displayed Cell: $lab_seis/default.group/layout.views/exvinte/exvinte 
+     --- Visible Layers: 0-4098, 4100-4102, 4104-4106, 4109-4132, 4158-4189, 4193-4224 
+

@@ -1,0 +1,47 @@
+Porta logica negada
+
+*** varredura ***
+.PARAM cload=100f
+.PARAM vStep=50f
+.PARAM vInit=100f
+.PARAM vEnd=300f
+
+
+	Xp A B C S VDD VSS EXVINTE
+	Cl S VSS cload
+
+*** pulso ***
+.PARAM tvdd=3V
+.PARAM frequencia=230MegHz
+.PARAM periodo='1/frequencia'
+.PARAM delay=0s
+.PARAM tSubida='0.01*periodo'
+.PARAM tDescida='0.01*periodo'
+.PARAM larguraPulso='0.49*periodo'
+.PARAM valto='tvdd'
+.PARAM vbaixo=0V
+
+VDD VDD 0 tvdd
+VSS VSS 0 0
+VIN VIN 0 PULSE (vbaixo valto delay tSubida tDescida larguraPulso periodo)
+
+.CONNECT A VDD
+.CONNECT B VIN
+.CONNECT C VSS
+
+*** ANALISE TRANSIENTE ***
+.PARAM tprint=1ns
+.PARAM hmax='0.1*tprint'
+
+.TRAN 1ns '20*periodo' '5*periodo' 0.1ns SWEEP cload INCR vStep vInit vEnd
+
+*** Delay ***
+.MEAS TRAN DEL_H2H TRIG V(B) VAL=1.5V RISE=5 TARG V(S) VAL=1.5 RISE=5
+.MEAS TRAN DEL_L2L TRIG V(B) VAL=1.5V FALL=5 TARG V(S) VAL=1.5 FALL=5
+
+.PROBE TRANS V(A) V(B) V(C) V(S)
+*
+.include "exvinte.pex.netlist"
+.include "~/para_prova/tipico.mod"
+
+.end

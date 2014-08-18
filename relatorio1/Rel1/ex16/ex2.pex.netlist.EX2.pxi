@@ -1,0 +1,25 @@
+* File: ex2.pex.netlist.EX2.pxi
+* Created: Thu Aug 14 09:13:56 2014
+* 
+cc_1 C VDD 0.248648f
+cc_2 B VDD 0.342301f
+cc_3 A VDD 0.365686f
+cc_4 S VDD 1.0319f
+cc_5 8 VDD 3.5817f
+cc_6 VSS C 0.0239049f
+cc_7 B C 0.24571f
+cc_8 S C 0.221789f
+cc_9 8 C 0.101353f
+cc_10 B VSS 0.0576982f
+cc_11 5 VSS 0.2974f
+cc_12 A VSS 5.3686e-23
+cc_13 S VSS 0.443683f
+cc_14 5 B 0.0308774f
+cc_15 A B 0.26143f
+cc_16 S B 0.0946274f
+cc_17 8 B 0.106419f
+cc_18 A 5 0.0317917f
+cc_19 S 5 0.338714f
+cc_20 S A 0.123942f
+cc_21 8 A 0.106419f
+cc_22 8 S 1.01039f

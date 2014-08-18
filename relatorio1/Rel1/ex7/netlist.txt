@@ -1,0 +1,66 @@
+*
+* .CONNECT statements
+*
+.CONNECT GROUND 0
+
+* ELDO netlist generated with ICnet by 'cad' on Wed Aug 13 2014 at 14:50:34
+
+*
+* Globals.
+*
+.global VDD VSS
+
+*
+* MAIN CELL: Component pathname : $lab6/default.group/logic.views/ex2
+*
+        M_PMOS_C S C N$209 VDD MODP w=1.290000e-05 l=3.500000e-07 as=1.096500e-11
++  ad=1.096500e-11 ps=1.460000e-05 pd=1.460000e-05 nrs=3.294574e-02 nrd=3.294574e-02
+        M_PMOS_B N$209 B VDD VDD MODP w=1.290000e-05 l=3.500000e-07 as=1.096500e-11
++  ad=1.096500e-11 ps=1.460000e-05 pd=1.460000e-05 nrs=3.294574e-02 nrd=3.294574e-02
+        M_PMOS_A N$209 A VDD VDD MODP w=1.290000e-05 l=3.500000e-07 as=1.096500e-11
++  ad=1.096500e-11 ps=1.460000e-05 pd=1.460000e-05 nrs=3.294574e-02 nrd=3.294574e-02
+        M_NMOS_C S C VSS VSS MODN w=2.000000e-06 l=3.500000e-07 as=1.700000e-12
++  ad=1.700000e-12 ps=3.700000e-06 pd=3.700000e-06 nrs=2.125000e-01 nrd=2.125000e-01
+        M_NMOS_B N$207 B VSS VSS MODN w=4.000000e-06 l=3.500000e-07 as=3.400000e-12
++  ad=3.400000e-12 ps=5.700000e-06 pd=5.700000e-06 nrs=1.062500e-01 nrd=1.062500e-01
+        M_NMOS_A S A N$207 VSS MODN w=4.000000e-06 l=3.500000e-07 as=3.400000e-12
++  ad=3.400000e-12 ps=5.700000e-06 pd=5.700000e-06 nrs=1.062500e-01 nrd=1.062500e-01
+*
+
+.PARAM cload=100f
+Cl S VSS cload
+
+
+*** pulso ***
+.PARAM tvdd=3V
+.PARAM frequencia=230MegHz
+.PARAM periodo='1/frequencia'
+.PARAM delay=0s
+.PARAM tSubida='0.01*periodo'
+.PARAM tDescida='0.01*periodo'
+.PARAM larguraPulso='0.49*periodo'
+.PARAM valto='tvdd'
+.PARAM vbaixo=0V
+
+*** varredura ***
+.PARAM vStep=50f
+.PARAM vInit=100f
+.PARAM vEnd=300f
+
+Vcc VDD VSS tvdd
+Vgnd VSS 0  0
+
+Va A VSS tvdd
+Vb B VSS PULSE (vbaixo valto delay tSubida tDescida larguraPulso periodo)
+Vc C VSS 0
+
+.TRAN 1ns '20*periodo' '5*periodo' 0.1ns SWEEP cload INCR vStep vInit vEnd
+.PROBE TRANS V(A) V(B) V(C) V(S)
+
+*** Delay ***
+.MEAS TRAN DEL_H2L TRIG V(B) VAL=1.5V RISE=5 TARG V(S) VAL=1.5 FALL=5
+.MEAS TRAN DEL_L2H TRIG V(B) VAL=1.5V FALL=5 TARG V(S) VAL=1.5 RISE=5
+
+.INC '~/para_prova/tipico.mod'
+
+.end

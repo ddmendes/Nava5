@@ -1,0 +1,43 @@
+Simulation
+
+Xl A B C S 0 VDD EX2
+.CONNECT A VDD
+.CONNECT B VIN
+.CONNECT C 0
+
+*** capacitancia de carga ***
+.PARAM cload=100f
+Cl S 0 cload
+
+*** pulso ***
+.PARAM tvdd=3V
+.PARAM frequencia=230MegHz
+.PARAM periodo='1/frequencia'
+.PARAM delay=0s
+.PARAM tSubida='0.01*periodo'
+.PARAM tDescida='0.01*periodo'
+.PARAM larguraPulso='0.49*periodo'
+.PARAM valto='tvdd'
+.PARAM vbaixo=0V
+
+*** varredura ***
+.PARAM vStep=50f
+.PARAM vInit=100f
+.PARAM vEnd=300f
+
+Vcc VDD 0 tvdd
+
+Vin VIN 0 PULSE (vbaixo valto delay tSubida tDescida larguraPulso periodo)
+
+.TRAN 1ns '20*periodo' '5*periodo' 0.1ns SWEEP cload INCR vStep vInit vEnd
+
+*** Delay ***
+.MEAS TRAN DEL_L2H TRIG V(B) VAL='tvdd/2' FALL=5 TARG V(S) VAL='tvdd/2' RISE=5
+.MEAS TRAN DEL_H2L TRIG V(B) VAL='tvdd/2' RISE=5 TARG V(S) VAL='tvdd/2' FALL=5
+
+.PROBE TRAN V(A) V(B) V(C) V(S)
+
+.include "ex2.pex.netlist"
+
+.END
+
