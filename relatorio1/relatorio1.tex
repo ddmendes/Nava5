@@ -478,6 +478,10 @@ Obs.: O comando \textbf{ \emph{IcTrace(M) -- netlist} } também serve, como o
    \emph{DRC} no \emph{layout} e faça o \emph{LVS} deixando a célula pronta para uso.
    Acrescente ao relatório o \emph{layout} feito.
 
+   O \emph{layout} do inversor está apresentado na imagem \ref{imgLayoutQ19}.
+
+   \img[0.35]{\emph{Layout} do inversor.}{imgLayoutQ19}{layout_q19.png}
+
 \textbf{20.} A partir das duas células desenhadas, monte o esquemático de uma nova
    célula que executa a função lógica $(ab+c)$. Gere o seu símbolo e faça
    todas as verificações necessárias.
@@ -498,23 +502,160 @@ célula.
 \textbf{22.} *Desenhe os gráficos da questão anterior e copie os comandos de medida
    e sinais de entrada que usou no \emph{ELDO}.
 
+    Os atrasos estão descritos na figura \ref{imgApcQ22}. Os sinais de entrada 
+    utilizados na simulação e a saída obtida podem ser vistos na figura \ref{imgSinEntQ22}.
+    O código utilizado para a simulação está descrito na cófigo fonte \ref{lstPniQ22}
+
+
+    \img{Atraso alto-alto e baixo-baixo por capacitância de carga para a porta lógica 
+                                não inversora.}{imgApcQ22}{atraso_por_capacitancia_q22.jpg}
+
+    \img{Sinais de entrada e saída utilizados na simulação da porta lógica não 
+                                    inversora.}{imgSinEntQ22}{sinais_entrada_saida_q22.jpg}
+
+    \begin{lstlisting}[caption=Arquivo utilizado para a simulação da porta lógica não
+                                                            inversora, label=lstPniQ22]
+*
+* .CONNECT statements
+*
+.CONNECT GROUND 0
+
+* ELDO netlist generated with ICnet by 'cad' on Mon Aug 18 2014 at 11:31:24
+
+*
+* Globals.
+*
+.global VDD VSS
+
+*
+* Component pathname : $lab_seis/default.group/logic.views/inversor
+*
+.subckt INVERSOR  OUT IN
+
+    M_2 OUT IN VSS VSS MODN w=2.000000e-06 l=3.500000e-07 as=1.700000e-12
++  ad=1.700000e-12 ps=3.700000e-06 pd=3.700000e-06 nrs=2.125000e-01 nrd=2.125000e-01
+    M_1 OUT IN VDD VDD MODP w=6.450000e-06 l=3.500000e-07 as=5.482500e-12
++  ad=5.482500e-12 ps=8.150000e-06 pd=8.150000e-06 nrs=6.589147e-02 nrd=6.589147e-02
+.ends INVERSOR
+
+*
+* Component pathname : $lab_seis/default.group/logic.views/exdois
+*
+.subckt EXDOIS  S A B C
+
+    M3 N$209 B VDD VDD MODP w=1.290000e-05 l=3.500000e-07 as=1.096500e-11
++  ad=1.096500e-11 ps=1.460000e-05 pd=1.460000e-05 nrs=3.294574e-02 nrd=3.294574e-02
+    M2 N$209 A VDD VDD MODP w=1.290000e-05 l=3.500000e-07 as=1.096500e-11
++  ad=1.096500e-11 ps=1.460000e-05 pd=1.460000e-05 nrs=3.294574e-02 nrd=3.294574e-02
+    M_4 S C N$209 VDD MODP w=1.290000e-05 l=3.500000e-07 as=1.096500e-11
++  ad=1.096500e-11 ps=1.460000e-05 pd=1.460000e-05 nrs=3.294574e-02 nrd=3.294574e-02
+    M_3 S C VSS VSS MODN w=2.000000e-06 l=3.500000e-07 as=1.700000e-12
++  ad=1.700000e-12 ps=3.700000e-06 pd=3.700000e-06 nrs=2.125000e-01 nrd=2.125000e-01
+    M1 N$207 B VSS VSS MODN w=4.000000e-06 l=3.500000e-07 as=3.400000e-12
++  ad=3.400000e-12 ps=5.700000e-06 pd=5.700000e-06 nrs=1.062500e-01 nrd=1.062500e-01
+    M_1 S A N$207 VSS MODN w=4.000000e-06 l=3.500000e-07 as=3.400000e-12
++  ad=3.400000e-12 ps=5.700000e-06 pd=5.700000e-06 nrs=1.062500e-01 nrd=1.062500e-01
+.ends EXDOIS
+
+*
+* MAIN CELL: Component pathname : $lab_seis/default.group/logic.views/exvinte
+*
+
+*** varredura ***
+.PARAM cload=100f
+.PARAM vStep=50f
+.PARAM vInit=100f
+.PARAM vEnd=300f
+
+    X_INVERSOR2 S N$5 INVERSOR
+    X_EXDOIS2 N$5 A B C EXDOIS
+    Cl S VSS cload
+
+*** pulso ***
+.PARAM tvdd=3V
+.PARAM frequencia=230MegHz
+.PARAM periodo='1/frequencia'
+.PARAM delay=0s
+.PARAM tSubida='0.01*periodo'
+.PARAM tDescida='0.01*periodo'
+.PARAM larguraPulso='0.49*periodo'
+.PARAM valto='tvdd'
+.PARAM vbaixo=0V
+
+VDD VDD 0 tvdd
+VSS VSS 0 0
+VIN VIN 0 PULSE (vbaixo valto delay tSubida tDescida larguraPulso periodo)
+
+.CONNECT A VDD
+.CONNECT B VIN
+.CONNECT C VSS
+
+*** ANALISE TRANSIENTE ***
+.PARAM tprint=1ns
+.PARAM hmax='0.1*tprint'
+
+.TRAN 1ns '20*periodo' '5*periodo' 0.1ns SWEEP cload INCR vStep vInit vEnd
+
+*** Delay ***
+.MEAS TRAN DEL_H2H TRIG V(B) VAL=1.5V RISE=5 TARG V(S) VAL=1.5 RISE=5
+.MEAS TRAN DEL_L2L TRIG V(B) VAL=1.5V FALL=5 TARG V(S) VAL=1.5 FALL=5
+
+.PROBE TRANS V(A) V(B) V(C) V(S)
+*
+.include "~/para_prova/tipico.mod"
+
+.end
+
+    \end{lstlisting}
+
 \textbf{23.} Faça o \emph{layout} final da célula. Utilize nas linhas de metal que
-   ligam o $V_{DD}$ e o $V_{SS}$ largura sempre superior ou igual a $1,0 \mu m$. Par
+   ligam o $V_{DD}$ e o $V_{SS}$ largura sempre superior ou igual a $1,0 \mu m$. Para
    isso veja e utilize o comando \textbf{ \emph{Route -- ARoutre NEt Classe -- Edit} }
    que permite especificar as características de conexão de qualquer sinal. Utilize
    a opção \emph{New/Edit} para fornecer as características desejadas e a opção
    \emph{Assign} para associá-las a um sinal (e apenas um). Coloque os sinais de
    $V_{DD}$ e o $V_{SS}$ com metais de $1,0 \mu m$.
 
-Obs.: Veja que quando se esta executando o comando \textbf{ \emph{Route -- Iroute Commands -- Run} }, a tecla \emph{w} pode ser utilizada para alterar a largura da linha
-desenhada.
+Obs.: Veja que quando se esta executando o comando \textbf{ \emph{Route -- Iroute Commands -- Run} }, 
+a tecla \emph{w} pode ser utilizada para alterar a largura da linha desenhada.
 
 \textbf{24.} *Termine layout da célula, passe o \emph{DRC} e faça o \emph{LVS}. Gere
    uma figura do \emph{layout} mostrando todos os níveis e inclua no trabalho.
 
+    O \emph{layout} da porta lógica não inversora está na figura \ref{imgLayoutQ24}.
+
+    \img{Layout da porta lógica não inversora.}{imgLayoutQ24}{layout_q24.png}
+
 \textbf{25.} *Agora extraia o circuito de simulação a partir do \emph{layout} (opção
    C+CC) e repita as simulações feitas no item 22. Apresente gráficos e tabelas
    com os resultados.
+
+    O gráfico de atraso por capacitância de carga está representado na figura \ref{imgApcQ25}.
+    Os sinais de entrada utilizados na simulação e a saída da porta lógica não inversora estão
+    na figura \ref{imgSinEntQ25}. Na tabela \ref{tblApcQ25} podemos observar os valores dos 
+    atrasos para cada capacitância de carga utilizada na simulação.
+
+    \img{Atraso alto-alto e baixo-baixo para a porta lógica não inversora obtidos através
+       de simulação do circuito com capacitâncias parasitas.}{imgApcQ25}{atraso_por_capacitancia_q25.jpg}
+
+    \img{Sinais de entrada utilizados na simulação e saída obtida para a porta lógica
+        não inversora}{imgSinEntQ25}{sinais_entrada_saida_q25.jpg}
+
+    \begin{table}[!hb]
+        \caption{Atrasos obtidos para diferentes capacitâncias de carga através da simulação
+                da porta lógica não inversora.}
+        \label{tblApcQ25}
+        \centering
+        \begin{tabular}{|c|c|c|}
+                                                                                                \hline
+            Capacitância de Carga (fF)  & Atraso alto-alto (ps) & Atraso baixo-baixo (ps)   \\  \hline
+                        100             &       3.7184E-10      &       3.8480E-10          \\  \hline
+                        150             &       4.4253E-10      &       4.7144E-10          \\  \hline
+                        200             &       5.1329E-10      &       5.5719E-10          \\  \hline
+                        250             &       5.8176E-10      &       6.4243E-10          \\  \hline
+                        300             &       6.4756E-10      &       7.2473E-10          \\  \hline
+        \end{tabular}
+    \end{table}
 
 \textbf{26.} *Para as curvas tempo de propagação na subida e descida geradas a
    partir do \emph{layout}, calcule as inclinações e os pontos de cruzamento com o
@@ -526,7 +667,7 @@ desenhada.
 Va  a 0 3V
 Vb  b 0 0
 Vc  c 0 pulse (0 3 0 1p 1p 2n 4n)
-. tran 1n 40n 0n 1p
+.tran 1n 40n 0n 1p
 .meas tran delayF trig v(c) val=1.5  fall=6   targ v(out) val=1.5 fall=6
 .meas tran delayR trig v(c) val=1.5  rise=6  targ v(out) val=1.5 rise=6
 Cl out 0 30fF
