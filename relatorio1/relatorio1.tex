@@ -506,6 +506,7 @@ célula.
     utilizados na simulação e a saída obtida podem ser vistos na figura \ref{imgSinEntQ22}.
     O código utilizado para a simulação está descrito na cófigo fonte \ref{lstPniQ22}
 
+    *** referencia de figuras n aparecem????
 
     \img{Atraso alto-alto e baixo-baixo por capacitância de carga para a porta lógica 
                                 não inversora.}{imgApcQ22}{atraso_por_capacitancia_q22.jpg}
@@ -661,6 +662,8 @@ a tecla \emph{w} pode ser utilizada para alterar a largura da linha desenhada.
    partir do \emph{layout}, calcule as inclinações e os pontos de cruzamento com o
    eixo Y (eixo de tempo).
 
+   *** Calcular!!!
+
 \textbf{27.} *Gere novamente os tempos de propagação na subida e descida utilizando
    agora os comandos (faça os ajustes necessários para seu circuito)
 \begin{lstlisting}
@@ -672,6 +675,8 @@ Vc  c 0 pulse (0 3 0 1p 1p 2n 4n)
 .meas tran delayR trig v(c) val=1.5  rise=6  targ v(out) val=1.5 rise=6
 Cl out 0 30fF
 \end{lstlisting}
+
+    *** Esqueci de gerar as imagens...
 
 \textbf{28.} *Vamos realizar agora a \emph{simulação de Monte Carlo}. Nesta simulação
    são realizadas, na verdade, várias simulações com parâmetros diferentes e
@@ -699,10 +704,24 @@ Cl out 0 30fF
 .LIB /local/tools/dkit/ams_3.70_mgc/eldo/c35/wc53.lib mc
 \end{lstlisting}
 
+    *** Fazer simulação rodar ***
+
 \textbf{29.} *Utilize o comando \textbf{ \emph{Report -- Windows} } do
    \emph{ICStation} para determinar o tamanho da célula (coloque o tamanho de sua
    célula no relatório).
 
+    Conforme o \emph{Windows report} do \emph{mentor}, temos que:\\
+    \begin{center}
+        \verb!--- Cell Extent:    [[-1.693, 0.969],[20.481,28.600]]!\\
+    \end{center}
+    logo temos a área $A$ da célula como:
+    \begin{eqnarray}
+        A & = & \Delta x \cdot \Delta y\\
+        A & = & [20.481 \mu m - (-1.693 \mu m)] \cdot (28,600 \mu m - 0.969 \mu m)\\
+        \Rightarrow A & = & 612,7 pm^2
+    \end{eqnarray}
+
+    Assim a área da célula é de $612,7 pm^2$
 
 \lyxline{}
 \begin{verbatim}
