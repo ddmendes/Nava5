@@ -460,7 +460,7 @@ Obs.: O comando \textbf{ \emph{IcTrace(M) -- netlist} } também serve, como o
     \end{equation}
 
     Os resultados destes cálculos estão condensados na tabela \ref{tabCalQ17}.
-    \begin{table}[!hb]
+    \begin{table}[!hp]
             \caption{Coeficientes angular e linear para as curvas de atraso de descida e subida
                 por capacitância de carga.}
             \label{tabCalQ17}
@@ -509,9 +509,7 @@ célula.
 
     Os atrasos estão descritos na figura \ref{imgApcQ22}. Os sinais de entrada 
     utilizados na simulação e a saída obtida podem ser vistos na figura \ref{imgSinEntQ22}.
-    O código utilizado para a simulação está descrito na cófigo fonte \ref{lstPniQ22}
-
-    *** referencia de figuras n aparecem????
+    O código utilizado para a simulação está descrito no código fonte \ref{lstPniQ22}
 
     \img{Atraso alto-alto e baixo-baixo por capacitância de carga para a porta lógica 
                                 não inversora.}{imgApcQ22}{atraso_por_capacitancia_q22.jpg}
@@ -625,12 +623,12 @@ VIN VIN 0 PULSE (vbaixo valto delay tSubida tDescida larguraPulso periodo)
 Obs.: Veja que quando se esta executando o comando \textbf{ \emph{Route -- Iroute Commands -- Run} }, 
 a tecla \emph{w} pode ser utilizada para alterar a largura da linha desenhada.
 
-\textbf{24.} *Termine layout da célula, passe o \emph{DRC} e faça o \emph{LVS}. Gere
-   uma figura do \emph{layout} mostrando todos os níveis e inclua no trabalho.
+\textbf{24.} *Termine \emph{layout} da célula, passe o \emph{DRC} e faça o \emph{LVS}.
+   Gere uma figura do \emph{layout} mostrando todos os níveis e inclua no trabalho.
 
     O \emph{layout} da porta lógica não inversora está na figura \ref{imgLayoutQ24}.
 
-    \img{Layout da porta lógica não inversora.}{imgLayoutQ24}{layout_q24.png}
+    \img{\emph{Layout} da porta lógica não inversora.}{imgLayoutQ24}{layout_q24.png}
 
 \textbf{25.} *Agora extraia o circuito de simulação a partir do \emph{layout} (opção
    C+CC) e repita as simulações feitas no item 22. Apresente gráficos e tabelas
@@ -641,11 +639,21 @@ a tecla \emph{w} pode ser utilizada para alterar a largura da linha desenhada.
     na figura \ref{imgSinEntQ25}. Na tabela \ref{tblApcQ25} podemos observar os valores dos 
     atrasos para cada capacitância de carga utilizada na simulação.
 
-    \img{Atraso alto-alto e baixo-baixo para a porta lógica não inversora obtidos através de simulação do circuito com capacitâncias parasitas.}{imgApcQ25}{atraso_por_capacitancia_q25.jpg}
+    Vale observar que, com a utilização do inversor na saída da porta lógica, ao mantermos o
+    sinal $A$ em alto e $C$ em baixo obtemos uma porta repetidora com entrada $C$ e saída $S$.
+    Pode-se ver na figura \ref{imgSinEntQ25} que realmente o sinal de saída acompanha os níveis
+    de tensão do sinal de entrada.
 
-    \img{Sinais de entrada utilizados na simulação e saída obtida para a porta lógica não inversora}{imgSinEntQ25}{sinais_entrada_saida_q25.jpg}
+    \img{Atraso alto-alto e baixo-baixo para a porta lógica não inversora obtidos através de 
+        simulação do circuito com capacitâncias parasitas.}
+        {imgApcQ25}
+        {atraso_por_capacitancia_q25.jpg}
 
-    \begin{table}[!ht]
+    \img{Sinais de entrada utilizados na simulação e saída obtida para a porta lógica não inversora}
+        {imgSinEntQ25}
+        {sinais_entrada_saida_q25.jpg}
+
+    \begin{table}[!hp]
         \caption{\label{tblApcQ25}Atrasos obtidos para diferentes capacitâncias de carga através da simulação
                 da porta lógica não inversora.}
         \centering
@@ -668,7 +676,7 @@ a tecla \emph{w} pode ser utilizada para alterar a largura da linha desenhada.
    A partir das equações xxxx calculou-se os coeficientes angular e linear. Estes estão apresentados na tabela
    \ref{tblCalQ26}.
 
-   \begin{table}[!ht]
+   \begin{table}[!hp]
         \caption{\label{tblCalQ26}Coeficientes angular e linear para as curvas de atraso alto-alto e baixo-baixo,
                 obtidas na simulação da porta lógica não inversora com circuitos parasitas.}
         \centering
@@ -721,7 +729,24 @@ Cl out 0 30fF
 .LIB /local/tools/dkit/ams_3.70_mgc/eldo/c35/wc53.lib mc
 \end{lstlisting}
 
-    *** Fazer simulação rodar ***
+    Os histogramas de ocorrências de atrasos estão nas figuras \ref{imgHisAltoQ28} e \ref{imgHisBaixoQ28}.
+    Na figura \ref{imgSinEntQ28} podemos observar o sinal de entrada e o comportamento da saída típica, 
+    melhor e pior casos.
+
+    \img{Histograma de ocorrências de atraso alto-alto obtido pela simulação de Monte Carlo sobre a porta
+        lógica não inversora.}
+        {imgHisAltoQ28}
+        {histograma_atraso_alto_q28.jpg}
+
+    \img{Histograma de ocorrências de atraso baixo-baixo obtido pela simulação de Monte Carlo sobre a porta
+        lógica não inversora.}
+        {imgHisBaixoQ28}
+        {histograma_atraso_baixo_q28.jpg}
+
+    \img{Sinal de entrada $C$ utilizado durante a simulação de Monte Carlo sobre a porta lógica não inversora
+        e sinal de saída $OUT$ no melhor caso, caso típico e pior caso obtidos pelo simulação.}
+        {imgSinEntQ28}
+        {sinais_entrada_saida_q28.jpg}
 
 \textbf{29.} *Utilize o comando \textbf{ \emph{Report -- Windows} } do
    \emph{ICStation} para determinar o tamanho da célula (coloque o tamanho de sua
