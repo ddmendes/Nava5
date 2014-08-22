@@ -7,14 +7,16 @@
 \makecover
 \makelists
 
-Nesta experiência é dada continuidade ao que foi ensinado no semestre
-anterior. Seré visto aqui como se extrai o \emph{netlist} para simulação já a
-partir do esquemático, permitindo a verificação da sua funcionalidade.
-Também será visto como fazer a comparação entre \emph{layout} e esquemático. Por
-fim é introduzida a simulação do tipo Monte Carlo que possibilita analisar
-o comportamento dos circuitos com as variações dos parâmetros dos
-transistores.
+\section*{Introdução}
 
+Neste projeto abordou-se a criação do \emph{netlist} logo através do esquemático, as
+diferenças entre a simulação de um \emph{netlist} obtido através do esquemático e de
+um \emph{netlist} obtido através do \emph{layout}, assim como a comparação \emph{layout}/esquemático
+através da ferramenta \emph{LVS}. Por fim introduziu-se a simulação de Monte Carlo que
+tem por finalidade gerar uma análise estatística do comportamento do circuito frente a
+diversos modelos de transistores.
+
+\section*{Questões}
 
 \textbf{1.} *Considere a porta lógica \emph{CMOS} estática que implementa a função
    lógica $\overline{(AB+C)}$. Tendo o transistor \emph{NMOS} de menor dimensão um
@@ -120,8 +122,7 @@ transistores.
             \draw (-0.1, -4.3) -- (0.1, -4.3);
         \end{tikzpicture}
     \end{center}
-    \caption{Porta lógica \emph{CMOS}. Implementa a função $\overline{AB + C}$.}
-    \label{figPortaLogicaQ1}
+    \caption{\label{figPortaLogicaQ1}Porta lógica \emph{CMOS}. Implementa a função $\overline{AB + C}$.}
 \end{figure}
 
 Seja o tempo de propagação dado pela seguinte relação:
@@ -257,9 +258,9 @@ novamente o último comando da coluna à esquerda.
         PS & = & W + 2 \cdot XA\\
         PD & = & W + 2 \cdot XA,
    \end{eqnarray}
-   onde $AS$ é a area de \emph{source}, $AD$ é a área de dreno, $PS$ é o perímetro
+   onde $AS$ é a área de \emph{source}, $AD$ é a área de dreno, $PS$ é o perímetro
    de \emph{source}, $PD$ é o perímetro de dreno e $XA$ é o comprimento da difusão.
-   Neste caso o comprimento da difusão é \mbox{$XA=0.85\mu m$}.
+   Neste caso o comprimento da difusão é \mbox{$XA=0,85\mu m$}.
 
 \textbf{7.} Observe que no \emph{netlist} não aparecem as capacitâncias parasitas
    que são geradas quando é feita a extração do \emph{layout}. Prepare um arquivo
@@ -276,14 +277,16 @@ novamente o último comando da coluna à esquerda.
 
     Os atrasos medidos na questão anterior podem ser vistos na imagem \ref{imgApcQ8}.
     Os comandos utilizados em suas medidas estão disponíveis no Código Fonte \ref{lstMeasureQ8}.
-    As formas de onda dos sinais de entrada $A$, $B$ e $C$ e a saída $S$ obtida pelas simulação 
-    estão na imagem \ref{imgSinEntQ8}.
+    As formas de onda dos sinais de entrada $A$, $B$ e $C$ e a saída $S$ obtida pela 
+    simulação estão na imagem \ref{imgSinEntQ8}.
 
     Quando mantemos o sinal $A$ em nível lógico alto e o sinal $C$ em nível lógico baixo, o circuito
-    lógico da questão 1 funciona como uma porta inversora com entrada em $B$ e saída $S$. Pode-se 
-    observar na figura \ref{imgSinEntQ8} que, como esperado, a saída é a negação de $C$.
+    lógico da figura \ref{figPortaLogicaQ1} funciona como uma porta inversora com entrada em $B$ e 
+    saída $S$. Pode-se observar na figura \ref{imgSinEntQ8} que, como esperado, a saída é a negação 
+    de $C$.
 
-    \begin{lstlisting}[caption=Comandos utilizados para a medição de atraso de subida e descida por capacitância de carga., label=lstMeasureQ8]
+    \begin{lstlisting}[caption=Comandos utilizados para a medição de atraso de subida e descida por
+                       capacitância de carga., label=lstMeasureQ8]
 *
 * .CONNECT statements
 *
@@ -469,12 +472,18 @@ Obs.: O comando \textbf{ \emph{IcTrace(M) -- netlist} } também serve, como o
                                                                                             \hline 
                                         &   Atraso de Descida   &   Atraso de Subida    \\  \hline 
             Coeficiente Angular $(s/F)$ &           $1386,8$    &           $1335,8$    \\  \hline 
-            Coeficiente Linear $(S)$    &           $150,72$    &           $104,8$     \\  \hline
+            Coeficiente Linear $(ps)$    &           $150,72$    &           $104,8$    \\  \hline
         \end{tabular}
     \end{table}
 
 \textbf{18.} *Comente as diferenças entre os resultados encontrados nas questões 8 e
    16/17? Dê as razões para elas.
+
+    A simulação executada sobre o \emph{netlist} extraído do \emph{layout} demonstrou
+    menores atrasos, frente aos atrasos obtidos na simulação do \emph{netlist} extraído
+    do esquemático. Isso se deve ao fato das junções entre os transistores no \emph{layout}
+    reduzir áreas e perímetros de source e dreno dos transistore, proporcionando melhores
+    resultados.
 
 \textbf{19.} *Faça um inversor com $W_N = 2 \mu m$ e $L_N = 0,35 \mu m$. Faça o
    esquemático, símbolo e \emph{layout}. Passe as verificações no esquemático e
@@ -699,14 +708,14 @@ a tecla \emph{w} pode ser utilizada para alterar a largura da linha desenhada.
     Os resultados destes cálculos estão condensados na tabela \ref{tabCalQ17}.
     \begin{table}[!hp]
             \caption{Coeficientes angular e linear para as curvas de atraso de descida e subida
-                por capacitância de carga.}
+                por capacitância de carga para a porta lógica não inversora.}
             \label{tabCalQ17}
             \centering
         \begin{tabular}{|l|r|r|}
                                                                                             \hline 
                                         &   Atraso alto-alto    &   Atraso baixo-baixo  \\  \hline 
-            Coeficiente Angular $(s/F)$ &               $1710$  &               1392.3  \\  \hline 
-            Coeficiente Linear $(S)$    &               $214,9$ &               $233,6$ \\  \hline
+            Coeficiente Angular $(s/F)$ &               $1710$  &               $1392.3$\\  \hline 
+            Coeficiente Linear $(ps)$   &               $214,9$ &               $233,6$ \\  \hline
         \end{tabular}
     \end{table}
 
