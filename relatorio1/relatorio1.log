@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Cygwin) (format=pdflatex 2014.6.13)  22 AUG 2014 10:52
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Cygwin) (format=pdflatex 2014.6.13)  22 AUG 2014 11:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -865,7 +865,11 @@ File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 96.
  (./comandos.tex))
-(./relatorio1.aux (./capa.aux))
+(./relatorio1.aux (./capa.aux)
+
+LaTeX Warning: Label `tabCalQ17' multiply defined.
+
+)
 \openout1 = `relatorio1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
@@ -883,8 +887,7 @@ LaTeX Font Info:    ... okay on input line 3.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 3.
 LaTeX Font Info:    ... okay on input line 3.
 LaTeX Font Info:    Try loading font information for T1+ptm on input line 3.
-
-(/usr/share/texmf-dist/tex/latex/psnfss/t1ptm.fd
+ (/usr/share/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
 (/usr/share/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -1428,30 +1431,30 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 735.
+(babel)             in language  on input line 736.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 735.
-[22] <histograma_atraso_alto_q28.jpg, id=438, 1041.8925pt x 810.02625pt>
+(babel)             in language  on input line 736.
+[22] <histograma_atraso_alto_q28.jpg, id=430, 1041.8925pt x 810.02625pt>
 File: histograma_atraso_alto_q28.jpg Graphic file (type jpg)
 
 <use histograma_atraso_alto_q28.jpg>
-Package pdftex.def Info: histograma_atraso_alto_q28.jpg used on input line 739.
+Package pdftex.def Info: histograma_atraso_alto_q28.jpg used on input line 761.
 
 (pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
 
-<histograma_atraso_baixo_q28.jpg, id=439, 1041.8925pt x 810.02625pt>
+<histograma_atraso_baixo_q28.jpg, id=431, 1041.8925pt x 810.02625pt>
 File: histograma_atraso_baixo_q28.jpg Graphic file (type jpg)
 
 <use histograma_atraso_baixo_q28.jpg>
-Package pdftex.def Info: histograma_atraso_baixo_q28.jpg used on input line 744
+Package pdftex.def Info: histograma_atraso_baixo_q28.jpg used on input line 766
 .
 (pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
 
-<sinais_entrada_saida_q28.jpg, id=440, 1041.8925pt x 810.02625pt>
+<sinais_entrada_saida_q28.jpg, id=432, 1041.8925pt x 810.02625pt>
 File: sinais_entrada_saida_q28.jpg Graphic file (type jpg)
 
 <use sinais_entrada_saida_q28.jpg>
-Package pdftex.def Info: sinais_entrada_saida_q28.jpg used on input line 749.
+Package pdftex.def Info: sinais_entrada_saida_q28.jpg used on input line 771.
 (pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
 
 
@@ -1461,11 +1464,22 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 754.
+(babel)             in language  on input line 777.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 754.
-[23 <./histograma_atraso_alto_q28.jpg> <./histograma_atraso_baixo_q28.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 755--756
+(babel)             in language  on input line 777.
+[23 <./histograma_atraso_alto_q28.jpg>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 777.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 777.
+[24 <./histograma_atraso_baixo_q28.jpg> <./sinais_entrada_saida_q28.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 777--778
 
  []
 
@@ -1487,41 +1501,33 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 774.
+(babel)             in language  on input line 796.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 774.
-[24]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
+(babel)             in language  on input line 796.
+[25]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 774.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 774.
-[25 <./sinais_entrada_saida_q28.jpg>]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 774.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 774.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 774.
+(babel)             in language  on input line 796.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 796.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 796.
  (./relatorio1.aux (./capa.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 774.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 774.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 796.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 796.
 Package rerunfilecheck Info: File `relatorio1.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 774.
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 796.
  ) 
 Here is how much of TeX's memory you used:
- 19433 strings out of 493315
- 321928 string characters out of 6143675
- 625328 words of memory out of 5000000
- 22084 multiletter control sequences out of 15000+600000
+ 19437 strings out of 493315
+ 322057 string characters out of 6143675
+ 625176 words of memory out of 5000000
+ 22083 multiletter control sequences out of 15000+600000
  78910 words of font info for 134 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  58i,12n,55p,439b,1853s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1537,10 +1543,10 @@ xmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texmf-dist/fonts/type1/urw
 /times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></us
 r/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/font
 s/type1/urw/times/utmri8a.pfb>
-Output written on relatorio1.pdf (25 pages, 1863601 bytes).
+Output written on relatorio1.pdf (25 pages, 1864978 bytes).
 PDF statistics:
- 558 PDF objects out of 1000 (max. 8388607)
- 497 compressed objects within 5 object streams
- 274 named destinations out of 1000 (max. 500000)
+ 566 PDF objects out of 1000 (max. 8388607)
+ 504 compressed objects within 6 object streams
+ 279 named destinations out of 1000 (max. 500000)
  88 words of extra memory for PDF output out of 10000 (max. 10000000)
 

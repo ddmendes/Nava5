@@ -437,10 +437,10 @@ Obs.: O comando \textbf{ \emph{IcTrace(M) -- netlist} } também serve, como o
 
     A partir dos dados da figura \ref{imgApcQ16}, obtemos:
     \begin{equation}
-        \alpha_D = \frac{\Delta y}{\Delta x} = 1386,8
+        \alpha_D = \frac{\Delta y}{\Delta x} = 1386,8 s/F
     \end{equation}
     \begin{equation}
-        \alpha_S = \frac{\Delta y}{\Delta x} = 1335,8
+        \alpha_S = \frac{\Delta y}{\Delta x} = 1335,8 s/F
     \end{equation}
     onde $\alpha_D$ e $\alpha_S$ são os coeficientes angulares dos atrasos de descida e
     subida, respectivamente.
@@ -451,12 +451,12 @@ Obs.: O comando \textbf{ \emph{IcTrace(M) -- netlist} } também serve, como o
     \end{equation}
     Substituindo um ponto na fórmula, podemos obter $y_0$:
     \begin{equation}
-        y_{0D} = 497,42\cdot10^{-12} - 1386,8 \cdot 250\cdot10^{-15} = 0.15\cdot10^{-9}
+        y_{0D} = 497,42\cdot10^{-12} - 1386,8 \cdot 250\cdot10^{-15} = 150,72 ps
     \end{equation}
 
     Analogamente, calcula-se o $y_0$ de subida:
     \begin{equation}
-        y_{0S} = 438,8\cdot10^{-12} - 1335,8 \cdot 250\cdot10^{-15} = 0.10\cdot10^{-9}
+        y_{0S} = 438,8\cdot10^{-12} - 1335,8 \cdot 250\cdot10^{-15} = 104.8 ps
     \end{equation}
 
     Os resultados destes cálculos estão condensados na tabela \ref{tabCalQ17}.
@@ -466,10 +466,10 @@ Obs.: O comando \textbf{ \emph{IcTrace(M) -- netlist} } também serve, como o
             \label{tabCalQ17}
             \centering
         \begin{tabular}{|l|r|r|}
-                                                                                    \hline 
-                                &   Atraso de Descida   &   Atraso de Subida    \\  \hline 
-            Coeficiente Angular &               1386,8  &               1335,8  \\  \hline 
-            Coeficiente Linear  &   $0,15\cdot10^{-9}$  &   $0,10\cdot10^{-9}$  \\  \hline
+                                                                                            \hline 
+                                        &   Atraso de Descida   &   Atraso de Subida    \\  \hline 
+            Coeficiente Angular $(s/F)$ &           $1386,8$    &           $1335,8$    \\  \hline 
+            Coeficiente Linear $(S)$    &           $150,72$    &           $104,8$     \\  \hline
         \end{tabular}
     \end{table}
 
@@ -672,21 +672,43 @@ a tecla \emph{w} pode ser utilizada para alterar a largura da linha desenhada.
    partir do \emph{layout}, calcule as inclinações e os pontos de cruzamento com o
    eixo Y (eixo de tempo).
 
-   *** Calcular!!!
-   A partir das equações xxxx calculou-se os coeficientes angular e linear. Estes estão apresentados na tabela
-   \ref{tblCalQ26}.
+    A partir dos dados da figura \ref{imgApcQ25}, obtemos:
+    \begin{equation}
+        \alpha_A = \frac{\Delta y}{\Delta x} = 1710 s/F
+    \end{equation}
+    \begin{equation}
+        \alpha_B = \frac{\Delta y}{\Delta x} = 1392,3 s/F
+    \end{equation}
+    onde $\alpha_A$ e $\alpha_B$ são os coeficientes angulares dos atrasos alto-alto 
+    e baixo-baixo, respectivamente.
 
-   \begin{table}[!hp]
-        \caption{\label{tblCalQ26}Coeficientes angular e linear para as curvas de atraso alto-alto e baixo-baixo,
-                obtidas na simulação da porta lógica não inversora com circuitos parasitas.}
-        \centering
-        \begin{tabular}{|l|c|c|}
-            \hline
-            Atraso  &   Coef. Angular   &   Coef. Linear    \\  \hline
-            Alto-alto   &   xxx &   xxx \\  \hline
-            Baixo-baixo &   yyy &   yyy \\  \hline
+    Seja a o atraso alto-ato dado por:
+    \begin{equation}
+        y_A = 1386,8 \cdot x_A + y_{0A}
+    \end{equation}
+    Substituindo um ponto na fórmula, podemos obter $y_{0A}$:
+    \begin{equation}
+        y_{0A} = 642,43\cdot10^{-12} - 1710 \cdot 250\cdot10^{-15} = 214,9 \cdot ps
+    \end{equation}
+
+    Analogamente, calcula-se o $y_{0B}$ de subida:
+    \begin{equation}
+        y_{0B} = 581,75\cdot10^{-12} - 1392,3 \cdot 250\cdot10^{-15} = 233,6 \cdot ps
+    \end{equation}
+
+    Os resultados destes cálculos estão condensados na tabela \ref{tabCalQ17}.
+    \begin{table}[!hp]
+            \caption{Coeficientes angular e linear para as curvas de atraso de descida e subida
+                por capacitância de carga.}
+            \label{tabCalQ17}
+            \centering
+        \begin{tabular}{|l|r|r|}
+                                                                                            \hline 
+                                        &   Atraso alto-alto    &   Atraso baixo-baixo  \\  \hline 
+            Coeficiente Angular $(s/F)$ &               $1710$  &               1392.3  \\  \hline 
+            Coeficiente Linear $(S)$    &               $214,9$ &               $233,6$ \\  \hline
         \end{tabular}
-   \end{table}
+    \end{table}
 
 \textbf{27.} *Gere novamente os tempos de propagação na subida e descida utilizando
    agora os comandos (faça os ajustes necessários para seu circuito)
