@@ -636,16 +636,13 @@ a tecla \emph{w} pode ser utilizada para alterar a largura da linha desenhada.
     na figura \ref{imgSinEntQ25}. Na tabela \ref{tblApcQ25} podemos observar os valores dos 
     atrasos para cada capacitância de carga utilizada na simulação.
 
-    \img{Atraso alto-alto e baixo-baixo para a porta lógica não inversora obtidos através
-       de simulação do circuito com capacitâncias parasitas.}{imgApcQ25}{atraso_por_capacitancia_q25.jpg}
+    \img{Atraso alto-alto e baixo-baixo para a porta lógica não inversora obtidos através de simulação do circuito com capacitâncias parasitas.}{imgApcQ25}{atraso_por_capacitancia_q25.jpg}
 
-    \img{Sinais de entrada utilizados na simulação e saída obtida para a porta lógica
-        não inversora}{imgSinEntQ25}{sinais_entrada_saida_q25.jpg}
+    \img{Sinais de entrada utilizados na simulação e saída obtida para a porta lógica não inversora}{imgSinEntQ25}{sinais_entrada_saida_q25.jpg}
 
-    \begin{table}[!hb]
-        \caption{Atrasos obtidos para diferentes capacitâncias de carga através da simulação
+    \begin{table}[!ht]
+        \caption{\label{tblApcQ25}Atrasos obtidos para diferentes capacitâncias de carga através da simulação
                 da porta lógica não inversora.}
-        \label{tblApcQ25}
         \centering
         \begin{tabular}{|c|c|c|}
                                                                                                 \hline
@@ -663,6 +660,20 @@ a tecla \emph{w} pode ser utilizada para alterar a largura da linha desenhada.
    eixo Y (eixo de tempo).
 
    *** Calcular!!!
+   A partir das equações xxxx calculou-se os coeficientes angular e linear. Estes estão apresentados na tabela
+   \ref{tblCalQ26}.
+
+   \begin{table}[!ht]
+        \caption{\label{tblCalQ26}Coeficientes angular e linear para as curvas de atraso alto-alto e baixo-baixo,
+                obtidas na simulação da porta lógica não inversora com circuitos parasitas.}
+        \centering
+        \begin{tabular}{|l|c|c|}
+            \hline
+            Atraso  &   Coef. Angular   &   Coef. Linear    \\  \hline
+            Alto-alto   &   xxx &   xxx \\  \hline
+            Baixo-baixo &   yyy &   yyy \\  \hline
+        \end{tabular}
+   \end{table}
 
 \textbf{27.} *Gere novamente os tempos de propagação na subida e descida utilizando
    agora os comandos (faça os ajustes necessários para seu circuito)
@@ -676,7 +687,8 @@ Vc  c 0 pulse (0 3 0 1p 1p 2n 4n)
 Cl out 0 30fF
 \end{lstlisting}
 
-    *** Esqueci de gerar as imagens...
+    Utilizando os comandos listados, obtemos atraso alto-alto de $20,6ps$ e atraso
+    baixo-baixo de $20.4ps$.
 
 \textbf{28.} *Vamos realizar agora a \emph{simulação de Monte Carlo}. Nesta simulação
    são realizadas, na verdade, várias simulações com parâmetros diferentes e
