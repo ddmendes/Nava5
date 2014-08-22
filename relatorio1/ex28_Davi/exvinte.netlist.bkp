@@ -1,0 +1,35 @@
+Porta logica negada
+
+	Xp A B C S VDD VSS EXVINTE
+	Cl S VSS 30fF
+
+*** pulso ***
+.PARAM tvdd=3V
+
+VDD VDD 0 tvdd
+VSS VSS 0 0
+VIN VIN 0 PULSE (0 3 0 1p 1p 2n 4n)
+
+.CONNECT A VDD
+.CONNECT B VSS
+.CONNECT C VIN
+
+.TRAN 1n 30n 0n 10p
+ 
+*** Delay ***
+.MEAS TRAN delayR TRIG V(C) VAL=1.5V RISE=6 TARG V(S) VAL=1.5 RISE=6
+.MEAS TRAN delayF TRIG V(C) VAL=1.5V FALL=6 TARG V(S) VAL=1.5 FALL=6
+
+
+.OPTION SST_MTHREAD=1
+* MONTE CARLO
+.MC 100 NBBINS=20
+.INCLUDE /local/tools/dkit/ams_3.70_mgc/eldo/c35/profile.opt
+.LIB /local/tools/dkit/ams_3.70_mgc/eldo/c35/wc53.lib mc
+
+.PROBE TRANS V(A) V(B) V(C) V(S)
+
+
+.include "exvinte.pex.netlist"
+
+.end

@@ -1,0 +1,34 @@
+*Circuito
+
+*Subcircuito
+.include "exvinte.pex.netlist"
+X A B C OUT VDD VSS EXVINTE
+ 
+*Fontes
+Vdd VDD 0 3V
+Vss VSS 0 0V
+VA A 0 3V
+VB B 0 0V
+
+VC C VSS PULSE (0 3.0 0 1p 1p 2n 4n)
+
+*Modo de operacao
+.tran 1n 30n 0n 10p
+.plot v(c) v(out)
+.plot extract meas(delayF)
+.plot extract meas(delayR)
+
+.meas tran delayF trig v(C) val=1.5 fall=5 targ v(OUT) val=1.5 fall=5
+.meas tran delayR trig v(C) val=1.5 rise=5 targ v(OUT) val=1.5 rise=5
+
+*Capacitancia
+Cl OUT 0 30fF
+
+.option SST_MTHREAD=1
+* MONTE CARLO
+.MC 1000 NBBINS=30
+.INCLUDE profile.opt
+.LIB wc53.lib mc
+
+.end
+
