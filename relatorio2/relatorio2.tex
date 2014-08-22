@@ -1,0 +1,60 @@
+\input{preambulo}
+
+\begin{document}
+
+\renewcommand{\titulo}{Projeto 7}
+\pagenumbering{arabic}
+\makecover
+\makelists
+
+\section*{Introdução}
+TODO
+
+\section*{Resumo}
+Neste laboratório será projetado um circuito para gerar corrente de referência. Para isso serão vistos o modo de operação de fraca inversão em transistores e conceitos de casamento de componentes. Na fonte de corrente final serão colocados \emph{Pads} de alimentação.
+
+Um transistor MOS pode estar operando, de acordo com a concentração de portadores no canal, em três regiões distintas que são:
+
+...
+
+\section*{Questões}
+
+\textbf{1.} *O valor de $g_m$ varia de acordo com sua região de operação. Na região de forte inversão temos que
+\begin{equation}
+    g_m = \sqrt[2]{ 2 \cdot I_D \cdot \mu \cdot C_ox \cdot \frac{W}{L} } = \frac{ 2 \cdot I_D }{ V_GS - V_T }
+\end{equation}
+e na região de inversão moderada
+\begin{equation}
+    g_m = \frac{ I_D }{ n \cdot V_T \cdot \sqrt[2]{1 + LIM} }
+\end{equation}
+Determine o valor de $g_m$ para o transistor operando na região de fraca inversão com $V_D >> V_T$ e $n = 1$.
+Obs.: $g_m = \frac{\partial I_D}{\partial V_GS}$
+
+\textbf{2.} *Mostre que para uma corrente igual a $I_PWM$ os valores de $g_m$ calculados considerando o transistor em fraca ou forte inversão coincidem.
+
+\textbf{3.} *Considere os dois espelhos de corrente apresentdos na Figura \ref{imagQ3espelhos}. Um deles é um espelho de convencional e o outro é um espelho de corrente de Wilson.
+\textbf{3.1} Em que circunstância, no espelho convencional, a correne de saída $I_0$ é exatamente igual à correne $I_REF$.
+\textbf{3.2} Determine a impedância de saída do espelho convencional.
+\textbf{3.3} Caso este valor for pequeno qual é a consequência? Como ele pode ser aumentado?
+\textbf{3.4} Determine a impedância de saída do espelho Wilson e mostre que é aproximadamente igual a
+\begin{equation}
+    \frac{V_0}{I_0} \approx \frac{g_m1}{g_01} \cdot \frac{g_m3}{g_m2} \cdot \frac{1}{g_03} \approx \frac{g_m1}{g_01} \cdot \frac{1}{d_03}
+\end{equation}
+para o caso onde $M_1$ é igual a $M_2$ (ignore o efeito de corpo)
+\textbf{3.5} Compare a impedância de saída das duas configurações. Qual é maior?
+\textbf{3.5} Qual a desvantagem do espelho de Wilson?
+
+    \img{a)Espelho de corrente convencional; b)Espelho de corrente Wilson}{imagQ3espelhos}{FILE.jpg} % XXX
+
+\textbf{4.} *Considere o circuito da figura abaixo (Fig. \ref{imagQ4gerCorrenteRef}). Este circuito é formado pelo espelho de corrente $M_3$, $M_4$ e $M_5$ e os transistores trabalhando em fraca inversão $M_1$ e $M_2$. Ele serve para gerar uma corrente de referência $I_S$. Considere que
+-- $\left( \frac{W}{L}_{M_4} \right)$ é \textbf{M} vezes maior que $\left( \frac{W}{L}_{M_3} \right)$;
+-- $\left( \frac{W}{L}_{M_2} \right)$ é \textbf{N} vezes maior que $\left( \frac{W}{L}_{M_1} \right)$ ();
+-- $\left( \frac{W}{L}_{M_5} \right)$ é \textbf{X} vezes maior que $\left( \frac{W}{L}_{M_3} \right)$.
+Mostre que a corrente de saída tem, quando os transistores $M_3$, $M_4$ e $M_5$ estão em saturação, a expressão
+\begin{equation}
+    I_S = X \cdot \frac{V_T}{R} \cdot ln\left(M \cdot N\right)
+\end{equation}
+
+    \img{Circuito gerador de corrente de referência.}{imagQ4gerCorrenteRef}{FILE.jpg} % XXX
+
+
