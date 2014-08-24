@@ -37,11 +37,11 @@ Nesta tabela temos que $LIM = \frac{I_D}{I_{Dlim}} $ e $I_{Dlim} = \mu \cdot C_{
 onde $I_D$ é a corrente de dreno; $\mu$ é a mobilidade dos portadores do canal; $C_{ox}$ é a capacitância por área da porta; $W$ e $L$ são as dimensões do transistor; $n$ = fator de inclinação de inversão fraca (seu valor depende da tecnologia mas varia entre 1,2 e 1,6); e  .
 Para a inversão fraca, a equação que descreve a operação do transistor MOS é
     \begin{equation}
-        I_D = \frac{W}{L} \codt I_{D0} \cdot e^{V_G \cdot ln(V_T)} \cdot \left( e^{-V_S / V_T} - e^{-V_D / V_T} \right)
+        I_D = \frac{W}{L} \codt I_{D0} \cdot e^{V_G / n V_T} \cdot \left( e^{-V_S / V_T} - e^{-V_D / V_T} \right)
     \end{equation}
 onde $V_G$, $V_S$ e $V_D$ são, respectivamente, as tensão de \emph{gate}, \emph{source} e dreno relativas ao \emph{bulk}; $I_{D0}$ é uma constante da tecnologia com dimensão de corrente. Em operação normal, $V_D \gg V_T$ e, neste caso, ficamos reduzidos a seguinte relação 
     \begin{equation}
-        I_D = \frac{W}{L} \codt I_{D0} \cdot e^{V_G \cdot ln(V_T)} \cdot e^{-V_S / V_T}
+        I_D = \frac{W}{L} \codt I_{D0} \cdot e^{V_G / n V_T} \cdot e^{-V_S / V_T}
     \end{equation}
 
   $I_D$ será, portanto, uma função exponencial de aproximadamente $V_{GS}$ (semelhante ao que ocorre em um transistor bipolar).
@@ -50,19 +50,46 @@ onde $V_G$, $V_S$ e $V_D$ são, respectivamente, as tensão de \emph{gate}, \emph{
 \section*{Questões}
 
 \textbf{1.} *O valor de $g_m$ varia de acordo com sua região de operação. Na região de forte inversão temos que
-\begin{equation}
-    g_m = \sqrt[2]{ 2 \cdot I_D \cdot \mu \cdot C_{ox} \cdot \frac{W}{L} } = \frac{ 2 \cdot I_D }{ V_{GS} - V_T }
-\end{equation}
-e na região de inversão moderada
-\begin{equation}
-    g_m = \frac{ I_D }{ n \cdot V_T \cdot \sqrt[2]{1 + LIM} }
-\end{equation}
-Determine o valor de $g_m$ para o transistor operando na região de fraca inversão com $V_D >> V_T$ e $n = 1$.
-Obs.: $g_m = \frac{\partial I_D}{\partial V_{GS}}$
+    \begin{equation}
+        g_m = \sqrt[2]{ 2 \cdot I_D \cdot \mu \cdot C_{ox} \cdot \frac{W}{L} } = \frac{ 2 \cdot I_D }{ V_{GS} - V_T }
+    \end{equation}
+    e na região de inversão moderada
+    \begin{equation}
+        g_m = \frac{ I_D }{ n \cdot V_T \cdot \sqrt[2]{1 + LIM} }
+    \end{equation}
+    Determine o valor de $g_m$ para o transistor operando na região de fraca inversão com $V_D >> V_T$ e $n = 1$.
+    Obs.: $g_m = \frac{\partial I_D}{\partial V_{GS}}$
 
+    Como trata-se da região de inversão fraca, com $ V_D \gg V_S $, sabe-se que
+        \begin{equation}
+            I_D = \frac{W}{L} \codt I_{D0} \cdot e^{V_G / n V_T} \cdot e^{-V_S / V_T}
+        \end{equation}
+    Tomando $n = 1$ e $g_m = \frac{\partial I_D}{\partial V_{GS}}$,
+        \begin{eqnarray}
+            I_D & = & \frac{W}{L} \codt I_{D0} \cdot e^{V_G / V_T} \cdot e^{-V_S / V_T} \\
+            I_D & = & \frac{W}{L} \codt I_{D0} \cdot e^{ \frac{V_G - V_S}{V_T} } \\
+            I_D & = & \frac{W}{L} \codt I_{D0} \cdot e^{ \frac{V_{GS}}{V_T} } \label{eqnQ1correnteFraca} \\
+            \Rightarrow g_m & = & \frac{\partial \left( \frac{W}{L} \codt I_{D0} \cdot e^{ \frac{V_{GS}}{V_T} } \right) }{ \partial{V_{GS}} } \\
+            \\
+            \therefore g_m & = & \frac{1}{V_T} \cdot \frac{W}{L} \codt I_{D0} \cdot e^{ \frac{V_{GS}}{V_T} } \label{eqnQ1resultado}
+        \end{eqnarray}
 
 
 \textbf{2.} *Mostre que para uma corrente igual a $I_{PWM}$ os valores de $g_m$ calculados considerando o transistor em fraca ou forte inversão coincidem.
+
+    Trabalhando a equação \ref{eqnQ1correnteFraca},
+        \begin{equation}
+            V_{GS} = V_T \cdot ln \left( \frac{I_{D0}}{W/L \cdot I_{D0}} \right)
+        \end{equation}
+    Utilizando esse resultado com o obtido no exercício anterior (equação \ref{eqnQ1resultado}), tem-se
+        \begin{eqnarray}
+            g_m & = & \frac{W}{L} \codt \frac{I_{D0}}{V_T} \cdot e^{ \frac{ V_T \cdot ln \left( \frac{I_{D0}}{W/L \cdot I_{D0}} \right) }{V_T} } \\
+            \Rightarrow g_m & = & \frac{W}{L} \codt \frac{I_{D0}}{V_T} \cdot \left( \frac{I_{D0}}{W/L \cdot I_{D0}} \right) } \\
+            \Rightarrow g_m & = & \frac{I_{D0}}{V_T}
+        \end{eqnarray}
+
+    % TODO continuar
+
 
 \textbf{3.} *Considere os dois espelhos de corrente apresentdos na Figura \ref{imagQ03espelhos}. Um deles é um espelho de convencional e o outro é um espelho de corrente de Wilson.
     \textbf{3.1} Em que circunstância, no espelho convencional, a correne de saída $I_0$ é exatamente igual à correne $I_{REF}$.
