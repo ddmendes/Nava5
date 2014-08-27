@@ -14,9 +14,11 @@ TODO % TODO
 Neste laboratório será projetado um circuito para gerar corrente de referência. Para isso serão vistos o modo de operação de fraca inversão em transistores e conceitos de casamento de componentes. Na fonte de corrente final serão colocados \emph{Pads} de alimentação.
 
 Um transistor MOS pode estar operando, de acordo com a concentração de portadores no canal, em três regiões distintas que são:
-    i.   Inversão Forte (\emph{Strong Inversion}): a tensão $V_{GS}$ (porta-fonte) é suficiente para formar um canal com concentração de portadores igual ou superior à concentração de portadores intrínseca do substrato. Observemos que o tipo de portador no canal é diferente do portador intrínseco do substrato. É esta a região de operação estudada normalmente.
-    ii.  Inversão Fraca (\emph{Weak Inversion}): a tensão $V_{GS}$ (porta-fonte) está próxima à tensão de \emph{threshold} do transistor, formando um canal com concentração de portadores inferior a concentração intrínseca de portadores do substrato. Utilizada para circuitos de baixíssimo consumo de potência.
-    iii. Inversão Moderada (\emph{Moderate Inversion}): é uma região de transição, não muito bem definida, entre as regiões de inversão forte e inversão fraca. Equações que descrevem o transistor nesta faixa não são muito precisas.
+\begin{lsienumerate}
+    \item Inversão Forte (\emph{Strong Inversion}): a tensão $V_{GS}$ (porta-fonte) é suficiente para formar um canal com concentração de portadores igual ou superior à concentração de portadores intrínseca do substrato. Observemos que o tipo de portador no canal é diferente do portador intrínseco do substrato. É esta a região de operação estudada normalmente.
+    \item Inversão Fraca (\emph{Weak Inversion}): a tensão $V_{GS}$ (porta-fonte) está próxima à tensão de \emph{threshold} do transistor, formando um canal com concentração de portadores inferior a concentração intrínseca de portadores do substrato. Utilizada para circuitos de baixíssimo consumo de potência.
+    \item Inversão Moderada (\emph{Moderate Inversion}): é uma região de transição, não muito bem definida, entre as regiões de inversão forte e inversão fraca. Equações que descrevem o transistor nesta faixa não são muito precisas.
+\end{lsienumerate}
 
 Normalmente se verifica a região de operação do transistor analisando a corrente que passa no dreno. Um critério para determinar em qual região o transistor opera é apresentado na Tabela \ref{tabIntroRegiaoOperacao}.
 
@@ -75,20 +77,30 @@ onde $V_G$, $V_S$ e $V_D$ são, respectivamente, as tensão de \emph{gate}, \emph{
         \end{eqnarray}
 
 
-\textbf{2.} *Mostre que para uma corrente igual a $I_{PWM}$ os valores de $g_m$ calculados considerando o transistor em fraca ou forte inversão coincidem.
+\textbf{2.} *Mostre que para uma corrente igual a $I_{Dlim}$ os valores de $g_m$ calculados considerando o transistor em fraca ou forte inversão coincidem.
 
     Trabalhando a equação \ref{eqnQ1correnteFraca},
         \begin{equation}
-            V_{GS} = V_T \cdot ln \left( \frac{I_{D0}}{W/L \cdot I_{D0}} \right)
+            V_{GS} = V_T \cdot ln \left( \frac{I_D}{(W/L) \cdot I_{D0}} \right)
         \end{equation}
     Utilizando esse resultado com o obtido no exercício anterior (equação \ref{eqnQ1resultado}), tem-se
         \begin{eqnarray}
-            g_m & = & \frac{W}{L} \codt \frac{I_{D0}}{V_T} \cdot e^{ \frac{ V_T \cdot ln \left( \frac{I_{D0}}{W/L \cdot I_{D0}} \right) }{V_T} } \\
-            \Rightarrow g_m & = & \frac{W}{L} \codt \frac{I_{D0}}{V_T} \cdot \left( \frac{I_{D0}}{W/L \cdot I_{D0}} \right) } \\
-            \Rightarrow g_m & = & \frac{I_{D0}}{V_T}
+            g_m & = & \frac{W}{L} \codt \frac{I_{D0}}{V_T} \cdot e^{ \frac{ V_T \cdot ln \left( \frac{I_D}{(W/L) \cdot I_{D0}} \right) }{V_T} } \\
+            \Rightarrow g_m & = & \frac{W}{L} \codt \frac{I_{D0}}{V_T} \cdot \left( \frac{I_D}{(W/L) \cdot I_{D0}} \right) } \\
+            \Rightarrow g_m & = & \frac{I_D}{V_T}
         \end{eqnarray}
-
-    % TODO continuar
+    Considerando a corrente como $I_{Dlim}$, tem-se
+        \begin{eqnarray}
+            I_{D} = & I_Dlim & = & \mu \cdot C_{ox} \cdot \frac{W}{L} \cdot 2 \cdot V_T^2 \\
+            \Rightarrow & g_m & = & \frac{\mu \cdot C_{ox} \cdot \frac{W}{L} \cdot 2 \cdot V_T^2}{V_T} \\
+            \Rightarrow & g_m & = & \sqrt[2]{\left( \mu \cdot C_{ox} \cdot \frac{W}{L} \cdot 2 \cdot V_T \right)^2}
+            \Rightarrow & g_m & = & \sqrt[2]{\left( \mu \cdot C_{ox} \cdot \frac{W}{L} \cdot 2 \cdot V_T^2 \right) \cdot \left( \mu \cdot C_{ox} \cdot \frac{W}{L} \cdot 2 \right) }
+            \Rightarrow & g_m & = & \sqrt[2]{ I_D \cdot \left( \mu \cdot C_{ox} \cdot \frac{W}{L} \cdot 2 \right) }
+        \end{eqnarray}
+    Reajeitando a expressão, pode-se observar que as equações de $g_m$ para os casos de inversão forte e fraca coincidem.
+        \begin{equation}
+            \therefore & g_m & = & \sqrt[2]{ 2 \cdot I_D \cdot \mu \cdot C_{ox} \cdot \frac{W}{L} }
+        \end{equation}
 
 
 \textbf{3.} *Considere os dois espelhos de corrente apresentdos na Figura \ref{imagQ03espelhos}. Um deles é um espelho de convencional e o outro é um espelho de corrente de Wilson.
@@ -115,6 +127,30 @@ Mostre que a corrente de saída tem, quando os transistores $M_3$, $M_4$ e $M_5$ 
     \end{equation}
 
     \img{Circuito gerador de corrente de referência.}{imagQ04gerCorrenteRef}{FILE.jpg} % XXX
+
+    Devido ao espelho de corrente formado pelos transistores $M_3$ e $M_4$, e suas relações de tamanho, tem-se que a relação das correntes de $M_1$ e $M_2$ é M, desta forma
+    \begin{eqnarray}
+        \frac{I_1}{I_2} & = & M \\
+        \frac{I_1}{I_2} & = & \frac{(W/L)_1}{(W/L)_2} \cdot \frac{e^{V_{G1} / n \cdot V_T} \cdot e^{-V_{S1} / V_T}}{e^{V_{G2} / n \cdot V_T} \cdot e^{-V_{S2} / V_T}} \\
+    \end{eqnarray}
+    Pela relação de tamanho de $M_1$ e $M_2$ e sabendo que $V_{G1} = V_{G2}$,
+    \begin{eqnarray}
+        & \frac{(W/L)_2}{(W/L)_1} & = & N \\
+        & M & = & \frac{I_1}{I_2} = \frac{(W/L)_1}{(W/L)_2} \cdot \frac{e^{-V_{S1} / V_T}}{e^{-V_{S2} / V_T}} \\
+        \Rightarrow & M & = & \frac{1}{N} \cdot e^{\frac{\left( V_{S2} - V_{S1} \right)}{V_T}} \\
+        \Rightarrow & MN & = & e^{\frac{\left( V_{S2} - V_{S1} \right)}{V_T}} \\
+    \end{eqnarray}
+    Como $I_{M3} = I_{M2}$ e $I_S = X \cdot I_{M3}$,
+    \begin{equation}
+        \Rightarrow V_{S2} = R \cdot \frac{I_S}{X}
+    \end{equation}
+    Juntando estes resultados e sabendo que $V_{S1} = 0 V$,
+    \begin{eqnarray}
+                    & MN     & = & e^{\frac{R \cdot \frac{I_S}{X} }{V_T}}
+        \Rightarrow & ln(MN) & = & \frac{R \cdot \frac{I_S}{X} }{V_T}
+        \therefore  & I_S    & = & X \cdot \frac{V_T}{V_T} \cdot ln(MN)
+    \end{eqnarray}
+
 
 \textbf{5.} *Considere os valores $M = 2$, $N = 1$ e $X = 1$. Determine através de equações os valores $\left( \frac{W}{L} \right)$ dos transistores e de $R$ para que
     \begin{equation}
@@ -205,7 +241,7 @@ Obs.: o transistor bipolar extraído vem com o parâmetro Area. Apague este parâme
 Obs.: um bloco de \emph{Pad} pode ser encontrado na biblioteca IOLIB\_4M, célula g-padonly.
 
 
-    Alguns dados adicionais: os transistores MOS, apesar de terem em primeira ordem um funcionamento simples, precisam de modelos que são cada vez mais sofisticados. Um dos modelos mais conhecidos, e não por isso o melhor, é o BSIM (Berkeley Short Channel IGFET Model, http://www-device.eecs.berkeley.edu/~bsim3/). Este modelo teve diversas edições e versões. Abaixo há exemplo dos parâmetros do modelo BSIM3V3 para a tecnologia CMOS 0,35 \mu m da AMS.
+    Alguns dados adicionais: os transistores MOS, apesar de terem em primeira ordem um funcionamento simples, precisam de modelos que são cada vez mais sofisticados. Um dos modelos mais conhecidos, e não por isso o melhor, é o BSIM (Berkeley Short Channel IGFET Model, http://www-device.eecs.berkeley.edu/~bsim3/). Este modelo teve diversas edições e versões. Abaixo há exemplo dos parâmetros do modelo BSIM3V3 para a tecnologia CMOS $0,35 \mu m$ da AMS.
 
 Obs.:   U0 é a mobilidade inicial e tem unidade de $cm^2$/($V \cdot s$);
         TOX é a espessura do óxido em metros;
