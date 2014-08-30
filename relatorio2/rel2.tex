@@ -27,10 +27,10 @@ Normalmente se verifica a região de operação do transistor analisando a corrente
         \label{tabIntroRegiaoOperacao}
         \centering
         \begin{tabular}{c|c}
-                                                            \hline
+                                                              \hline
             \textbf{Região de Operação} & \textbf{Condição}\\ \hline
                     Inversão Forte      &     $LIM > 10$   \\ \hline
-                    Inversão Fraca      &     $LIM < 0,1$  \\\hline
+                    Inversão Fraca      &     $LIM < 0,1$  \\ \hline
                     Inversão Moderada   & $0,1 < LIM < 10$ \\ \hline
         \end{tabular}
     \end{table}
@@ -161,7 +161,7 @@ O circuito deve funcionar para tensões na saída (dreno de $M_5$) tão altas quant
         I_S & = & X \cdot \frac{V_T}{R} \cdot ln(M \cdot N) \\
         1,95 \cdot 10^{-6} & = & 1 \cdot \frac{ 26 \cdot 10^{-3} }{R} \cdot ln(2 \cdot 1) \\
         \Rightarrow R & = & \frac{ 26 \cdot 10^{-3} }{ 1,95 \cdot 10^{-6} } \cdot ln(2) \\
-        \therefore  R & = & 8,89 k \Omega
+        \therefore  R & = & 9,xxx k \Omega % TODO colocar o valor
     \end{eqnarray}
 
     Considerando que os transistores $M_1$ e $M_2$ estão operando em fraca inversão
@@ -169,14 +169,14 @@ O circuito deve funcionar para tensões na saída (dreno de $M_5$) tão altas quant
         LIM                  & < & 0,1 \\
         \frac{I_D}{I_{Dlim}} & < & 0,1 \\
     \end{eqnarray}
-    Sabendo que $(W/L)_1 = (W/L)_2$ devido a $N = 1$, e que a corrente no dreno dos transistores equivale a $\frac{I_S}{X}$,
+    Sabendo que $(W/L)_1 = (W/L)_2$ devido a $N = 1$, e que a corrente no dreno do transistore $M_1$ equivale a $M \cdot \frac{I_S}{X}$,
     \begin{equation}
-        \frac{I_S / X}{I_{Dlim}} < \frac{1}{10}
+        M \cdot \frac{I_S / X}{I_{Dlim}} < \frac{1}{10}
     \end{equation}
     Sendo $I_{Dlim} = \mu \cdot C_{ox} \cdot \left( \frac{W}{L} \right) \cdot 2 \cdot \left( n \cdot V_T \right)^2$
     \begin{eqnarray}
-        \frac{I_S}{X} & < & \frac{ \mu_P \cdot C_{ox} \cdot (W/L)_2 \cdot 2 \cdot \left(n \cdot V_T\right)^2 }{10}
-        \Rightarrow (W/L)_2 & > & \frac{I_S \cdot 5}{X \cdot \mu_P \cdot C_{ox} \cdot \left(n \cdot V_T \right)^2}
+        M \cdot \frac{I_S}{X} & < & \frac{ \mu_P \cdot C_{ox} \cdot (W/L)_2 \cdot 2 \cdot \left(n \cdot V_T\right)^2 }{10} \\
+        \Rightarrow (W/L)_2 & > & \frac{M \cdot I_S \cdot 5}{X \cdot \mu_P \cdot C_{ox} \cdot \left(n \cdot V_T \right)^2}
     \end{eqnarray}
     Subistituindo os valores,
     \begin{equation}
@@ -222,9 +222,9 @@ O circuito deve funcionar para tensões na saída (dreno de $M_5$) tão altas quant
     \end{equation}
     Usando a equação da saturação,
     \begin{eqnarray}
-        I_S & = & \mu \cdot C_{ox} \cdot (W/L)_5 \cdot V_{GS}^2 \\
-        \Rightarrow \left( \frac{W}{L} \right)_5 & = & \frac{I_S}{\mu \cdot C_{ox} \cdot V_{GS}^2} \\
-        \Rightarrow \left( \frac{W}{L} \right)_5 & > & \frac{I_S}{\mu \cdot C_{ox} \cdot 0,16} \\
+        I_S & = & \mu \cdot C_{ox} \cdot (W/L)_5 \cdot \frac{V_{GS}^2}{2} \\
+        \Rightarrow \left( \frac{W}{L} \right)_5 & = & \frac{2 \cdot I_S}{\mu \cdot C_{ox} \cdot V_{GS}^2} \\
+        \Rightarrow \left( \frac{W}{L} \right)_5 & > & \frac{2 \cdot I_S}{\mu \cdot C_{ox} \cdot 0,16} \\
         \therefore \left( \frac{W}{L} \right)_5 & > & 1,82 \cdot 10^{-3} \\
     \end{eqnarray}
 
