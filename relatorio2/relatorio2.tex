@@ -103,17 +103,17 @@ onde $V_G$, $V_S$ e $V_D$ são, respectivamente, as tensão de \emph{gate}, \emph{
         \end{equation}
 
 
-\textbf{3.} *Considere os dois espelhos de corrente apresentdos na Figura \ref{imagQ03espelhos}. Um deles é um espelho de convencional e o outro é um espelho de corrente de Wilson.
-    \textbf{3.1} Em que circunstância, no espelho convencional, a correne de saída $I_0$ é exatamente igual à correne $I_{REF}$.
-    \textbf{3.2} Determine a impedância de saída do espelho convencional.
-    \textbf{3.3} Caso este valor for pequeno qual é a consequência? Como ele pode ser aumentado?
-    \textbf{3.4} Determine a impedância de saída do espelho Wilson e mostre que é aproximadamente igual a
+\textbf{3.} *Considere os dois espelhos de corrente apresentdos na Figura \ref{imagQ03espelhos}. Um deles é um espelho de convencional e o outro é um espelho de corrente de Wilson. \\
+    \textbf{3.1} Em que circunstância, no espelho convencional, a correne de saída $I_0$ é exatamente igual à correne $I_{REF}$. \\
+    \textbf{3.2} Determine a impedância de saída do espelho convencional. \\
+    \textbf{3.3} Caso este valor for pequeno qual é a consequência? Como ele pode ser aumentado? \\
+    \textbf{3.4} Determine a impedância de saída do espelho Wilson e mostre que é aproximadamente igual a \\
     \begin{equation}
         \frac{V_0}{I_0} \approx \frac{g_{m1}}{g_{01}} \cdot \frac{g_{m3}}{g_{m2}} \cdot \frac{1}{g_{03}} \approx \frac{g_{m1}}{g_{01}} \cdot \frac{1}{g_{03}}
     \end{equation}
-        para o caso onde $M_1$ é igual a $M_2$ (ignore o efeito de corpo)
-    \textbf{3.5} Compare a impedância de saída das duas configurações. Qual é maior?
-    \textbf{3.5} Qual a desvantagem do espelho de Wilson?
+        para o caso onde $M_1$ é igual a $M_2$ (ignore o efeito de corpo) \\
+    \textbf{3.5} Compare a impedância de saída das duas configurações. Qual é maior? \\
+    \textbf{3.5} Qual a desvantagem do espelho de Wilson? \\
 
     %\img{a)Espelho de corrente convencional; b)Espelho de corrente Wilson}{imagQ03espelhos}{} % XXX
 
@@ -138,7 +138,7 @@ Mostre que a corrente de saída tem, quando os transistores $M_3$, $M_4$ e $M_5$ 
         \frac{(W/L)_2}{(W/L)_1} & = & N \\
         M & = & \frac{I_1}{I_2} = \frac{(W/L)_1}{(W/L)_2} \cdot \frac{e^{-V_{S1} / V_T}}{e^{-V_{S2} / V_T}} \\
         \Rightarrow M & = & \frac{1}{N} \cdot e^{\frac{\left( V_{S2} - V_{S1} \right)}{V_T}} \\
-        \Rightarrow MN & = & e^{\frac{\left( V_{S2} - V_{S1} \right)}{V_T}} 
+        \Rightarrow MN & = & e^{\frac{\left( V_{S2} - V_{S1} \right)}{V_T}}
     \end{eqnarray}
     Como $I_{M3} = I_{M2}$ e $I_S = X \cdot I_{M3}$,
     \begin{equation}
@@ -152,8 +152,8 @@ Mostre que a corrente de saída tem, quando os transistores $M_3$, $M_4$ e $M_5$ 
     \end{eqnarray}
 
 
-\textbf{5.} *Considere os valores $M = 2$, $N = 1$ e $X = 1$. Determine através de equações os valores $(W/L)$ dos transistores e de $R$ para que
-        $I_S = 1,95 \mu A$ (valor fornecido pelo professor)
+\textbf{5.} *Considere os valores $M = 2$, $N = 1$ e $X = 1$. Determine através de equações os valores $(W/L)$ dos transistores e de $R$ para que \\
+        $I_S = 1,95 \mu A$ (valor fornecido pelo professor) \\
 O circuito deve funcionar para tensões na saída (dreno de $M_5$) tão altas quanto ($V_{DD} - 0,4 V$). Considere que $M_3$, $M_4$ e $M_5$ estão em forte inversão.
 
     Utilizando o resultado do exercício anterior, os valores fornecidos de $M$, $N$ e $X$ e sabendo que $V_T = 26 mV V$, tem-se
@@ -164,7 +164,6 @@ O circuito deve funcionar para tensões na saída (dreno de $M_5$) tão altas quant
         \therefore  R & = & 9,24 k \Omega
     \end{eqnarray}
 
-    % TODO atualizar os valores
     Considerando que os transistores $M_1$ e $M_2$ estão operando em fraca inversão
     \begin{eqnarray}
         LIM                  & < & 0,1 \\
@@ -181,7 +180,7 @@ O circuito deve funcionar para tensões na saída (dreno de $M_5$) tão altas quant
     \end{eqnarray}
     Subistituindo os valores,
     \begin{equation}
-        (W/L)_1 = (W/L)_2 > 1,50
+        (W/L)_1 = (W/L)_2 > 91,1
     \end{equation}
 
     O transistor $M_5$ opera em forte inversão, logo
@@ -194,12 +193,12 @@ O circuito deve funcionar para tensões na saída (dreno de $M_5$) tão altas quant
     \end{eqnarray}
     Como $X = 1$, $(W/L)_3 = (W/L)_5$, portanto
     \begin{equation}
-        (W/L)_3 = (W/L)_5 < 8,43 \cdot 10^{-3}
+        (W/L)_3 = (W/L)_5 < 0,82
     \end{equation}
 
     Como $M = 2$, $(W/L)_4 = M \cdot (W/L)_3$, então
     \begin{equation}
-        (W/L)_4 < 16,87 \cdot 10^{-3}
+        (W/L)_4 < 1,65
     \end{equation}
 
     Para garantir que o transistor $M_5$ esteja na região de saturação,
@@ -219,21 +218,21 @@ O circuito deve funcionar para tensões na saída (dreno de $M_5$) tão altas quant
     \end{equation}
     Para utilizar o resultado numa equação conhecido, eleva-se ao quadrado
     \begin{equation}
-        (V_S - V_G)^2 = (V_G - V_S)^2 = V{GS}^2 < 0,16
+        (V_S - V_G)^2 = (V_G - V_S)^2 = V_{GS}^2 < 0,16
     \end{equation}
     Usando a equação da saturação,
     \begin{eqnarray}
         I_S & = & \mu \cdot C_{ox} \cdot (W/L)_5 \cdot \frac{V_{GS}^2}{2} \\
         \Rightarrow \left( \frac{W}{L} \right)_5 & = & \frac{2 \cdot I_S}{\mu \cdot C_{ox} \cdot V_{GS}^2} \\
         \Rightarrow \left( \frac{W}{L} \right)_5 & > & \frac{2 \cdot I_S}{\mu \cdot C_{ox} \cdot 0,16} \\
-        \therefore \left( \frac{W}{L} \right)_5 & > & 1,82 \cdot 10^{-3} \\
+        \therefore \left( \frac{W}{L} \right)_5 & > & 0,36 \\
     \end{eqnarray}
 
 
 \textbf{6.} *Utilize as dimensões $L_1 = 1,0 \mu m$ e $L_3 = 2,0 \mu m$ para o comprimento de canal dos transistores $M_1$ e $M_3$. Quais são as dimensões de $L$ que devem ser utilizadas nos transistores $M_2$, $M_4$ e $M_5$. Por quê? Determine as dimensões da largura de canal $W$ de todos os transistores (mostre numa tabela as dimensões determinadas).
 
-    Usualmente, mantém-se todos os transistores de mesmo tipo (i.e. ou PMOS, ou NMOS) com a mesma largura 
-    de canal $L$. Isto permite um melhor funcionamento dos espelhos de corrente, além de facilitar a 
+    Usualmente, mantém-se todos os transistores de mesmo tipo (i.e. ou PMOS, ou NMOS) com a mesma largura
+    de canal $L$. Isto permite um melhor funcionamento dos espelhos de corrente, além de facilitar a
     construção do \emph{layout}. Sendo assim, temos:
     \begin{eqnarray}
         L_1 = L_2 = 1 \mu m\\
@@ -246,6 +245,9 @@ O circuito deve funcionar para tensões na saída (dreno de $M_5$) tão altas quant
     transistores \emph{PMOS} casados.
 
     \begin{table}[!hp]
+        \caption{Dimensões $W$ e $L$ tomadas para os transistores da figura \ref{imagQ04gerCorrenteRef}.}
+        \label{tblQ06WLDosTransistores}
+        \centering
         \begin{tabular}{|l|c|c|}
                                                             \hline
             Transistor  &   W($\mu m$)  &   L($\mu m$)  \\  \hline
@@ -256,28 +258,62 @@ O circuito deve funcionar para tensões na saída (dreno de $M_5$) tão altas quant
             $M_{4.2}$   &       1.65    &       2       \\  \hline
             $M_5$       &       1.65    &       2       \\  \hline
         \end{tabular}
-        \caption{Dimensões $W$ e $L$ tomadas para os transistores da figura \ref{imagQ04gerCorrenteRef}.
-                    \label{tblQ06WLDosTransistores}
-                }
     \end{table}
 
-\textbf{7.} *Escreva o arquivo de entrada para simulação da fonte de corrente tomando cuidado em manter 
-os transistores casados. Faça uma simulação do tipo DC variando $V_{DD}$ entre $0 V$ e $5 V$ (considere 
-o dreno de $M_5$ em $0 V$). Medir as correntes que passam pelos transistores $M_4$ e $M_3$ para $V_{DD} 
-= 3,0 V$. (verifique se a relação entre estas correntes esta dentro do esperado e se não estiver corrija).
-O que acontece com a corrente na saída quando aumentamos $V_{DD}$? Por quê?
+\textbf{7.} *Escreva o arquivo de entrada para simulação da fonte de corrente tomando cuidado em manter os transistores casados. Faça uma simulação do tipo DC variando $V_{DD}$ entre $0 V$ e $5 V$ (considere o dreno de $M_5$ em $0 V$). Medir as correntes que passam pelos transistores $M_4$ e $M_3$ para $V_{DD} = 3,0 V$. (verifique se a relação entre estas correntes esta dentro do esperado e se não estiver corrija). O que acontece com a corrente na saída quando aumentamos $V_{DD}$? Por quê?
 
-\textbf{8.} *Ajuste o valor de $R$ para que a corrente de saída em $V_{DD} = 3,0 V$ seja a desejada no 
-projeto (valor nominal). Apresente então o gráfico $I_S x V_{DD}$.
+    O código do programa que realiza a simulação está descrito em Código Fonte \ref{cfQ07circuito}.
 
-\textbf{9.} *Determine a faixa de valores de $V_{DD}$ para a qual a condição $I_0 \left(0,98\right) <
-I_S < I_0 \left(1,02\right)$ seja observada, onde $I_0$ é a corrente para $V_{DD} = 3,0 V$. Qual é o valor 
-mínimo de $V_{DD}$ achado?
+\begin{lstlisting}[caption=Arquivo da simulação para análise das relações entre corrente, label=cfQ07circuito]
+    % TODO
+\end{lstlisting}
+
+    Como é possível notar através da Figura \ref{imagQ07relacaoEntreCorrentes}, a relação entre as correntes está próxima do esperado, dado que a corrente que passa em $M_4$ é aproximadamente 2 vezes maior que a corrente que passa em $M_3$, obedecendo a relação do espelho de corrente.
+
+    %\img{Relações entre correntes de $M_4$ e $M_3$.}{imagQ07relacaoEntreCorrentes} % XXX
+
+
+\textbf{8.} *Ajuste o valor de $R$ para que a corrente de saída em $V_{DD} = 3,0 V$ seja a desejada no projeto (valor nominal). Apresente então o gráfico $I_S x V_{DD}$.
+
+    Foi feita uma análise, varrendo o valor da resistência entre $9 k \Omega$ e $15 k \Omega$, e foi deterinado que o valor de $R$ que melhor se ajusta para obter-se $I_S = 1,95 \mu A$ foi $R = 12,86 k \Omega$, assim como demonstra a Figura \ref{imagQ08varreduraDaResistencia}.
+
+    %\img{Corrente X Resistência.}{imagQ08varreduraDaResistencia} % XXX
+
+    Utilizando um valor de $R = 12,86 k \Omega$, o gráfico de $I_S x V_{DD}$ obtido está representado na Figura \ref{imagQ08correntePorTensao}.
+
+    %\img{Corrente $$I_S X Tensão $V_{DD}$.}{imagQ08correntePorTensao} % XXX
+
+
+\textbf{9.} *Determine a faixa de valores de $V_{DD}$ para a qual a condição $I_0 \left(0,98\right) < I_S < I_0 \left(1,02\right)$ seja observada, onde $I_0$ é a corrente para $V_{DD} = 3,0 V$. Qual é o valor mínimo de $V_{DD}$ achado?
+>>>>>>> 75b1bb7f6bb4e03fad5e90d5895b7ab73cd3faf3
 Chamaremos a faixa de tensão encontrada acima de faixa de operação do circuito para variações de $\pm 2\%$.
+
+    O esperado é que a corrente na saída esteja entre os valores \\
+        $ 1,91 \mu A < I_S < 1,99 \mu A $ \\
+dado que o valor ideal seria $I_S = 1,95 \mu A$.
+
+    Analisando a Figura \ref{imagQ09faixaDeTensao}, obtem-se que a faixa de valores de tensão que obedecem a condição desejada é $2,8 V < V_{DD} < 3,2 V$.
+
+    %\img{Faixa de tensão adequada.}{imagQ09faixaDeTensao} % XXX
+
 
 \textbf{10.} *Caso desejemos ter pequenas variações de corrente mesmo para uma ampla variação da tensão de alimentação, quais modificações podem ser realizadas no projeto?
 
+    Para obtermos uma ampla faixa de operação, uma das opções é utilizar uma fonte de corrente de Wilson que aumentará a impedência de saída, tornando a saída mais estável, já que o circuito torna-se menos sensível a variações em $V_{DS}$. Outra alternativa é aumentar o valor do comprimento \emph{L} dos transistores, que diminuirá o efeito de modulação de canal de acordo com a variação da tensão de alimentação.
+
+
 \textbf{11.} *Reprojetar o circuito com modificações para reduzir a sua sensibilidade a variações de $V_{DD}$. Tomar cuidado para que as dimensões não aumentem muito e que a faixa de operação não seja muito reduzida. Apresente o esquemático do circuito, com as dimensões escolhidas, e o novo gráfico $I_S x V_{DD}$.
+
+    O novo circuito projetado é o que está representado na Figura \ref{imagQ11novoCircuito}.
+
+    %\img{Circuito reprojetado}{imagQ11novoCircuito} % TODO
+
+    Neste novo circuito, foi adicionado um espelho de corrente de Wilson nos transistores N e aumentado o tamanho dos transistores P. A melhor solução seria aumentar o tamanho de todos os transistores e também utilizar dois espelhos de Wilson, porém aumentar o tamanho dos transistores N não seria uma boa ideia, já que eles já são bastante grandes. Utilizar dois espelhos de Wilson também não é uma boa solução por elevar demais a tensão mínima de funcionamento do circuito.
+
+    O valor da resistência foi reajustado para $10,88 k \Omega$. O gráfico de $I_S x V_{DD}$ está representado na Figura \ref{imagQ11correntePorTensao}
+
+    %\img{Corrente $I_S$ X Tensão $V_{DD}$}{imagQ11correntePorTensao} % TODO
+
 
 \textbf{12.} *Alguns circuitos analógicos necessitam de um circuito de start-up para começarem a funcionar (por exemplo, fontes de corrente, osciladores, etc.). Verifique por simulação se a fonte de corrente necessita de um start-up (considere algumas tensões iniciais nos nós do circuito e verifique, através de simulação de transitório, se o circuito vai ou não para o ponto de operação correto). Caso haja alguma condição inicial em que o circuito não funcione, apresente figura da simulação. Qual comando deve ser utilizado para impor condições iniciais, \emph{.IC} ou \emph{.NODESET}?
 
