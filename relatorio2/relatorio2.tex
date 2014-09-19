@@ -8,7 +8,7 @@
 \makelists
 
 \section*{Introdução}
-TODO % TODO
+Nesta pratica foi realizado um trabalho extensivo com fontes geradoras de corrente de referência. % TODO
 
 \section*{Resumo}
 Neste laboratório será projetado um circuito para gerar corrente de referência. Para isso serão vistos o modo de operação de fraca inversão em transistores e conceitos de casamento de componentes. Na fonte de corrente final serão colocados \emph{Pads} de alimentação.
@@ -104,7 +104,7 @@ onde $V_G$, $V_S$ e $V_D$ são, respectivamente, as tensão de \emph{gate}, \emph{
 
 
 \textbf{3.} *Considere os dois espelhos de corrente apresentdos na Figura \ref{imagQ03espelhos}. Um deles é um espelho de convencional e o outro é um espelho de corrente de Wilson. \\
-    \textbf{3.1} Em que circunstância, no espelho convencional, a correne de saída $I_0$ é exatamente igual à correne $I_{REF}$. \\
+    \textbf{3.1} Em que circunstância, no espelho convencional, a corrente de saída $I_0$ é exatamente igual à corrente $I_{REF}$. \\
     \textbf{3.2} Determine a impedância de saída do espelho convencional. \\
     \textbf{3.3} Caso este valor for pequeno qual é a consequência? Como ele pode ser aumentado? \\
     \textbf{3.4} Determine a impedância de saída do espelho Wilson e mostre que é aproximadamente igual a \\
@@ -113,14 +113,21 @@ onde $V_G$, $V_S$ e $V_D$ são, respectivamente, as tensão de \emph{gate}, \emph{
     \end{equation}
         para o caso onde $M_1$ é igual a $M_2$ (ignore o efeito de corpo) \\
     \textbf{3.5} Compare a impedância de saída das duas configurações. Qual é maior? \\
-    \textbf{3.5} Qual a desvantagem do espelho de Wilson? \\
+    \textbf{3.6} Qual a desvantagem do espelho de Wilson? \\
 
     \img{a)Espelho de corrente convencional; b)Espelho de corrente Wilson}{imagQ03espelhos}{imagQ03espelhos}
+
+    Para que a corrente de saída $I_0$ seja exatamente à corrente $I_{REF}$, os transistores devem possuir a mesma relação $(W/L)$ e também tensões entre \emph{source} e dreno iguais. \\
+    \\ % TODO 3.2
+    Caso a impedância de saída do espelho convencional seja pequena, haverá uma maior oscilação na corrente de saída em função da tensão aplicada no espelho. Para se aumentar a impedância, melhorar a estabilidade da saída e, consequentemente, tornar o circuito melhor (por manter uma corrente de saída mais constante), pode-se aumentar o comprimento do dos transistores. \\
+    \\ % TODO 3.4
+    Sabendo que $g_m \gg g_0 \Rightarrow \frac{g_m}{g_0} \gg 1 $. Como a impedância no espelho de corrente de Wilson é, tipicamente, $g_m$ e a do espelho de corrente convencional é $g_0$. Portanto a impedância do espelho de corrente de Wilson é maior. \\
+    Uma das desvantagens da utilização do espelho de Wilson é que o circuito precisará de uma tensão mínima de alimentação maior para o seu correto funcionamento \\
 
 
 \textbf{4.} *Considere o circuito da figura abaixo (Fig. \ref{imagQ04gerCorrenteRef}). Este circuito é formado pelo espelho de corrente $M_3$, $M_4$ e $M_5$ e os transistores trabalhando em fraca inversão $M_1$ e $M_2$. Ele serve para gerar uma corrente de referência $I_S$. Considere que
     -- $\left( \frac{W}{L}_{M_4} \right)$ é \textbf{M} vezes maior que $\left( \frac{W}{L}_{M_3} \right)$;
-    -- $\left( \frac{W}{L}_{M_2} \right)$ é \textbf{N} vezes maior que $\left( \frac{W}{L}_{M_1} \right)$ ();
+    -- $\left( \frac{W}{L}_{M_2} \right)$ é \textbf{N} vezes maior que $\left( \frac{W}{L}_{M_1} \right)$ (ambos operam em fraca inversão);
     -- $\left( \frac{W}{L}_{M_5} \right)$ é \textbf{X} vezes maior que $\left( \frac{W}{L}_{M_3} \right)$.
 Mostre que a corrente de saída tem, quando os transistores $M_3$, $M_4$ e $M_5$ estão em saturação, a expressão
     \begin{equation}
@@ -344,21 +351,22 @@ dado que o valor ideal seria $I_S = 1,95 \mu A$.
 
 \textbf{12.} *Alguns circuitos analógicos necessitam de um circuito de \emph{start-up} para começarem a funcionar (por exemplo, fontes de corrente, osciladores, etc.). Verifique por simulação se a fonte de corrente necessita de um \emph{start-up} (considere algumas tensões iniciais nos nós do circuito e verifique, através de simulação de transitório, se o circuito vai ou não para o ponto de operação correto). Caso haja alguma condição inicial em que o circuito não funcione, apresente figura da simulação. Qual comando deve ser utilizado para impor condições iniciais, \textbf{.IC} ou \textbf{.NODESET}?
 
-    O comando a ser utilizado é o \textbf{.IC}. % TODO discorrer mais sobre - teórica
-    Na condição inicial em que a tensão no \emph{gate} dos transistores $M_6$ e $M_7$ equivale a $0 V$, o circuito não volta a funcionar, assim como demonstra a Figura \ref{} % XXX mudar o nome dos transistores
+    O comando a ser utilizado para impor condições iniciais é o \textbf{.IC}, pois ele fixa uma tensão em num determinado ponto de operação. \\
+    Na condição inicial em que a tensão no \emph{gate} dos transistores $M_{N2}$ e $M_{N4}$ equivale a $0 V$, o circuito não volta a funcionar, assim como demonstra a Figura \ref{imagQ12naoFuncional}, portanto, um circuto de \emph{start-up} é necessário.
 
-    % TODO terminar
-
-    %\img{}{}{} % XXX
-    %\img{}{}{} % XXX
+    \img{Circuito não funcional}{imagQ12naoFuncional}{imagQ12naoFuncional}
 
 
 \textbf{13.} Ajustar o valor de $R$ para que a corrente em $M_5$ tenha o valor nominal desejado quando $V_{DD} = 3,0 V$.
 
+    O valor ajustado, para que a corrente em $M_5$ tenha o valor de $1,95 \mu A$ quando $V_{DD} = 3,0 V$, é $R = 10,88 k \Omega$.
+
 
 \textbf{14.} *Como deve ser desenhado o resistor (verificar no manual ENG-183\_rev3.pdf como é feita a definição de um resistor)? Qual material é adequado para construí-lo?
 
-    % TODO teórica
+    Segundo o manual, o resistor deve ser construído com RPOLYH, pois possui alta resistência o que auxília em ter um componente menor. O desenho do transistor é conforme mostra a Figura \ref{imagQ14desenhoResistor} que se encontra no manual ENG-183\_rev3.pdf na página 44.
+
+    \img{Desenho do resistor RPOLYH}{imagQ14desenhoResistor}{imagQ14desenhoResistor}
 
 
 \textbf{15.} *Fazer a fonte de corrente (esquemático, símbolo com a localização do \emph{layout}, \emph{layout}, verificações, LVS, etc.). Observe que: \\
@@ -381,10 +389,11 @@ Obs.: O extrator gera a linha do resistor erradamente. O resistor deve ser um su
     A corrente de saída obtida, para $V_{DD} = 3,0 V$, é de $1,95 \mu A$, assim como mostra a Figura \ref{imagQ16correnteSaida}.
     Os resultados obtidos através da simulação Monte Carlo estão respresentados a Figura \ref{imagQ16histMonteCarlo}, onde o valor médio é $1,95 \mu m$. % XXX verificar a corretudo do valor médio
 
-    Ao analisar o gráfico da Figura \ref{imagQ16} %% TODO terminar essa questão
+    Ao analisar o gráfico da Figura \ref{imagQ16valorMaximoFuncionamento}, nota-se que o valor da tensão máxima a ser aplicada na saída e manter a fonte funcionando é $2,70 V$.
 
     \img{Corrente de saída do circuito}{imagQ16correnteSaida}{imagQ16correnteSaida}
     \img{Histograma da corrente de saída quando $V_{DD} = 3,0 V$}{imagQ16histMonteCarlo}{imagQ16histMonteCarlo}
+    \img{Corrente X Tensão na saída}{imagQ16valorMaximoFuncionamento}{imagQ16valorMaximoFuncionamento}
 
 
 \textbf{17.} *Realize a simulação DC do circuito com a temperatura variando de -20ºC até 100ºC, em passos de 5,0ºC ($V_{DD} = 3,0 V$). Abaixo há um exemplo de como devem ficar os comandos: \\
@@ -394,11 +403,40 @@ Obs.: O extrator gera a linha do resistor erradamente. O resistor deve ser um su
     .probe DC Id(Mp1)
 \end{verbatim}
 
+    O código fonte \ref{cfQ17simulação} mostra como foi realizada a simulação.
+
+\begin{lstlisting}[caption=Simulação para temperatura variando de -20ºC até 100ºC, label=cfQ17simulação]
+    Vdd VDD 0 3
+    Vss VSS 0 0
+    .CONNECT OUT 0
+
+    .OPTION PRECISE
+    .DC TEMP -20 100 5
+    .PROBE DC Is(mM12)
+\end{lstlisting}
+
 
 \textbf{18.} *Apresente a curva $I_S$ x Temperatura e determine os valores extremos da corrente. Compare a dependência teórica de IS com a temperatura e os resultados?
 
+    O gráfico representado pela Figura \ref{imagQ18correnteTemperatura} mostra que os valores extremos de corrente são $1,62 \mu A$ para -20ºC e $2,48 \mu A$ para 100ºC.
+
+    \img{Corrente X Temperatura}{imagQ18correnteTemperatura}{imagQ18correnteTemperatura}
+
+    O comportamento linear, diretamente proporcional da corrente com a temperatura, pode ser explicado através da equação
+    \begin{equation}
+        $I_S = X \cdot \frac{V_T}{R} \cdot ln(M \cdot N)$
+    \end{equation}
+    Sabendo que $V_T = \frac{k \cdot T}{q} $, obtem-se
+    \begin{eqnarray}
+                    $I_S &    =    & X \cdot \frac{k \cdot T}{R \cdot q} \cdot ln(M \cdot N)$ \\
+        \Rightarrow $I_S & \propto & T$ \\
+    \end{eqnarray}
+    e com isso, é fácil notar a proporção linear que existe entre temperatura e resistência.
+
 
 \textbf{19.} *Vamos determinar a influência de ruídos da tensão de alimentação na corrente de saída. Para isso podemos utilizar simulações do tipo AC. O que faz uma simulação dessas?
+
+    Uma simulação do tipo AC analisa a resposta em frequência do sistema usando uma simulação baseada em pequenos sinais.
 
 
 \textbf{20.} *Aplique um sinal AC na tensão de alimentação e faça uma simulação AC de 1,0 KHz a 100 MHz analisando 10 pontos por década (ver comando .AC). Abaixo há um exemplo de como devem ficar os comandos: \\
@@ -408,22 +446,43 @@ Obs.: O extrator gera a linha do resistor erradamente. O resistor deve ser um su
     .probe  AC Id(Mn4) Vd(5) v(6)
 \end{verbatim}
 
+    O código fonte \ref{cfQ20simulação} mostra como foi realizada a simulação.
+
+\begin{lstlisting}[caption=Simulação AC de 1,0 KHz a 100 MHz, label=cfQ20simulação]
+    Vdd VDD 0 3V AC 0.1V
+    Vss VSS 0 0V
+    .CONNECT OUT 0
+
+    .AC DEC 10 1KHz 10MegHz
+    .PROBE AC Is(mM12) V(VDD)
+\end{lstlisting}
+
 
 \textbf{21.} *Apresente o gráfico $I_S$ (em dB) x freqüência (em escala logarítmica)(mostre os comando do ELDO utilizados). Caso se deseje que o ruído na saída se mantenha inferior 1\% da corrente nominal, para um ruído de 0,1 V na fonte de alimentação, qual a máxima freqüência que o ruído pode ter?
+
+    O diagrama de Bode da corrente está representado na Figura \ref{imagQ21bodeCorrente}. 1\% da corrente nominal, equivale a $1,95 \cdot 10^{-8} A$, que, transformando para dB, $20 \cdot log(I_S / 100)$, o que implica em um valor de $-154,20 dB$. Ao analisar o diagrama, infere-se que o valor de máxima frequência é $0,25 MHz$.
+
+    \img{Gráfico de $I_S$ (em dB) X Frequência (Hz)}{imagQ21bodeCorrente}{imagQ21bodeCorrente}
 
 
 \textbf{22.} *Caso a fonte de alimentação apresente ruídos acima de 0,1 V em freqüências acima da permitida, qual providência simples pode ser tomada para reduzi-los?
 
+    A simples adição de um capacitor entre a alimentação do circuito e os componentes do mesmo auxiliaria na filtragem deste ruído extra, agindo como se fosse um passa-baixa.
+
 
 \textbf{23.} *Tecnologias CMOS são desenvolvidas para fornecer transistores MOS, NMOS e PMOS. Apesar disso, não raramente são também disponibilizados transistores bipolares. Verfique os transistores bipolares LAT2 e Vert10 fornecidos pela AMS, manual ENG-183. Que tipo de transistores são (NPN ou PNP) e por que são chamados de lateral, LAT2, e vertical, VERT10?
 
+    LAT2 é um transistor bipolar PNP lateral de emissor com $2 \mu m$ por $2 \mu m$. VERT10 é um transistor bipolar PNP vertical de emissor com $10 \mu m$ por $10 \mu m$. Os nomes, lateral e vertical, fazem menção a direção da corrente.
 
-\textbf{24.} *Verifique o comportamento do transistor VERT10 com a temperatura. Para isso conecte o emissor dele a uma fonte de corrente (valor de corrente igual ao que você usou no projeto), a base e coletor ao terra e faça. Apresente o gráfico VBE x Temperatura. A declaração do transistor é:
-    Qname coletor base emissor VERT10
-O modelo VERT10 encontra-se no fim do material.
-Grandezas PTAT (Proportional To Absolute Temperature), como a corrente da fonte de corrente, e CTAT (Complementary To Absolute Temperature), como o VBE de um bipolar, podem ser utilizadas para gerar um sinal independente da temperatura. Para isto basta somá-las, cada uma multiplicada por um coeficiente de ajuste, de forma que as variações com a temperatura se cancelem, como mostra a Figura \ref{imagQ24somaPTATeCTAT}.
 
-    \img{Soma de grandezas PTAT e CTAT.}{imagQ24somaPTATeCTAT}{imagQ24somaPTATeCTAT} 
+\textbf{24.} *Verifique o comportamento do transistor VERT10 com a temperatura. Para isso conecte o emissor dele a uma fonte de corrente (valor de corrente igual ao que você usou no projeto), a base e coletor ao terra e faça. Apresente o gráfico $V_{BE}$ x Temperatura. A declaração do transistor é:\\
+\end{verbatim}
+    Qname coletor base emissor VERT10 \\
+\end{verbatim}
+O modelo VERT10 encontra-se no fim do material. \\
+Grandezas PTAT (Proportional To Absolute Temperature), como a corrente da fonte de corrente, e CTAT (Complementary To Absolute Temperature), como o $V_{BE}$ de um bipolar, podem ser utilizadas para gerar um sinal independente da temperatura. Para isto basta somá-las, cada uma multiplicada por um coeficiente de ajuste, de forma que as variações com a temperatura se cancelem, como mostra a Figura \ref{imagQ24somaPTATeCTAT}.
+
+    \img{Soma de grandezas PTAT e CTAT.}{imagQ24somaPTATeCTAT}{imagQ24somaPTATeCTAT}
 
 Um circuito que realiza semelhante soma é apresentado na Figura \ref{imagQ24fonteTensaoReferencia}.
 
@@ -433,23 +492,43 @@ Nela podemos ver que:
   -- a tensão de saída é igual a soma entre a tensão em $R_2$, ($I_R \cdot R_2$) que é PTAT, e a tensão $V_{BE}$ do transistor;
   -- o valor de $R_2$ serve para ajustar a relação entre essas duas tensões.
 
+    O gráfico de $V_{BE}$ x Temperatura está representado na Figura \ref{imagQ24tensaoTemperatura}
 
-\textbf{25.} *Projete uma fonte de tensão de referencia similar a da Figura \ref{imagQ24fonteTensaoReferencia} mas utilize a fonte de corrente que você projetou (questão 15). Na fonte de tensão faça com que a corrente do bipolar seja igual à corrente que passa pelo resistor $R_1$ (Figura \ref{imagQ24fonteTensaoReferencia}). O valor de $R_2$ deve ser ajustado para que Coeficiente de Temperatura\footnote{Coeficiente de Temperatura: parte por milhão por grau Celsius} seja inferior a 50 ppm/ºC, para a temperaturas variando entre -10ºC e 100ºC. Apresente o esquemático do circuito completo, as dimensões dos transistores e os valores dos resistores. Apresente também o gráfico VREF x Temperatura.\\
-    $V_MAX$ = Máximo valor de $V_REF$ para $t \in [-10ºC, 100ºC]$\\
-    $V_MIN$ = Mínimo valor de $V_REF$ para $t \in [-10ºC, 100ºC]$
+    \img{Tensão $V_{BE}$ x Temperatura}{imagQ24fonteTensaoReferencia}{imagQ24fonteTensaoReferencia}
+
+
+\textbf{25.} *Projete uma fonte de tensão de referencia similar a da Figura \ref{imagQ24fonteTensaoReferencia}, mas utilize a fonte de corrente que você projetou (questão 15). Na fonte de tensão faça com que a corrente do bipolar seja igual à corrente que passa pelo resistor $R_1$ (Figura \ref{imagQ24fonteTensaoReferencia}). O valor de $R_2$ deve ser ajustado para que Coeficiente de Temperatura\footnote{Coeficiente de Temperatura: parte por milhão por grau Celsius} seja inferior a 50 ppm/ºC, para a temperaturas variando entre -10ºC e 100ºC. Apresente o esquemático do circuito completo, as dimensões dos transistores e os valores dos resistores. Apresente também o gráfico $V_{REF}$ x Temperatura. \\
+    $V_{MAX}$ = Máximo valor de $V_{REF}$ para $t \in [-10ºC, 100ºC]$ \\
+    $V_{MIN}$ = Mínimo valor de $V_{REF}$ para $t \in [-10ºC, 100ºC]$ \\
     \begin{equation}
         Coeficiente de Temperatura = \frac{V_MAX - V_MIN}{V_REF} \cdot \frac{1}{100 - \left(-10\right)} \cdot 10^6
     \end{equation}
 
 Obs.: Caso a tensão de saída esteja variando muito com a temperatura, reajuste o valor de $R_2$.
 
+    O esquemático está representado na Figura \ref{imagQ25esquematico}. \\ % XXX falta obter essa imagem
+    As dimensões são do transistores PMOS são $.$ e $.$ e as do NMOS são $.$ e $.$. \\ % TODO preencher valores
+    As resistências utilizadas foram $R_1 = 10,88 k \Omega$ e $R_2 = 268,00 k \Omega$. \\
+    O gráfico de $V_{REF}$ x Temperatura está representado na Figura \ref{imagQ25tensaoRefTemperatura}. \\
+    O gráfico do coeficiente de temperatura está representado na Figura \ref{imagQ25coefTemperatura}. \\
 
-\textbf{26.} *Desenhe o \emph{layout} da fonte de tensão completa. Utilize o transistor vertical PRIMLAB/VERT10 da biblioteca. Ajuste o comprimento de $R_2$ no \emph{layout} para que o coeficiente de temperatura do circuito esxtraído se mantenha abaixo de 50 ppm/ºC.
+    \img{Esquemático do circuito}{imagQ25esquematico}{imagQ25esquematico}
+    \img{Gráfico de $V_{REF}$ x Temperatura}{imagQ25tensaoRefTemperatura}{imagQ25tensaoRefTemperatura}
+    \img{Coeficiente de temperatura}{imagQ25coefTemperatura}{imagQ25coefTemperatura}
+
+
+\textbf{26.} *Desenhe o \emph{layout} da fonte de tensão completa. Utilize o transistor vertical PRIMLAB/VERT10 da biblioteca. Ajuste o comprimento de $R_2$ no \emph{layout} para que o coeficiente de temperatura do circuito esxtraído se mantenha abaixo de 50 ppm/ºC. \\
 Obs.: o transistor bipolar extraído vem com o parâmetro Area. Apague este parâmetro senão ficará errado.
+
+    O \emph{layout} da fonte de tensão complet está representado na Figura \ref{imag26layoutFonte}. % XXX falta obter essa imagem
+
+    \img{\emph{Layout} da fonte de tensão completa}{imag26layoutFonte}{imag26layoutFonte}
 
 
 \textbf{27.} *Adicione ao \emph{layout Pads} de $V_{DD}$ e GND. Passar o DRC para verificar se tudo está correto. Quais são as dimensões do circuito com os \emph{Pads}? Apresente o \emph{layout} do circuito e o gráfico $V_REF$ x Temperatura para valores de $V_{DD}$ de 2,0 V, 2,5 V e 3,0V.
 Obs.: um bloco de \emph{Pad} pode ser encontrado na biblioteca IOLIB\_4M, célula g-padonly.
+
+    % TODO
 
 
     Alguns dados adicionais: os transistores MOS, apesar de terem em primeira ordem um funcionamento simples, precisam de modelos que são cada vez mais sofisticados. Um dos modelos mais conhecidos, e não por isso o melhor, é o BSIM (Berkeley Short Channel IGFET Model, http://www-device.eecs.berkeley.edu/~bsim3/). Este modelo teve diversas edições e versões. Abaixo há exemplo dos parâmetros do modelo BSIM3V3 para a tecnologia CMOS $0,35 \mu m$ da AMS.
