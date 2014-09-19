@@ -387,7 +387,7 @@ Quais são as dimensões do circuito completo (utilizar o comando \textbf{ \emph{R
 Obs.: O extrator gera a linha do resistor erradamente. O resistor deve ser um subcircuito. Acrescente X no inicio da linha gerada para o resistor. Adicionalmente deve ser acrescentado ao arquivo de simulação o modelo do resistor que se encontra em /local/tools/dkit/ams\_3.70/c35/eldo/restm.mod.
 
     A corrente de saída obtida, para $V_{DD} = 3,0 V$, é de $1,95 \mu A$, assim como mostra a Figura \ref{imagQ16correnteSaida}.
-    Os resultados obtidos através da simulação Monte Carlo estão respresentados a Figura \ref{imagQ16histMonteCarlo}, onde o valor médio é $1,95 \mu m$. % XXX verificar a corretudo do valor médio
+    Os resultados obtidos através da simulação Monte Carlo estão respresentados a Figura \ref{imagQ16histMonteCarlo}, onde o valor médio é $1,98 \mu m$.
 
     Ao analisar o gráfico da Figura \ref{imagQ16valorMaximoFuncionamento}, nota-se que o valor da tensão máxima a ser aplicada na saída e manter a fonte funcionando é $2,70 V$.
 
@@ -507,7 +507,7 @@ Nela podemos ver que:
 Obs.: Caso a tensão de saída esteja variando muito com a temperatura, reajuste o valor de $R_2$.
 
     O esquemático está representado na Figura \ref{imagQ25esquematico}. \\
-    As dimensões são do transistores PMOS são $.$ e $.$ e as do NMOS são $.$ e $.$. \\ % TODO preencher valores
+    As dimensões são do transistores PMOS são $W = 19,8 \mu m$ e $L = 24 \mu m$ (dividido em 2 de $L = 12 \mu m$) e as do NMOS são $W = 91,1 \mu m$ e $L = 1 \mu m$. \\
     As resistências utilizadas foram $R_1 = 10,88 k \Omega$ e $R_2 = 268,00 k \Omega$. \\
     O gráfico de $V_{REF}$ x Temperatura está representado na Figura \ref{imagQ25tensaoRefTemperatura}. \\
     O gráfico do coeficiente de temperatura está representado na Figura \ref{imagQ25coefTemperatura}. \\
@@ -520,21 +520,26 @@ Obs.: Caso a tensão de saída esteja variando muito com a temperatura, reajuste o
 \textbf{26.} *Desenhe o \emph{layout} da fonte de tensão completa. Utilize o transistor vertical PRIMLAB/VERT10 da biblioteca. Ajuste o comprimento de $R_2$ no \emph{layout} para que o coeficiente de temperatura do circuito esxtraído se mantenha abaixo de 50 ppm/ºC. \\
 Obs.: o transistor bipolar extraído vem com o parâmetro Area. Apague este parâmetro senão ficará errado.
 
-    O \emph{layout} da fonte de tensão complet está representado na Figura \ref{imagQ26layoutFonte}.
+    O \emph{layout} da fonte de tensão completa está representado na Figura \ref{imagQ26layoutFonte}.
 
     \img{\emph{Layout} da fonte de tensão completa}{imagQ26layoutFonte}{imagQ26layoutFonte}
 
 
-\textbf{27.} *Adicione ao \emph{layout Pads} de $V_{DD}$ e GND. Passar o DRC para verificar se tudo está correto. Quais são as dimensões do circuito com os \emph{Pads}? Apresente o \emph{layout} do circuito e o gráfico $V_REF$ x Temperatura para valores de $V_{DD}$ de 2,0 V, 2,5 V e 3,0V.
+\textbf{27.} *Adicione ao \emph{layout Pads} de $V_{DD}$ e $GND$. Passar o DRC para verificar se tudo está correto. Quais são as dimensões do circuito com os \emph{Pads}? Apresente o \emph{layout} do circuito e o gráfico $V_{REF}$ x Temperatura para valores de $V_{DD}$ de 2,0 V, 2,5 V e 3,0V. \\
 Obs.: um bloco de \emph{Pad} pode ser encontrado na biblioteca IOLIB\_4M, célula g-padonly.
 
-    % TODO
+    O \emph{layout} do circuito está representado na Figura \ref{imagQ27layoutCircuito}, com dimensões de $114,581 \mu m$ por $261,850 \mu m$, o que resulta em uma área do circuito de $30.003,0 \mu m^2$. % Pontos (81.307, -93.450), (195.825, 168.400) \\
+As dimensões do circuito são $114,218 \mu m$ por $40,472 \mu m$, o que resulta em uma área do circuito de $4.622,631 \mu m^2$. % Pontos (-13.593, 187.291), (100.625, 227.763)
+    O gráfico $V_{REF}$ x Temperatura para valores de $V_{DD}$ de 2,0 V, 2,5 V e 3,0V estão representados na Figura \ref{imagQ27refTemp}.
+
+    \img{\emph{Layout} do circuito com \emph{Pads}}{imagQ27layoutCircuito}{imagQ27layoutCircuito}
+    \img{$V_{REF}$ x Temperatura}{imagQ27refTemp}{imagQ27refTemp}
 
 
     Alguns dados adicionais: os transistores MOS, apesar de terem em primeira ordem um funcionamento simples, precisam de modelos que são cada vez mais sofisticados. Um dos modelos mais conhecidos, e não por isso o melhor, é o BSIM (Berkeley Short Channel IGFET Model, http://www-device.eecs.berkeley.edu/~bsim3/). Este modelo teve diversas edições e versões. Abaixo há exemplo dos parâmetros do modelo BSIM3V3 para a tecnologia CMOS $0,35 \mu m$ da AMS.
 
-Obs.:   U0 é a mobilidade inicial e tem unidade de $cm^2$/($V \cdot s$);
-        TOX é a espessura do óxido em metros;
+Obs.:   U0 é a mobilidade inicial e tem unidade de $cm^2$/($V \cdot s$); \\
+        TOX é a espessura do óxido em metros; \\
             $\varepsilon_{ox} = 3,5 x 10^{-13} F/cm$
 
 
