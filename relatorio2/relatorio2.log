@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Cygwin) (preloaded format=pdflatex 2014.8.29)  19 SEP 2014 17:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Cygwin) (preloaded format=pdflatex 2014.8.29)  19 SEP 2014 18:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -881,7 +881,7 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 96.
  (./comandos.tex))
 (./relatorio2.aux (./capa.aux)
 
-LaTeX Warning: Label `imagQ24fonteTensaoReferencia' multiply defined.
+LaTeX Warning: Label `imagQ3peqSinaisEspelho' multiply defined.
 
 )
 \openout1 = `relatorio2.aux'.
@@ -1127,18 +1127,19 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 8.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 8.
- (./relatorio2.lof)
-\tf@lof=\write8
-\openout8 = `relatorio2.lof'.
-
+ (./relatorio2.lof
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 8.
+(babel)             in language  on input line 25.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 8.
+(babel)             in language  on input line 25.
  [2
 
 
-]
+])
+\tf@lof=\write8
+\openout8 = `relatorio2.lof'.
+
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1226,24 +1227,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 113--117
 
  []
 
-<imagQ03espelhos.png, id=139, 799.48688pt x 439.6425pt>
+<imagQ03espelhos.png, id=147, 799.48688pt x 439.6425pt>
 File: imagQ03espelhos.png Graphic file (type png)
 
 <use imagQ03espelhos.png>
 Package pdftex.def Info: imagQ03espelhos.png used on input line 118.
 (pdftex.def)             Requested size: 341.43307pt x 187.75458pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--126
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
 
  []
 
+<imagQ3peqSinaisEspelho.png, id=148, 463.7325pt x 102.3825pt>
+File: imagQ3peqSinaisEspelho.png Graphic file (type png)
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--126
+<use imagQ3peqSinaisEspelho.png>
+Package pdftex.def Info: imagQ3peqSinaisEspelho.png used on input line 124.
+(pdftex.def)             Requested size: 341.43307pt x 75.38223pt.
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 120--126
+Underfull \hbox (badness 10000) in paragraph at lines 128--129
 
  []
 
@@ -1254,15 +1256,22 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 126.
+(babel)             in language  on input line 129.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 126.
+(babel)             in language  on input line 129.
 [9 <./imagQ03espelhos.png>]
-<imagQ04getCorrenteRef.png, id=148, 706.64pt x 706.64pt>
+<imagQ3peqSinaisWilson.png, id=156, 386.19281pt x 182.18062pt>
+File: imagQ3peqSinaisWilson.png Graphic file (type png)
+
+<use imagQ3peqSinaisWilson.png>
+Package pdftex.def Info: imagQ3peqSinaisWilson.png used on input line 132.
+(pdftex.def)             Requested size: 341.43307pt x 161.0672pt.
+
+<imagQ04getCorrenteRef.png, id=162, 706.64pt x 706.64pt>
 File: imagQ04getCorrenteRef.png Graphic file (type png)
 
 <use imagQ04getCorrenteRef.png>
-Package pdftex.def Info: imagQ04getCorrenteRef.png used on input line 137.
+Package pdftex.def Info: imagQ04getCorrenteRef.png used on input line 169.
 (pdftex.def)             Requested size: 341.43307pt x 341.43687pt.
 
 
@@ -1272,9 +1281,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 160.
+(babel)             in language  on input line 175.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 160.
+(babel)             in language  on input line 175.
 [10]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1283,10 +1292,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 160.
+(babel)             in language  on input line 175.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 160.
-[11 <./imagQ04getCorrenteRef.png>]
+(babel)             in language  on input line 175.
+[11 <./imagQ3peqSinaisEspelho.png> <./imagQ3peqSinaisWilson.png>]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1294,10 +1303,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 192.
+(babel)             in language  on input line 175.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 192.
-[12]
+(babel)             in language  on input line 175.
+[12 <./imagQ04getCorrenteRef.png>]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1305,9 +1314,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 237.
+(babel)             in language  on input line 205.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 237.
+(babel)             in language  on input line 205.
 [13]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1316,32 +1325,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 274.
+(babel)             in language  on input line 242.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 274.
-[14] <imagQ07relacaoEntreCorrentes.jpg, id=195, 1041.8925pt x 810.02625pt>
-File: imagQ07relacaoEntreCorrentes.jpg Graphic file (type jpg)
-
-<use imagQ07relacaoEntreCorrentes.jpg>
-Package pdftex.def Info: imagQ07relacaoEntreCorrentes.jpg used on input line 30
-8.
-(pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
-
-<imagQ08varreduraDaResistencia.jpg, id=197, 1041.8925pt x 810.02625pt>
-File: imagQ08varreduraDaResistencia.jpg Graphic file (type jpg)
-
-<use imagQ08varreduraDaResistencia.jpg>
-Package pdftex.def Info: imagQ08varreduraDaResistencia.jpg used on input line 3
-15.
-(pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
-
-<imagQ08correntePorTensao.jpg, id=199, 1041.8925pt x 810.02625pt>
-File: imagQ08correntePorTensao.jpg Graphic file (type jpg)
-
-<use imagQ08correntePorTensao.jpg>
-Package pdftex.def Info: imagQ08correntePorTensao.jpg used on input line 319.
-(pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
-
+(babel)             in language  on input line 242.
+[14]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1349,9 +1336,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 324.
+(babel)             in language  on input line 277.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 324.
+(babel)             in language  on input line 277.
 [15]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1360,29 +1347,84 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 324.
+(babel)             in language  on input line 327.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 324.
-[16 <./imagQ07relacaoEntreCorrentes.jpg> <./imagQ08varreduraDaResistencia.jpg>]
-<imagQ09faixaDeTensao.jpg, id=237, 1041.8925pt x 810.02625pt>
+(babel)             in language  on input line 327.
+[16] <imagQ07relacaoEntreCorrentes.jpg, id=240, 1041.8925pt x 810.02625pt>
+File: imagQ07relacaoEntreCorrentes.jpg Graphic file (type jpg)
+
+<use imagQ07relacaoEntreCorrentes.jpg>
+Package pdftex.def Info: imagQ07relacaoEntreCorrentes.jpg used on input line 34
+0.
+(pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
+
+<imagQ08varreduraDaResistencia.jpg, id=242, 1041.8925pt x 810.02625pt>
+File: imagQ08varreduraDaResistencia.jpg Graphic file (type jpg)
+
+<use imagQ08varreduraDaResistencia.jpg>
+Package pdftex.def Info: imagQ08varreduraDaResistencia.jpg used on input line 3
+47.
+(pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
+
+<imagQ08correntePorTensao.jpg, id=244, 1041.8925pt x 810.02625pt>
+File: imagQ08correntePorTensao.jpg Graphic file (type jpg)
+
+<use imagQ08correntePorTensao.jpg>
+Package pdftex.def Info: imagQ08correntePorTensao.jpg used on input line 351.
+(pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 356.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 356.
+[17 <./imagQ07relacaoEntreCorrentes.jpg>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 356.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 356.
+[18 <./imagQ08varreduraDaResistencia.jpg> <./imagQ08correntePorTensao.jpg>]
+<imagQ09faixaDeTensao.jpg, id=265, 1041.8925pt x 810.02625pt>
 File: imagQ09faixaDeTensao.jpg Graphic file (type jpg)
 
 <use imagQ09faixaDeTensao.jpg>
-Package pdftex.def Info: imagQ09faixaDeTensao.jpg used on input line 331.
+Package pdftex.def Info: imagQ09faixaDeTensao.jpg used on input line 363.
 (pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
 
-<imagQ11novoCircuito.jpg, id=239, 593.21625pt x 481.8pt>
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 372.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 372.
+[19 <./imagQ09faixaDeTensao.jpg>]
+<imagQ11novoCircuito.jpg, id=272, 593.21625pt x 481.8pt>
 File: imagQ11novoCircuito.jpg Graphic file (type jpg)
 
 <use imagQ11novoCircuito.jpg>
-Package pdftex.def Info: imagQ11novoCircuito.jpg used on input line 343.
+Package pdftex.def Info: imagQ11novoCircuito.jpg used on input line 375.
 (pdftex.def)             Requested size: 341.43307pt x 277.31221pt.
 
-<imagQ11correntePorTensao.jpg, id=241, 813.0375pt x 647.41875pt>
+<imagQ11correntePorTensao.jpg, id=274, 813.0375pt x 647.41875pt>
 File: imagQ11correntePorTensao.jpg Graphic file (type jpg)
 
 <use imagQ11correntePorTensao.jpg>
-Package pdftex.def Info: imagQ11correntePorTensao.jpg used on input line 349.
+Package pdftex.def Info: imagQ11correntePorTensao.jpg used on input line 381.
 (pdftex.def)             Requested size: 341.43307pt x 271.8745pt.
 
 
@@ -1392,91 +1434,32 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 353.
+(babel)             in language  on input line 388.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 353.
-[17]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 353.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 353.
-[18 <./imagQ08correntePorTensao.jpg> <./imagQ09faixaDeTensao.jpg>]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 353.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 353.
-[19 <./imagQ11novoCircuito.jpg> <./imagQ11correntePorTensao.jpg>]
-<imagQ12naoFuncional.jpg, id=256, 1041.8925pt x 810.02625pt>
+(babel)             in language  on input line 388.
+[20 <./imagQ11novoCircuito.jpg>]
+<imagQ12naoFuncional.jpg, id=280, 1041.8925pt x 810.02625pt>
 File: imagQ12naoFuncional.jpg Graphic file (type jpg)
 
 <use imagQ12naoFuncional.jpg>
-Package pdftex.def Info: imagQ12naoFuncional.jpg used on input line 357.
+Package pdftex.def Info: imagQ12naoFuncional.jpg used on input line 389.
 (pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
 
-<imagQ14desenhoResistor.png, id=258, 869.2475pt x 629.35126pt>
+<imagQ14desenhoResistor.png, id=282, 869.2475pt x 629.35126pt>
 File: imagQ14desenhoResistor.png Graphic file (type png)
 
 <use imagQ14desenhoResistor.png>
-Package pdftex.def Info: imagQ14desenhoResistor.png used on input line 369.
+Package pdftex.def Info: imagQ14desenhoResistor.png used on input line 401.
 (pdftex.def)             Requested size: 341.43307pt x 247.20337pt.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <12> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 375.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 407.
 
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 376.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 376.
-[20 <./imagQ12naoFuncional.jpg>]
-<imagQ15layoutCircuito.jpg, id=264, 808.52063pt x 301.125pt>
+<imagQ15layoutCircuito.jpg, id=284, 808.52063pt x 301.125pt>
 File: imagQ15layoutCircuito.jpg Graphic file (type jpg)
 
 <use imagQ15layoutCircuito.jpg>
-Package pdftex.def Info: imagQ15layoutCircuito.jpg used on input line 380.
+Package pdftex.def Info: imagQ15layoutCircuito.jpg used on input line 412.
 (pdftex.def)             Requested size: 341.43307pt x 127.16544pt.
-
-<imagQ16correnteSaida.jpg, id=268, 813.0375pt x 271.0125pt>
-File: imagQ16correnteSaida.jpg Graphic file (type jpg)
-
-<use imagQ16correnteSaida.jpg>
-Package pdftex.def Info: imagQ16correnteSaida.jpg used on input line 394.
-(pdftex.def)             Requested size: 341.43307pt x 113.80792pt.
-
-<imagQ16histMonteCarlo.jpg, id=269, 1041.8925pt x 810.02625pt>
-File: imagQ16histMonteCarlo.jpg Graphic file (type jpg)
-
-<use imagQ16histMonteCarlo.jpg>
-Package pdftex.def Info: imagQ16histMonteCarlo.jpg used on input line 395.
-(pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
-
-<imagQ16valorMaximoFuncionamento.jpg, id=270, 1041.8925pt x 810.02625pt>
-File: imagQ16valorMaximoFuncionamento.jpg Graphic file (type jpg)
-
-<use imagQ16valorMaximoFuncionamento.jpg>
-Package pdftex.def Info: imagQ16valorMaximoFuncionamento.jpg used on input line
- 396.
-(pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 399--400
-
- []
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1485,9 +1468,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 410.
+(babel)             in language  on input line 420.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 410.
+(babel)             in language  on input line 420.
 [21]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1496,11 +1479,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 410.
+(babel)             in language  on input line 420.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 410.
-[22 <./imagQ14desenhoResistor.png> <./imagQ15layoutCircuito.jpg> <./imagQ16corr
-enteSaida.jpg>]
+(babel)             in language  on input line 420.
+[22 <./imagQ11correntePorTensao.jpg> <./imagQ12naoFuncional.jpg>]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1508,17 +1490,58 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 410.
+(babel)             in language  on input line 420.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 410.
-[23 <./imagQ16histMonteCarlo.jpg> <./imagQ16valorMaximoFuncionamento.jpg>]
-<imagQ18correnteTemperatura.jpg, id=287, 1041.8925pt x 810.02625pt>
+(babel)             in language  on input line 420.
+[23 <./imagQ14desenhoResistor.png> <./imagQ15layoutCircuito.jpg>]
+<imagQ16correnteSaida.jpg, id=301, 813.0375pt x 271.0125pt>
+File: imagQ16correnteSaida.jpg Graphic file (type jpg)
+
+<use imagQ16correnteSaida.jpg>
+Package pdftex.def Info: imagQ16correnteSaida.jpg used on input line 426.
+(pdftex.def)             Requested size: 341.43307pt x 113.80792pt.
+
+<imagQ16histMonteCarlo.jpg, id=302, 1041.8925pt x 810.02625pt>
+File: imagQ16histMonteCarlo.jpg Graphic file (type jpg)
+
+<use imagQ16histMonteCarlo.jpg>
+Package pdftex.def Info: imagQ16histMonteCarlo.jpg used on input line 427.
+(pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
+
+<imagQ16valorMaximoFuncionamento.jpg, id=303, 1041.8925pt x 810.02625pt>
+File: imagQ16valorMaximoFuncionamento.jpg Graphic file (type jpg)
+
+<use imagQ16valorMaximoFuncionamento.jpg>
+Package pdftex.def Info: imagQ16valorMaximoFuncionamento.jpg used on input line
+ 428.
+(pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 431--432
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 436.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 436.
+[24 <./imagQ16correnteSaida.jpg> <./imagQ16histMonteCarlo.jpg>]
+<imagQ18correnteTemperatura.jpg, id=310, 1041.8925pt x 810.02625pt>
 File: imagQ18correnteTemperatura.jpg Graphic file (type jpg)
 
 <use imagQ18correnteTemperatura.jpg>
-Package pdftex.def Info: imagQ18correnteTemperatura.jpg used on input line 423.
+Package pdftex.def Info: imagQ18correnteTemperatura.jpg used on input line 455.
 
 (pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 474--475
+
+ []
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1527,19 +1550,26 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 437.
+(babel)             in language  on input line 479.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 437.
-[24 <./imagQ18correnteTemperatura.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 442--443
+(babel)             in language  on input line 479.
+[25]
 
- []
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
-<imagQ21bodeCorrente.jpg, id=303, 1041.8925pt x 810.02625pt>
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 479.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 479.
+[26 <./imagQ16valorMaximoFuncionamento.jpg> <./imagQ18correnteTemperatura.jpg>]
+<imagQ21bodeCorrente.jpg, id=332, 1041.8925pt x 810.02625pt>
 File: imagQ21bodeCorrente.jpg Graphic file (type jpg)
 
 <use imagQ21bodeCorrente.jpg>
-Package pdftex.def Info: imagQ21bodeCorrente.jpg used on input line 465.
+Package pdftex.def Info: imagQ21bodeCorrente.jpg used on input line 497.
 (pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
 
 
@@ -1549,63 +1579,56 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 474.
+(babel)             in language  on input line 501.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 474.
-[25]
-Underfull \hbox (badness 10000) in paragraph at lines 478--479
-
- []
-
-<imagQ24somaPTATeCTAT.png, id=316, 979.66pt x 582.175pt>
+(babel)             in language  on input line 501.
+[27 <./imagQ21bodeCorrente.jpg>]
+<imagQ24somaPTATeCTAT.png, id=344, 979.66pt x 582.175pt>
 File: imagQ24somaPTATeCTAT.png Graphic file (type png)
 
 <use imagQ24somaPTATeCTAT.png>
-Package pdftex.def Info: imagQ24somaPTATeCTAT.png used on input line 485.
+Package pdftex.def Info: imagQ24somaPTATeCTAT.png used on input line 517.
 (pdftex.def)             Requested size: 341.43307pt x 202.89374pt.
 
-<imagQ24fonteTensaoReferencia.jpg, id=318, 1041.8925pt x 810.02625pt>
-File: imagQ24fonteTensaoReferencia.jpg Graphic file (type jpg)
+<imagQ24fonteTensaoReferencia.png, id=346, 705.63625pt x 705.63625pt>
+File: imagQ24fonteTensaoReferencia.png Graphic file (type png)
 
-<use imagQ24fonteTensaoReferencia.jpg>
-Package pdftex.def Info: imagQ24fonteTensaoReferencia.jpg used on input line 48
-9.
-(pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
+<use imagQ24fonteTensaoReferencia.png>
+Package pdftex.def Info: imagQ24fonteTensaoReferencia.png used on input line 52
+1.
+(pdftex.def)             Requested size: 341.43307pt x 341.4364pt.
 
+<imagQ24tensaoTemperatura.jpg, id=348, 1041.8925pt x 810.02625pt>
+File: imagQ24tensaoTemperatura.jpg Graphic file (type jpg)
 
-LaTeX Warning: Reference `imagQ24tensaoTemperatura' on page 26 undefined on inp
-ut line 495.
-
-File: imagQ24fonteTensaoReferencia.jpg Graphic file (type jpg)
-<use imagQ24fonteTensaoReferencia.jpg>
-Package pdftex.def Info: imagQ24fonteTensaoReferencia.jpg used on input line 49
-7.
+<use imagQ24tensaoTemperatura.jpg>
+Package pdftex.def Info: imagQ24tensaoTemperatura.jpg used on input line 529.
 (pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 500.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 532.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 500.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 532.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 500.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 532.
 
 
-LaTeX Warning: Command \textordmasculine invalid in math mode on input line 501
+LaTeX Warning: Command \textordmasculine invalid in math mode on input line 533
 .
 
 
-LaTeX Warning: Command \textordmasculine invalid in math mode on input line 501
+LaTeX Warning: Command \textordmasculine invalid in math mode on input line 533
 .
 
 
-LaTeX Warning: Command \textordmasculine invalid in math mode on input line 502
+LaTeX Warning: Command \textordmasculine invalid in math mode on input line 534
 .
 
 
-LaTeX Warning: Command \textordmasculine invalid in math mode on input line 502
+LaTeX Warning: Command \textordmasculine invalid in math mode on input line 534
 .
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 500--503
+Underfull \hbox (badness 10000) in paragraph at lines 532--535
 
  []
 
@@ -1616,10 +1639,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 503.
+(babel)             in language  on input line 535.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 503.
-[26]
+(babel)             in language  on input line 535.
+[28]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1627,75 +1650,55 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 503.
+(babel)             in language  on input line 535.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 503.
-[27 <./imagQ21bodeCorrente.jpg> <./imagQ24somaPTATeCTAT.png>]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 503.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 503.
-[28 <./imagQ24fonteTensaoReferencia.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 509--514
+(babel)             in language  on input line 535.
+[29 <./imagQ24somaPTATeCTAT.png> <./imagQ24fonteTensaoReferencia.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 541--546
 
  []
 
-<imagQ25esquematico.jpg, id=338, 584.1825pt x 687.56876pt>
+<imagQ25esquematico.jpg, id=363, 584.1825pt x 687.56876pt>
 File: imagQ25esquematico.jpg Graphic file (type jpg)
 
 <use imagQ25esquematico.jpg>
-Package pdftex.def Info: imagQ25esquematico.jpg used on input line 515.
+Package pdftex.def Info: imagQ25esquematico.jpg used on input line 547.
 (pdftex.def)             Requested size: 341.43307pt x 401.87463pt.
 
-<imagQ25tensaoRefTemperatura.jpg, id=339, 1041.8925pt x 810.02625pt>
+<imagQ25tensaoRefTemperatura.jpg, id=364, 1041.8925pt x 810.02625pt>
 File: imagQ25tensaoRefTemperatura.jpg Graphic file (type jpg)
 
 <use imagQ25tensaoRefTemperatura.jpg>
-Package pdftex.def Info: imagQ25tensaoRefTemperatura.jpg used on input line 516
+Package pdftex.def Info: imagQ25tensaoRefTemperatura.jpg used on input line 548
 .
 (pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
 
-<imagQ25coefTemperatura.jpg, id=340, 1041.8925pt x 810.02625pt>
+<imagQ25coefTemperatura.jpg, id=365, 1041.8925pt x 810.02625pt>
 File: imagQ25coefTemperatura.jpg Graphic file (type jpg)
 
 <use imagQ25coefTemperatura.jpg>
-Package pdftex.def Info: imagQ25coefTemperatura.jpg used on input line 517.
+Package pdftex.def Info: imagQ25coefTemperatura.jpg used on input line 549.
 (pdftex.def)             Requested size: 341.43307pt x 265.44313pt.
 
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 522.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 522.
-[29 <./imagQ25esquematico.jpg>]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 522.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 522.
-[30 <./imagQ25tensaoRefTemperatura.jpg> <./imagQ25coefTemperatura.jpg>]
-<imagQ26layoutFonte.jpg, id=351, 1067.99pt x 603.25375pt>
+<imagQ26layoutFonte.jpg, id=367, 1067.99pt x 603.25375pt>
 File: imagQ26layoutFonte.jpg Graphic file (type jpg)
 
 <use imagQ26layoutFonte.jpg>
-Package pdftex.def Info: imagQ26layoutFonte.jpg used on input line 525.
+Package pdftex.def Info: imagQ26layoutFonte.jpg used on input line 557.
 (pdftex.def)             Requested size: 341.43307pt x 192.86104pt.
+
+<imagQ27layoutCircuito.jpg, id=370, 402.50375pt x 786.94pt>
+File: imagQ27layoutCircuito.jpg Graphic file (type jpg)
+
+<use imagQ27layoutCircuito.jpg>
+Package pdftex.def Info: imagQ27layoutCircuito.jpg used on input line 567.
+(pdftex.def)             Requested size: 341.43307pt x 667.53328pt.
+
+<imagQ27refTemp.jpg, id=371, 907.39pt x 727.71875pt>
+File: imagQ27refTemp.jpg Graphic file (type jpg)
+ <use imagQ27refTemp.jpg>
+Package pdftex.def Info: imagQ27refTemp.jpg used on input line 568.
+(pdftex.def)             Requested size: 341.43307pt x 273.8266pt.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1704,10 +1707,21 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 549.
+(babel)             in language  on input line 572.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 549.
-[31 <./imagQ26layoutFonte.jpg>]
+(babel)             in language  on input line 572.
+[30]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 614.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 614.
+[31]
 +-------------------------------------------------------------------+
 | Comentario, sugestao ou critica sobre o abnTeX? Entre em contato: |
 |                  http://abntex.codigolivre.org.br                 |
@@ -1726,17 +1740,83 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 591.
+(babel)             in language  on input line 628.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 591.
+(babel)             in language  on input line 628.
 [32]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 591.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 591.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 591.
+(babel)             in language  on input line 628.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 628.
+[33 <./imagQ24tensaoTemperatura.jpg>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 628.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 628.
+[34 <./imagQ25esquematico.jpg>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 628.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 628.
+[35 <./imagQ25tensaoRefTemperatura.jpg> <./imagQ25coefTemperatura.jpg>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 628.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 628.
+[36 <./imagQ26layoutFonte.jpg>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 628.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 628.
+[37 <./imagQ27layoutCircuito.jpg>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 628.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 628.
+[38 <./imagQ27refTemp.jpg>]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 628.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 628.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 628.
  (./relatorio2.aux (./capa.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 591.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 591.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 628.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 628.
 Package rerunfilecheck Info: File `relatorio2.out' has not changed.
 (rerunfilecheck)             Checksum: 29049E8C1A96408F345846269D163BD8;155.
 
@@ -1744,21 +1824,18 @@ Package rerunfilecheck Info: File `relatorio2.out' has not changed.
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 591.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 628.
  ) 
 Here is how much of TeX's memory you used:
- 20909 strings out of 493117
- 364303 string characters out of 6141204
- 722640 words of memory out of 5000000
- 23630 multiletter control sequences out of 15000+600000
+ 20955 strings out of 493117
+ 365377 string characters out of 6141204
+ 654179 words of memory out of 5000000
+ 23657 multiletter control sequences out of 15000+600000
  99355 words of font info for 170 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,12n,54p,754b,1858s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 57i,12n,54p,754b,1853s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/t
 exmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
@@ -1772,10 +1849,10 @@ fonts/type1/urw/symbol/usyr.pfb></usr/share/texmf-dist/fonts/type1/urw/times/ut
 mb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/t
 exmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/u
 rw/times/utmri8a.pfb>
-Output written on relatorio2.pdf (32 pages, 2764832 bytes).
+Output written on relatorio2.pdf (38 pages, 3159233 bytes).
 PDF statistics:
- 498 PDF objects out of 1000 (max. 8388607)
- 420 compressed objects within 5 object streams
- 187 named destinations out of 1000 (max. 500000)
- 152 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 553 PDF objects out of 1000 (max. 8388607)
+ 462 compressed objects within 5 object streams
+ 201 named destinations out of 1000 (max. 500000)
+ 177 words of extra memory for PDF output out of 10000 (max. 10000000)
 

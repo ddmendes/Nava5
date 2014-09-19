@@ -141,7 +141,7 @@ onde $V_G$, $V_S$ e $V_D$ são, respectivamente, as tensão de \emph{gate}, \emph{
     Substituindo (\ref{q3formVx}) em (\ref{q3formI0}) e manipulando a equação, obtemos:
 
     \begin{equation}
-        Z_{out} = \frac{V_0}{I_0} = \frac{g_{01} \cdot (g_{02} + g_{m2} + g_{03} + g_{m3}) + g_{m3} \cdot g_{m1}}{g_{m2} \cdot g_{01} \cdot g_{03} + g_{01} \cdot g__{02} \cdot g_{03}} \label{q3formZout1}
+        Z_{out} = \frac{V_0}{I_0} = \frac{g_{01} \cdot (g_{02} + g_{m2} + g_{03} + g_{m3}) + g_{m3} \cdot g_{m1}}{g_{m2} \cdot g_{01} \cdot g_{03} + g_{01} \cdot g_{02} \cdot g_{03}} \label{q3formZout1}
     \end{equation}
 
     Considerando $g_m \gg g_0$, podemos simplicar a equação (\ref{q3formZout1}) para:
@@ -507,7 +507,7 @@ Obs.: O extrator gera a linha do resistor erradamente. O resistor deve ser um su
     LAT2 é um transistor bipolar PNP lateral de emissor com $2 \mu m$ por $2 \mu m$. VERT10 é um transistor bipolar PNP vertical de emissor com $10 \mu m$ por $10 \mu m$. Os nomes, lateral e vertical, fazem menção a direção da corrente.
 
 
-\textbf{24.} *Verifique o comportamento do transistor VERT10 com a temperatura. Para isso conecte o emissor dele a uma fonte de corrente (valor de corrente igual ao que você usou no projeto), a base e coletor ao terra e faça. Apresente o gráfico $V_{BE}$ x Temperatura. A declaração do transistor é:\\
+\textbf{24.} *Verifique o comportamento do transistor VERT10 com a temperatura. Para isso conecte o emissor dele a uma fonte de corrente (valor de corrente igual ao que você usou no projeto), a base e coletor ao terra e faça. Apresente o gráfico $V_{BE}$ x Temperatura. A declaração do transistor é:
 \begin{verbatim}
     Qname coletor base emissor VERT10
 \end{verbatim}
@@ -526,7 +526,7 @@ Nela podemos ver que:
 
     O gráfico de $V_{BE}$ x Temperatura está representado na Figura \ref{imagQ24tensaoTemperatura}
 
-    \img{Tensão $V_{BE}$ x Temperatura}{imagQ24fonteTensaoReferencia}{imagQ24fonteTensaoReferencia}
+    \img{Tensão $V_{BE}$ x Temperatura}{imagQ24tensaoTemperatura}{imagQ24tensaoTemperatura}
 
 
 \textbf{25.} *Projete uma fonte de tensão de referencia similar a da Figura \ref{imagQ24fonteTensaoReferencia}, mas utilize a fonte de corrente que você projetou (questão 15). Na fonte de tensão faça com que a corrente do bipolar seja igual à corrente que passa pelo resistor $R_1$ (Figura \ref{imagQ24fonteTensaoReferencia}). O valor de $R_2$ deve ser ajustado para que Coeficiente de Temperatura\footnote{Coeficiente de Temperatura: parte por milhão por grau Celsius} seja inferior a 50 ppm/ºC, para a temperaturas variando entre -10ºC e 100ºC. Apresente o esquemático do circuito completo, as dimensões dos transistores e os valores dos resistores. Apresente também o gráfico $V_{REF}$ x Temperatura. \\
