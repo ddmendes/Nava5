@@ -8,7 +8,7 @@
 \makelists
 
 \section*{Introdução}
-Nesta pratica foi realizado um trabalho extensivo com fontes geradoras de corrente de referência. % TODO
+Nesta pratica foi realizado um trabalho extensivo com fontes geradoras de corrente de referência e de tensão de referência. Para tanto utilizou-se transistores com um grande comprimento de canal ($24 \mu m$, neste caso), o que necessita de um contato de poço ao redor de todo o transistor, garantindo uma melhor tensão em toda sua extenção. Neste projeto também cuidou-se de técnicas para garantir uma corrente confiável para uma certa variação na tensão $V_{SD}$ (tensão \emph{source-dreno}) assim como garantir uma tensão de referência confiável para uma faixa de temperatura.
 
 \section*{Resumo}
 Neste laboratório será projetado um circuito para gerar corrente de referência. Para isso serão vistos o modo de operação de fraca inversão em transistores e conceitos de casamento de componentes. Na fonte de corrente final serão colocados \emph{Pads} de alimentação.
@@ -118,13 +118,45 @@ onde $V_G$, $V_S$ e $V_D$ são, respectivamente, as tensão de \emph{gate}, \emph{
     \img{a)Espelho de corrente convencional; b)Espelho de corrente Wilson}{imagQ03espelhos}{imagQ03espelhos}
 
     Para que a corrente de saída $I_0$ seja exatamente à corrente $I_{REF}$, os transistores devem possuir a mesma relação $(W/L)$ e também tensões entre \emph{source} e dreno iguais. \\
-    \\ % TODO 3.2
+
+    \img{Modelo de pequenos sinais de uma fonte de corrente convencional.}
+        {imagQ3peqSinaisEspelho}
+        {imagQ3peqSinaisEspelho}
+
+    Observando o modelo de pequenos sinais da figura \label{imagQ3peqSinaisEspelho}, podemos ver que $g_{02}$ é a única impedância alcançável pela saída. Logo a impedância de saída desta fonte é $g_{02}$.
+
     Caso a impedância de saída do espelho convencional seja pequena, haverá uma maior oscilação na corrente de saída em função da tensão aplicada no espelho. Para se aumentar a impedância, melhorar a estabilidade da saída e, consequentemente, tornar o circuito melhor (por manter uma corrente de saída mais constante), pode-se aumentar o comprimento do dos transistores. \\
-    \\ % TODO 3.4
-    Sabendo que $g_m \gg g_0 \Rightarrow \frac{g_m}{g_0} \gg 1 $. Como a impedância no espelho de corrente de Wilson é, tipicamente, $g_m$ e a do espelho de corrente convencional é $g_0$. Portanto a impedância do espelho de corrente de Wilson é maior. \\
-    Uma das desvantagens da utilização do espelho de Wilson é que o circuito precisará de uma tensão mínima de alimentação maior para o seu correto funcionamento \\
 
+    \img{Modelo de pequenos sinais do espelho de corrente Wilson}
+        {imagQ3peqSinaisWilson}
+        {imagQ3peqSinaisWilson}
 
+    Do circuito descrito na figura \ref{imagQ3peqSinaisWilson}, podemos tirar:
+
+    \begin{eqnarray}
+        I_0 & = & g_{m3} \cdot (V_y - V_x) \cdot + g_{03} \cdot (V_0 - V_x) \label{q3formI0} \\
+        V_x = \frac{g_{03} \cdot V_0}{g_{02} + g_{m2} + g_{03} + g_{m3} + \frac{g_{m1} \cdot g_{m3}}{g_{01}}} \label{q3formVx}
+    \end{eqnarray}
+    
+    Substituindo (\ref{q3formVx}) em (\ref{q3formI0}) e manipulando a equação, obtemos:
+
+    \begin{equation}
+        Z_{out} = \frac{V_0}{I_0} = \frac{g_{01} \cdot (g_{02} + g_{m2} + g_{03} + g_{m3}) + g_{m3} \cdot g_{m1}}{g_{m2} \cdot g_{01} \cdot g_{03} + g_{01} \cdot g__{02} \cdot g_{03}} \label{q3formZout1}
+    \end{equation}
+
+    Considerando $g_m \gg g_0$, podemos simplicar a equação (\ref{q3formZout1}) para:
+
+    \begin{equation}
+        Z_{out} = \frac{g_{m3} \cdot g_{m1}}{g_{m2} \cdot g_{01} \cdot g_{03}}
+    \end{equation}
+
+    Como os transistores $M1$ e $M2$ são iguais, então ainda é possível reduzir para:
+
+    \begin{equation}
+        Z_{out} = \frac{g_{m3}}{g_{01} \cdot g_{03}}
+    \end{equation}
+
+    Como já utilizado, $g_m \gg g_0$, desta forma, temos que a impedância de saída do espelho de Wilson é muito maior do que a do espelho convencional. Por outro lado, como utiliza-se transistores em série, a tensão necessário para o funcionamento do circuito é maior.
 \textbf{4.} *Considere o circuito da figura abaixo (Fig. \ref{imagQ04gerCorrenteRef}). Este circuito é formado pelo espelho de corrente $M_3$, $M_4$ e $M_5$ e os transistores trabalhando em fraca inversão $M_1$ e $M_2$. Ele serve para gerar uma corrente de referência $I_S$. Considere que
     -- $\left( \frac{W}{L}_{M_4} \right)$ é \textbf{M} vezes maior que $\left( \frac{W}{L}_{M_3} \right)$;
     -- $\left( \frac{W}{L}_{M_2} \right)$ é \textbf{N} vezes maior que $\left( \frac{W}{L}_{M_1} \right)$ (ambos operam em fraca inversão);
