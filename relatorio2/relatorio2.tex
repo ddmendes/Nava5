@@ -134,7 +134,7 @@ Mostre que a corrente de saída tem, quando os transistores $M_3$, $M_4$ e $M_5$ 
         I_S = X \cdot \frac{V_T}{R} \cdot ln\left(M \cdot N\right)
     \end{equation}
 
-    \img{Circuito gerador de corrente de referência.}{imagQ04gerCorrenteRef}{imagQ04gerCorrenteRef}
+    \img{Circuito gerador de corrente de referência.}{imagQ04gerCorrenteRef}{imagQ04getCorrenteRef}
 
     Devido ao espelho de corrente formado pelos transistores $M_3$ e $M_4$, e suas relações de tamanho, tem-se que a relação das correntes de $M_1$ e $M_2$ é M, desta forma
     \begin{eqnarray}
@@ -424,12 +424,12 @@ Obs.: O extrator gera a linha do resistor erradamente. O resistor deve ser um su
 
     O comportamento linear, diretamente proporcional da corrente com a temperatura, pode ser explicado através da equação
     \begin{equation}
-        $I_S = X \cdot \frac{V_T}{R} \cdot ln(M \cdot N)$
+        I_S = X \cdot \frac{V_T}{R} \cdot ln(M \cdot N)
     \end{equation}
     Sabendo que $V_T = \frac{k \cdot T}{q} $, obtem-se
     \begin{eqnarray}
-                    $I_S &    =    & X \cdot \frac{k \cdot T}{R \cdot q} \cdot ln(M \cdot N)$ \\
-        \Rightarrow $I_S & \propto & T$ \\
+                    I_S &    =    & X \cdot \frac{k \cdot T}{R \cdot q} \cdot ln(M \cdot N) \\
+        \Rightarrow I_S & \propto & T \\
     \end{eqnarray}
     e com isso, é fácil notar a proporção linear que existe entre temperatura e resistência.
 
@@ -446,9 +446,9 @@ Obs.: O extrator gera a linha do resistor erradamente. O resistor deve ser um su
     .probe  AC Id(Mn4) Vd(5) v(6)
 \end{verbatim}
 
-    O código fonte \ref{cfQ20simulação} mostra como foi realizada a simulação.
+    O código fonte \ref{cfQ20simulacao} mostra como foi realizada a simulação.
 
-\begin{lstlisting}[caption=Simulação AC de 1,0 KHz a 100 MHz, label=cfQ20simulação]
+\begin{lstlisting}[caption=Simulação AC de 1\,0 KHz a 100 MHz, label=cfQ20simulacao]
     Vdd VDD 0 3V AC 0.1V
     Vss VSS 0 0V
     .CONNECT OUT 0
@@ -476,8 +476,8 @@ Obs.: O extrator gera a linha do resistor erradamente. O resistor deve ser um su
 
 
 \textbf{24.} *Verifique o comportamento do transistor VERT10 com a temperatura. Para isso conecte o emissor dele a uma fonte de corrente (valor de corrente igual ao que você usou no projeto), a base e coletor ao terra e faça. Apresente o gráfico $V_{BE}$ x Temperatura. A declaração do transistor é:\\
-\end{verbatim}
-    Qname coletor base emissor VERT10 \\
+\begin{verbatim}
+    Qname coletor base emissor VERT10
 \end{verbatim}
 O modelo VERT10 encontra-se no fim do material. \\
 Grandezas PTAT (Proportional To Absolute Temperature), como a corrente da fonte de corrente, e CTAT (Complementary To Absolute Temperature), como o $V_{BE}$ de um bipolar, podem ser utilizadas para gerar um sinal independente da temperatura. Para isto basta somá-las, cada uma multiplicada por um coeficiente de ajuste, de forma que as variações com a temperatura se cancelem, como mostra a Figura \ref{imagQ24somaPTATeCTAT}.
@@ -543,7 +543,7 @@ Obs.:   U0 é a mobilidade inicial e tem unidade de $cm^2$/($V \cdot s$); \\
             $\varepsilon_{ox} = 3,5 x 10^{-13} F/cm$
 
 
-\begin{verbatim}
+\begin{lstlisting}
 .MODEL MODN NMOS LEVEL=53 MODTYPE=ELDO
 *
 * ----------------------------------------------------------------------
@@ -554,7 +554,7 @@ Obs.:   U0 é a mobilidade inicial e tem unidade de $cm^2$/($V \cdot s$); \\
 * process   : C35
 * revision  : 2;
 * extracted : B10866 ; 2002-12; ese(487)
-* doc#      : ENG-182 REV\_2
+* doc\#      : ENG-182 REV\_2
 * ----------------------------------------------------------------------
 *                        TYPICAL MEAN CONDITION
 * ----------------------------------------------------------------------
@@ -591,6 +591,6 @@ Obs.:   U0 é a mobilidade inicial e tem unidade de $cm^2$/($V \cdot s$); \\
 *        *** Substrate current related model parameters ***
 +ALPHA0 =0.000e+00 BETA0  =3.000e+01
 
-\end{verbatim}
+\end{lstlisting}
 
 \end{document}
