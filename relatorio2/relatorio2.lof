@@ -1,1 +1,24 @@
 \select@language {brazil}
+\contentsline {figure}{\numberline {1}{\ignorespaces a)Espelho de corrente convencional; b)Espelho de corrente Wilson}}{9}{figure.listoftables.0.1}
+\contentsline {figure}{\numberline {2}{\ignorespaces Circuito gerador de corrente de refer\^encia.}}{11}{figure.listoftables.0.2}
+\contentsline {figure}{\numberline {3}{\ignorespaces Rela\c c\~oes entre correntes de $M_4$ e $M_3$.}}{16}{figure.listoftables.0.3}
+\contentsline {figure}{\numberline {4}{\ignorespaces Corrente X Resist\^encia.}}{16}{figure.listoftables.0.4}
+\contentsline {figure}{\numberline {5}{\ignorespaces Corrente $I_S$ X Tens\~ao $V_{DD}$.}}{18}{figure.listoftables.0.5}
+\contentsline {figure}{\numberline {6}{\ignorespaces Faixa de tens\~ao adequada.}}{18}{figure.listoftables.0.6}
+\contentsline {figure}{\numberline {7}{\ignorespaces Circuito reprojetado}}{19}{figure.listoftables.0.7}
+\contentsline {figure}{\numberline {8}{\ignorespaces Corrente $I_S$ X Tens\~ao $V_{DD}$}}{19}{figure.listoftables.0.8}
+\contentsline {figure}{\numberline {9}{\ignorespaces Circuito n\~ao funcional}}{20}{figure.listoftables.0.9}
+\contentsline {figure}{\numberline {10}{\ignorespaces Desenho do resistor RPOLYH}}{22}{figure.listoftables.0.10}
+\contentsline {figure}{\numberline {11}{\ignorespaces \emph {Layout} do circuito fonte de corrente}}{22}{figure.listoftables.0.11}
+\contentsline {figure}{\numberline {12}{\ignorespaces Corrente de sa\IeC {\'\i }da do circuito}}{22}{figure.listoftables.0.12}
+\contentsline {figure}{\numberline {13}{\ignorespaces Histograma da corrente de sa\IeC {\'\i }da quando $V_{DD} = 3,0 V$}}{23}{figure.listoftables.0.13}
+\contentsline {figure}{\numberline {14}{\ignorespaces Corrente X Tens\~ao na sa\IeC {\'\i }da}}{23}{figure.listoftables.0.14}
+\contentsline {figure}{\numberline {15}{\ignorespaces Corrente X Temperatura}}{24}{figure.listoftables.0.15}
+\contentsline {figure}{\numberline {16}{\ignorespaces Gr\'afico de $I_S$ (em dB) X Frequ\^encia (Hz)}}{27}{figure.listoftables.0.16}
+\contentsline {figure}{\numberline {17}{\ignorespaces Soma de grandezas PTAT e CTAT.}}{27}{figure.listoftables.0.17}
+\contentsline {figure}{\numberline {18}{\ignorespaces Fonte de tens\~ao de refer\^encia.}}{28}{figure.listoftables.0.18}
+\contentsline {figure}{\numberline {19}{\ignorespaces Tens\~ao $V_{BE}$ x Temperatura}}{28}{figure.listoftables.0.19}
+\contentsline {figure}{\numberline {20}{\ignorespaces Esquem\'atico do circuito}}{29}{figure.listoftables.0.20}
+\contentsline {figure}{\numberline {21}{\ignorespaces Gr\'afico de $V_{REF}$ x Temperatura}}{30}{figure.listoftables.0.21}
+\contentsline {figure}{\numberline {22}{\ignorespaces Coeficiente de temperatura}}{30}{figure.listoftables.0.22}
+\contentsline {figure}{\numberline {23}{\ignorespaces \emph {Layout} da fonte de tens\~ao completa}}{31}{figure.listoftables.0.23}
