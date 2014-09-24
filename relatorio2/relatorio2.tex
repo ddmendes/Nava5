@@ -123,7 +123,7 @@ onde $V_G$, $V_S$ e $V_D$ são, respectivamente, as tensão de \emph{gate}, \emph{
         {imagQ3peqSinaisEspelho}
         {imagQ3peqSinaisEspelho}
 
-    Observando o modelo de pequenos sinais da figura \label{imagQ3peqSinaisEspelho}, podemos ver que $g_{02}$ é a única impedância alcançável pela saída. Logo a impedância de saída desta fonte é $g_{02}$.
+    Observando o modelo de pequenos sinais da figura \ref{imagQ3peqSinaisEspelho}, podemos ver que $g_{02}$ é a única impedância alcançável pela saída. Logo a impedância de saída desta fonte é $g_{02}$.
 
     Caso a impedância de saída do espelho convencional seja pequena, haverá uma maior oscilação na corrente de saída em função da tensão aplicada no espelho. Para se aumentar a impedância, melhorar a estabilidade da saída e, consequentemente, tornar o circuito melhor (por manter uma corrente de saída mais constante), pode-se aumentar o comprimento do dos transistores. \\
 
@@ -533,7 +533,7 @@ Nela podemos ver que:
     $V_{MAX}$ = Máximo valor de $V_{REF}$ para $t \in [-10ºC, 100ºC]$ \\
     $V_{MIN}$ = Mínimo valor de $V_{REF}$ para $t \in [-10ºC, 100ºC]$ \\
     \begin{equation}
-        Coeficiente de Temperatura = \frac{V_MAX - V_MIN}{V_REF} \cdot \frac{1}{100 - \left(-10\right)} \cdot 10^6
+        Coeficiente de Temperatura = \frac{V_{MAX} - V_{MIN}}{V_{REF}} \cdot \frac{1}{100 - \left(-10\right)} \cdot 10^6
     \end{equation}
 
 Obs.: Caso a tensão de saída esteja variando muito com a temperatura, reajuste o valor de $R_2$.
@@ -552,19 +552,20 @@ Obs.: Caso a tensão de saída esteja variando muito com a temperatura, reajuste o
 \textbf{26.} *Desenhe o \emph{layout} da fonte de tensão completa. Utilize o transistor vertical PRIMLAB/VERT10 da biblioteca. Ajuste o comprimento de $R_2$ no \emph{layout} para que o coeficiente de temperatura do circuito esxtraído se mantenha abaixo de 50 ppm/ºC. \\
 Obs.: o transistor bipolar extraído vem com o parâmetro Area. Apague este parâmetro senão ficará errado.
 
-    O \emph{layout} da fonte de tensão completa está representado na Figura \ref{imagQ26layoutFonte}.
+    O \emph{layout} da fonte de tensão completa está representado na Figura \ref{imagQ26layoutFonte}. O gráfico de coeficiente de temperatura por comprimento $L$ do resistor está na figura \ref{imagQ26coeficienteDeTemperatura}.
 
     \img{\emph{Layout} da fonte de tensão completa}{imagQ26layoutFonte}{imagQ26layoutFonte}
+
+    \img{Curva do coeficiente de temperatura por comprimento $L$ do resistor.}{imagQ26coeficienteDeTemperatura}{imagQ26coeficienteDeTemperatura}
 
 
 \textbf{27.} *Adicione ao \emph{layout Pads} de $V_{DD}$ e $GND$. Passar o DRC para verificar se tudo está correto. Quais são as dimensões do circuito com os \emph{Pads}? Apresente o \emph{layout} do circuito e o gráfico $V_{REF}$ x Temperatura para valores de $V_{DD}$ de 2,0 V, 2,5 V e 3,0V. \\
 Obs.: um bloco de \emph{Pad} pode ser encontrado na biblioteca IOLIB\_4M, célula g-padonly.
 
-    O \emph{layout} do circuito está representado na Figura \ref{imagQ27layoutCircuito}, com dimensões de $114,581 \mu m$ por $261,850 \mu m$, o que resulta em uma área do circuito de $30.003,0 \mu m^2$. % Pontos (81.307, -93.450), (195.825, 168.400) \\
-As dimensões do circuito são $114,218 \mu m$ por $40,472 \mu m$, o que resulta em uma área do circuito de $4.622,631 \mu m^2$. % Pontos (-13.593, 187.291), (100.625, 227.763)
+    O \emph{layout} do circuito está representado na Figura \ref{imagQ27layoutCircuito}, com dimensões de $114,581 \mu m$ por $325,850 \mu m$, o que resulta em uma área do circuito de $37.336,2 \mu m^2$. % Pontos (81.307, -157.450), (195.825, 168.400) \\
     O gráfico $V_{REF}$ x Temperatura para valores de $V_{DD}$ de 2,0 V, 2,5 V e 3,0V estão representados na Figura \ref{imagQ27refTemp}.
 
-    \img{\emph{Layout} do circuito com \emph{Pads}}{imagQ27layoutCircuito}{imagQ27layoutCircuito}
+    \img[0.45]{\emph{Layout} do circuito com \emph{Pads}}{imagQ27layoutCircuito}{imagQ27layoutCircuito}
     \img{$V_{REF}$ x Temperatura}{imagQ27refTemp}{imagQ27refTemp}
 
 
