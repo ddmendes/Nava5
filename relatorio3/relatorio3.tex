@@ -26,31 +26,36 @@ as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m
 
 \textbf{2.} *Procure o \emph{layout} da célula \textbf{DL1} e o abra no IcStation. Levante e \textbf{desenhe o circuito esquemático} desta célula (não precisa determinar as dimensões dos transistores). Observe com cuidado o \emph{layout} feito. \\
 
-% TODO
+    O esquemático está representado na \fref{imgQ02esquematico} \\
+    
+    % \img{Esquemático representativo da cécula \textbf{DL1}}{imgQ02esquematico}{imgQ02esquematico} % XXX adicionar imagem
 
 
 \textbf{3.} *Observe que na célula \textbf{DL1} as linhas dos sinais de $V_{DD}$ e $V_{SS}$ correm nas extremidades superior e inferior. Qual é a dimensão vertical destas linhas e qual a distância entre elas. Abra outra célula da biblioteca e verifique as dimensões das linhas de $V_{DD}$ e $V_{SS}$ e a distância entre elas. São iguais em todas as células?  Seria/é interessante que fossem/sejam iguais, por quê?  \\
 	Dimensão vertical: $0.75$ \\
-	Distância: $11.5$ \\
+	Distância: $11.50$ \\
 
-% TODO
+    Analisando outras células, nota-se que as distâncias e dimensões são sempre as mesmas. Isso é feito para que as células possam ser facilmente alinhadas e utilizadas em blocos. \\ % XXX checar com os brothers
 
 
-\textbf{4.} *Considere o circuito da \fref{imgQ01exemploEsquematco}. Desenhe seu \textbf{esquemático} utilizando as células \textbf{DF3}, \textbf{NAND22}. Como sinal de entrada deve colocar o \emph{\textbf{clock}} e \textbf{D}; como sinal de saída, \textbf{Q}. Gere o símbolo para a célula e faça todas as verificações necessárias. Certifique-se que não haja erros ou \emph{warnings}. \\
+\textbf{4.} *Considere o circuito da \fref{imgQ04exemploEsquematco}. Desenhe seu \textbf{esquemático} utilizando as células \textbf{DF3}, \textbf{NAND22}. Como sinal de entrada deve colocar o \emph{\textbf{clock}} e \textbf{D}; como sinal de saída, \textbf{Q}. Gere o símbolo para a célula e faça todas as verificações necessárias. Certifique-se que não haja erros ou \emph{warnings}. \\
 
-    \img{Exemplo de esquemático.}{imgQ01exemploEsquematco}{imgQ01exemploEsquematco}
+    \img{Exemplo de esquemático.}{imgQ04exemploEsquematco}{imgQ04exemploEsquematco}
 
-% TODO
+    O esquemático está representado na \fref{imgQ04esquematico}, e o símbolo na \fref{imgQ04simbolo}. \\
+    
+    % \img{Esquemático utilizando \textbf{DF3} e \textbf{NAND22}}{imgQ04esquematico}{imgQ04esquematico} % XXX adicionar imagem
+    % \img{Símbolo utilizando \textbf{DF3} e \textbf{NAND22}}{imgQ04simbolo}{imgQ04simbolo} % XXX adicionar imagem
 
 
 \textbf{5.} *A partir das informações dos blocos que compõe este circuito estime o valor máximo da frequência do \emph{clock} que o circuito pode suportar (considere a entrada $D = "1"$, utilize o pior caso entre subida e descida das portas e considere que os sinais são rápidos). Apresente os cálculos. \\
 
-% TODO
+    % TODO
 
 
 \textbf{6.} *O que significam tempos de \emph{holding} e de \emph{set-up} em \emph{flip-flops}. Qual seria o valor máximo do \emph{clock}, do exercício acima, caso o tempo de set-up fosse de $0,1 ns$.
 
-% TODO
+    % TODO
 
 
 \textbf{7.} *Gere, a partir do esquemático, um arquivo \textbf{\emph{netlist}} para o ELDO. Simule o circuito com os parâmetros típicos e determine a \textbf{máxima velocidade (\emph{clock})} do circuito. Considere \\
