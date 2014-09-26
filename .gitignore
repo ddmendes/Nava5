@@ -8,3 +8,4 @@
 *.symbolsx
 *.out
 *.swp
+.gitconfig
