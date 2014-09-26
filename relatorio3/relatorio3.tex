@@ -28,7 +28,7 @@ as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m
 
     O esquemático está representado na \fref{imgQ02esquematico} \\
     
-    % \img{Esquemático representativo da cécula \textbf{DL1}}{imgQ02esquematico}{imgQ02esquematico} % XXX adicionar imagem
+    % \img{Esquemático representativo da cécula \textbf{DL1}}{imgQ02esquematico}{imgQ02esquematico} % TODO criar o esquemático XXX adicionar imagem
 
 
 \textbf{3.} *Observe que na célula \textbf{DL1} as linhas dos sinais de $V_{DD}$ e $V_{SS}$ correm nas extremidades superior e inferior. Qual é a dimensão vertical destas linhas e qual a distância entre elas. Abra outra célula da biblioteca e verifique as dimensões das linhas de $V_{DD}$ e $V_{SS}$ e a distância entre elas. São iguais em todas as células?  Seria/é interessante que fossem/sejam iguais, por quê?  \\
@@ -50,12 +50,22 @@ as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m
 
 \textbf{5.} *A partir das informações dos blocos que compõe este circuito estime o valor máximo da frequência do \emph{clock} que o circuito pode suportar (considere a entrada $D = "1"$, utilize o pior caso entre subida e descida das portas e considere que os sinais são rápidos). Apresente os cálculos. \\
 
-    % TODO
+    Analisando o circuito, pode-se notar que a equação que representa o caminho crítico é a seguinte,
+    \begin{equation}
+        t_{min} = t_{setup} + t_{nand} + t_{hold}
+    \end{equation}
+    Por analisar as configurações dos componentes, sabe-se que $t_{setup} = 0 ns$, $t_{hold} = 0,129 ns$ e $t_{nand} = ns$. % TODO checar os dados e a equação
+    Assim sendo, $t_{min} = X ns$ o que implica uma frequência máxima de \emph{clock} de $XXX GHz$. \\ % TODO terminar XXX o de relatórios anteriores deu 1,42GHz
 
 
-\textbf{6.} *O que significam tempos de \emph{holding} e de \emph{set-up} em \emph{flip-flops}. Qual seria o valor máximo do \emph{clock}, do exercício acima, caso o tempo de set-up fosse de $0,1 ns$.
+\textbf{6.} *O que significam tempos de \emph{holding} e de \emph{set-up} em \emph{flip-flops}. Qual seria o valor máximo do \emph{clock}, do exercício acima, caso o tempo de \emph{set-up} fosse de $0,1 ns$. \\
 
-    % TODO
+    \begin{description}
+        \item[\emph{holding}] \rightarrow Tempo mínimo para segurar o sinal em uma determinada tensão para que o \emph{flip-flop} possa armazená-lo. % XXX checar
+        \item[\emph{set-up}]  \rightarrow Tempo para que o \emph{flip-flop} esteja pronto para propagar o sinal, partindo do princípio que o sinal já está armazenado. % XXX checar
+    \end{description}
+
+    Recalculando o tempo máximo de \emph{clock}, considerando tempo de \emph{set-up} de $0,1 ns$, tem-se $t_{min} = X$, e logo o valor máximo do \emph{clock} seria de $x Hz$. \\ % TODO calcular
 
 
 \textbf{7.} *Gere, a partir do esquemático, um arquivo \textbf{\emph{netlist}} para o ELDO. Simule o circuito com os parâmetros típicos e determine a \textbf{máxima velocidade (\emph{clock})} do circuito. Considere \\
@@ -66,7 +76,11 @@ as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m
 \end{itemize}
 Apresente as linhas de comando e sinais utilizados. \\
 
-% TODO
+    As linhas de comando e os sinais utiliados estão representados no \cref{srcQ07simulacao} \\% TODO adicionar código fonte
+
+\begin{lstlisting}[caption=Comandos e sinais utilizados na simulação, label=srcQ07simulação]
+ * TODO
+\end{lstlisting}
 
 
 \textbf{8.} *Gere agora o \textbf{\emph{layout} para o circuito} (use para isso o \emph{designviepoint} não o \emph{schematic}). Neste \emph{layout} deve-se tomar cuidado com: \\
