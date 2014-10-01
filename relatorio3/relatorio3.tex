@@ -17,23 +17,23 @@ Nesta experiência iniciaremos o uso de células da biblioteca de células da AMS. 
 
 \section*{Questões}
 
-\textbf{1.} Verifique no arquivo \\
+\textbf{1.} Verifique no arquivo:
     \begin{verbatim}
         /tools/dkit/ams_3.70_mgc/www/index.html
-    \end{verbatim} \\
-as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m$. Entenda os dados fornecidos (\emph{Standar Cell DataSheet} -- C35 -- \emph{Core Cells}). \\
+    \end{verbatim}
+as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m$. Entenda os dados fornecidos (\emph{Standar Cell DataSheet} -- C35 -- \emph{Core Cells}).
 
 
 \textbf{2.} *Procure o \emph{layout} da célula \textbf{DL1} e o abra no IcStation. Levante e \textbf{desenhe o circuito esquemático} desta célula (não precisa determinar as dimensões dos transistores). Observe com cuidado o \emph{layout} feito. \\
 
     O esquemático está representado na \fref{imgQ02esquematico} \\
-    
+
     % \img{Esquemático representativo da cécula \textbf{DL1}}{imgQ02esquematico}{imgQ02esquematico} % TODO criar o esquemático XXX adicionar imagem
 
 
 \textbf{3.} *Observe que na célula \textbf{DL1} as linhas dos sinais de $V_{DD}$ e $V_{SS}$ correm nas extremidades superior e inferior. Qual é a dimensão vertical destas linhas e qual a distância entre elas. Abra outra célula da biblioteca e verifique as dimensões das linhas de $V_{DD}$ e $V_{SS}$ e a distância entre elas. São iguais em todas as células?  Seria/é interessante que fossem/sejam iguais, por quê?  \\
-	Dimensão vertical: $0.75$ \\
-	Distância: $11.50$ \\
+    Dimensão vertical: $0.75$ \\
+    Distância: $11.50$ \\
 
     Analisando outras células, nota-se que as distâncias e dimensões são sempre as mesmas. Isso é feito para que as células possam ser facilmente alinhadas e utilizadas em blocos. \\ % XXX checar com os brothers
 
@@ -43,7 +43,7 @@ as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m
     \img{Exemplo de esquemático.}{imgQ04exemploEsquematco}{imgQ04exemploEsquematco}
 
     O esquemático está representado na \fref{imgQ04esquematico}, e o símbolo na \fref{imgQ04simbolo}. \\
-    
+
     % \img{Esquemático utilizando \textbf{DF3} e \textbf{NAND22}}{imgQ04esquematico}{imgQ04esquematico} % XXX adicionar imagem
     % \img{Símbolo utilizando \textbf{DF3} e \textbf{NAND22}}{imgQ04simbolo}{imgQ04simbolo} % XXX adicionar imagem
 
@@ -61,8 +61,8 @@ as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m
 \textbf{6.} *O que significam tempos de \emph{holding} e de \emph{set-up} em \emph{flip-flops}. Qual seria o valor máximo do \emph{clock}, do exercício acima, caso o tempo de \emph{set-up} fosse de $0,1 ns$. \\
 
     \begin{description}
-        \item[\emph{holding}] \rightarrow Tempo mínimo para segurar o sinal em uma determinada tensão para que o \emph{flip-flop} possa armazená-lo. % XXX checar
-        \item[\emph{set-up}]  \rightarrow Tempo para que o \emph{flip-flop} esteja pronto para propagar o sinal, partindo do princípio que o sinal já está armazenado. % XXX checar
+        \item[\emph{holding}] $\rightarrow$ Tempo mínimo para segurar o sinal em uma determinada tensão para que o \emph{flip-flop} possa armazená-lo. % XXX checar
+        \item[\emph{set-up}]  $\rightarrow$ Tempo para que o \emph{flip-flop} esteja pronto para propagar o sinal, partindo do princípio que o sinal já está armazenado. % XXX checar
     \end{description}
 
     Recalculando o tempo máximo de \emph{clock}, considerando tempo de \emph{set-up} de $0,1 ns$, tem-se $t_{min} = X$, e logo o valor máximo do \emph{clock} seria de $x Hz$. \\ % TODO calcular
@@ -126,8 +126,7 @@ Faça a verificação com o \textbf{DRC} (CALIBRE), passe o \textbf{LVS} e elimine 
 % TODO
 
 
-\textbf{15.} Desenhe o \textbf{esquemático} do divisor 4/5 utilizando as células \textbf{DF1}, \textbf{NAND23} e \textbf{NOR23}. Como sinal de entrada deve ter o \textbf{\emph{clock}} e \textbf{\emph{MC}}; como sinal de saída o sinal \textbf{\bar{Q}} % XXX Davi!
-do \textbf{D-FF mais a esquerda}. Gere o símbolo para a célula e faça a verificação do esquemático e do símbolo. Certifique-se que não haja erros ou mesmo \emph{warnings}. \\
+\textbf{15.} Desenhe o \textbf{esquemático} do divisor 4/5 utilizando as células \textbf{DF1}, \textbf{NAND23} e \textbf{NOR23}. Como sinal de entrada deve ter o \textbf{\emph{clock}} e \textbf{\emph{MC}}; como sinal de saída o sinal \textbf{$\overline{Q}$} do \textbf{D-FF mais a esquerda}. Gere o símbolo para a célula e faça a verificação do esquemático e do símbolo. Certifique-se que não haja erros ou mesmo \emph{warnings}. \\
 
 
 \textbf{16.} *Gere, a partir do esquemático, um arquivo \textbf{\emph{netlist}} para o ELDO. Simule o circuito com parâmetros típicos e determine a máxima velocidade e consumo do circuito (consumo em \textbf{mW/GHz}). Considere \\
@@ -148,7 +147,7 @@ do \textbf{D-FF mais a esquerda}. Gere o símbolo para a célula e faça a verifica
     \item a posição e o tamanho dos \emph{ports} de entrada e saída;
     \item a largura das linhas de $V_{DD}$ e $V_{SS}$, não inferiores a $1 \mu m$.
 \end{itemize}
-    Faça a verificação com o \textbf{DRC} (CALIBRE), passe o \textbf{LVS} e elimine todos os  erros. \textbf{Apresente a figura do layout no relatório. \\
+    Faça a verificação com o \textbf{DRC} (CALIBRE), passe o \textbf{LVS} e elimine todos os  erros. Apresente a figura do layout no relatório. \\
 
 % TODO
 
@@ -172,7 +171,7 @@ do \textbf{D-FF mais a esquerda}. Gere o símbolo para a célula e faça a verifica
 
     \img{\emph{Layout} do circuito \emph{Prescaler} 32/33 na tecnologia AMS 0.35 (dimensões de $82 \mu m$ x $35 \mu m$). O divisor 4/5 está indicado com um quadrado tracejado.}{imgQ21layoutPrescaler}{imgQ21layoutPrescaler}
 
-    Observação: A \fref{imgQ21layoutPrescaler} apresenta o \emph{layout} de um \emph{Prescaler} 32/33 completo. Por resultados de simulação, este circuito funciona a 2,4 GHz com consumo de $2,43 mW$ (parâmetros típicos, $V_{DD} = 3 V$). O circuito implementado, por sua vez, funcionou a $1,7 GHz$ com consumo de $2,31 mW$. Tanto a velocidade máxima como grande parte do consumo se deve ao divisor 4/5. Assim podemos, a grosso modo, dizer que o consumo e a velocidade deste divisor é igual a do \emph{Prescaler}. 
+    Observação: A \fref{imgQ21layoutPrescaler} apresenta o \emph{layout} de um \emph{Prescaler} 32/33 completo. Por resultados de simulação, este circuito funciona a 2,4 GHz com consumo de $2,43 mW$ (parâmetros típicos, $V_{DD} = 3 V$). O circuito implementado, por sua vez, funcionou a $1,7 GHz$ com consumo de $2,31 mW$. Tanto a velocidade máxima como grande parte do consumo se deve ao divisor 4/5. Assim podemos, a grosso modo, dizer que o consumo e a velocidade deste divisor é igual a do \emph{Prescaler}.
 
 % TODO
 
