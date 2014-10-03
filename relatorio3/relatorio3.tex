@@ -8,12 +8,12 @@
 \makelists
 
 \section*{Introdução}
-... % TODO
-
+Durante essa experiência, foram realizadas diversas composições de células de circuitos e verificadas suas frequências máximas de operação, tanto através de cálculos teoricos como através de simulações. 
+\smallskip
 
 \section*{Resumo}
 Nesta experiência iniciaremos o uso de células da biblioteca de células da AMS. Para isso será desenvolvido um circuito \emph{Prescaler} 32/33 e feitas simulações sobre ele.
-
+\bigskip
 
 \section*{Questões}
 \smallskip
@@ -29,33 +29,34 @@ as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m
 
     O esquemático está representado na \fref{imgQ02esquematico} \\
 
-    % \img{Esquemático representativo da cécula \textbf{DL1}}{imgQ02esquematico}{imgQ02esquematico} % TODO criar o esquemático XXX adicionar imagem
-\begin{figure}[!h]
-    \begin{center}
-        \begin{tikzpicture}
-            \draw (5.5, 5.7) -- (6.2, 5.7);
-            \draw (5.5, 3.1) -- (6.2, 3.1);
+    \img{Esquemático representativo da cécula \textbf{DL1}}{imgQ02esquematico}{imgQ02esquematico}
 
-            \draw (4.6, 2.05) -- (4.2, 1.8)
-                -- (4.2, 2.3) -- cycle;
-            \draw (4.7, 2.05) circle (0.1);
-
-            \draw (4.8, 2.05) -- (6.9, 2.05);
-
-            \draw (7, 2.05) circle (0.1);
-            \draw (7.1, 2.4) -- (7.1, 1.7);
-            \draw (9.7, 2.4) -- (9.7, 1.7);
-            \draw (7.7, 1.2) -- (9.1, 1.2)
-                -- (9.1, 1.7) -- (9.5, 1.7)
-                -- (9.5, 2.4) -- (9.1, 2.4)
-                -- (9.1, 2.9) -- (7.7, 2.9)
-                -- (7.7, 2.4) -- (7.3, 2.4)
-                -- (7.3, 1.7) -- (7.7, 1.7)
-                -- cycle;
-
-        \end{tikzpicture}
-    \end{center}
-\end{figure}
+%\begin{figure}[!h]
+%    \begin{center}
+%        \begin{tikzpicture}
+%            \draw (5.5, 5.7) -- (6.2, 5.7);
+%            \draw (5.5, 3.1) -- (6.2, 3.1);
+%
+%            \draw (4.6, 2.05) -- (4.2, 1.8)
+%                -- (4.2, 2.3) -- cycle;
+%            \draw (4.7, 2.05) circle (0.1);
+%
+%            \draw (4.8, 2.05) -- (6.9, 2.05);
+%
+%            \draw (7, 2.05) circle (0.1);
+%            \draw (7.1, 2.4) -- (7.1, 1.7);
+%            \draw (9.7, 2.4) -- (9.7, 1.7);
+%            \draw (7.7, 1.2) -- (9.1, 1.2)
+%                -- (9.1, 1.7) -- (9.5, 1.7)
+%                -- (9.5, 2.4) -- (9.1, 2.4)
+%                -- (9.1, 2.9) -- (7.7, 2.9)
+%                -- (7.7, 2.4) -- (7.3, 2.4)
+%                -- (7.3, 1.7) -- (7.7, 1.7)
+%                -- cycle;
+%
+%        \end{tikzpicture}
+%    \end{center}
+%\end{figure}
 \bigskip
 
 \textbf{3.} *Observe que na célula \textbf{DL1} as linhas dos sinais de $V_{DD}$ e $V_{SS}$ correm nas extremidades superior e inferior. Qual é a dimensão vertical destas linhas e qual a distância entre elas. Abra outra célula da biblioteca e verifique as dimensões das linhas de $V_{DD}$ e $V_{SS}$ e a distância entre elas. São iguais em todas as células?  Seria/é interessante que fossem/sejam iguais, por quê?  \\
@@ -71,8 +72,8 @@ as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m
 
     O esquemático está representado na \fref{imgQ04esquematico}, e o símbolo na \fref{imgQ04simbolo}. \\
 
-    % \img{Esquemático utilizando \textbf{DF3} e \textbf{NAND22}}{imgQ04esquematico}{imgQ04esquematico} % XXX adicionar imagem
-    % \img{Símbolo utilizando \textbf{DF3} e \textbf{NAND22}}{imgQ04simbolo}{imgQ04simbolo} % XXX adicionar imagem
+    \img{Esquemático utilizando \textbf{DF3} e \textbf{NAND22}}{imgQ04esquematico}{imgQ04esquematico}
+    \img{Símbolo utilizando \textbf{DF3} e \textbf{NAND22}}{imgQ04simbolo}{imgQ04simbolo}
 \bigskip
 
 \textbf{5.} *A partir das informações dos blocos que compõe este circuito estime o valor máximo da frequência do \emph{clock} que o circuito pode suportar (considere a entrada $D = "1"$, utilize o pior caso entre subida e descida das portas e considere que os sinais são rápidos). Apresente os cálculos. \\
@@ -81,19 +82,25 @@ as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m
     \begin{equation}
         t_{min} = t_{set-up} + t_{NAND} + t_{hold}
     \end{equation}
-    Por analisar as configurações dos componentes, sabe-se que a capacitância de carga dos elementos são $C_{NAND} = 5 fF$ e $C_{FF} = 8 fF$. Utilizar uma aproximação linear em conjunção as informações fornecidas pelo documento que contém informações sobre as células, pode-se definir $t_{set-up} = 0 ns$, $t_{hold} = 0,538 ns$ e $t_{NAND} = 0,077 ns$. % TODO checar os dados
-    Assim sendo, $t_{min} = 0,615 ns$ o que implica uma frequência máxima de \emph{clock} de $1,63 GHz$. \\ % TODO terminar XXX o de relatórios anteriores deu 1,42GHz
-
+    Por analisar as configurações dos componentes, sabe-se que a capacitância de carga dos elementos são $C_{NAND} = 5 fF$ e $C_{FF} = 13 fF$. Utilizar uma aproximação linear em conjunção as informações fornecidas pelo documento que contém informações sobre as células, pode-se definir $t_{set-up} = 0 ns$, $t_{hold} = 0,621 ns$ e $t_{NAND} = 0,077 ns$.
+    \begin{equation}
+        \frac{1,66 - 0,61}{960 - 3} = \fract{t_{hold} - 0,61}{13 - 3}
+    \end{equation}
+    \begin{equation}
+        \frac{1,64 - 0,07}{640 - 2} = \fract{t_{NAND} - 0,07}{5 - 2}
+    \end{equation}
+    Assim sendo, $t_{min} = 0,698 ns$ o que implica uma frequência máxima de \emph{clock} de $1,43 GHz$. \\
+\bigskip
 
 \textbf{6.} *O que significam tempos de \emph{holding} e de \emph{set-up} em \emph{flip-flops}. Qual seria o valor máximo do \emph{clock}, do exercício acima, caso o tempo de \emph{set-up} fosse de $0,1 ns$. \\
 
     \begin{description}
-        \item[\emph{holding}] $\rightarrow$ Tempo mínimo para segurar o sinal em uma determinada tensão para que o \emph{flip-flop} possa armazená-lo. % XXX checar
-        \item[\emph{set-up}]  $\rightarrow$ Tempo para que o \emph{flip-flop} esteja pronto para propagar o sinal, partindo do princípio que o sinal já está armazenado. % XXX checar
+        \item[\emph{holding}] $\rightarrow$ Tempo mínimo para segurar o sinal em uma determinada tensão para que o \emph{flip-flop} possa armazená-lo.
+        \item[\emph{set-up}]  $\rightarrow$ Tempo para que o \emph{flip-flop} esteja pronto para propagar o sinal, partindo do princípio que o sinal já está armazenado.
     \end{description}
 
-    Recalculando o tempo máximo de \emph{clock}, considerando tempo de \emph{set-up} de $0,1 ns$, tem-se $t_{min} = X$, e logo o valor máximo do \emph{clock} seria de $x Hz$. \\ % TODO calcular
-
+    Recalculando o tempo máximo de \emph{clock}, considerando tempo de \emph{set-up} de $0,1 ns$, tem-se $t_{min} = 0,798$, e logo o valor máximo do \emph{clock} seria de $1,25 Hz$.
+\bigskip
 
 \textbf{7.} *Gere, a partir do esquemático, um arquivo \textbf{\emph{netlist}} para o ELDO. Simule o circuito com os parâmetros típicos e determine a \textbf{máxima velocidade (\emph{clock})} do circuito. Considere \\
 \begin{itemize}
@@ -103,12 +110,30 @@ as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m
 \end{itemize}
 Apresente as linhas de comando e sinais utilizados.
 
-    As linhas de comando e os sinais utiliados estão representados no \cref{srcQ07simulacao} \\% TODO adicionar código fonte
+    As linhas de comando e os sinais utilizados estão representados no \cref{srcQ07simulacao}. A frequência obtida foi $1,47 GHz$. \\
 
 \begin{lstlisting}[caption=Comandos e sinais utilizados na simulação, label=srcQ07simulação]
- * TODO
-\end{lstlisting}
+Vdd  VDD 0 3V
+Vss  VSS 0 0V
+Vclk CLK 0 PULSE (0 3 delay rise fall work period)
 
+.CONNECT VDD D
+
+.PARAM frequency=1.42GHz
+.PARAM period=1/frequency
+.PARAM rise='period*.1'
+.PARAM fall='period*.1'
+.PARAM work='period*.4'
+.PARAM delay=0
+
+.PARAM step=5MegHz
+.PARAM start=1.4GHz
+.PARAM stop=1.5GHz
+
+.TRAN 10ns '20*period' '5*period' 1ns SWEEP frequency INCR step start stop
+.PROBE V(Q)
+\end{lstlisting}
+\bigskip
 
 \textbf{8.} *Gere agora o \textbf{\emph{layout} para o circuito} (use para isso o \emph{designviepoint} não o \emph{schematic}). Neste \emph{layout} deve-se tomar cuidado com: \\
 \begin{itemize}
@@ -119,38 +144,50 @@ Apresente as linhas de comando e sinais utilizados.
 \end{itemize}
 Faça a verificação com o \textbf{DRC} (CALIBRE), passe o \textbf{LVS} e elimine todos os erros. \textbf{Apresente a figura do \emph{layout} no relatório}. \\
 
-% TODO
+    O \emph{layout} está representado na \fref{imgQ08layout}. \\
 
+    \img{\emph{Layout} do circuito}{imgQ08layout}{imgQ08layout}
+\bigskip
 
 \textbf{9.} *Faça a extração do circuito via o Calibre com a opção \textbf{C+CC} (deve ser usada uma configuração que garanta que o nome dos nós venha do \emph{schematic}). Simule o circuito com parâmetros típicos e determine sua máxima velocidade. Utilize as mesmas condições do exercício 7. \\
 
-% TODO
+    As linhas de comando utilizadas foram similares as do \cref{srcQ07simulacao}. A frequência obtida foi $1,097 GHz$, conforme o gráfico da \fref{imgQ09coefFreq} demonstra. O sinal da frequência escolhida está representdo no gráfico da \fref{imgQ09maxFreq}. \\
 
+    \img{Coeficiente de frequência. Frequência do sinal / Frequência de \emph{clock}}{imgQ09coefFreq}{imgQ09coefFreq}
+    \img{Saída do circuito operando em sua máxima frequência}{imgQ09maxFreq}{imgQ09maxFreq}
+\bigskip
 
 \textbf{10.} *Extraia agora com a opção \textbf{R+C+CC}. Simule o circuito com parâmetros típicos e determine sua máxima velocidade. Utilize as mesmas condições do exercício 7. \\
-% TODO
+
+    As linhas de comando utilizadas foram similares as do \cref{srcQ07simulacao}. A frequência obtida foi $1,02 GHz$, conforme o gráfico da \fref{imgQ10coefFreq} demonstra. O sinal da frequência escolhida está representdo no gráfico da \fref{imgQ10maxFreq}. \\
+
+    \img{Coeficiente de frequência. Frequência do sinal / Frequência de \emph{clock}}{imgQ10coefFreq}{imgQ10coefFreq}
+    \img{Saída do circuito operando em sua máxima frequência}{imgQ10maxFreq}{imgQ10maxFreq}
+\bigskip
 
 \textbf{11.} *Monte uma tabela com os resultados obtidos nos exercícios \textbf{5, 7, 9 e 10}. \textbf{Compare e comente} os resultados. \\
+
+    Ao analisar a \tref{tblQ11maxFreq}, que mostra os resultados obtidos nas questões anteriores, percebe-se que há uma grande diferença entre os valores calculados teoricamente e os calculados através da simulação. Isto ocorre devido a serem consideredas as cargas parasitas do circuito (C+CC e R+C+CC) nos modelos de simulação. \\
 \begin{table}[!h]
-    \caption{Máximas frequências de operação para o divisor de frequência da \fref{imgQ04esquematico}. \label{tblQ10maxFreq}}
+    \caption{Máximas frequências de operação para o divisor de frequência da \fref{imgQ04esquematico}. \label{tblQ11maxFreq}}
     \centering
     \begin{tabular}{|l|c|}
                                                         \hline
         Referência          &   Freq. Máxima (GHz)  \\  \hline  
-        Teórica             &       x.xx            \\  \hline  
-        \emph{Schematic}    &       1.47            \\  \hline  
-        Extração C + CC     &       1.097           \\  \hline  
-        Extração R + C + CC &       1.02            \\  \hline  
+        Teórica             &       1,43            \\  \hline  
+        \emph{Schematic}    &       1,47            \\  \hline  
+        Extração C + CC     &       1,097           \\  \hline  
+        Extração R + C + CC &       1,02            \\  \hline  
     
     \end{tabular}
 \end{table}
-% TODO
-
+\bigskip
 
 \textbf{12.} *Determine a área total do circuito que desenhou. \\
-% Pontos {-1.7, 2.8} {46.3, 17.0} W=48um L=14.2um AREA=681.6umm
+
+    As dimensões do circuito são $48,0 \mu m$ por $14,2 \mu m$, o que resulta em uma área do circuito de $681,6 \mu m^2$. % Pontos (-1.7, 2.8), (46.3, 17.0)
 Conforme o \emph{report - Windows}, o circuito possui uma área de $681,6 \mu m$.
-\smallskip
+\bigskip
 
 \textbf{13.} Considere agora o circuito da \fref{imgQ13prescaler}. \\
     O circuito é um \emph{Prescaler} 32/33, bloco comum na implementação de sintetizadores de freqüência para RF (detalhes sobre o funcionamento de sintetizadores no fim da apostila). A parte de cima do circuito, hachurada, é um divisor 4/5 síncrono, cujo o valor de divisão depende do sinal \textbf{\emph{MC}} (\emph{modulus counter}); a parte de baixo é um contador assíncrono modulo 8. O circuito completo divide o sinal de \textbf{\emph{clock}} por 32 quando \textbf{$SM = "0"$} ou por 33 quando \textbf{$SM = "1"$}. \\
@@ -160,11 +197,29 @@ Conforme o \emph{report - Windows}, o circuito possui uma área de $681,6 \mu m$.
 
 \textbf{14.} *A partir dos dados dos blocos que compõe o divisor 4/5 estime o máximo \emph{clock} que o circuito pode suportar (considere que são usados na implementação os blocos \textbf{DF1}, \textbf{NAND23} e \textbf{NOR23} e utilize o pior caso entre subida e descida das portas). Apresente os cálculos. \\
 
-% TODO
-
+    Analisando o circuito, pode-se notar que existem 2 possíveis caminhos críticos, que são os seguintes:
+    \begin{eqnarray}
+        t_{min_1} & = & t_{set-up} + t_{NAND} + t_{hold} \\
+        t_{min_2} & = & t_{set-up} + t_{NOR} + t_{hold}
+    \end{eqnarray}
+    Por analisar as configurações dos componentes, sabe-se que a capacitância de carga dos elementos são $C_{NAND} = 20 fF$, $C_{NOR} = 21 fF$ e $C_{FF} = 5 fF$. Utilizar uma aproximação linear em conjunção as informações fornecidas pelo documento que contém informações sobre as células, pode-se definir $t_{set-up} = 0 ns$, $t_{hold} = 0,573 ns$ e $t_{NAND} = 0,077 ns$.
+    \begin{equation}
+        \frac{1,62 - 0,56}{320 - 1} = \fract{t_{hold} - 0,56}{5 - 1}
+    \end{equation}
+    \begin{equation}
+        \frac{1,64 - 0,07}{640 - 2} = \fract{t_{NAND} - 0,07}{5 - 2} % TODO terminar
+    \end{equation}
+    \begin{equation}
+        \frac{1,64 - 0,07}{640 - 2} = \fract{t_{NOR} - 0,07}{5 - 2} % TODO terminar
+    \end{equation}
+    Assim sendo, $t_{min} = 0,698 ns$ o que implica uma frequência máxima de \emph{clock} de $1,43 GHz$. \\
+\bigskip
 
 \textbf{15.} Desenhe o \textbf{esquemático} do divisor 4/5 utilizando as células \textbf{DF1}, \textbf{NAND23} e \textbf{NOR23}. Como sinal de entrada deve ter o \textbf{\emph{clock}} e \textbf{\emph{MC}}; como sinal de saída o sinal \textbf{$\overline{Q}$} do \textbf{D-FF mais a esquerda}. Gere o símbolo para a célula e faça a verificação do esquemático e do símbolo. Certifique-se que não haja erros ou mesmo \emph{warnings}. \\
 
+    O esquemático do circuito está representado na \fref{imgQ15esquematico}. \\
+    \img{Esquemático do divisor 4/5}{imgQ15esquematico}{imgQ15esquematico}
+\bigskip
 
 \textbf{16.} *Gere, a partir do esquemático, um arquivo \textbf{\emph{netlist}} para o ELDO. Simule o circuito com parâmetros típicos e determine a máxima velocidade e consumo do circuito (consumo em \textbf{mW/GHz}). Considere \\
 \begin{itemize}
@@ -174,8 +229,47 @@ Conforme o \emph{report - Windows}, o circuito possui uma área de $681,6 \mu m$.
 \end{itemize}
     \textbf{Apresente as linhas de comando e sinais utilizados.} \\
 
-% TODO
+    A máxima velocidade de \emph{clock} para este circuito, segundo o esquemático, é de $1,11 GHz$ e o consumo é $1,38 mW$, assim como pode ser observado na \fref{Q16coefFreqPotencia}. A \fref{Q16coefFreqPotencia} também demonstra o gráfico do consumo em relação a potência. Os comandos utilizados para a obtenção destas informações estão representadas no \cref{srcQ16simulacao} \\
 
+    \img{Coeficiente de frequência e potência do circuito.}{Q16coefFreqPotencia}{Q16coefFreqPotencia}
+
+\begin{lstlisting}[caption=Comandos e sinais utilizados na simulação, label=srcQ16simulação]
+*** Pulso de clock ***
+.PARAM delay=0
+.PARAM frequency=1.42GHz
+.PARAM period=1/frequency
+.PARAM rise='period*.1'
+.PARAM fall='period*.1'
+.PARAM work='period*.4'
+
+*** Sweep sobre frequencia ***
+.PARAM step=10MegHz
+.PARAM start=0.9GHz
+.PARAM stop=2.1Ghz
+
+.INCLUDE divisor.cir
+
+Xd CLK MC OUT DIVISOR
+
+Vdd  VDD 0 3V
+Vss  VSS 0 0V
+Vclk CLK 0 PULSE (0V 3V delay rise fall work period)
+
+.CONNECT MC VSS
+
+.TRAN 10ns '100*period' '5*period' 1ns SWEEP frequency INCR step start stop
+
+.MEAS TRAN TCLK TRIG V(CLK) VAL=1.5V RISE=5 TARG V(CLK) VAL=1.5V RISE=6
+.MEAS TRAN TOUT TRIG V(OUT) VAL=1.5V RISE=5 TARG V(OUT) VAL=1.5V RISE=6
+* coefFreq = fclk/fout = Tout/Tclk = 5
+.MEAS TRAN CFREQ PARAM='TOUT/TCLK'
+
+.MEAS TRAN AVG_CUR AVG I(VDD)
+.MEAS TRAN CONS PARAM='V(VDD)*AVG_CUR'
+
+.PROBE TRAN V(CLK) V(OUT) V(VDD) I(VDD)
+\end{lstlisting}
+\bigskip
 
 \textbf{17.} *Gere agora o \textbf{\emph{layout} do circuito}. Neste \emph{layout} deve tomar cuidado com: \\
 \begin{itemize}
@@ -184,33 +278,56 @@ Conforme o \emph{report - Windows}, o circuito possui uma área de $681,6 \mu m$.
     \item a posição e o tamanho dos \emph{ports} de entrada e saída;
     \item a largura das linhas de $V_{DD}$ e $V_{SS}$, não inferiores a $1 \mu m$.
 \end{itemize}
-    Faça a verificação com o \textbf{DRC} (CALIBRE), passe o \textbf{LVS} e elimine todos os  erros. Apresente a figura do layout no relatório. \\
+    Faça a verificação com o \textbf{DRC} (CALIBRE), passe o \textbf{LVS} e elimine todos os erros. Apresente a figura do layout no relatório. \\
 
-% TODO
+    O \emph{layout} está representado na \fref{imgQ17layout}. \\
 
+    \img{\emph{Layout} do circuito}{imgQ17layout}{imgQ17layout} % TODO adicionar imagem
+\bigskip
 
 \textbf{18.} *Faça a extração do circuito via o Calibre com a opção \textbf{C+CC}. Simule o circuito com parâmetros típicos e determine a máxima velocidade e consumo do circuito. Considere as mesmas condições do exercício 16. \\
 
-% TODO
+    A frequência obtida foi $0,88 GHz$ com um consumo de $1,61 mW$, conforme o gráfico da \fref{imgQ10coefFreq} demonstra. O sinal da frequência escolhida está representdo no gráfico da \fref{imgQ10maxFreq}. \\
 
+    \img{Coeficiente de frequência. Frequência do sinal / Frequência de \emph{clock}}{imgQ18coefFreq}{imgQ18coefFreq} % XXX adicionar imagem
+    \img{Saída do circuito operando em sua máxima frequência}{imgQ18maxFreq}{imgQ18maxFreq} % XXX adicionar imagem
+\bigskip
 
 \textbf{19.} *Extraia agora com a opção \textbf{R+C+CC}. Simule o circuito com parâmetros típicos e determine a máxima velocidade e consumo do circuito. Considere as mesmas condições do exercício 16. \\
 
-% TODO
+    A frequência obtida foi $X GHz$, conforme o gráfico da \fref{imgQ19coefFreq} demonstra. O sinal da frequência escolhida está representdo no gráfico da \fref{imgQ19maxFreq}. \\ % XXX colocar o valor
 
+    \img{Coeficiente de frequência. Frequência do sinal / Frequência de \emph{clock}}{imgQ19coefFreq}{imgQ19coefFreq} % XXX adicionar imagem
+    \img{Saída do circuito operando em sua máxima frequência}{imgQ19maxFreq}{imgQ19maxFreq} % XXX adicionar imagem
+\bigskip
 
 \textbf{20.} *\textbf{Monte uma tabela} com os resultados obtidos nos exercícios \textbf{14, 16, 18 e 19}. \textbf{Compare e comente} os resultados. \\
 
-% TODO
+    Ao analisar a \tref{tblQ20maxFreq}, que mostra os resultados obtidos nas questões anteriores. percebe-se que há uma grande diferença entre os valores calculados teoricamente e os calculados através da simulação. Isto ocorre devido a serem consideredas as cargas parasitas do circuito (C+CC e R+C+CC) nos modelos de simulação. \\
+\begin{table}[!h]
+    \caption{Máximas frequências de operação para o divisor de frequência da \fref{imgQ15esquematico}. \label{tblQ20maxFreq}}
+    \centering
+    \begin{tabular}{|l|c|c|}
+                                                                    \hline
+        Referência          &   Freq. Máxima (GHz) &  Consumo(mW)   \\  \hline
+        Teórica             &       1,XX           &      ---       \\  \hline % TODO
+        \emph{Schematic}    &       1,11           &      1,38      \\  \hline
+        Extração C + CC     &       0,88           &      1,61      \\  \hline
+        Extração R + C + CC &       0,70           &                \\  \hline % TODO
 
+    \end{tabular}
+\end{table}
+\bigskip
 
 \textbf{21.} *Determine a área total do circuito que desenhou. \\
+
+    As dimensões do circuito são $45,1 \mu m$ por $32,4 \mu m$, o que resulta em uma área do circuito de $1.461,2 \mu m^2$. % Pontos (131.55, 135.5), (176.65, 167.9)
+Conforme o \emph{report - Windows}, o circuito possui uma área de $1.461,2 \mu m$.
+\bigskip
 
     \img{\emph{Layout} do circuito \emph{Prescaler} 32/33 na tecnologia AMS 0.35 (dimensões de $82 \mu m$ x $35 \mu m$). O divisor 4/5 está indicado com um quadrado tracejado.}{imgQ21layoutPrescaler}{imgQ21layoutPrescaler}
 
     Observação: A \fref{imgQ21layoutPrescaler} apresenta o \emph{layout} de um \emph{Prescaler} 32/33 completo. Por resultados de simulação, este circuito funciona a 2,4 GHz com consumo de $2,43 mW$ (parâmetros típicos, $V_{DD} = 3 V$). O circuito implementado, por sua vez, funcionou a $1,7 GHz$ com consumo de $2,31 mW$. Tanto a velocidade máxima como grande parte do consumo se deve ao divisor 4/5. Assim podemos, a grosso modo, dizer que o consumo e a velocidade deste divisor é igual a do \emph{Prescaler}.
-
-% TODO
 
 
 % TODO adicionar a nota de rodapé, o Sintetizador de Frequências
