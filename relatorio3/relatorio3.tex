@@ -56,12 +56,13 @@ as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m
         \end{tikzpicture}
     \end{center}
 \end{figure}
+\bigskip
 
 \textbf{3.} *Observe que na célula \textbf{DL1} as linhas dos sinais de $V_{DD}$ e $V_{SS}$ correm nas extremidades superior e inferior. Qual é a dimensão vertical destas linhas e qual a distância entre elas. Abra outra célula da biblioteca e verifique as dimensões das linhas de $V_{DD}$ e $V_{SS}$ e a distância entre elas. São iguais em todas as células?  Seria/é interessante que fossem/sejam iguais, por quê?  \\
     Dimensão vertical: $0.75$ \\
     Distância: $11.50$ \\
 
-    Analisando outras células, nota-se que as distâncias e dimensões são sempre as mesmas. Isso é feito para que as células possam ser facilmente alinhadas e utilizadas em blocos. \\ % XXX checar com os brothers
+    Analisando outras células, nota-se que as distâncias e dimensões são sempre as mesmas. Isso é feito para que as células possam ser facilmente alinhadas e utilizadas em blocos.
 \bigskip
 
 \textbf{4.} *Considere o circuito da \fref{imgQ04exemploEsquematco}. Desenhe seu \textbf{esquemático} utilizando as células \textbf{DF3}, \textbf{NAND22}. Como sinal de entrada deve colocar o \emph{\textbf{clock}} e \textbf{D}; como sinal de saída, \textbf{Q}. Gere o símbolo para a célula e faça todas as verificações necessárias. Certifique-se que não haja erros ou \emph{warnings}. \\
@@ -72,16 +73,16 @@ as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m
 
     % \img{Esquemático utilizando \textbf{DF3} e \textbf{NAND22}}{imgQ04esquematico}{imgQ04esquematico} % XXX adicionar imagem
     % \img{Símbolo utilizando \textbf{DF3} e \textbf{NAND22}}{imgQ04simbolo}{imgQ04simbolo} % XXX adicionar imagem
-
+\bigskip
 
 \textbf{5.} *A partir das informações dos blocos que compõe este circuito estime o valor máximo da frequência do \emph{clock} que o circuito pode suportar (considere a entrada $D = "1"$, utilize o pior caso entre subida e descida das portas e considere que os sinais são rápidos). Apresente os cálculos. \\
 
     Analisando o circuito, pode-se notar que a equação que representa o caminho crítico é a seguinte,
     \begin{equation}
-        t_{min} = t_{setup} + t_{nand} + t_{hold}
+        t_{min} = t_{set-up} + t_{NAND} + t_{hold}
     \end{equation}
-    Por analisar as configurações dos componentes, sabe-se que $t_{setup} = 0 ns$, $t_{hold} = 0,129 ns$ e $t_{nand} = ns$. % TODO checar os dados e a equação
-    Assim sendo, $t_{min} = X ns$ o que implica uma frequência máxima de \emph{clock} de $XXX GHz$. \\ % TODO terminar XXX o de relatórios anteriores deu 1,42GHz
+    Por analisar as configurações dos componentes, sabe-se que a capacitância de carga dos elementos são $C_{NAND} = 5 fF$ e $C_{FF} = 8 fF$. Utilizar uma aproximação linear em conjunção as informações fornecidas pelo documento que contém informações sobre as células, pode-se definir $t_{set-up} = 0 ns$, $t_{hold} = 0,538 ns$ e $t_{NAND} = 0,077 ns$. % TODO checar os dados
+    Assim sendo, $t_{min} = 0,615 ns$ o que implica uma frequência máxima de \emph{clock} de $1,63 GHz$. \\ % TODO terminar XXX o de relatórios anteriores deu 1,42GHz
 
 
 \textbf{6.} *O que significam tempos de \emph{holding} e de \emph{set-up} em \emph{flip-flops}. Qual seria o valor máximo do \emph{clock}, do exercício acima, caso o tempo de \emph{set-up} fosse de $0,1 ns$. \\
