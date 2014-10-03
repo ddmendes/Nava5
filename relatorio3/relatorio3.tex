@@ -16,31 +16,57 @@ Nesta experiência iniciaremos o uso de células da biblioteca de células da AMS. 
 
 
 \section*{Questões}
+\smallskip
 
 \textbf{1.} Verifique no arquivo:
     \begin{verbatim}
         /tools/dkit/ams_3.70_mgc/www/index.html
     \end{verbatim}
 as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m$. Entenda os dados fornecidos (\emph{Standar Cell DataSheet} -- C35 -- \emph{Core Cells}).
-
+\bigskip
 
 \textbf{2.} *Procure o \emph{layout} da célula \textbf{DL1} e o abra no IcStation. Levante e \textbf{desenhe o circuito esquemático} desta célula (não precisa determinar as dimensões dos transistores). Observe com cuidado o \emph{layout} feito. \\
 
     O esquemático está representado na \fref{imgQ02esquematico} \\
 
     % \img{Esquemático representativo da cécula \textbf{DL1}}{imgQ02esquematico}{imgQ02esquematico} % TODO criar o esquemático XXX adicionar imagem
+\begin{figure}[!h]
+    \begin{center}
+        \begin{tikzpicture}
+            \draw (5.5, 5.7) -- (6.2, 5.7);
+            \draw (5.5, 3.1) -- (6.2, 3.1);
 
+            \draw (4.6, 2.05) -- (4.2, 1.8)
+                -- (4.2, 2.3) -- cycle;
+            \draw (4.7, 2.05) circle (0.1);
+
+            \draw (4.8, 2.05) -- (6.9, 2.05);
+
+            \draw (7, 2.05) circle (0.1);
+            \draw (7.1, 2.4) -- (7.1, 1.7);
+            \draw (9.7, 2.4) -- (9.7, 1.7);
+            \draw (7.7, 1.2) -- (9.1, 1.2)
+                -- (9.1, 1.7) -- (9.5, 1.7)
+                -- (9.5, 2.4) -- (9.1, 2.4)
+                -- (9.1, 2.9) -- (7.7, 2.9)
+                -- (7.7, 2.4) -- (7.3, 2.4)
+                -- (7.3, 1.7) -- (7.7, 1.7)
+                -- cycle;
+
+        \end{tikzpicture}
+    \end{center}
+\end{figure}
 
 \textbf{3.} *Observe que na célula \textbf{DL1} as linhas dos sinais de $V_{DD}$ e $V_{SS}$ correm nas extremidades superior e inferior. Qual é a dimensão vertical destas linhas e qual a distância entre elas. Abra outra célula da biblioteca e verifique as dimensões das linhas de $V_{DD}$ e $V_{SS}$ e a distância entre elas. São iguais em todas as células?  Seria/é interessante que fossem/sejam iguais, por quê?  \\
     Dimensão vertical: $0.75$ \\
     Distância: $11.50$ \\
 
     Analisando outras células, nota-se que as distâncias e dimensões são sempre as mesmas. Isso é feito para que as células possam ser facilmente alinhadas e utilizadas em blocos. \\ % XXX checar com os brothers
-
+\bigskip
 
 \textbf{4.} *Considere o circuito da \fref{imgQ04exemploEsquematco}. Desenhe seu \textbf{esquemático} utilizando as células \textbf{DF3}, \textbf{NAND22}. Como sinal de entrada deve colocar o \emph{\textbf{clock}} e \textbf{D}; como sinal de saída, \textbf{Q}. Gere o símbolo para a célula e faça todas as verificações necessárias. Certifique-se que não haja erros ou \emph{warnings}. \\
 
-    \img{Exemplo de esquemático.}{imgQ04exemploEsquematco}{imgQ04exemploEsquematco}
+    \img{Exemplo de esquemático.}{imgQ04exemploEsquematco}{imgQ04exemploEsquematico}
 
     O esquemático está representado na \fref{imgQ04esquematico}, e o símbolo na \fref{imgQ04simbolo}. \\
 
@@ -74,7 +100,7 @@ as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m
     \item $V_{DD} = 3 V$;
     \item o sinal de \emph{clock} com (tempo de subida) = (tempo de descida) = $0,1 \cdot Período$.
 \end{itemize}
-Apresente as linhas de comando e sinais utilizados. \\
+Apresente as linhas de comando e sinais utilizados.
 
     As linhas de comando e os sinais utiliados estão representados no \cref{srcQ07simulacao} \\% TODO adicionar código fonte
 
@@ -101,19 +127,29 @@ Faça a verificação com o \textbf{DRC} (CALIBRE), passe o \textbf{LVS} e elimine 
 
 
 \textbf{10.} *Extraia agora com a opção \textbf{R+C+CC}. Simule o circuito com parâmetros típicos e determine sua máxima velocidade. Utilize as mesmas condições do exercício 7. \\
-
 % TODO
 
-
 \textbf{11.} *Monte uma tabela com os resultados obtidos nos exercícios \textbf{5, 7, 9 e 10}. \textbf{Compare e comente} os resultados. \\
-
+\begin{table}[!h]
+    \caption{Máximas frequências de operação para o divisor de frequência da \fref{imgQ04esquematico}. \label{tblQ10maxFreq}}
+    \centering
+    \begin{tabular}{|l|c|}
+                                                        \hline
+        Referência          &   Freq. Máxima (GHz)  \\  \hline  
+        Teórica             &       x.xx            \\  \hline  
+        \emph{Schematic}    &       1.47            \\  \hline  
+        Extração C + CC     &       1.097           \\  \hline  
+        Extração R + C + CC &       z.zz            \\  \hline  
+    
+    \end{tabular}
+\end{table}
 % TODO
 
 
 \textbf{12.} *Determine a área total do circuito que desenhou. \\
-
-% TODO
-
+% Pontos {-1.7, 2.8} {46.3, 17.0} W=48um L=14.2um AREA=681.6umm
+Conforme o \emph{report - Windows}, o circuito possui uma área de $681,6 \mu m$.
+\smallskip
 
 \textbf{13.} Considere agora o circuito da \fref{imgQ13prescaler}. \\
     O circuito é um \emph{Prescaler} 32/33, bloco comum na implementação de sintetizadores de freqüência para RF (detalhes sobre o funcionamento de sintetizadores no fim da apostila). A parte de cima do circuito, hachurada, é um divisor 4/5 síncrono, cujo o valor de divisão depende do sinal \textbf{\emph{MC}} (\emph{modulus counter}); a parte de baixo é um contador assíncrono modulo 8. O circuito completo divide o sinal de \textbf{\emph{clock}} por 32 quando \textbf{$SM = "0"$} ou por 33 quando \textbf{$SM = "1"$}. \\
