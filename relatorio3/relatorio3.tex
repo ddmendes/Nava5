@@ -84,10 +84,10 @@ as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m
     \end{equation}
     Por analisar as configurações dos componentes, sabe-se que a capacitância de carga dos elementos são $C_{NAND} = 5 fF$ e $C_{FF} = 13 fF$. Utilizar uma aproximação linear em conjunção as informações fornecidas pelo documento que contém informações sobre as células, pode-se definir $t_{set-up} = 0 ns$, $t_{hold} = 0,621 ns$ e $t_{NAND} = 0,077 ns$.
     \begin{equation}
-        \frac{1,66 - 0,61}{960 - 3} = \fract{t_{hold} - 0,61}{13 - 3}
+        \frac{1,66 - 0,61}{960 - 3} = \frac{t_{hold} - 0,61}{13 - 3}
     \end{equation}
     \begin{equation}
-        \frac{1,64 - 0,07}{640 - 2} = \fract{t_{NAND} - 0,07}{5 - 2}
+        \frac{1,64 - 0,07}{640 - 2} = \frac{t_{NAND} - 0,07}{5 - 2}
     \end{equation}
     Assim sendo, $t_{min} = 0,698 ns$ o que implica uma frequência máxima de \emph{clock} de $1,43 GHz$. \\
 \bigskip
@@ -204,13 +204,13 @@ Conforme o \emph{report - Windows}, o circuito possui uma área de $681,6 \mu m$.
     \end{eqnarray}
     Por analisar as configurações dos componentes, sabe-se que a capacitância de carga dos elementos são $C_{NAND} = 20 fF$, $C_{NOR} = 21 fF$ e $C_{FF} = 5 fF$. Utilizar uma aproximação linear em conjunção as informações fornecidas pelo documento que contém informações sobre as células, pode-se definir $t_{set-up} = 0 ns$, $t_{hold} = 0,573 ns$ e $t_{NAND} = 0,077 ns$.
     \begin{equation}
-        \frac{1,62 - 0,56}{320 - 1} = \fract{t_{hold} - 0,56}{5 - 1}
+        \frac{1,62 - 0,56}{320 - 1} = \frac{t_{hold} - 0,56}{5 - 1}
     \end{equation}
     \begin{equation}
-        \frac{1,64 - 0,07}{640 - 2} = \fract{t_{NAND} - 0,07}{5 - 2} % TODO terminar
+        \frac{1,64 - 0,07}{640 - 2} = \frac{t_{NAND} - 0,07}{5 - 2} % TODO terminar
     \end{equation}
     \begin{equation}
-        \frac{1,64 - 0,07}{640 - 2} = \fract{t_{NOR} - 0,07}{5 - 2} % TODO terminar
+        \frac{1,64 - 0,07}{640 - 2} = \frac{t_{NOR} - 0,07}{5 - 2} % TODO terminar
     \end{equation}
     Assim sendo, $t_{min} = 0,698 ns$ o que implica uma frequência máxima de \emph{clock} de $1,43 GHz$. \\
 \bigskip
@@ -231,7 +231,7 @@ Conforme o \emph{report - Windows}, o circuito possui uma área de $681,6 \mu m$.
 
     A máxima velocidade de \emph{clock} para este circuito, segundo o esquemático, é de $1,11 GHz$ e o consumo é $1,38 mW$, assim como pode ser observado na \fref{Q16coefFreqPotencia}. A \fref{Q16coefFreqPotencia} também demonstra o gráfico do consumo em relação a potência. Os comandos utilizados para a obtenção destas informações estão representadas no \cref{srcQ16simulacao} \\
 
-    \img{Coeficiente de frequência e potência do circuito.}{Q16coefFreqPotencia}{Q16coefFreqPotencia}
+    \img{Coeficiente de frequência e potência do circuito.}{imgQ16coefFreqPotencia}{imgQ16coefFreqPotencia}
 
 \begin{lstlisting}[caption=Comandos e sinais utilizados na simulação, label=srcQ16simulação]
 *** Pulso de clock ***
@@ -287,17 +287,17 @@ Vclk CLK 0 PULSE (0V 3V delay rise fall work period)
 
 \textbf{18.} *Faça a extração do circuito via o Calibre com a opção \textbf{C+CC}. Simule o circuito com parâmetros típicos e determine a máxima velocidade e consumo do circuito. Considere as mesmas condições do exercício 16. \\
 
-    A frequência obtida foi $0,88 GHz$ com um consumo de $1,61 mW$, conforme o gráfico da \fref{imgQ10coefFreq} demonstra. O sinal da frequência escolhida está representdo no gráfico da \fref{imgQ10maxFreq}. \\
+    A frequência obtida foi $0,88 GHz$ com um consumo de $1,61 mW$, conforme o gráfico da \fref{imgQ18coefFreqPotencia} demonstra. O sinal da frequência escolhida está representdo no gráfico da \fref{imgQ10maxFreq}. \\
 
-    \img{Coeficiente de frequência. Frequência do sinal / Frequência de \emph{clock}}{imgQ18coefFreq}{imgQ18coefFreq} % XXX adicionar imagem
+    \img{Coeficiente de frequência. Frequência do sinal / Frequência de \emph{clock}}{imgQ18coefFreqPotencia}{imgQ18coefFreqPotencia} % XXX adicionar imagem
     \img{Saída do circuito operando em sua máxima frequência}{imgQ18maxFreq}{imgQ18maxFreq} % XXX adicionar imagem
 \bigskip
 
 \textbf{19.} *Extraia agora com a opção \textbf{R+C+CC}. Simule o circuito com parâmetros típicos e determine a máxima velocidade e consumo do circuito. Considere as mesmas condições do exercício 16. \\
 
-    A frequência obtida foi $X GHz$, conforme o gráfico da \fref{imgQ19coefFreq} demonstra. O sinal da frequência escolhida está representdo no gráfico da \fref{imgQ19maxFreq}. \\ % XXX colocar o valor
+    A frequência obtida foi $X GHz$, conforme o gráfico da \fref{imgQ19coefFreqPotencia} demonstra. O sinal da frequência escolhida está representdo no gráfico da \fref{imgQ19maxFreq}. \\ % XXX colocar o valor
 
-    \img{Coeficiente de frequência. Frequência do sinal / Frequência de \emph{clock}}{imgQ19coefFreq}{imgQ19coefFreq} % XXX adicionar imagem
+    \img{Coeficiente de frequência. Frequência do sinal / Frequência de \emph{clock}}{imgQ19coefFreqPotencia}{imgQ19coefFreqPotencia} % XXX adicionar imagem
     \img{Saída do circuito operando em sua máxima frequência}{imgQ19maxFreq}{imgQ19maxFreq} % XXX adicionar imagem
 \bigskip
 
@@ -313,7 +313,7 @@ Vclk CLK 0 PULSE (0V 3V delay rise fall work period)
         Teórica             &       1,XX           &      ---       \\  \hline % TODO
         \emph{Schematic}    &       1,11           &      1,38      \\  \hline
         Extração C + CC     &       0,88           &      1,61      \\  \hline
-        Extração R + C + CC &       0,70           &                \\  \hline % TODO
+        Extração R + C + CC &       0,84           &      1,48      \\  \hline % TODO
 
     \end{tabular}
 \end{table}
