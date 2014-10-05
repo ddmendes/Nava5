@@ -30,33 +30,6 @@ as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m
     O esquemático está representado na \fref{imgQ02esquematico} \\
 
     \img{Esquemático representativo da cécula \textbf{DL1}}{imgQ02esquematico}{imgQ02esquematico}
-
-%\begin{figure}[!h]
-%    \begin{center}
-%        \begin{tikzpicture}
-%            \draw (5.5, 5.7) -- (6.2, 5.7);
-%            \draw (5.5, 3.1) -- (6.2, 3.1);
-%
-%            \draw (4.6, 2.05) -- (4.2, 1.8)
-%                -- (4.2, 2.3) -- cycle;
-%            \draw (4.7, 2.05) circle (0.1);
-%
-%            \draw (4.8, 2.05) -- (6.9, 2.05);
-%
-%            \draw (7, 2.05) circle (0.1);
-%            \draw (7.1, 2.4) -- (7.1, 1.7);
-%            \draw (9.7, 2.4) -- (9.7, 1.7);
-%            \draw (7.7, 1.2) -- (9.1, 1.2)
-%                -- (9.1, 1.7) -- (9.5, 1.7)
-%                -- (9.5, 2.4) -- (9.1, 2.4)
-%                -- (9.1, 2.9) -- (7.7, 2.9)
-%                -- (7.7, 2.4) -- (7.3, 2.4)
-%                -- (7.3, 1.7) -- (7.7, 1.7)
-%                -- cycle;
-%
-%        \end{tikzpicture}
-%    \end{center}
-%\end{figure}
 \bigskip
 
 \textbf{3.} *Observe que na célula \textbf{DL1} as linhas dos sinais de $V_{DD}$ e $V_{SS}$ correm nas extremidades superior e inferior. Qual é a dimensão vertical destas linhas e qual a distância entre elas. Abra outra célula da biblioteca e verifique as dimensões das linhas de $V_{DD}$ e $V_{SS}$ e a distância entre elas. São iguais em todas as células?  Seria/é interessante que fossem/sejam iguais, por quê?  \\
@@ -80,11 +53,11 @@ as informações sobre as células digitais disponíveis no processo AMS $0.35 \mu m
 
     Analisando o circuito, pode-se notar que a equação que representa o caminho crítico é a seguinte,
     \begin{equation}
-        t_{min} = t_{set-up} + t_{NAND} + t_{hold}
+        t_{min} = t_{set-up} + t_{NAND} + t_{FF}
     \end{equation}
-    Por analisar as configurações dos componentes, sabe-se que a capacitância de carga dos elementos são $C_{NAND} = 5 fF$ e $C_{FF} = 13 fF$. Utilizar uma aproximação linear em conjunção as informações fornecidas pelo documento que contém informações sobre as células, pode-se definir $t_{set-up} = 0 ns$, $t_{hold} = 0,621 ns$ e $t_{NAND} = 0,077 ns$.
+    Por analisar as configurações dos componentes, sabe-se que a capacitância de carga dos elementos são $C_{NAND} = 5 fF$ e $C_{FF} = 13 fF$. Utilizar uma aproximação linear em conjunção as informações fornecidas pelo documento que contém informações sobre as células, pode-se definir $t_{set-up} = 0 ns$, $t_{FF} = 0,621 ns$ e $t_{NAND} = 0,077 ns$.
     \begin{equation}
-        \frac{1,66 - 0,61}{960 - 3} = \frac{t_{hold} - 0,61}{13 - 3}
+        \frac{1,66 - 0,61}{960 - 3} = \frac{t_{FF} - 0,61}{13 - 3}
     \end{equation}
     \begin{equation}
         \frac{1,64 - 0,07}{640 - 2} = \frac{t_{NAND} - 0,07}{5 - 2}
@@ -167,7 +140,7 @@ Faça a verificação com o \textbf{DRC} (CALIBRE), passe o \textbf{LVS} e elimine 
 
 \textbf{11.} *Monte uma tabela com os resultados obtidos nos exercícios \textbf{5, 7, 9 e 10}. \textbf{Compare e comente} os resultados. \\
 
-    Ao analisar a \tref{tblQ11maxFreq}, que mostra os resultados obtidos nas questões anteriores, percebe-se que há uma grande diferença entre os valores calculados teoricamente e os calculados através da simulação. Isto ocorre devido a serem consideredas as cargas parasitas do circuito (C+CC e R+C+CC) nos modelos de simulação. \\
+    Ao analisar a \tref{tblQ11maxFreq}, que mostra os resultados obtidos nas questões anteriores, percebe-se que há uma grande diferença entre os valores calculados teoricamente e os calculados através da simulação. Isto ocorre devido a serem consideredas as cargas parasitas do circuito (C+CC e R+C+CC) nos modelos de simulação que aumentam bastante o tempo de operação. \\
 \begin{table}[!h]
     \caption{Máximas frequências de operação para o divisor de frequência da \fref{imgQ04esquematico}. \label{tblQ11maxFreq}}
     \centering
@@ -193,26 +166,29 @@ Conforme o \emph{report - Windows}, o circuito possui uma área de $681,6 \mu m$.
     O circuito é um \emph{Prescaler} 32/33, bloco comum na implementação de sintetizadores de freqüência para RF (detalhes sobre o funcionamento de sintetizadores no fim da apostila). A parte de cima do circuito, hachurada, é um divisor 4/5 síncrono, cujo o valor de divisão depende do sinal \textbf{\emph{MC}} (\emph{modulus counter}); a parte de baixo é um contador assíncrono modulo 8. O circuito completo divide o sinal de \textbf{\emph{clock}} por 32 quando \textbf{$SM = "0"$} ou por 33 quando \textbf{$SM = "1"$}. \\
 
     \img{\emph{Prescaler} 32/33}{imgQ13prescaler}{imgQ13prescaler}
-
+\bigskip
 
 \textbf{14.} *A partir dos dados dos blocos que compõe o divisor 4/5 estime o máximo \emph{clock} que o circuito pode suportar (considere que são usados na implementação os blocos \textbf{DF1}, \textbf{NAND23} e \textbf{NOR23} e utilize o pior caso entre subida e descida das portas). Apresente os cálculos. \\
 
-    Analisando o circuito, pode-se notar que existem 2 possíveis caminhos críticos, que são os seguintes:
+    Analisando o circuito, pode-se notar que existem 2 possíveis caminhos críticos, que são os representados pelas seguintes equações:
     \begin{eqnarray}
-        t_{min_1} & = & t_{set-up} + t_{NAND} + t_{hold} \\
-        t_{min_2} & = & t_{set-up} + t_{NOR} + t_{hold}
+        t_{min_1} & = & t_{set-up} + t_{NAND} + t_{FF} \\
+        t_{min_2} & = & t_{set-up} + t_{NOR} + t_{FF}
     \end{eqnarray}
-    Por analisar as configurações dos componentes, sabe-se que a capacitância de carga dos elementos são $C_{NAND} = 20 fF$, $C_{NOR} = 21 fF$ e $C_{FF} = 5 fF$. Utilizar uma aproximação linear em conjunção as informações fornecidas pelo documento que contém informações sobre as células, pode-se definir $t_{set-up} = 0 ns$, $t_{hold} = 0,573 ns$ e $t_{NAND} = 0,077 ns$.
+    Por analisar as configurações dos componentes, sabe-se que a capacitância de carga dos elementos são $C_{NAND} = 20 fF$, $C_{NOR} = 21 fF$ e $C_{FF} = 5 fF$. Utilizar uma aproximação linear em conjunção as informações fornecidas pelo documento que contém informações sobre as células, pode-se definir $t_{set-up} = 0 ns$, $t_{FF} = 0,706 ns$, $t_{NOR} = 0,073 ns$ e $t_{NAND} = 0,043 ns$.
     \begin{equation}
-        \frac{1,62 - 0,56}{320 - 1} = \frac{t_{hold} - 0,56}{5 - 1}
+        \frac{2,14 - 0,50}{320 - 1} = \frac{t_{FF} - 0,50}{41 - 1}
     \end{equation}
     \begin{equation}
-        \frac{1,64 - 0,07}{640 - 2} = \frac{t_{NAND} - 0,07}{5 - 2} % TODO terminar
+        \frac{1,60 - 0,07}{960 - 3} = \frac{t_{NOR} - 0,07}{5 - 3}
     \end{equation}
     \begin{equation}
-        \frac{1,64 - 0,07}{640 - 2} = \frac{t_{NOR} - 0,07}{5 - 2} % TODO terminar
+        \frac{1,67 - 0,04}{960 - 3} = \frac{t_{NAND} - 0,04}{5 - 3}
     \end{equation}
-    Assim sendo, $t_{min} = 0,698 ns$ o que implica uma frequência máxima de \emph{clock} de $1,43 GHz$. \\
+    \begin{equation}
+        t_{min} = min\left(t_{min_1}, t_{min_2}\right)
+    \end{equation}
+    Assim sendo, $t_{min} = 0,779 ns$ o que implica uma frequência máxima de \emph{clock} de $1,28 GHz$. \\
 \bigskip
 
 \textbf{15.} Desenhe o \textbf{esquemático} do divisor 4/5 utilizando as células \textbf{DF1}, \textbf{NAND23} e \textbf{NOR23}. Como sinal de entrada deve ter o \textbf{\emph{clock}} e \textbf{\emph{MC}}; como sinal de saída o sinal \textbf{$\overline{Q}$} do \textbf{D-FF mais a esquerda}. Gere o símbolo para a célula e faça a verificação do esquemático e do símbolo. Certifique-se que não haja erros ou mesmo \emph{warnings}. \\
@@ -282,38 +258,38 @@ Vclk CLK 0 PULSE (0V 3V delay rise fall work period)
 
     O \emph{layout} está representado na \fref{imgQ17layout}. \\
 
-    \img{\emph{Layout} do circuito}{imgQ17layout}{imgQ17layout} % TODO adicionar imagem
+    \img{\emph{Layout} do circuito}{imgQ17layout}{imgQ17layout}
 \bigskip
 
 \textbf{18.} *Faça a extração do circuito via o Calibre com a opção \textbf{C+CC}. Simule o circuito com parâmetros típicos e determine a máxima velocidade e consumo do circuito. Considere as mesmas condições do exercício 16. \\
 
     A frequência obtida foi $0,88 GHz$ com um consumo de $1,61 mW$, conforme o gráfico da \fref{imgQ18coefFreqPotencia} demonstra. O sinal da frequência escolhida está representdo no gráfico da \fref{imgQ10maxFreq}. \\
 
-    \img{Coeficiente de frequência. Frequência do sinal / Frequência de \emph{clock}}{imgQ18coefFreqPotencia}{imgQ18coefFreqPotencia} % XXX adicionar imagem
-    \img{Saída do circuito operando em sua máxima frequência}{imgQ18maxFreq}{imgQ18maxFreq} % XXX adicionar imagem
+    \img{Coeficiente de frequência. Frequência do sinal / Frequência de \emph{clock}}{imgQ18coefFreqPotencia}{imgQ18coefFreqPotencia}
+    \img{Saída do circuito operando em sua máxima frequência}{imgQ18maxFreq}{imgQ18maxFreq}
 \bigskip
 
 \textbf{19.} *Extraia agora com a opção \textbf{R+C+CC}. Simule o circuito com parâmetros típicos e determine a máxima velocidade e consumo do circuito. Considere as mesmas condições do exercício 16. \\
 
-    A frequência obtida foi $X GHz$, conforme o gráfico da \fref{imgQ19coefFreqPotencia} demonstra. O sinal da frequência escolhida está representdo no gráfico da \fref{imgQ19maxFreq}. \\ % XXX colocar o valor
+    A frequência obtida foi $0,84 GHz$ com um conforme de $1,48 mW$, conforme o gráfico da \fref{imgQ19coefFreqPotencia} demonstra. O sinal da frequência escolhida está representdo no gráfico da \fref{imgQ19maxFreq}.
 
-    \img{Coeficiente de frequência. Frequência do sinal / Frequência de \emph{clock}}{imgQ19coefFreqPotencia}{imgQ19coefFreqPotencia} % XXX adicionar imagem
-    \img{Saída do circuito operando em sua máxima frequência}{imgQ19maxFreq}{imgQ19maxFreq} % XXX adicionar imagem
+    \img{Coeficiente de frequência. Frequência do sinal / Frequência de \emph{clock}}{imgQ19coefFreqPotencia}{imgQ19coefFreqPotencia}
+    \img{Saída do circuito operando em sua máxima frequência}{imgQ19maxFreq}{imgQ19maxFreq}
 \bigskip
 
 \textbf{20.} *\textbf{Monte uma tabela} com os resultados obtidos nos exercícios \textbf{14, 16, 18 e 19}. \textbf{Compare e comente} os resultados. \\
 
-    Ao analisar a \tref{tblQ20maxFreq}, que mostra os resultados obtidos nas questões anteriores. percebe-se que há uma grande diferença entre os valores calculados teoricamente e os calculados através da simulação. Isto ocorre devido a serem consideredas as cargas parasitas do circuito (C+CC e R+C+CC) nos modelos de simulação. \\
+    Ao analisar a \tref{tblQ20maxFreq}, que mostra os resultados obtidos nas questões anteriores, analogamente à questão 11, percebe-se que há uma grande diferença entre os valores calculados teoricamente e os calculados através da simulação. Isto ocorre devido a serem consideredas as cargas parasitas do circuito (C+CC e R+C+CC) nos modelos de simulação que aumentam bastante o tempo de operação. \\
 \begin{table}[!h]
     \caption{Máximas frequências de operação para o divisor de frequência da \fref{imgQ15esquematico}. \label{tblQ20maxFreq}}
     \centering
     \begin{tabular}{|l|c|c|}
-                                                                    \hline
+                                                                        \hline
         Referência          &   Freq. Máxima (GHz) &  Consumo(mW)   \\  \hline
-        Teórica             &       1,XX           &      ---       \\  \hline % TODO
+        Teórica             &       1,28           &      ---       \\  \hline
         \emph{Schematic}    &       1,11           &      1,38      \\  \hline
         Extração C + CC     &       0,88           &      1,61      \\  \hline
-        Extração R + C + CC &       0,84           &      1,48      \\  \hline % TODO
+        Extração R + C + CC &       0,84           &      1,48      \\  \hline
 
     \end{tabular}
 \end{table}
@@ -328,9 +304,6 @@ Conforme o \emph{report - Windows}, o circuito possui uma área de $1.461,2 \mu m
     \img{\emph{Layout} do circuito \emph{Prescaler} 32/33 na tecnologia AMS 0.35 (dimensões de $82 \mu m$ x $35 \mu m$). O divisor 4/5 está indicado com um quadrado tracejado.}{imgQ21layoutPrescaler}{imgQ21layoutPrescaler}
 
     Observação: A \fref{imgQ21layoutPrescaler} apresenta o \emph{layout} de um \emph{Prescaler} 32/33 completo. Por resultados de simulação, este circuito funciona a 2,4 GHz com consumo de $2,43 mW$ (parâmetros típicos, $V_{DD} = 3 V$). O circuito implementado, por sua vez, funcionou a $1,7 GHz$ com consumo de $2,31 mW$. Tanto a velocidade máxima como grande parte do consumo se deve ao divisor 4/5. Assim podemos, a grosso modo, dizer que o consumo e a velocidade deste divisor é igual a do \emph{Prescaler}.
-
-
-% TODO adicionar a nota de rodapé, o Sintetizador de Frequências
 
 
 \end{document}
