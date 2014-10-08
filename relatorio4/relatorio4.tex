@@ -1,0 +1,99 @@
+\include{preambulo}
+
+
+\begin{document} 
+
+\renewcommand{\titulo}{Projeto 9}
+\pagenumbering{arabic}
+\makecover
+\makelists
+
+\section*{Introdução}
+
+\section*{Resumo}
+   Neste projeto iremos repetir algumas etapas feitas anteriormente e será mostrado como 
+fazer, de forma automática, o \emph{floor planning} e o \emph{placement} das células.
+
+\section*{Questões}
+\textbf{1.}	Considere o circuito da \fref{imgQ01prescaler} (circuito prescaler).
+
+	\img{Prescaler 32/33}{imgQ01prescaler}
+
+   Desenhe o circuito completo do esquemático da \fref{imgQ01prescaler} utilizando as células \verb:DF1:, 
+\verb:NAND23:, \verb:NOR23: e \verb:NAND40:. Como sinais de entrada ele deve ter o \emph{clock} e \emph{SM}; como 
+sinal de saída, \emph{saida32\_33} (divide o \emph{clock} por 32 ou 33).
+	
+	O esquemático do circuito prescaler está representado na \fref{imgQ01schematic}.
+
+	%\img{Esquemático do circuito prescaler 32/33}{imgQ01schematic}
+
+\textbf{2.}	Gere o símbolo para a célula e faça a verificação do esquemático e do símbolo. Certifique-
+se de que não haja erros ou mesmo \emph{warnings}.
+
+\textbf{3.}	Gere o \emph{layout} do circuito a partir do \emph{SDL} (utilize o \emph{designviewpoint} e não o \emph{schematic}) 
+Para isto:
+\begin{enumerate}[label=\alph*.]
+	\item Coloque as células no \emph{layout};
+	\item Realize o \emph{autofloorplan} (\emph{\textbf{Place \& Route - Autofp}});
+	\item Recoloque as células dentro das linhas de \emph{floorplan} (\emph{\textbf{Place \& Route  - AutoPlace - StdCel}});
+	\item Apague as linhas que serviriam de guia para os \emph{PADs} (as linhas mais externas);
+	\item Selecione todo o esquemático para garantir que todas as ligações no \emph{layout} apareçam. Caso não isto seja feito, no momento do \emph{routing}, várias ligações deixam de ser realizadas;
+	\item Para o \emph{rounting}, desabilite a utilização de polisilício (não deixe de fazer isto, pois, caso contrário, o poli será incorretamente usado);
+	\item Use o comando \emph{routing}  automático para fazer as ligações. Tome cuidado para que as linhas de \emph{VDD} e \emph{VSS} tenham $1,8 \mu m$ de largura (use a opção \emph{\textbf{Route - ARoutre NEt Classe}});
+	\item Para as ligações que não foram feitas, utilize o comando \emph{\textbf{Route - Aroute - Region  - RIP}} (neste caso algumas ligações são desfeitas e nova tentativa é realizada);
+	\item Verifique que todas as ligação foram realizadas através do comando \emph{\textbf{Route - Routing 
+	Results - SOvrf}}.
+\end{enumerate}
+
+\textbf{4.} Verifique se as ligações foram bem feitas (principalmente dos sinais de \emph{VDD} e \emph{VSS}). Refaça 
+aquelas que não estiverem boas. Coloque os \emph{ports} no \emph{layout}, conecte-os e coloque os 
+\emph{labels}.
+
+\textbf{5.}	Passe o \emph{DRC} no circuito não deixando nenhum erro.
+
+\textbf{6.}	Faça o \emph{LVS} entre o \emph{layout} e o esquemático. Só devem ocorrer \emph{warnings}. Inclua no relatório 
+o \emph{layout} feito e corrigido.
+
+\textbf{7.}	Considere o circuito da \fref{imgQ07usingPrescaler} (não tem função alguma, servindo apenas para 
+ilustração). Desenhe o esquemático desse circuito utilizando a célula \verb:NAND23: e o 
+prescaler anterior (faça as devidas checagens).
+
+	\img{Circuito utilizando o Prescaler.}{imgQ07usingPrescaler}
+
+\textbf{8.}	Gere o \emph{layout} a partir do esquemático. Para isto não se esqueça de acrescentar ao 
+símbolo do \emph{prescaler} a propriedade \emph{phy\_comp} e como seu valor a localização do \emph{layout}.
+
+\textbf{9.} Termine as conexões, adicione \emph{ports}, faça o \emph{DRC} e o \emph{LVS}. Inclua no relatório o \emph{layout} 
+feito.
+
+\textbf{10.} Modifique o circuito adicionando um transistor na saída como indicado na
+\fref{imgQ10usingPrescalerAndTransistor}. Novamente gere o \emph{layout}, adicione \emph{ports}, faça o \emph{DRC}
+e o \emph{LVS}. Quais são os valores da saída quando o gate do transistor está \emph{"Alto"} e quando está 
+\emph{"Baixo"}. Inclua no relatório o \emph{layout} feito.
+ 
+\img{Circuito utilizando Prescalers e transistor.}{imgQ10usingPrescalerAndTransistor}
+
+\textbf{11.} Voltando ao circuito da \fref{imgQ01prescaler}, extrair a partir do esquemático o \emph{netlist}
+e determinar a máxima velocidade para os modelos típico e \emph{worstspeed} (o circuito deve dividir o \emph{clock}
+por 32, para SM = "0", ou por 33, para SM = "1"). Use o comando \emph{measure}, compare as freqüências obtidas nos
+dois modelos e comente os resultados.
+
+\textbf{12.} A partir do \emph{layout} do circuito da \fref{imgQ01prescaler}, extrair o circuito para simulação com apenas capacitores. Determinar a máxima velocidade do circuito para o modelo típico e para o modelo \emph{worstspeed}.
+
+\textbf{13.} Extrair agora o circuito para simulação com capacitores e resistores. Determinar a máxima 
+velocidade do circuito para o modelo típico e para o modelo \emph{worstspeed}.
+
+\textbf{14.} A partir do \emph{datasheet} dos blocos que compõe o \emph{prescaler} estime o máximo \emph{clock} que
+o circuito poderia suportar.
+
+\textbf{15.} Monte uma tabela com os resultados obtidos nos exercícios 11, 12, 13 e 14. Compare e 
+comente os resultados.
+
+\begin{verbatim}
+Obs. Endereço com informações sobre células
+/local/tools/dkit/ams_3.70_mgc/www/index.html
+(Standar Cell DataSheet - C35 - Core Cells).
+\end{verbatim}
+
+\end{document}
+
