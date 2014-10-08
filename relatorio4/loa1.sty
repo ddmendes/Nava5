@@ -1,0 +1,42 @@
+\ProvidesPackage{loa}
+\newcommand{\acronymdef}{}
+\newcommand{\listacronymname}{}
+\DeclareOption{final}{%
+\renewcommand{\acronymdef}[2]{%
+    \addtocontents{loa}{\protect\acronymoutput{#1}{#2}}%
+    }%
+}
+\DeclareOption{draft}{%
+\renewcommand{\acronymdef}[2]{%
+    \addtocontents{loa}{\protect\marginpar{\thepage}\protect\acronymoutput{#1}{#2}}%
+    }%
+}
+\DeclareOption{english}{\renewcommand{\listacronymname}{List of Acronyms}}
+\DeclareOption{portuges}{\renewcommand{\listacronymname}{Lista de Abreviaturas, Algoritmos e Variáveis}}
+\DeclareOption{brazil}{\ExecuteOptions{portuges}}
+\ExecuteOptions{draft,english}
+\ProcessOptions
+
+
+\newcommand\listofacronyms{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \section*{\listacronymname
+      \@mkboth{\MakeUppercase\listacronymname}%
+              {\MakeUppercase\listacronymname}}%
+    \@starttoc{loa}%
+    \if@restonecol\twocolumn\fi
+    }
+\def\ldrsfill{\leaders\hbox{$\m@th
+       \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+       mu$}\hfill }
+
+%\def\ld{\leaders\hbox{test}\hfill}
+
+\newcommand{\acronymoutput}[2]{%
+%    \@dottedtocline{1}{0pt}{0pt}{#1}{#2}
+{#1 \ldrsfill #2 \\}
+}

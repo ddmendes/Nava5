@@ -1,0 +1,103 @@
+\include{preambulo}
+
+
+\begin{document} 
+
+\renewcommand{\titulo}{Projeto 9}
+\pagenumbering{arabic}
+\makecover
+\makelists
+
+\section*{Introdução}
+
+\section*{Resumo}
+   Neste projeto iremos repetir algumas etapas feitas anteriormente e será mostrado como 
+fazer, de forma automática, o floor planning e o placement das células.
+
+\section*{Questões}
+\textbf{1.}	Considere o circuito da Figura 1 (circuito prescaler).
+
+%inserir figura do pdf.  --  Figura 1. Prescaler 32/33.
+
+   Desenhe o circuito completo do esquemático da Fig. 1 utilizando as células DF1, 
+NAND23, NOR23 e NAND40. Como sinais de entrada ele deve ter o clock e SM; como 
+sinal de saída, saida32\_33 (divide o clock por 32 ou 33)
+
+\textbf{2.}	Gere o símbolo para a célula e faça a verificação do esquemático e do símbolo. Certifique-
+se de que não haja erros ou mesmo warnings.
+
+\textbf{3.}	Gere o layout do circuito a partir do SDL (utilize o designviewpoint e não o schematic) 
+Para isto:
+a.	Coloque as células no layout;
+b.	Realize o autofloorplan (Place \& Route - Autofp);
+c.	Recoloque as células dentro das linhas de floorplan (Place \& Route  - AutoPlace - 
+StdCel);
+d.	Apague as linhas que serviriam de guia para os PADs (as linhas mais externas);
+e.	Selecione todo o esquemático para garantir que todas as ligações no layout apareçam. 
+Caso não isto seja feito, no momento do routing, várias ligações deixam de ser 
+realizadas;
+f.	Para o rounting, desabilite a utilização de polisilício (não deixe de fazer isto, pois, caso 
+contrário, o poli será incorretamente usado);
+g.	Use o comando routing  automático para fazer as ligações. Tome cuidado para que as 
+linhas de VDD e VSS tenham 1,8 ?m de largura (use a opção Route - ARoutre NEt 
+Classe);
+h.	Para as ligações que não foram feitas, utilize o comando Route - Aroute - Region  - 
+RIP (neste caso algumas ligações são desfeitas e nova tentativa é realizada);
+i.	Verifique que todas as ligação foram realizadas através do comando Route - Routing 
+Results - SOvrf .
+
+\textbf{4.} 	Verifique se as ligações foram bem feitas (principalmente dos sinais de VDD e VSS). Refaça 
+aquelas que não estiverem boas. Coloque os ports no layout, conecte-os e coloque os 
+labels.
+
+\textbf{5.}	Passe o DRC no circuito não deixando nenhum erro.
+
+\textbf{6.}	Faça o LVS entre o layout e o esquemático. Só devem ocorrer warnings. Inclua no relatório 
+o layout feito e corrigido.
+
+\textbf{7.}	Considere o circuito da Figura 2 (não tem função alguma, servindo apenas para 
+ilustração). Desenhe o esquemático desse circuito utilizando a célula NAND23 e o 
+prescaler anterior (faça as devidas checagens).
+
+\textbf{8.}	Gere o layout a partir do esquemático. Para isto não se esqueça de acrescentar ao 
+símbolo do prescaler a propriedade Phy\_comp e como seu valor a localização do layout.
+
+\textbf{9.} Termine as conexões, adicione ports, faça o DRC e o LVS. Inclua no relatório o layout 
+feito.
+ 
+ %inserir figura do pdf -- Figura 2. Circuito utilizando o Prescaler.
+
+\textbf{10.} Modifique o circuito adicionando um transistor na saída como indicado na Figura 3. 
+Novamente gere o layout, adicione ports, faça o DRC e o LVS. Quais são os valores da 
+saída quando o gate do transistor está "Alto" e quando está "Baixo". Inclua no relatório o 
+layout feito.
+ 
+%inserir figura do pdf -- Figura 3. Circuito utilizando Prescalers e transistor.
+
+\textbf{11.} Voltando ao circuito da Figura 1, extrair a partir do esquemático o netlist e determinar a 
+máxima velocidade para os modelos típico e worstspeed (o circuito deve dividir o clock 
+por 32, para SM = "0", ou por 33, para SM = "1"). Use o comando measure, compare as 
+freqüências obtidas nos dois modelos e comente os resultados.
+
+\textbf{12.} A partir do layout do circuito da Figura 1, extrair o circuito para simulação com apenas 
+capacitores. Determinar a máxima velocidade do circuito para o modelo típico e para o 
+modelo worstspeed.
+
+\textbf{13.} Extrair agora o circuito para simulação com capacitores e resistores. Determinar a máxima 
+velocidade do circuito para o modelo típico e para o modelo worstspeed.
+
+\textbf{14.} A partir do datasheet dos blocos que compõe o prescaler estime o máximo clock que o 
+circuito poderia suportar.
+
+\textbf{15.} Monte uma tabela com os resultados obtidos nos exercícios 11, 12, 13 e 14. Compare e 
+comente os resultados.
+
+Obs. Endereço com informações sobre células
+/local/tools/dkit/ams\_3.70\_mgc/www/index.html
+(Standar Cell DataSheet - C35 - Core Cells).
+
+
+
+1
+\end{document}
+
