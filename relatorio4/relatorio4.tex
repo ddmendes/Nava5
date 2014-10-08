@@ -19,16 +19,18 @@ fazer, de forma automática, o \emph{floor planning} e o \emph{placement} das cél
 
 	\img{Prescaler 32/33}{imgQ01prescaler}
 
-   Desenhe o circuito completo do esquemático da \fref{imgQ01prescaler} utilizando as células \verb:DF1:, 
+    Desenhe o circuito completo do esquemático da \fref{imgQ01prescaler} utilizando as células \verb:DF1:, 
 \verb:NAND23:, \verb:NOR23: e \verb:NAND40:. Como sinais de entrada ele deve ter o \emph{clock} e \emph{SM}; como 
 sinal de saída, \emph{saida32\_33} (divide o \emph{clock} por 32 ou 33).
-	
-	O esquemático do circuito prescaler está representado na \fref{imgQ01schematic}.
 
-	%\img{Esquemático do circuito prescaler 32/33}{imgQ01schematic}
+	O esquemático do circuito \emph{prescaler} está representado na \fref{imgQ01schematic}.
+
+	%\img{Esquemático do circuito \emph{prescaler} 32/33}{imgQ01schematic} \\ XXX adicionar figura
+\bigskip
 
 \textbf{2.}	Gere o símbolo para a célula e faça a verificação do esquemático e do símbolo. Certifique-
 se de que não haja erros ou mesmo \emph{warnings}.
+\bigskip
 
 \textbf{3.}	Gere o \emph{layout} do circuito a partir do \emph{SDL} (utilize o \emph{designviewpoint} e não o \emph{schematic}) 
 Para isto:
@@ -44,50 +46,134 @@ Para isto:
 	\item Verifique que todas as ligação foram realizadas através do comando \emph{\textbf{Route - Routing 
 	Results - SOvrf}}.
 \end{enumerate}
+\bigskip
 
 \textbf{4.} Verifique se as ligações foram bem feitas (principalmente dos sinais de \emph{VDD} e \emph{VSS}). Refaça 
 aquelas que não estiverem boas. Coloque os \emph{ports} no \emph{layout}, conecte-os e coloque os 
 \emph{labels}.
+\bigskip
 
 \textbf{5.}	Passe o \emph{DRC} no circuito não deixando nenhum erro.
+\bigskip
 
 \textbf{6.}	Faça o \emph{LVS} entre o \emph{layout} e o esquemático. Só devem ocorrer \emph{warnings}. Inclua no relatório 
 o \emph{layout} feito e corrigido.
+
+    O \emph{layout} do circuito está representado na \fref{imgQ04layout}.
+
+	%\img{\emph{Layout} do circuito \emph{prescaler} 32/33}{imgQ04layout} \\ XXX adicionar figura
+\bigskip
 
 \textbf{7.}	Considere o circuito da \fref{imgQ07usingPrescaler} (não tem função alguma, servindo apenas para 
 ilustração). Desenhe o esquemático desse circuito utilizando a célula \verb:NAND23: e o 
 prescaler anterior (faça as devidas checagens).
 
-	\img{Circuito utilizando o Prescaler.}{imgQ07usingPrescaler}
+	\img{Circuito utilizando o \emph{prescaler}.}{imgQ07usingPrescaler}
+
+	O esquemático do circuito utilizando o \emph{prescaler} está representado na \fref{imgQ07schematic}.
+
+	%\img{Esquemático do circuito utilizando \emph{prescaler} 32/33}{imgQ07schematic} \\ XXX adicionar figura
+\bigskip
 
 \textbf{8.}	Gere o \emph{layout} a partir do esquemático. Para isto não se esqueça de acrescentar ao 
 símbolo do \emph{prescaler} a propriedade \emph{phy\_comp} e como seu valor a localização do \emph{layout}.
+\bigskip
 
 \textbf{9.} Termine as conexões, adicione \emph{ports}, faça o \emph{DRC} e o \emph{LVS}. Inclua no relatório o \emph{layout} 
 feito.
+
+    O \emph{layout} do circuito está representado na \fref{imgQ09layout}.
+
+	%\img{\emph{Layout} do circuito utilizando \emph{prescaler} 32/33}{imgQ09layout} \\ XXX adicionar figura
+\bigskip
 
 \textbf{10.} Modifique o circuito adicionando um transistor na saída como indicado na
 \fref{imgQ10usingPrescalerAndTransistor}. Novamente gere o \emph{layout}, adicione \emph{ports}, faça o \emph{DRC}
 e o \emph{LVS}. Quais são os valores da saída quando o gate do transistor está \emph{"Alto"} e quando está 
 \emph{"Baixo"}. Inclua no relatório o \emph{layout} feito.
  
-\img{Circuito utilizando Prescalers e transistor.}{imgQ10usingPrescalerAndTransistor}
+    \img{Circuito utilizando Prescalers e transistor.}{imgQ10usingPrescalerAndTransistor}
+
+    O novo \emph{layout} do circuito está representado na \fref{imgQ10layout}.
+
+	%\img{\emph{Layout} do circuito utilizando \emph{prescaler} 32/33}{imgQ10layout} \\ XXX adicionar figura
+\bigskip
 
 \textbf{11.} Voltando ao circuito da \fref{imgQ01prescaler}, extrair a partir do esquemático o \emph{netlist}
 e determinar a máxima velocidade para os modelos típico e \emph{worstspeed} (o circuito deve dividir o \emph{clock}
 por 32, para SM = "0", ou por 33, para SM = "1"). Use o comando \emph{measure}, compare as freqüências obtidas nos
 dois modelos e comente os resultados.
 
+    Analisando os resultados representados na \tref{tblQ11resultados}, XXX % TODO concluir
+    \begin{table}[!h]
+        \caption{Máximas frequência de operação. \label{tblQ11resultados}}
+        \centering
+        \begin{tabular}{|l|c|}
+                                                                \hline
+            \textbf{Modelo}     & \textbf{Frequência (GHz)} \\  \hline
+            Típico              &       XXX                 \\  \hline % XXX preencher
+            \emph{worstspeed}   &       XXX                 \\  \hline % XXX preencher
+
+        \end{tabular}
+    \end{table}
+\bigskip
+
 \textbf{12.} A partir do \emph{layout} do circuito da \fref{imgQ01prescaler}, extrair o circuito para simulação com apenas capacitores. Determinar a máxima velocidade do circuito para o modelo típico e para o modelo \emph{worstspeed}.
+
+    Os resultados estão representados na \tref{tblQ12resultados}.
+    \begin{table}[!h]
+        \caption{Máximas frequência de operação. \label{tblQ12resultados}}
+        \centering
+        \begin{tabular}{|l|c|}
+                                                                \hline
+            \textbf{Modelo}     & \textbf{Frequência (GHz)} \\  \hline
+            Típico              &       XXX                 \\  \hline % XXX preencher
+            \emph{worstspeed}   &       XXX                 \\  \hline % XXX preencher
+
+        \end{tabular}
+    \end{table}
+\bigskip
 
 \textbf{13.} Extrair agora o circuito para simulação com capacitores e resistores. Determinar a máxima 
 velocidade do circuito para o modelo típico e para o modelo \emph{worstspeed}.
 
+    Os resultados estão representados na \tref{tblQ13resultados}.
+    \begin{table}[!h]
+        \caption{Máximas frequência de operação. \label{tblQ13resultados}}
+        \centering
+        \begin{tabular}{|l|c|}
+                                                                \hline
+            \textbf{Modelo}     & \textbf{Frequência (GHz)} \\  \hline
+            Típico              &       XXX                 \\  \hline % XXX preencher
+            \emph{worstspeed}   &       XXX                 \\  \hline % XXX preencher
+
+        \end{tabular}
+    \end{table}
+\bigskip
+
 \textbf{14.} A partir do \emph{datasheet} dos blocos que compõe o \emph{prescaler} estime o máximo \emph{clock} que
 o circuito poderia suportar.
+    % TODO
+\bigskip
 
-\textbf{15.} Monte uma tabela com os resultados obtidos nos exercícios 11, 12, 13 e 14. Compare e 
+\textbf{15.} Monte uma tabela com os resultados obtidos nos exercícios 11, 12, 13 e 14. Compare e
 comente os resultados.
+    Os resultados dos exercícios 11, 12, 13 e 14 estão representados na \tref{tblQ15resultados}. \\
+    Após uma análise dos dados... XXX % TODO concluir
+    \begin{table}[!h]
+        \caption{Máximas frequência de operação. \label{tblQ15resultados}}
+        \centering
+        \begin{tabular}{|l|c|}
+                                                                                                                        \hline
+            \textbf{Modelo}     & \textbf{Frequência (GHz) - Típico}& \textbf{Frequência (GHz) - \emph{worstspeed}} \\  \hline
+            Esquemático (11)    &       XXX                         &       XXX                                     \\  \hline % XXX preencher
+            C + CC (12)         &       XXX                         &       XXX                                     \\  \hline % XXX preencher
+            R + C + CC (13)     &       XXX                         &       XXX                                     \\  \hline % XXX preencher
+            \emph{datasheet}    &       XXX                         &       XXX                                     \\  \hline % XXX preencher
+
+        \end{tabular}
+    \end{table}
+\bigskip
 
 \begin{verbatim}
 Obs. Endereço com informações sobre células
