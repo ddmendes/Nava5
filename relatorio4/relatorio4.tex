@@ -67,6 +67,7 @@ o \emph{layout} feito e corrigido.
 \textbf{7.}	Considere o circuito da \fref{imgQ07usingPrescaler} (não tem função alguma, servindo apenas para 
 ilustração). Desenhe o esquemático desse circuito utilizando a célula \verb:NAND23: e o 
 prescaler anterior (faça as devidas checagens).
+\img{Circuito utilizando o \emph{prescaler}.}{imgQ07usingPrescaler}
 \bigskip
 
 \textbf{8.}	Gere o \emph{layout} a partir do esquemático. Para isto não se esqueça de acrescentar ao 
@@ -90,7 +91,7 @@ e o \emph{LVS}. Quais são os valores da saída quando o gate do transistor está \
 
     O novo \emph{layout} do circuito está representado na \fref{imgQ10layout}.
 
-	%\img{\emph{Layout} do circuito utilizando \emph{prescaler} 32/33}{imgQ10layout} \\ XXX adicionar figura
+	\img{\emph{Layout} do circuito utilizando \emph{prescaler} 32/33}{imgQ10layout} \\ % XXX adicionar figura
 \bigskip
 
 \textbf{11.} Voltando ao circuito da \fref{imgQ01prescaler}, extrair a partir do esquemático o \emph{netlist}
@@ -102,11 +103,11 @@ dois modelos e comente os resultados.
     \begin{table}[!h]
         \caption{Máximas frequência de operação. \label{tblQ11resultados}}
         \centering
-        \begin{tabular}{|l|c|}
+        \begin{tabular}{|l|c|c|}
                                                                 \hline
-            \textbf{Modelo}     & \textbf{Frequência (GHz)} \\  \hline
-            Típico              &       XXX                 \\  \hline % XXX preencher
-            \emph{worstspeed}   &       XXX                 \\  \hline % XXX preencher
+            \textbf{Modelo}     & \textbf{Frequência (GHz) para SM em alto} & \textbf{Frequência (GHz) para SM em baixo}    \\  \hline
+            Típico              &       1.10                                &       1.20                                      \\  \hline
+            \emph{worstspeed}   &       XXX                                 &       XXX                                     \\  \hline % XXX preencher
 
         \end{tabular}
     \end{table}
@@ -120,9 +121,9 @@ dois modelos e comente os resultados.
         \centering
         \begin{tabular}{|l|c|}
                                                                 \hline
-            \textbf{Modelo}     & \textbf{Frequência (GHz)} \\  \hline
-            Típico              &       XXX                 \\  \hline % XXX preencher
-            \emph{worstspeed}   &       XXX                 \\  \hline % XXX preencher
+            \textbf{Modelo}     & \textbf{Frequência (GHz) para SM em alto} & \textbf{Frequência (GHz) para SM em baixo}    \\  \hline
+            Típico              &       XXX                                 &       XXX                                     \\  \hline % XXX preencher
+            \emph{worstspeed}   &       XXX                                 &       XXX                                     \\  \hline % XXX preencher
 
         \end{tabular}
     \end{table}
@@ -137,30 +138,49 @@ velocidade do circuito para o modelo típico e para o modelo \emph{worstspeed}.
         \centering
         \begin{tabular}{|l|c|}
                                                                 \hline
-            \textbf{Modelo}     & \textbf{Frequência (GHz)} \\  \hline
-            Típico              &       XXX                 \\  \hline % XXX preencher
-            \emph{worstspeed}   &       XXX                 \\  \hline % XXX preencher
+            \textbf{Modelo}     & \textbf{Frequência (GHz) para SM em alto} & \textbf{Frequência (GHz) para SM em baixo}    \\  \hline
+            Típico              &       XXX                                 &       XXX                                     \\  \hline % XXX preencher
+            \emph{worstspeed}   &       XXX                                 &       XXX                                     \\  \hline % XXX preencher
 
         \end{tabular}
     \end{table}
 \bigskip
 
-\textbf{14.} A partir do \emph{datasheet} dos blocos que compõe o \emph{prescaler} estime o máximo \emph{clock} que
-o circuito poderia suportar.
-    % TODO
+\textbf{14.} A partir do \emph{datasheet} dos blocos que compõe o \emph{prescaler} estime o máximo \emph{clock} que o circuito poderia suportar.
+
+    Ao analisar o circuito do \emph{prescaler}, é possível notar que existem dois possíveis caminhos críticos, considerando apenas as partes que dependem do \emph{clock}, que são os representados pelas seguintes equações:
+    \begin{eqnarray}
+        t_{min_1} & = & t_{set-up} + t_{NAND} + t_{FF} \\
+        t_{min_2} & = & t_{set-up} + t_{NOR} + t_{FF}
+    \end{eqnarray}
+
+    Por analisar as configurações dos componentes, sabe-se que a capacitância de carga dos elementos são $C_{NAND} = 20 fF$, $C_{NOR} = 21 fF$ e $C_{FF} = 5 fF$. Utilizando aproximação linear, em conjunção as informações fornecidas pelo documento que contém informações sobre as células, pode-se definir $t_{set-up} = 0 ns$, $t_{FF} = 0,706 ns$, $t_{NOR} = 0,073 ns$ e $t_{NAND} = 0,043 ns$.
+    \begin{equation}
+        \frac{2,14 - 0,50}{320 - 1} = \frac{t_{FF} - 0,50}{41 - 1}
+    \end{equation}
+    \begin{equation}
+        \frac{1,60 - 0,07}{960 - 3} = \frac{t_{NOR} - 0,07}{5 - 3}
+    \end{equation}
+    \begin{equation}
+        \frac{1,67 - 0,04}{960 - 3} = \frac{t_{NAND} - 0,04}{5 - 3}
+    \end{equation}
+    \begin{equation}
+        t_{min} = max\left(t_{min_1}, t_{min_2}\right)
+    \end{equation}
+    Assim sendo, $t_{min} = 0,779 ns$ o que implica uma frequência máxima de \emph{clock} de $1,28 GHz$. \\
 \bigskip
 
 \textbf{15.} Monte uma tabela com os resultados obtidos nos exercícios 11, 12, 13 e 14. Compare e
-comente os resultados.
+comente os resultados. \\
+
     Os resultados dos exercícios 11, 12, 13 e 14 estão representados na \tref{tblQ15resultados}. \\
     Após uma análise dos dados... XXX % TODO concluir
     \begin{table}[!h]
         \caption{Máximas frequência de operação. \label{tblQ15resultados}}
         \centering
-        \begin{tabular}{|l|c|}
-                                                                                                                        \hline
+        \begin{tabular}{|l|c|c|}
             \textbf{Modelo}     & \textbf{Frequência (GHz) - Típico}& \textbf{Frequência (GHz) - \emph{worstspeed}} \\  \hline
-            Esquemático (11)    &       XXX                         &       XXX                                     \\  \hline % XXX preencher
+            Esquemático (11)    &       1.10                        &       XXX                                     \\  \hline % XXX preencher
             C + CC (12)         &       XXX                         &       XXX                                     \\  \hline % XXX preencher
             R + C + CC (13)     &       XXX                         &       XXX                                     \\  \hline % XXX preencher
             \emph{datasheet}    &       XXX                         &       XXX                                     \\  \hline % XXX preencher
