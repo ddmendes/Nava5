@@ -8,11 +8,8 @@
 \makecover
 \makelists
 
-\section*{Introdução}
-
 \section*{Resumo}
-   Neste projeto iremos repetir algumas etapas feitas anteriormente e será mostrado como 
-fazer, de forma automática, o \emph{floor planning} e o \emph{placement} das células.
+    Neste projeto iremos repetir algumas etapas feitas anteriormente e será mostrado como fazer, de forma automática, o \emph{floor planning} e o \emph{placement} das células. Ainda sendo considerados e analisados os valores máximos de frequência de operação.
 
 \section*{Questões}
 \textbf{1.}	Considere o circuito da \fref{imgQ01prescaler} (circuito prescaler).
@@ -79,7 +76,7 @@ feito.
 
     O \emph{layout} do circuito está representado na \fref{imgQ09layout}.
 
-	%\img{\emph{Layout} do circuito utilizando \emph{prescaler} 32/33}{imgQ09layout} \\ XXX adicionar figura
+    \img{\emph{Layout} do circuito utilizando \emph{prescaler} 32/33}{imgQ09layout}
 \bigskip
 
 \textbf{10.} Modifique o circuito adicionando um transistor na saída como indicado na
@@ -91,7 +88,7 @@ e o \emph{LVS}. Quais são os valores da saída quando o gate do transistor está \
 
     O novo \emph{layout} do circuito está representado na \fref{imgQ10layout}.
 
-	\img{\emph{Layout} do circuito utilizando \emph{prescaler} 32/33}{imgQ10layout} \\ % XXX adicionar figura
+	  \img{\emph{Layout} do circuito utilizando \emph{prescaler} 32/33}{imgQ10layout}
 \bigskip
 
 \textbf{11.} Voltando ao circuito da \fref{imgQ01prescaler}, extrair a partir do esquemático o \emph{netlist}
@@ -99,51 +96,28 @@ e determinar a máxima velocidade para os modelos típico e \emph{worstspeed} (o c
 por 32, para SM = "0", ou por 33, para SM = "1"). Use o comando \emph{measure}, compare as freqüências obtidas nos
 dois modelos e comente os resultados.
 
-    Analisando os resultados representados na \tref{tblQ11resultados}, XXX % TODO concluir
-    \begin{table}[!h]
-        \caption{Máximas frequência de operação. \label{tblQ11resultados}}
-        \centering
-        \begin{tabular}{|l|c|c|}
-                                                                \hline
-            \textbf{Modelo}     & \textbf{Frequência (GHz) para SM em alto} & \textbf{Frequência (GHz) para SM em baixo}    \\  \hline
-            Típico              &       1.10                                &       1.20                                      \\  \hline
-            \emph{worstspeed}   &       XXX                                 &       XXX                                     \\  \hline % XXX preencher
+    Analisando os resultados representados na \tref{tblQ15resultados} e nos gráficos em \fref{imgQ11cfreqSMalto}, \fref{imgQ11cfreqSMbaixo}, \fref{imgQ11cfreqSMaltoWS} e \fref{imgQ11cfreqSMbaixoWS}, percebe-se que existe um limiar na frequência onde o circuito passa a se comportar de maneira indesejada. Sem contar que no modelo \emph{worstspeed} o circuito tem uma grande diminuição em sua fequência máxima de operação, como esperado.
 
-        \end{tabular}
-    \end{table}
+	  \img{Relação entre frequência de \emph{clock} e de saída. Típico, SM = "1", esquemático.}{imgQ11cfreqSMalto}
+	  \img{Relação entre frequência de \emph{clock} e de saída. Típico, SM = "0", esquemático.}{imgQ11cfreqSMbaixo}
+	  \img{Relação entre frequência de \emph{clock} e de saída. \emph{Worstspeed}, SM = "1", esquemático.}{imgQ11cfreqSMaltoWS}
+	  \img{Relação entre frequência de \emph{clock} e de saída. \emph{Worstspeed}, SM = "0", esquemático.}{imgQ11cfreqSMbaixoWS}
 \bigskip
 
 \textbf{12.} A partir do \emph{layout} do circuito da \fref{imgQ01prescaler}, extrair o circuito para simulação com apenas capacitores. Determinar a máxima velocidade do circuito para o modelo típico e para o modelo \emph{worstspeed}.
 
-    Os resultados estão representados na \tref{tblQ12resultados}.
-    \begin{table}[!h]
-        \caption{Máximas frequência de operação. \label{tblQ12resultados}}
-        \centering
-        \begin{tabular}{|l|c|}
-                                                                \hline
-            \textbf{Modelo}     & \textbf{Frequência (GHz) para SM em alto} & \textbf{Frequência (GHz) para SM em baixo}    \\  \hline
-            Típico              &       XXX                                 &       XXX                                     \\  \hline % XXX preencher
-            \emph{worstspeed}   &       XXX                                 &       XXX                                     \\  \hline % XXX preencher
+    Os resultados estão representados na \tref{tblQ15resultados}, obtidos nos gráficos da \fref{imgQ12cfreqSMalto}, \fref{imgQ12cfreqSMbaixo}, \fref{imgQ12cfreqSMaltoWS} e \fref{imgQ12cfreqSMbaixoWS}.
 
-        \end{tabular}
-    \end{table}
+	  \img{Relação entre frequência de \emph{clock} e de saída. Típico, SM = "1", C + CC.}{imgQ12cfreqSMalto}
+	  \img{Relação entre frequência de \emph{clock} e de saída. Típico, SM = "0", C + CC.}{imgQ12cfreqSMbaixo}
+	  \img{Relação entre frequência de \emph{clock} e de saída. \emph{Worstspeed}, SM = "1", C + CC.}{imgQ12cfreqSMaltoWS}
+	  \img{Relação entre frequência de \emph{clock} e de saída. \emph{Worstspeed}, SM = "0", C + CC.}{imgQ12cfreqSMbaixoWS}
 \bigskip
 
 \textbf{13.} Extrair agora o circuito para simulação com capacitores e resistores. Determinar a máxima 
 velocidade do circuito para o modelo típico e para o modelo \emph{worstspeed}.
 
-    Os resultados estão representados na \tref{tblQ13resultados}.
-    \begin{table}[!h]
-        \caption{Máximas frequência de operação. \label{tblQ13resultados}}
-        \centering
-        \begin{tabular}{|l|c|}
-                                                                \hline
-            \textbf{Modelo}     & \textbf{Frequência (GHz) para SM em alto} & \textbf{Frequência (GHz) para SM em baixo}    \\  \hline
-            Típico              &       XXX                                 &       XXX                                     \\  \hline % XXX preencher
-            \emph{worstspeed}   &       XXX                                 &       XXX                                     \\  \hline % XXX preencher
-
-        \end{tabular}
-    \end{table}
+    Os resultados estão representados na \tref{tblQ15resultados}.
 \bigskip
 
 \textbf{14.} A partir do \emph{datasheet} dos blocos que compõe o \emph{prescaler} estime o máximo \emph{clock} que o circuito poderia suportar.
@@ -151,7 +125,7 @@ velocidade do circuito para o modelo típico e para o modelo \emph{worstspeed}.
     Ao analisar o circuito do \emph{prescaler}, é possível notar que existem dois possíveis caminhos críticos, considerando apenas as partes que dependem do \emph{clock}, que são os representados pelas seguintes equações:
     \begin{eqnarray}
         t_{min_1} & = & t_{set-up} + t_{NAND} + t_{FF} \\
-        t_{min_2} & = & t_{set-up} + t_{NOR} + t_{FF}
+        t_{min_2} & = & t_{set-up} + t_{NOR}  + t_{FF}
     \end{eqnarray}
 
     Por analisar as configurações dos componentes, sabe-se que a capacitância de carga dos elementos são $C_{NAND} = 20 fF$, $C_{NOR} = 21 fF$ e $C_{FF} = 5 fF$. Utilizando aproximação linear, em conjunção as informações fornecidas pelo documento que contém informações sobre as células, pode-se definir $t_{set-up} = 0 ns$, $t_{FF} = 0,706 ns$, $t_{NOR} = 0,073 ns$ e $t_{NAND} = 0,043 ns$.
@@ -167,23 +141,26 @@ velocidade do circuito para o modelo típico e para o modelo \emph{worstspeed}.
     \begin{equation}
         t_{min} = max\left(t_{min_1}, t_{min_2}\right)
     \end{equation}
-    Assim sendo, $t_{min} = 0,779 ns$ o que implica uma frequência máxima de \emph{clock} de $1,28 GHz$. \\
+    Assim sendo, $t_{min} = 0,779 ns$ o que implica uma frequência máxima de \emph{clock} de $1,28 GHz$.
 \bigskip
 
-\textbf{15.} Monte uma tabela com os resultados obtidos nos exercícios 11, 12, 13 e 14. Compare e
-comente os resultados. \\
+\textbf{15.} Monte uma tabela com os resultados obtidos nos exercícios 11, 12, 13 e 14. Compare e comente os resultados. \\
 
     Os resultados dos exercícios 11, 12, 13 e 14 estão representados na \tref{tblQ15resultados}. \\
-    Após uma análise dos dados... XXX % TODO concluir
+    Após uma análise dos dados, percebe-se que há uma grande diferença entre os valores calculados no modelo típico e os calculados no modelo \emph{worstspeed}, o que é bastante esperado. Nos modelos mais complexos a frequência de operação diminui. Isto ocorre devido a serem consideredas as cargas parasitas do circuito (C+CC e R+C+CC). \\
     \begin{table}[!h]
         \caption{Máximas frequência de operação. \label{tblQ15resultados}}
         \centering
         \begin{tabular}{|l|c|c|}
-            \textbf{Modelo}     & \textbf{Frequência (GHz) - Típico}& \textbf{Frequência (GHz) - \emph{worstspeed}} \\  \hline
-            Esquemático (11)    &       1.10                        &       XXX                                     \\  \hline % XXX preencher
-            C + CC (12)         &       XXX                         &       XXX                                     \\  \hline % XXX preencher
-            R + C + CC (13)     &       XXX                         &       XXX                                     \\  \hline % XXX preencher
-            \emph{datasheet}    &       XXX                         &       XXX                                     \\  \hline % XXX preencher
+                                                                                                                            \hline
+            \textbf{Modelo}         & \textbf{Frequência (MHz) - Típico}& \textbf{Frequência (MHz) - \emph{worstspeed}} \\  \hline
+            \emph{datasheet}        &       1.280                       &       1.280                                   \\  \hline
+            Esquemático (SM = "1")  &       1.100                       &       740                                     \\  \hline
+            Esquemático (SM = "0")  &       1.200                       &       790                                     \\  \hline
+            C + CC (SM = "1")       &       840                         &       570                                     \\  \hline
+            C + CC (SM = "0")       &       890                         &       600                                     \\  \hline
+            R + C + CC (SM = "1")   &       810                         &       XXX                                     \\  \hline % XXX preencher
+            R + C + CC (SM = "0")   &       855                         &       XXX                                     \\  \hline % XXX preencher
 
         \end{tabular}
     \end{table}
