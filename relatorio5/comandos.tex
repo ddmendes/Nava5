@@ -1,0 +1,273 @@
+
+% uso de cores
+%
+%\textcolor{red}{This is in red.}
+%\color{blue} This is switched to blue.  \color{black}  This is switched back to black.
+%\colorbox{yellow}{This is in a yellow box.}
+
+% new commands
+
+%ignorar bloco de linhas
+\newcommand{\ig}[1]{}
+
+% Escrito a mao
+\newcommand{\hw}[1]
+{{\ensuremath{\mathcal  #1}}}
+
+% I - Indutor
+\newcommand{\ind}
+{\ensuremath{\mathcal{I\hspace{-.05em}}}\xspace}
+
+% C - Classificador
+\newcommand{\class}
+{\ensuremath{\mathcal{C\hspace{-.05em}}}\xspace}
+
+% D - Distribui\c{c}\~ao
+\newcommand{\dist}
+{\ensuremath{\mathcal{D\hspace{-.05em}}}\xspace}
+
+% MLC++
+\newcommand{\mlc}
+  {\ensuremath{\mathcal{MLC\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++}}}\xspace}
+
+% C++
+\newcommand{\cplusplus}
+  {\ensuremath{C\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++}}\xspace}
+
+% C++
+\newcommand{\cpp}
+  {\cplusplus}
+
+% BibTeX
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}\xspace}
+
+%% LaTeX
+%\def\LaTeX{{\rm L\kern-.05em{\sc a\kern-.025em}\kern-.08em
+%    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}\xspace}
+
+% Nro
+\newcommand{\nro}
+ {\scriptsize $^{o}\,$\normalsize}
+
+% IA
+\newcommand{\IA}
+ {Inteligência Artificial \xspace}
+
+% Nra
+\newcommand{\nra}
+  {\scriptsize $^{\b{a}}\,$\normalsize}
+
+% e.g.
+\newcommand{\eg}
+  {\emph{ e.g.}\/\xspace}
+
+% trademark
+\newcommand{\TM}
+  {\footnotesize\ensuremath{^{\rm TM}}\normalsize\xspace}
+\newcommand{\tm}
+  {\TM}
+
+% Palavras em ingles
+\newcommand{\engl}[1]
+  {\emph{#1}}
+%  {\selectlanguage{english}\emph{#1}\selectlanguage{brazil}}
+
+% URL
+%\newcommand{\url}[1]
+%  {{\tt #1}\xspace}
+
+\newcommand{\ip}[2]
+  {(#1, #2)}
+
+\newcommand{\seq}[3][X,1,n]
+  {\lbrace #1_{#2},\ldots,\,#1_{#3} \rbrace}
+
+\newcommand{\cart}[3][X,1,n]
+  {#1_{#2} \times \ldots \times #1_{#3}}
+
+% entrada de indice simples
+\newcommand{\idxa}[1]
+  {\emph{ #1}\index{#1}}
+
+% entrada de indice dupla
+\newcommand{\idxb}[2]
+  {\emph{ #1 #2}\index{#1!#2}}
+
+\newcommand{\HRule}{\rule{\linewidth}{1mm}}
+
+% entrada de indice tripla
+\newcommand{\idxc}[3]
+  {\emph{ #1 #2 #3}\index{#1!#2!#3}}
+
+% LaTeX para DOS
+%\newcommand{\figura}[6]
+%{\begin{figure}[htb]
+%  \setlength{\unitlength}{1.0cm}
+%  \centering
+%  \begin{picture}(#1, #2)(0, 0)
+%    \special{isoscale ./#3.#4, #1cm #2cm}
+%  \end{picture}
+%  \caption{#6}
+%  \label{#5}
+% \end{figure}
+%}
+
+% PCTeX
+% figura x-size y-size filename extension label caption
+%          1      2       3        4         5      6
+
+%\newcommand{\figura}[6] % WMF
+%{\begin{figure}[htb]
+%   \vspace*{1cm}
+%   \setlength{\unitlength}{1.0cm}
+%   \centering
+%   \begin{picture}(#1, #2)(0, 0)
+%     \special{#4:./#3.#4 x=#1cm y=#2cm}
+%   \end{picture}
+%   \caption{#6}
+%   \label{#5}
+% \end{figure}
+%}
+
+
+% figura scale filename extension label caption
+%          1      2       3        4         5
+
+\newcommand{\figura}[6]
+{\begin{figure}[htb]
+   \vspace*{1cm}
+   \setlength{\unitlength}{1.0cm}
+   \centering
+     \includegraphics[scale=#1]{./#2.#3}
+\begin{center}
+\parbox{.5\linewidth}{\footnotesize \sf \caption #6 {#5}  \label{#4}}
+\end{center}
+
+ \end{figure}
+}
+
+%-------------------------------------------------------------------------------------------
+%\newtheorem{teorema}{Teorema}[section]
+%\newtheorem{corolario}{Corolario}[section]
+%\newtheorem{lema}{Lema}[section]
+%\newtheorem{algo}{Algoritmo}[section]
+%\newtheorem{defi}{Defini\c c\~ao}[section]
+%\newtheorem{exem}{Exemplo}[section]
+%-------------------------------------------------------------------------------------------
+
+
+
+
+% bullet
+\newcommand{\bb}
+  {\ensuremath{\bullet}}
+
+% ECLE
+\newcommand{\ecle}
+  {\texttt{ECLE}\xspace}
+
+\newcommand{\snifferecle}
+  {\texttt{SnifferECLE}\xspace}
+
+% APRIORI
+\newcommand{\apriori}
+  {$APRIORI$\xspace}
+
+% C4.5
+\newcommand{\cfourfive}
+  {$C4.5$\xspace}
+
+% C4.5-rules
+\newcommand{\cfourfiver}
+  {\ensuremath{\mathcal{C}4.5-rules}\xspace}
+
+% CN2
+\newcommand{\cntwo}
+  {$CN2$\xspace}
+
+% RS
+\newcommand{\rs}
+  {\ensuremath{\mathcal{RS}}\xspace}
+
+
+%PBM
+\newcommand{\pbm}
+   {$\mathcal{PBM}$\xspace}
+
+% Marca1
+\newcommand{\mone}
+  {$^{\bf{\dag}}$}
+
+% Marca2
+\newcommand{\mtwo}
+  {$^{\bf{\star}}$}
+
+% i.e.
+\newcommand{\ie}
+  {\emph{ i.e.}\/\xspace}
+
+% Espaco
+\newcommand{\esp}
+  {\hspace{0.3em}}
+
+%% Definition for Big letter at the beginning of a paragraph
+%%
+\def\PARstart#1#2{\begingroup\def\par{\endgraf\endgroup\lineskiplimit=0pt}
+    \setbox2=\hbox{\uppercase{#2} }\newdimen\tmpht \tmpht \ht2
+    \advance\tmpht by \baselineskip\font\hhuge=cmr10 at \tmpht
+    \setbox1=\hbox{{\hhuge #1}}
+    \count7=\tmpht \count8=\ht1\divide\count8 by 1000 \divide\count7 by\count8
+    \tmpht=.001\tmpht\multiply\tmpht by \count7\font\hhuge=cmr10 at \tmpht
+    \setbox1=\hbox{{\hhuge #1}} \noindent \hangindent1.05\wd1
+    \hangafter=-2 {\hskip-\hangindent \lower1\ht1\hbox{\raise1.0\ht2\copy1}%
+    \kern-0\wd1}\copy2\lineskiplimit=-1000pt}
+
+\if@technote\def\PARstart#1#2{#1#2}\fi     % if technical note, disable it
+\if@draftversion\def\PARstart#1#2{#1#2}\fi % if draft, disable it
+
+\newcommand{\fivextwo}
+  {$5\times2$ \emph{Cross-Validation}\xspace}
+
+\newcommand{\tencross}
+	{$10$\emph{-Fold Cross-Validation}\xspace}
+
+% Discover
+\newcommand{\discover}
+  {{\sc discover}\xspace}
+
+\newcommand{\sniffer}
+  {{\sc sniffer}\xspace}
+
+\newcommand{\basename}[1]
+  {{\small \textsf{#1}}\xspace}
+
+\newcommand{\breast}  {\basename{breast}}
+\newcommand{\german}  {\basename{german}}
+\newcommand{\glass}   {\basename{glass}}
+\newcommand{\heart}   {\basename{heart}}
+\newcommand{\nursery} {\basename{nursery}}
+\newcommand{\pima}    {\basename{pima}}
+
+% \newcommand{\crossover} {\emph{crossover}\xspace}
+
+% perl
+\newcommand{\perl}
+  {{\sc perl}\xspace}
+
+\newcommand{\mx}{\textbf{\textsf{\textbf{x}}}\xspace}
+
+% Backref com colocaï¿½o de "Citado na pï¿½ina..."
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{
+    \ifcase #1
+        Não citado no texto.
+    \or
+        Citado na página~#2.
+    \else
+        Citado nas páginas #2.
+    \fi
+}
+
+
+
