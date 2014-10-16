@@ -3,174 +3,144 @@
 
 \begin{document} 
 
-\renewcommand{\titulo}{Projeto 9}
+\renewcommand{\titulo}{Projeto 10}
 \pagenumbering{arabic}
 \makecover
 \makelists
 
 \section*{Resumo}
-    Neste projeto iremos repetir algumas etapas feitas anteriormente e será mostrado como fazer, de forma automática, o \emph{floor planning} e o \emph{placement} das células. Ainda sendo considerados e analisados os valores máximos de frequência de operação.
+   O objetivo deste projeto é gerar a partir de uma descrição de alto nível
+o layout de um circuito.
 
 \section*{Questões}
-\textbf{1.}	Considere o circuito da \fref{imgQ01prescaler} (circuito prescaler).
+\textbf{1.} Vamos utilizar agora o programa \emph{LeonardoSpectrum (Windows)}. Para poder
+   empregar as bibliotecas da $AMS_0.35 \mu m$ devemos ter alguns arquivos
+   (\verb:c35_CORELIB.syn:; \verb:c35_CORELIB_3B.syn:; etc.) no diretório
+   \verb!C:\MGC\LeoSpec\LS2005a_82\lib!. Verifique se eles já estão lá; caso não
+   estejam, copie os arquivos do diretório \verb:Mentor/Lib: (pen drive) para
+   aquele diretório. Ao abrir o Leonardo configure o \emph{working diretory} para
+   sua área de trabalho. Neste diretório serão colocados os resultados do
+   que fizer.
 
-	\img{Prescaler 32/33}{imgQ01prescaler}
+\textbf{2.} Vamos sintetizar inicialmente o circuito descrito no arquivo uart.vhd do
+   diretório Demo (\verb!C:\MGC\LeoSpec\LS2005a_82\Demo!) que descreve um
+   universal asynchronous receiver/transmitter. Abra este arquivo no
+   Leonardo (\verb:INPUT - Open files:) e então execute o comando \verb:INPUT - Read:.
+   Observe que ao ser feita a leitura já é realizada uma primeira síntese.
 
-    Desenhe o circuito completo do esquemático da \fref{imgQ01prescaler} utilizando as células \verb:DF1:, 
-\verb:NAND23:, \verb:NOR23: e \verb:NAND40:. Como sinais de entrada ele deve ter o \emph{clock} e \emph{SM}; como 
-sinal de saída, \emph{saida32\_33} (divide o \emph{clock} por 32 ou 33).
+\textbf{3.} Abra o arquivo texto dentro do \emph{Leonardo} e dê uma olhada no conteúdo do
+   \verb:uart.vhd: (click duas vezes em cima do nome do arquivo). Faça alguma
+   modificação no arquivo de forma a causar erro (por exemplo, troque
+   \verb:"ENTITY uart IS": por \verb:"ENTITY art IS":). Salve, feche o texto e execute
+   novamente o \verb:INPUT - Read:. Veja as mensagens de erro. Caso abra novamente
+   o arquivo texto aparecerão indicações dos erro.
 
-	O esquemático do circuito \emph{prescaler} está representado na \fref{imgQ01schematic}.
+\textbf{4.} Selecione a tecnologia para \verb:AMS-C35_CORELIB: (\emph{Technology}) e otimize o
+   circuito (\verb:Optimize-Optimize:).
 
-	\img{Esquemático do circuito \emph{prescaler} 32/33}{imgQ01schematic}
-\bigskip
+\textbf{5.} Veja os esquemáticos que foram gerados (observe o esquemático com a
+   opção \emph{multipages} ou não). Qual é a diferença entre o esquemático
+   associado a \verb:EXEMPLAR_XTR: e o esquemático associado a \verb:EXEMPLAR:.
 
-\textbf{2.}	Gere o símbolo para a célula e faça a verificação do esquemático e do símbolo. Certifique-
-se de que não haja erros ou mesmo \emph{warnings}.
-\bigskip
+\textbf{6.} Verifique o \emph{Critical Path} do esquemático sintetizado e mapeado na
+   tecnologia da AMS. O que significa este \emph{critical path} e como é
+   calculado?
 
-\textbf{3.}	Gere o \emph{layout} do circuito a partir do \emph{SDL} (utilize o \emph{designviewpoint} e não o \emph{schematic}) 
-Para isto:
-\begin{enumerate}[label=\alph*.]
-	\item Coloque as células no \emph{layout};
-	\item Realize o \emph{autofloorplan} (\emph{\textbf{Place \& Route - Autofp}});
-	\item Recoloque as células dentro das linhas de \emph{floorplan} (\emph{\textbf{Place \& Route  - AutoPlace - StdCel}});
-	\item Apague as linhas que serviriam de guia para os \emph{PADs} (as linhas mais externas);
-	\item Selecione todo o esquemático para garantir que todas as ligações no \emph{layout} apareçam. Caso não isto seja feito, no momento do \emph{routing}, várias ligações deixam de ser realizadas;
-	\item Para o \emph{rounting}, desabilite a utilização de polisilício (não deixe de fazer isto, pois, caso contrário, o poli será incorretamente usado);
-	\item Use o comando \emph{routing}  automático para fazer as ligações. Tome cuidado para que as linhas de \emph{VDD} e \emph{VSS} tenham $1,8 \mu m$ de largura (use a opção \emph{\textbf{Route - ARoutre NEt Classe}});
-	\item Para as ligações que não foram feitas, utilize o comando \emph{\textbf{Route - Aroute - Region  - RIP}} (neste caso algumas ligações são desfeitas e nova tentativa é realizada);
-	\item Verifique que todas as ligação foram realizadas através do comando \emph{\textbf{Route - Routing 
-	Results - SOvrf}}.
-\end{enumerate}
-\bigskip
+\textbf{7.} Refaça a otimização alterando as opções de objetivo, área, velocidade,
+   etc. e verifique os resultados. Variando as opções, minimize o \emph{Critical
+   Path}. Qual o valor final obtido e qual a freqüência máxima de operação
+   que o circuito sintetizado pode atingir? Apresente no relatório a figura
+   do caminho crítico encontrado.
 
-\textbf{4.} Verifique se as ligações foram bem feitas (principalmente dos sinais de \emph{VDD} e \emph{VSS}). Refaça 
-aquelas que não estiverem boas. Coloque os \emph{ports} no \emph{layout}, conecte-os e coloque os 
-\emph{labels}.
-\bigskip
+   %%% 2.48ns %%%
 
-\textbf{5.}	Passe o \emph{DRC} no circuito não deixando nenhum erro.
-\bigskip
+\textbf{8.} Vamos gerar agora um arquivo de saída no formato \emph{Verilog}. O \emph{Verilog} é
+   uma linguagem de descrição de hardware usada com C.I.s (mais usada que o
+   VHDL na indústria). Este formato servirá de interface para passarmos os
+   resultados para o \emph{Design Architecture}. No \emph{Leonardo}, depois de fazer a
+   síntese, vá ao menu \emph{Output}, e configure para gerar \emph{Verilog}. De o nome
+   que deseja e lembre-se que o resultado será colocado no diretório de
+   trabalho que escolheu.
 
-\textbf{6.}	Faça o \emph{LVS} entre o \emph{layout} e o esquemático. Só devem ocorrer \emph{warnings}. Inclua no relatório 
-o \emph{layout} feito e corrigido.
+\textbf{9.} Verifique o arquivo de saída com um editor de texto e tente compreender
+   a descrição que está feita (ao menos ter uma idéia).
 
-    O \emph{layout} do circuito está representado na \fref{imgQ06layout}.
+\textbf{10.} Gere arquivos \emph{Verilog} para os circuitos \verb:uart.vhd: e
+   \verb:priority_encoder.vhd:. Transfira os arquivos \emph{Verilog} para o Linux (no
+   sistema Linux, os arquivos do Windows podem ser vistos no diretório
+   /windows). Agora devemos convertê-los para gerar um \emph{layout}. Abra o
+   \emph{IcStudio} (em algum projeto que já usou ou em um novo). Nele dê o comando
+   \verb:import verilog:. Configure:
 
-	\img{\emph{Layout} do circuito \emph{prescaler} 32/33}{imgQ06layout}
-\bigskip
+   \begin{lstlisting}[numbers=none]
+   Output library: onde quer colocar
+   Verilog netlist: o arquivo gerado
+   Name map file: local/tools/dkit/ams_3.70_mgc/mentor/c35/verilogin_cellmapfiles/c35b4_digital.cellmap
+   \end{lstlisting}
 
-\textbf{7.}	Considere o circuito da \fref{imgQ07usingPrescaler} (não tem função alguma, servindo apenas para 
-ilustração). Desenhe o esquemático desse circuito utilizando a célula \verb:NAND23: e o 
-prescaler anterior (faça as devidas checagens).
-\img{Circuito utilizando o \emph{prescaler}.}{imgQ07usingPrescaler}
-\bigskip
+   Execute. Deve ser criado tanto o esquemático como o símbolo do circuito
+   \verb:uart: e do circuito \verb:priority.encoder:. Verifique ambos. No esquemático da
+   \verb:uart: há mais de uma página e para o \emph{Check Schematic} passar corretamente
+   as duas páginas do esquemático devem estar abertas.
 
-\textbf{8.}	Gere o \emph{layout} a partir do esquemático. Para isto não se esqueça de acrescentar ao 
-símbolo do \emph{prescaler} a propriedade \emph{phy\_comp} e como seu valor a localização do \emph{layout}.
-\bigskip
+\textbf{11.}   A partir do esquemático (utilize o \emph{viewpoint}) faça a geração do
+   \emph{layout} da \verb:uart:. No roteamento utilize para \emph{VDD} e \emph{VSS} apenas linhas mais
+   largas do que $1,8 \mu m$. Para conseguir isso utilize, dentro do menu
+   \verb:ARoute:, a edição dos \verb:net Classes:.
 
-\textbf{9.} Termine as conexões, adicione \emph{ports}, faça o \emph{DRC} e o \emph{LVS}. Inclua no relatório o \emph{layout} 
-feito.
+   Procure nesse circuito fazer o roteamento mas observe que devido ao
+   tamanho, completa-lo é bastante trabalhoso. Após o roteamento passe o
+   \emph{LVS} e o \emph{DRC}.
 
-    O \emph{layout} do circuito está representado na \fref{imgQ09layout}.
+Obs.1: Para se posicionar todas as células da \verb:uart: é necessário se ter as
+duas páginas do esquemático abertas no ICStation. Para isso utilize o
+comando \verb:$open_sheet():. Posteriormente selecione todas as células de cada
+esquemático e faça o seu \emph{placement}.
 
-    \img{\emph{Layout} do circuito utilizando \emph{prescaler} 32/33}{imgQ09layout}
-\bigskip
+Obs.2: Para terminar \emph{layout} a sugestão é seguir os passos:
 
-\textbf{10.} Modifique o circuito adicionando um transistor na saída como indicado na
-\fref{imgQ10usingPrescalerAndTransistor}. Novamente gere o \emph{layout}, adicione \emph{ports}, faça o \emph{DRC}
-e o \emph{LVS}. Quais são os valores da saída quando o gate do transistor está \emph{"Alto"} e quando está 
-\emph{"Baixo"}. Inclua no relatório o \emph{layout} feito.
- 
-    \img{Circuito utilizando Prescalers e transistor.}{imgQ10usingPrescalerAndTransistor}
+  \begin{itemize}
+    \item Faça inicialmente o roteamento das linhas de alimentação (\emph{VDD} e \emph{VSS});
+    \item Execute, sem colocar os ports, o roteamento automático do restante dos sinais. Deixe os metais configurados para serem utilizados em apenas uma direção;
+    \item Quando o número de ligações não feitas estiver em torno de 30, altere a configuração para permitir que os metais sejam utilizados nas duas direções;
+    \item Agora selecione uma linha de cada vez e mande executar o roteamento automático. Caso a ferramenta não consiga executar um roteamento, apague as ligações que estão atrapalhando, sempre há, ou tente o RIP. Não use indiscriminadamente o comando RIP, pois algumas vezes ele piora o roteamento;
+    \item Quando conseguiu realizar todas as ligações execute o \emph{LVS} (coloque nele a opção "ignorar os ports");
+    \item Após o \emph{LVS} dar resultado correto acrescente os \emph{ports} e termine o roteamento;
+    \item Passe o \emph{DRC} e corrija os erros (muitos);
+    \item Termine o \emph{layout} passando o \emph{LVS} (agora considerando os \emph{ports}).
+\end{itemize}
 
-    O novo \emph{layout} do circuito está representado na \fref{imgQ10layout}.
+Obs.3: o item acima é bastante trabalhoso, mas será um excelente treino
+para roteamento e \emph{DRC}.
 
-	  \img{\emph{Layout} do circuito utilizando \emph{prescaler} 32/33}{imgQ10layout}
-\bigskip
 
-\textbf{11.} Voltando ao circuito da \fref{imgQ01prescaler}, extrair a partir do esquemático o \emph{netlist}
-e determinar a máxima velocidade para os modelos típico e \emph{worstspeed} (o circuito deve dividir o \emph{clock}
-por 32, para SM = "0", ou por 33, para SM = "1"). Use o comando \emph{measure}, compare as freqüências obtidas nos
-dois modelos e comente os resultados.
 
-    Analisando os resultados representados na \tref{tblQ15resultados} e nos gráficos em \fref{imgQ11cfreqSMalto}, \fref{imgQ11cfreqSMbaixo}, \fref{imgQ11cfreqSMaltoWS} e \fref{imgQ11cfreqSMbaixoWS}, percebe-se que existe um limiar na frequência onde o circuito passa a se comportar de maneira indesejada. Sem contar que no modelo \emph{worstspeed} o circuito tem uma grande diminuição em sua fequência máxima de operação, como esperado.
+\textbf{12.} Considere o circuito da Figura 1 (circuito prescaler).
+4/5.
 
-	  \img{Relação entre frequência de \emph{clock} e de saída. Típico, SM = "1", esquemático.}{imgQ11cfreqSMalto}
-	  \img{Relação entre frequência de \emph{clock} e de saída. Típico, SM = "0", esquemático.}{imgQ11cfreqSMbaixo}
-	  \img{Relação entre frequência de \emph{clock} e de saída. \emph{Worstspeed}, SM = "1", esquemático.}{imgQ11cfreqSMaltoWS}
-	  \img{Relação entre frequência de \emph{clock} e de saída. \emph{Worstspeed}, SM = "0", esquemático.}{imgQ11cfreqSMbaixoWS}
-\bigskip
+\textbf{13.} Verifique que a máquina de estados representada pelo diagrama que
+   traçou funciona dividindo o sinal de \emph{clock}  por 4 ou 5, de acordo com o
+   valor de \emph{MC}.
 
-\textbf{12.} A partir do \emph{layout} do circuito da \fref{imgQ01prescaler}, extrair o circuito para simulação com apenas capacitores. Determinar a máxima velocidade do circuito para o modelo típico e para o modelo \emph{worstspeed}.
+\textbf{14.} Descreva a máquina de estados em \emph{VHDL}. Utilize o manual de \emph{VHDL} do
+   software Leonardo (\emph{LeonardoSpectrum HDL Synthesis Manual:}
+   \verb!D:\MGC\LeoSpec\LS2005a_82\doc\leospec_hdl.pdf!) para ver modelos de
+   descrição para máquinas de estado. Apresente o \emph{VHDL} no relatório.
 
-    Os resultados estão representados na \tref{tblQ15resultados}, obtidos nos gráficos da \fref{imgQ12cfreqSMalto}, \fref{imgQ12cfreqSMbaixo}, \fref{imgQ12cfreqSMaltoWS} e \fref{imgQ12cfreqSMbaixoWS}.
+\textbf{15.} Abra e leia o circuito \emph{VHDL}, corrija os possíveis erros e otimize.
+   Verifique o circuito gerado e compare com o esquemático da Figura 1.
 
-	  \img{Relação entre frequência de \emph{clock} e de saída. Típico, SM = "1", C + CC.}{imgQ12cfreqSMalto}
-	  \img{Relação entre frequência de \emph{clock} e de saída. Típico, SM = "0", C + CC.}{imgQ12cfreqSMbaixo}
-	  \img{Relação entre frequência de \emph{clock} e de saída. \emph{Worstspeed}, SM = "1", C + CC.}{imgQ12cfreqSMaltoWS}
-	  \img{Relação entre frequência de \emph{clock} e de saída. \emph{Worstspeed}, SM = "0", C + CC.}{imgQ12cfreqSMbaixoWS}
-\bigskip
+\textbf{16.} Feche o Leonardo e abra novamente. Leia o \emph{VHDL}, mas tome cuidado para
+   utilizar como \verb:Encoding Style: a opção \verb:Binary:. Otimize e veja se o
+   resultado melhorou. Otimize o circuito para obter o menor \emph{Critical Path}.
+   Qual é o valor encontrado? Apresente o esquemático obtido.
 
-\textbf{13.} Extrair agora o circuito para simulação com capacitores e resistores. Determinar a máxima 
-velocidade do circuito para o modelo típico e para o modelo \emph{worstspeed}.
+\textbf{17.} Sintetize o circuito utilizando a biblioteca da \emph{AMS}.
 
-    Os resultados estão representados na \tref{tblQ15resultados}.
-\bigskip
+\textbf{18.} Faça as verificações com \emph{DRC} e \emph{LVS} e apresente o \emph{layout} final.
 
-\textbf{14.} A partir do \emph{datasheet} dos blocos que compõe o \emph{prescaler} estime o máximo \emph{clock} que o circuito poderia suportar.
-
-    Ao analisar o circuito do \emph{prescaler}, é possível notar que existem dois possíveis caminhos críticos, considerando apenas as partes que dependem do \emph{clock}, que são os representados pelas seguintes equações:
-    \begin{eqnarray}
-        t_{min_1} & = & t_{set-up} + t_{NAND} + t_{FF} \\
-        t_{min_2} & = & t_{set-up} + t_{NOR}  + t_{FF}
-    \end{eqnarray}
-
-    Por analisar as configurações dos componentes, sabe-se que a capacitância de carga dos elementos são $C_{NAND} = 20 fF$, $C_{NOR} = 21 fF$ e $C_{FF} = 5 fF$. Utilizando aproximação linear, em conjunção as informações fornecidas pelo documento que contém informações sobre as células, pode-se definir $t_{set-up} = 0 ns$, $t_{FF} = 0,706 ns$, $t_{NOR} = 0,073 ns$ e $t_{NAND} = 0,043 ns$.
-    \begin{equation}
-        \frac{2,14 - 0,50}{320 - 1} = \frac{t_{FF} - 0,50}{41 - 1}
-    \end{equation}
-    \begin{equation}
-        \frac{1,60 - 0,07}{960 - 3} = \frac{t_{NOR} - 0,07}{5 - 3}
-    \end{equation}
-    \begin{equation}
-        \frac{1,67 - 0,04}{960 - 3} = \frac{t_{NAND} - 0,04}{5 - 3}
-    \end{equation}
-    \begin{equation}
-        t_{min} = max\left(t_{min_1}, t_{min_2}\right)
-    \end{equation}
-    Assim sendo, $t_{min} = 0,779 ns$ o que implica uma frequência máxima de \emph{clock} de $1,28 GHz$.
-\bigskip
-
-\textbf{15.} Monte uma tabela com os resultados obtidos nos exercícios 11, 12, 13 e 14. Compare e comente os resultados. \\
-
-    Os resultados dos exercícios 11, 12, 13 e 14 estão representados na \tref{tblQ15resultados}. \\
-    Após uma análise dos dados, percebe-se que há uma grande diferença entre os valores calculados no modelo típico e os calculados no modelo \emph{worstspeed}, o que é bastante esperado. Nos modelos mais complexos a frequência de operação diminui. Isto ocorre devido a serem consideredas as cargas parasitas do circuito (C+CC e R+C+CC). \\
-    \begin{table}[!h]
-        \caption{Máximas frequência de operação. \label{tblQ15resultados}}
-        \centering
-        \begin{tabular}{|l|c|c|}
-                                                                                                                            \hline
-            \textbf{Modelo}         & \textbf{Frequência (MHz) - Típico}& \textbf{Frequência (MHz) - \emph{worstspeed}} \\  \hline
-            \emph{datasheet}        &       1.280                       &       1.280                                   \\  \hline
-            Esquemático (SM = "1")  &       1.100                       &       740                                     \\  \hline
-            Esquemático (SM = "0")  &       1.200                       &       790                                     \\  \hline
-            C + CC (SM = "1")       &       840                         &       570                                     \\  \hline
-            C + CC (SM = "0")       &       890                         &       600                                     \\  \hline
-            R + C + CC (SM = "1")   &       810                         &       560                                     \\  \hline
-            R + C + CC (SM = "0")   &       855                         &       580                                     \\  \hline
-
-        \end{tabular}
-    \end{table}
-\bigskip
-
-\begin{verbatim}
-Obs. Endereço com informações sobre células
-/local/tools/dkit/ams_3.70_mgc/www/index.html
-(Standar Cell DataSheet - C35 - Core Cells).
-\end{verbatim}
+\textbf{19.} Faça a extração do circuito com \verb:R+C+CC: e determine a máxima velocidade
+   que o circuito atinge (teste para \verb:MC = "1": e para \verb:MC= "0":). Compare o
+   resultado com o encontrado no item 17.
 
 \end{document}
-
