@@ -42,12 +42,22 @@ o layout de um circuito.
    opção \emph{multipages} ou não). Qual é a diferença entre o esquemático
    associado a \verb:EXEMPLAR_XTR: e o esquemático associado a \verb:EXEMPLAR:.
 
-   ...
+   O esquemático \verb:EXEMPLAR: é o esquemático otimizado utilizando apenas
+componentes da tecnologia especificada, enquanto o esquemático \verb:EXEMPLAR_XTR:
+é o esquemático originalmente gerado pelo programa, sem, necessariamente utilizar
+os componentes escolhidos.
 \bigskip
 
 \textbf{6.} Verifique o \emph{Critical Path} do esquemático sintetizado e mapeado na
    tecnologia da AMS. O que significa este \emph{critical path} e como é
    calculado?
+
+   O \emph{Critical Path} mostra o caminho do crítico do circuito, isto é, o caminho
+que utiliza o maior tempo total de propagação, o tempo que limitará a freqüência de
+operação do circuito. \\
+   O caminha crítico, \emph{Critical Path}, é calculado somando os atrasos de
+propagação gerados por cada componente em um caminho entre dois \emph{Flip-Flops}.
+\bigskip
 
 \textbf{7.} Refaça a otimização alterando as opções de objetivo, área, velocidade,
    etc. e verifique os resultados. Variando as opções, minimize o \emph{Critical
@@ -55,7 +65,12 @@ o layout de um circuito.
    que o circuito sintetizado pode atingir? Apresente no relatório a figura
    do caminho crítico encontrado.
 
-   %%% 2.48ns %%%
+   Após algumas otimizações, foi encontrado um caminho crítico, como mostra a
+\fref{imgQ07criticalPath} com tempo de atraso de propagação de $2,48 ns$, o que
+implica uma freqüência máxima de operação de $403,2 MHz$.
+
+   \img{Caminho crítico, \emph{Critical Path}, do sistema de acordo com o \emph{LeonardoSpectrum}}{imgQ07criticalPath}
+\bigskip
 
 \textbf{8.} Vamos gerar agora um arquivo de saída no formato \emph{Verilog}. O \emph{Verilog} é
    uma linguagem de descrição de hardware usada com C.I.s (mais usada que o
@@ -86,7 +101,7 @@ o layout de um circuito.
    \verb:uart: há mais de uma página e para o \emph{Check Schematic} passar corretamente
    as duas páginas do esquemático devem estar abertas.
 
-\textbf{11.}   A partir do esquemático (utilize o \emph{viewpoint}) faça a geração do
+\textbf{11.} A partir do esquemático (utilize o \emph{viewpoint}) faça a geração do
    \emph{layout} da \verb:uart:. No roteamento utilize para \emph{VDD} e \emph{VSS} apenas linhas mais
    largas do que $1,8 \mu m$. Para conseguir isso utilize, dentro do menu
    \verb:ARoute:, a edição dos \verb:net Classes:.
@@ -111,15 +126,33 @@ Obs.2: Para terminar \emph{layout} a sugestão é seguir os passos:
     \item Após o \emph{LVS} dar resultado correto acrescente os \emph{ports} e termine o roteamento;
     \item Passe o \emph{DRC} e corrija os erros (muitos);
     \item Termine o \emph{layout} passando o \emph{LVS} (agora considerando os \emph{ports}).
-\end{itemize}
+  \end{itemize}
 
 Obs.3: o item acima é bastante trabalhoso, mas será um excelente treino
 para roteamento e \emph{DRC}.
 
+    O \emph{layout} final está representada na \fref{imgQ11layout}.
 
+    \img{\emph{Layout} do circuito \emph{uart}}{imgQ11layout}
+\bigskip
 
-\textbf{12.} Considere o circuito da Figura 1 (circuito prescaler).
-4/5.
+\textbf{12.} Considere o circuito da \fref{imgQ12prescaler} (circuito prescaler). \\
+  O circuito composto pelos blocos hachurados (três D-\emph{flip-flops} e duas portas lógicas)
+  compões uma máquina de estados. Considere que:
+  \begin{itemize}
+    \item os sinais A, B e C definem o estado da máquina (ex.: o estado 000 é quando A="0",
+B="0" e C="0");
+    \item esta máquina tem como entrada o sinal MC que define se o circuito divide o \emph{clock}
+por 4, MC = "1", ou por 5, MC = "0";
+    \item a saída é o sinal A.
+  \end{itemize}
+
+  \img{\emph{Prescaler} 32/33}{imgQ12prescaler}
+
+    A máquina de estados implementada está representada na \fref{imgQ12maqEstados}.
+
+  \img{Máquina de estados de um contador 4/5}{imgQ12maqEstados}
+\bigskip
 
 \textbf{13.} Verifique que a máquina de estados representada pelo diagrama que
    traçou funciona dividindo o sinal de \emph{clock}  por 4 ou 5, de acordo com o
@@ -130,20 +163,31 @@ para roteamento e \emph{DRC}.
    \verb!D:\MGC\LeoSpec\LS2005a_82\doc\leospec_hdl.pdf!) para ver modelos de
    descrição para máquinas de estado. Apresente o \emph{VHDL} no relatório.
 
+  % TODO
+\bigskip
+
 \textbf{15.} Abra e leia o circuito \emph{VHDL}, corrija os possíveis erros e otimize.
    Verifique o circuito gerado e compare com o esquemático da Figura 1.
 
 \textbf{16.} Feche o Leonardo e abra novamente. Leia o \emph{VHDL}, mas tome cuidado para
    utilizar como \verb:Encoding Style: a opção \verb:Binary:. Otimize e veja se o
-   resultado melhorou. Otimize o circuito para obter o menor \emph{Critical Path}.
+   resultado melhorou. Otimize o circuito para obter o menor \emph{Critical Path}. \\
    Qual é o valor encontrado? Apresente o esquemático obtido.
+
+  % TODO
+\bigskip
 
 \textbf{17.} Sintetize o circuito utilizando a biblioteca da \emph{AMS}.
 
 \textbf{18.} Faça as verificações com \emph{DRC} e \emph{LVS} e apresente o \emph{layout} final.
 
+  % TODO
+\bigskip
+
 \textbf{19.} Faça a extração do circuito com \verb:R+C+CC: e determine a máxima velocidade
    que o circuito atinge (teste para \verb:MC = "1": e para \verb:MC= "0":). Compare o
    resultado com o encontrado no item 17.
+  % TODO
+\bigskip
 
 \end{document}
