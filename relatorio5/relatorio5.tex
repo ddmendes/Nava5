@@ -133,7 +133,7 @@ para roteamento e \emph{DRC}.
 
     O \emph{layout} final está representada na \fref{imgQ11layout}.
 
-    \img{\emph{Layout} do circuito \emph{uart}}{imgQ11layout}
+    \img{\emph{Layout} do circuito \emph{uart}}{imgQ11layout} % XXX adicionar imagem
 \bigskip
 
 \textbf{12.} Considere o circuito da \fref{imgQ12prescaler} (circuito prescaler). \\
@@ -151,7 +151,7 @@ por 4, MC = "1", ou por 5, MC = "0";
 
     A máquina de estados implementada está representada na \fref{imgQ12maqEstados}.
 
-  \img{Máquina de estados de um contador 4/5}{imgQ12maqEstados}
+   \img{Máquina de estados de um contador 4/5}{imgQ12maqEstados}
 \bigskip
 
 \textbf{13.} Verifique que a máquina de estados representada pelo diagrama que
@@ -163,7 +163,76 @@ por 4, MC = "1", ou por 5, MC = "0";
    \verb!D:\MGC\LeoSpec\LS2005a_82\doc\leospec_hdl.pdf!) para ver modelos de
    descrição para máquinas de estado. Apresente o \emph{VHDL} no relatório.
 
-  % TODO
+   A descrição da máquina de estados está descrita no \cref{srcQ14maquinaEstados}
+\begin{lstlisting}[caption=Código fonte da máquina de estados, label=srcQ14maquinaEstados]
+entity divisor_4_5 is
+
+	port (  mc, clk : in  bit;
+	        A       : out bit );
+
+end divisor_4_5;
+
+architecture div_4_5_imp of divisor_4_5 is
+	type   state_type is (s000, s001, s010, s011, s100, s101, s110, s111);
+	signal act_state, next_state : state_type;
+begin
+
+	-- Atualização de estados.
+	registers : process (clk)
+	begin
+		if(clk'event and clk='1') then
+			act_state <= next_state;
+		end if;
+	end process;
+
+	--Transição de estados.
+	transitions : process (mc)
+	begin
+		case act_state is
+			when s000 =>
+				A <= '0';
+				if (mc='0') then
+					next_state <= s010;
+				else
+					next_state <= s011;
+				end if;
+			when s001 =>
+				A <= '0';
+				if (mc='0') then 
+					next_state <= s010;
+				else
+				    next_state <= s011;
+				end if ;
+			when s010 =>
+				A <= '0';
+				next_state <= s011;
+			when s011 =>
+				A <= '0';
+				next_state <= s111;
+			when s100 =>
+				A <= '1';
+				if (mc='0') then
+					next_state <= s000;
+				else
+				    next_state <= s001;
+				end if ;
+			when s101 =>
+				A <= '1';
+				if (mc='0') then
+					next_state <= s000;
+				else
+				    next_state <= s001;
+				end if;
+			when s110 =>
+				A <= '1';
+				next_state <= s001;
+			when s111 =>
+				A <= '1';
+				next_state <= s101;
+		end case;
+	end process;
+end div_4_5_imp;
+\end{lstlisting}
 \bigskip
 
 \textbf{15.} Abra e leia o circuito \emph{VHDL}, corrija os possíveis erros e otimize.
@@ -174,14 +243,19 @@ por 4, MC = "1", ou por 5, MC = "0";
    resultado melhorou. Otimize o circuito para obter o menor \emph{Critical Path}. \\
    Qual é o valor encontrado? Apresente o esquemático obtido.
 
-  % TODO
+   Após as otimizações, foi encontrado, para o caminho crítico, um valor de atraso de $1,11 ns$.
+   O esquemático da máquina de estados está representado na \fref{imgQ16schematic}
+   
+   \img{Esquemático da máquina de estados}{imgQ16schematic} % XXX adicionar imagem
 \bigskip
 
 \textbf{17.} Sintetize o circuito utilizando a biblioteca da \emph{AMS}.
 
 \textbf{18.} Faça as verificações com \emph{DRC} e \emph{LVS} e apresente o \emph{layout} final.
 
-  % TODO
+    O \emph{layout} final da máquina de estados está representado na \fref{imgQ18layout}.
+
+    \img{\emph{Layout} da máquina de estados}{imgQ18layout} % XXX adicionar imagem
 \bigskip
 
 \textbf{19.} Faça a extração do circuito com \verb:R+C+CC: e determine a máxima velocidade
