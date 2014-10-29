@@ -8,9 +8,13 @@
 \makecover
 \makelists
 
+\section*{Introdução}
+   Neste relatório são exploradas a ferramenta \emph{LeonardoSpectrum}, o roteamento de circuitos com um alto
+número de componentes e a criação, manipulação e análise de circuitos gerados a partir de um código \verb:VHDL:.
+
 \section*{Resumo}
    O objetivo deste projeto é gerar a partir de uma descrição de alto nível
-o layout de um circuito.
+o \emph{layout} de um circuito.
 
 \section*{Questões}
 \textbf{1.} Vamos utilizar agora o programa \emph{LeonardoSpectrum (Windows)}. Para poder
@@ -243,10 +247,10 @@ end div_4_5_imp;
    resultado melhorou. Otimize o circuito para obter o menor \emph{Critical Path}. \\
    Qual é o valor encontrado? Apresente o esquemático obtido.
 
-   Após as otimizações, foi encontrado, para o caminho crítico, um valor de atraso de $1,11 ns$.
+   Após as otimizações, foi encontrado, para o caminho crítico, um valor de atraso de $0,96 ns$.
    O esquemático da máquina de estados está representado na \fref{imgQ16schematic}
-   
-   \img{Esquemático da máquina de estados}{imgQ16schematic} % XXX adicionar imagem
+
+   \img{Esquemático da máquina de estados}{imgQ16schematic}
 \bigskip
 
 \textbf{17.} Sintetize o circuito utilizando a biblioteca da \emph{AMS}.
@@ -255,13 +259,33 @@ end div_4_5_imp;
 
     O \emph{layout} final da máquina de estados está representado na \fref{imgQ18layout}.
 
-    \img{\emph{Layout} da máquina de estados}{imgQ18layout} % XXX adicionar imagem
+    \img{\emph{Layout} da máquina de estados}{imgQ18layout}
 \bigskip
 
 \textbf{19.} Faça a extração do circuito com \verb:R+C+CC: e determine a máxima velocidade
    que o circuito atinge (teste para \verb:MC = "1": e para \verb:MC= "0":). Compare o
    resultado com o encontrado no item 17.
-  % TODO
+
+    Os resultados para maior frequência de operação estão representados na \tref{tblQ19resultados}. \\
+    As frequências de operação máxima da simulação foram obtidas através da \fref{imgQ19maxFreqMCbaixo} e \fref{imgQ19maxFreqMCalto}. \\
+
+    Após uma análise dos dados, percebe-se que há uma grande diferença entre o valor calculado no \emph{LeonardoSpectrum} e os calculados na extração \verb:R+C+CC:. Isso ocorre, pois, na simulação, são considerados os elementos parasitas do circuito, que são ignorados no cálculo do \emph{LeonardoSpectrum}. \\
+    \begin{table}[!h]
+        \caption{Máximas frequência de operação. \label{tblQ19resultados}}
+        \centering
+        \begin{tabular}{|l|c|c|}
+                                                                    \hline
+            \textbf{Modelo}         & \textbf{Frequência (GHz)} \\  \hline
+            \emph{LeonardoSpectrum} --
+              \emph{Critical Path}  &        1,04               \\  \hline
+            Simulação (MC = "1")    &        0,92               \\  \hline
+            Simulação (MC = "0")    &        0,91               \\  \hline
+
+        \end{tabular}
+    \end{table}
+
+    \img{Máxima frequência de operação para \verb:MC = "0":}{imgQ19maxFreqMCbaixo}
+    \img{Máxima frequência de operação para \verb:MC = "1":}{imgQ19maxFreqMCalto}
 \bigskip
 
 \end{document}
