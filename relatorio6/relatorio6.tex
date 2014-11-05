@@ -1,0 +1,109 @@
+\begin{document}
+
+                                  Projeto 6
+
+
+            Projeto de Circuitos Integrados Digitais (out./2014)
+
+
+   O objetivo deste projeto é trabalhar com alguns circuitos em VHDL e
+explorar hierarquias. Também será visto o ModelSim para simulação de VHDL.
+
+\textbf{1.}Considere o circuito prescaler da Figura 1.
+
+
+
+
+
+
+
+
+
+
+
+
+                         Figura 1. Prescaler 32/33.
+  O circuito composto pelos blocos não hachurados (três D-flip flops e o
+NAND de quatro entradas) compõe um contador assíncrono de 0 até 7 (conta
+8). O circuito pode ser visto como tendo dois sinais de entrada (os sinais
+SM e um clock) e dois sinais de saída (os sinais MC e saída). A saída MC é
+igual a "0" apenas quando SM = "1" e o contador esta no "0" da contagem. O
+sinal saída é o clock dividido por 8.
+
+\textbf{2.}* Descreva o contador assíncrono em VHDL (não fazer a descrição
+   estrutural que repete o esquemático, mas sim em alto nível). Utilize o
+   manual de VHDL do software Leonardo (LeonardoSpectrum HDL Synthesis
+   Manual (D:\MGC\LeoSpec\LS2005a_82\doc)) para ver modelos se necessário.
+
+\textbf{3.}* Simule no ModelSim o circuito e verifique seu funcionamento. Para
+   isso:
+  crie uma pasta de trabalho, work, caso ainda não tenha feito;
+  compile o seu VHDL;
+  inicie a simulação, Simule > Start Simulation. Caso não sejam abertas
+    as janelas de wave e objetcs, abri-las via comandos View - Wave e View
+    - Objects.
+  crie os sinais de entrada (na janela de Objects, Create Wave);
+  coloque na janela waves os sinais de saída que deseja ver ("arraste" os
+    sinais de uma janela a outra);
+  execute a simulação.
+
+  Apresente o resultado gráfico da simulação
+
+\textbf{4.}Carregue o circuito VHDL, sintetize e otimize para delay utilizando a
+   biblioteca da AMS.
+
+\textbf{5.}*Compare a implementação feita no Leonardo com a da Fig. 1. Qual é a
+   maior diferença?
+
+\textbf{6.}*Verifique o caminho crítico e estime a máxima frequência de operação
+   que este circuito pode atingir (apresente a figura com caminho critico).
+
+\textbf{7.}*Apresente no relatório o VHDL e o esquemático final que obteve.
+
+\textbf{8.}*Exporte o circuito gerado para o ICStation e gere o esquemático. A
+   partir do esquemático extraia o circuito para simulação e determine a
+   máxima frequência de operação.
+
+\textbf{9.}Faça o placement automático das células. Dentro do menu Place & Route
+   utilize os comando MvOnRw (move on row) e MvInRow (move into rows) para
+   reposicionar as células para melhorar o layout.
+
+\textbf{10.} *Faça o roteamento das células sem usar poli (utilize no roteamento do
+   VDD e do VSS linhas de $1,8 \mu m$. Qual é a máxima corrente que pode passar
+   pela alimentação nesse caso?).
+
+\textbf{11.} *Coloque os ports, passe o DRC, elimine os erros e faça o LVS.
+   Apresente o layout obtido no relatório.
+
+\textbf{12.} *Simule o circuito extraído do layout (R+C+CC) e determine sua máxima
+   velocidade.
+
+\textbf{13.} *Compare os resultados de velocidade obtidos nas questões 6, 8 e 12.
+
+\textbf{14.} *Com os dois blocos já escritos em VHDL, contador 4/5 e contador 8,
+   monte o Prescaler completo VHDL (agora descrevendo um bloco conectado ao
+   outro). Apresente o VHDL.
+
+\textbf{15.} *Simule no ModelSim o circuito e verifique seu funcionamento. Apresente
+   os resultados gráficos da simulação.
+
+\textbf{16.} Faça a síntese e teste duas possibilidades disponíveis no Leonardo:
+   mantendo a hierarquia e flat (apresente os esquemáticos)
+
+\textbf{17.} *Verifique, para o caso flat, qual é o caminho critico (apresente a
+   figura com caminho critico e indique no esquemático completo onde ele
+   está). Está correto?
+
+\textbf{18.} Para os dois casos exporte o circuito para o ICStation.
+
+\textbf{19.} *Gere o esquemático em cada caso (deixe-os em bibliotecas diferentes).
+   Qual é a diferença em cada caso? Quando é interessante usar um ou outro?
+
+\textbf{20.} *A partir do esquemático com hierarquia, monte o layout do prescaler
+   completo (aproveite os layouts já feitos). Passe o DRC e faça o LVS.
+   Apresente o layout obtido no relatório.
+
+\textbf{21.} *Extraia o circuito (R+C+CC), determine a máxima velocidade de operação
+   e, nessa velocidade, determine a razão (potência consumida)/GHz.
+   Determine também a área do circuito.[pic]
+\end{document}
