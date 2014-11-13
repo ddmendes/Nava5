@@ -32,11 +32,42 @@ e o contador esta no ``0'' da contagem. O sinal saída é o clock dividido por 8.
 
   A descrição do circuito está representada em \cref{srcQ02div8}.
 
-% TODO
 \begin{lstlisting}[cation=Descrição do divisor por 8, label=srcQ02div8]
+entity div_8 is
 
-  TODO
+	port ( SM, CLK : in  bit;
+	       MC, S   : out bit );
 
+end div_8;
+
+architecture div_8_imp of div_8 is
+begin
+
+	registers : process (CLK, SM)
+		variable c : integer range 0 to 7;
+	begin
+		if (CLK'event and CLK = '1') then
+			if(c = 7) then
+				c := 0;
+			else
+				c := c + 1;
+			end if;
+			
+			if (c > 3) then
+				S <= '1';
+			else
+				S <= '0';
+			end if;
+		end if;
+		
+		if (c = 0 and SM='1') then
+			MC <= '0';
+		else
+			MC <= '1';
+		end if;
+	end process;
+
+end div_8_imp;
 \end{lstlisting}
 \bigskip
 
@@ -157,11 +188,22 @@ resultados obtidos na simulação do \emph{layout} é a mais confiável. \\
 
   A descrição do circuito está representada em \cref{srcQ14prescaler}.
 
-% TODO
 \begin{lstlisting}[cation=Descrição do \emph{Prescaler} completo, label=srcQ14prescaler]
+entity prescaler_32_33 is
 
-  TODO
+  port(SM, CLK : IN  BIT;
+       S       : OUT BIT );
 
+end prescaler_32_33;
+
+architecture prescaler_32_33_imp of prescaler_32_33 is
+  signal MC, A : BIT;
+begin
+
+  div_4_5 : entity work.divisor_4_5 port map(MC, CLK, A);
+  div8    : entity work.div_8       port map(SM, A,   MC, S);
+
+end prescaler_32_33_imp;
 \end{lstlisting}
 \bigskip
 
@@ -190,7 +232,7 @@ resultados obtidos na simulação do \emph{layout} é a mais confiável. \\
     O caminho crítico está representado na \fref{imgQ17criticalPath}. Como o atraso
 do circuito é de $xXX ns$ sua máxima frequência de operação será $XXX GHz$. % TODO colocar os valores
 
-  \img{Caminho crítico gerado pelo \emph{LeonardoSpectrum} do \emph{Prescaler} completo}{imgQ17criticalPath} % TODO adicionar figura
+  \img{Caminho crítico gerado pelo \emph{LeonardoSpectrum} do \emph{Prescaler} completo}{imgQ17criticalPath}
 \bigskip
 
 \textbf{18.} Para os dois casos exporte o circuito para o \emph{ICStation}.
