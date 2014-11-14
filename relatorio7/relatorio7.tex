@@ -1,0 +1,281 @@
+\include{preambulo}
+
+\begin{document}
+
+\renewcommand{\titulo}{Projeto 11}
+\pagenumbering{arabic}
+\makecover
+\makelists
+
+\section*{Resumo}
+
+\section*{Introdução}
+
+   O objetivo deste projeto é trabalhar com alguns circuitos em VHDL e
+explorar hierarquias. Também será visto o ModelSim para simulação de VHDL.
+
+\textbf{1.} Considere o circuito prescaler da \fref{imgQ01prescaler}.
+
+  \img{Prescaler 32/33.}{imgQ01prescaler}
+
+  O circuito composto pelos blocos não hachurados (três \emph{D-flip flops}
+e o \verb:NAND: de quatro entradas) compõe um contador assíncrono de 0 até 7
+(conta 8). O circuito pode ser visto como tendo dois sinais de entrada (os
+sinais \verb:SM: e um \verb:clock:) e dois sinais de saída (os sinais \verb:MC:
+e \verb:saída:). A saída \verb:MC: é igual a ``0'' apenas quando SM = ``1''
+e o contador esta no ``0'' da contagem. O sinal saída é o clock dividido por 8.
+
+\textbf{2.}* Descreva o contador assíncrono em \emph{VHDL} (não fazer a descrição
+   estrutural que repete o esquemático, mas sim em alto nível). Utilize o
+   manual de \emph{VHDL} do \emph{software} Leonardo (\emph{LeonardoSpectrum HDL
+   Synthesis Manual}) para ver modelos se necessário.
+
+  A descrição do circuito está representada em \cref{srcQ02div8}.
+
+\begin{lstlisting}[caption=Descrição do divisor por 8, label=srcQ02div8]
+entity div_8 is
+
+	port ( SM, CLK : in  bit;
+	       MC, S   : out bit );
+
+end div_8;
+
+architecture div_8_imp of div_8 is
+begin
+
+	registers : process (CLK, SM)
+		variable c : integer range 0 to 7;
+	begin
+		if (CLK'event and CLK = '1') then
+			if(c = 7) then
+				c := 0;
+			else
+				c := c + 1;
+			end if;
+			
+			if (c > 3) then
+				S <= '1';
+			else
+				S <= '0';
+			end if;
+		end if;
+		
+		if (c = 0 and SM='1') then
+			MC <= '0';
+		else
+			MC <= '1';
+		end if;
+	end process;
+
+end div_8_imp;
+\end{lstlisting}
+\bigskip
+
+\textbf{3.}* Simule no \emph{ModelSim} o circuito e verifique seu funcionamento.
+  Para isso:
+  \begin{itemize}
+    \item crie uma pasta de trabalho, \emph{work}, caso ainda não tenha feito;
+    \item compile o seu \emph{VHDL};
+    \item inicie a simulação, \emph{Simule > Start Simulation}. Caso não sejam
+      abertas as janelas de \emph{wave} e \emph{objetcs}, abri-las via comandos
+      \emph{View - Wave} e \emph{View - Objects}.
+    \item crie os sinais de entrada (na janela de \emph{Objects}, \emph{Create Wave});
+    \item coloque na janela \emph{waves} os sinais de saída que deseja ver
+      (``arraste'' os sinais de uma janela a outra);
+    \item execute a simulação.
+  \end{itemize}
+
+  Apresente o resultado gráfico da simulação.
+
+  O resultado da simulação se encontra na \fref{imgQ03simulation}.
+
+  \img{Simulação no \emph{ModelSim} do divisor por 8}{imgQ03simulation}
+\bigskip
+
+\textbf{4.}Carregue o circuito \emph{VHDL}, sintetize e otimize para \emph{delay}
+  utilizando a biblioteca da \emph{AMS}.
+
+\textbf{5.}*Compare a implementação feita no \emph{Leonardo} com a da
+  \fref{imgQ01prescaler}. Qual é a maior diferença?
+
+  A maior diferença é que a implementação da \fref{imgQ01prescaler} é assíncrona,
+enquanto a feita em VHDL gerada pelo \emph{LeonardoSpectrum} (antes de ser otimizada)
+é síncrona.
+\bigskip
+
+\textbf{6.}*Verifique o caminho crítico e estime a máxima frequência de operação
+   que este circuito pode atingir (apresente a figura com caminho critico).
+
+  O caminho crítico está representado na \fref{imgQ06criticalPath}. Como o atraso
+do circuito é de $1,19 ns$ sua máxima frequência de operação será $0,84 GHz$.
+
+  \img{Caminho crítico gerado pelo \emph{LeonardoSpectrum} do divisor por 8}{imgQ06criticalPath}
+\bigskip
+
+\textbf{7.}*Apresente no relatório o \emph{VHDL} e o esquemático final que obteve.
+
+  O esquemático do circuito está representado na \fref{imgQ07esquematico}.
+
+  \img{Esquemático gerado pelo \emph{LeonardoSpectrum} do divisor por 8}{imgQ07esquematico}
+\bigskip
+
+\textbf{8.}*Exporte o circuito gerado para o \emph{ICStation} e gere o esquemático.
+  A partir do esquemático extraia o circuito para simulação e determine a máxima
+  frequência de operação.
+
+  O esquemático do circuito está representado na \fref{imgQ08esquematico}.
+  Assim como mostra o gráfico da \fref{imgQ08maxFreq}, a máxima frequência de
+operação é $1,10 GHz$.
+
+  \img{Esquemático gerado no \emph{ICStation} do divisor por 8}{imgQ08esquematico}
+  \img{Máxima frequência de operação}{imgQ08maxFreq}
+\bigskip
+
+\textbf{9.}Faça o \emph{placement} automático das células. Dentro do menu
+  \emph{Place \& Route} utilize os comando \emph{MvOnRw (move on row)} e
+  \emph{MvInRow (move into rows)} para reposicionar as células para melhorar
+  o \emph{layout}.
+
+\textbf{10.} *Faça o roteamento das células sem usar poli (utilize no roteamento do
+   \verb:VDD: e do \verb:VSS: linhas de $1,8 \mu m$. Qual é a máxima corrente que
+   pode passar pela alimentação nesse caso?).
+
+  De acordo com as especificações do \verb:MET1:, sua densidade de corrente é $1,0  mA/\mu m$. Portanto, a máxima corrente será $1,8 mA$.
+\bigskip
+
+\textbf{11.} *Coloque os \emph{ports}, passe o \emph{DRC}, elimine os erros e faça
+  o LVS. Apresente o \emph{layout} obtido no relatório.
+
+  O \emph{layout} do circuito está representado na \fref{imgQ11layout}.
+
+  \img{\emph{Layout} do circuito divisor por 8}{imgQ11layout}
+\bigskip
+
+\textbf{12.} *Simule o circuito extraído do \emph{layout} (\verb:R+C+CC:) e determine
+  sua máxima velocidade.
+
+  Assim como mostra o gráfico da \fref{imgQ12maxFreq}, a máxima frequência de
+operação é $0,77 GHz$.
+
+  \img{Máxima frequência de operação (R+C+CC)}{imgQ12maxFreq}
+\bigskip
+
+\textbf{13.} *Compare os resultados de velocidade obtidos nas questões 6, 8 e 12.
+
+  Após uma análise dos dados, percebe-se que o melhor resultado veio da simulação do
+esquemático, o que faz sentido, devido a ele utilizar modelos um tanto ideais do
+circuito, sem simulação de elementos parasitas como a simulação pelo \emph{layout}
+apresenta. A simulação \verb:R+C+CC: é a simulação mais próxima do real, portanto os
+resultados obtidos na simulação do \emph{layout} é a mais confiável. \\
+
+  \begin{table}[!h]
+      \caption{Máximas frequência de operação. \label{tblQ13resultados}}
+      \centering
+      \begin{tabular}{|l|c|}
+                                                              \hline
+        \textbf{Modelo}       & \textbf{Frequência (GHz)} \\  \hline
+        \emph{Critical Path}  &        0,84               \\  \hline
+        Esquemático           &        1,10               \\  \hline
+        \emph{Layout}         &        0,77               \\  \hline
+
+      \end{tabular}
+  \end{table}
+\bigskip
+
+\textbf{14.} *Com os dois blocos já escritos em \emph{VHDL}, contador 4/5 e contador
+  8, monte o \emph{Prescaler} completo \emph{VHDL} (agora descrevendo um bloco conectado
+  ao outro). Apresente o \emph{VHDL}.
+
+  A descrição do circuito está representada em \cref{srcQ14prescaler}.
+
+\begin{lstlisting}[caption=Descrição do \emph{Prescaler} completo, label=srcQ14prescaler]
+entity prescaler_32_33 is
+
+  port(SM, CLK : IN  BIT;
+       S       : OUT BIT );
+
+end prescaler_32_33;
+
+architecture prescaler_32_33_imp of prescaler_32_33 is
+  signal MC, A : BIT;
+begin
+
+  div_4_5 : entity work.divisor_4_5 port map(MC, CLK, A);
+  div8    : entity work.div_8       port map(SM, A,   MC, S);
+
+end prescaler_32_33_imp;
+\end{lstlisting}
+\bigskip
+
+\textbf{15.} *Simule no \emph{ModelSim} o circuito e verifique seu funcionamento.
+  Apresente os resultados gráficos da simulação.
+
+  O resultado das simulações encontram-se nas \fref{imgQ15simulationSMalto}, \fref{imgQ15simulationSMbaixo}.
+
+  \img{Simulação no \emph{ModelSim} do \emph{Prescaler} completo, SM = '1'}{imgQ15simulationSMalto}
+  \img{Simulação no \emph{ModelSim} do \emph{Prescaler} completo, SM = '0'}{imgQ15simulationSMbaixo}
+\bigskip
+
+\textbf{16.} Faça a síntese e teste duas possibilidades disponíveis no Leonardo:
+   mantendo a hierarquia e \emph{flat} (apresente os esquemáticos)
+
+  As duas possibilidades de esquemático estão representadas nas \fref{imgQ16esquematico1} e \fref{imgQ16esquematico2}.
+
+  \img{Esquemático do circuito, modelo hierarquico}{imgQ16esquematico1}
+  \img{Esquemático do circuito, modelo \emph{flat}}{imgQ16esquematico2}
+\bigskip
+
+\textbf{17.} *Verifique, para o caso \emph{flat}, qual é o caminho critico (apresente
+  a figura com caminho crítico e indique no esquemático completo onde ele
+   está). Está correto?
+
+    O caminho crítico está representado na \fref{imgQ17criticalPath} e na
+\fref{imgQ17criticalPathAll}. Como o atraso do circuito é de $1,27 ns$ sua máxima
+frequência de operação será $0,787 GHz$.
+
+  \img{Caminho crítico gerado pelo \emph{LeonardoSpectrum} do \emph{Prescaler} completo}{imgQ17criticalPath}
+\bigskip
+
+\textbf{18.} Para os dois casos exporte o circuito para o \emph{ICStation}.
+
+\textbf{19.} *Gere o esquemático em cada caso (deixe-os em bibliotecas diferentes).
+   Qual é a diferença em cada caso? Quando é interessante usar um ou outro?
+
+  No caso da hierarquia preservada, não é possível ver o que está dentro dos blocos,
+o que limita um pouco a flexibilidade de otimização do circuito, mas simplifica a
+visualização e o trabalho com eles quando o circuito é bastante grande.
+  Já o caso \emph{flat} permite uma maior otimização, mesmo pelo programa
+\emph{LeonardoSpectrum}.\\
+
+  Ou seja, quando se deseja otimizar bastante, é mais sensato utilizar o modelo
+\emph{flat}. Quando se deseja melhor modularização e organização dos blocos, é mais
+sábio utilizar a hierarquia.
+\bigskip
+
+\textbf{20.} *A partir do esquemático com hierarquia, monte o \emph{layout} do
+  prescaler completo (aproveite os \emph{layouts} já feitos). Passe o DRC e faça
+  o \emph{LVS}. Apresente o \emph{layout} obtido no relatório.
+
+  O \emph{layout} do circuito está representado na \fref{imgQ20layout}. O modelo
+\emph{flat}
+
+  \img{\emph{Layout} do \emph{Prescaler} completo}{imgQ20layout}
+  \img{\emph{Layout} do \emph{Prescaler} completo, modelo \emph{flat}}{imgQ20layoutFlat}
+\bigskip
+
+\textbf{21.} *Extraia o circuito (\verb:R+C+CC:), determine a máxima velocidade de
+  operação e, nessa velocidade, determine a razão (potência consumida)/GHz. Determine
+  também a área do circuito.
+
+  Assim como mostra o gráfico da \fref{imgQ21maxFreq}, a máxima frequência de
+operação é $0.915 GHz$. \\ % colocar valor
+  A razão de potência consumida, em $0.915 GHz$, é de $1,99 mW$, o que implica uma relação
+de $2,17 mW/GHz$, assim como mostra a \fref{imgQ21potXfreq}. \\
+  As dimensões do circuito são $63,793 \mu m$ e $69,300 \mu m$, % (-6.250, 3.500) (57.543, 72.800)
+o que implica em uma área total de $4.421 \mu m^{2}$.
+
+  \img{Máxima frequência de operação (R+C+CC)}{imgQ21maxFreq}
+  \img{Razão de potência consumida por frequência}{imgQ21potXfreq}
+\bigskip
+
+\end{document}
