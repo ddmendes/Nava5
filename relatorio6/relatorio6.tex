@@ -256,9 +256,11 @@ sábio utilizar a hierarquia.
   prescaler completo (aproveite os \emph{layouts} já feitos). Passe o DRC e faça
   o \emph{LVS}. Apresente o \emph{layout} obtido no relatório.
 
-  O \emph{layout} do circuito está representado na \fref{imgQ20layout}.
+  O \emph{layout} do circuito está representado na \fref{imgQ20layout}. O modelo
+\emph{flat}
 
-  \img{\emph{Layout} do \emph{Prescaler} completo}{imgQ20layout} % TODO adicionar figura
+  \img{\emph{Layout} do \emph{Prescaler} completo}{imgQ20layout}
+  \img{\emph{Layout} do \emph{Prescaler} completo, modelo \emph{flat}}{imgQ20layoutFlat}
 \bigskip
 
 \textbf{21.} *Extraia o circuito (\verb:R+C+CC:), determine a máxima velocidade de
@@ -266,13 +268,14 @@ sábio utilizar a hierarquia.
   também a área do circuito.
 
   Assim como mostra o gráfico da \fref{imgQ21maxFreq}, a máxima frequência de
-operação é $XXX GHz$. \\ % colocar valor
-  A razão de potência consumida, em $XXX GHz$, é $XXX mW/GHz$ assim como mostra a \fref{imgQ21potXfreq}. \\ % TODO colocar valores
-  As dimensões do circuito são $x \mu m$ e $y \mu m$, % (x,y) (x,y) % TODO colocar valores
-o que implica em uma área total de $x \mu m^{2}$ % TODO colocar valores
+operação é $0.915 GHz$. \\ % colocar valor
+  A razão de potência consumida, em $0.915 GHz$, é de $1,99 mW$, o que implica uma relação
+de $2,17 mW/GHz$, assim como mostra a \fref{imgQ21potXfreq}. \\
+  As dimensões do circuito são $63,793 \mu m$ e $69,300 \mu m$, % (-6.250, 3.500) (57.543, 72.800)
+o que implica em uma área total de $4.421 \mu m^{2}$.
 
-  \img{Máxima frequência de operação (\verb:R+C+CC:)}{imgQ21maxFreq} % TODO adicionar figura
-  \img{Razão de potência consumida por frequência}{imgQ21potXfreq} % TODO adicionar figura
+  \img{Máxima frequência de operação (\verb:R+C+CC:)}{imgQ21maxFreq}
+  \img{Razão de potência consumida por frequência}{imgQ21potXfreq}
 \bigskip
 
 \end{document}
