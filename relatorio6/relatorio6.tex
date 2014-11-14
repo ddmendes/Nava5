@@ -32,7 +32,7 @@ e o contador esta no ``0'' da contagem. O sinal saída é o clock dividido por 8.
 
   A descrição do circuito está representada em \cref{srcQ02div8}.
 
-\begin{lstlisting}[cation=Descrição do divisor por 8, label=srcQ02div8]
+\begin{lstlisting}[caption=Descrição do divisor por 8, label=srcQ02div8]
 entity div_8 is
 
 	port ( SM, CLK : in  bit;
@@ -157,7 +157,7 @@ operação é $1,10 GHz$.
   Assim como mostra o gráfico da \fref{imgQ12maxFreq}, a máxima frequência de
 operação é $0,77 GHz$.
 
-  \img{Máxima frequência de operação (\verb:R+C+CC:)}{imgQ12maxFreq}
+  \img{Máxima frequência de operação (R+C+CC)}{imgQ12maxFreq}
 \bigskip
 
 \textbf{13.} *Compare os resultados de velocidade obtidos nas questões 6, 8 e 12.
@@ -188,7 +188,7 @@ resultados obtidos na simulação do \emph{layout} é a mais confiável. \\
 
   A descrição do circuito está representada em \cref{srcQ14prescaler}.
 
-\begin{lstlisting}[cation=Descrição do \emph{Prescaler} completo, label=srcQ14prescaler]
+\begin{lstlisting}[caption=Descrição do \emph{Prescaler} completo, label=srcQ14prescaler]
 entity prescaler_32_33 is
 
   port(SM, CLK : IN  BIT;
@@ -274,7 +274,7 @@ de $2,17 mW/GHz$, assim como mostra a \fref{imgQ21potXfreq}. \\
   As dimensões do circuito são $63,793 \mu m$ e $69,300 \mu m$, % (-6.250, 3.500) (57.543, 72.800)
 o que implica em uma área total de $4.421 \mu m^{2}$.
 
-  \img{Máxima frequência de operação (\verb:R+C+CC:)}{imgQ21maxFreq}
+  \img{Máxima frequência de operação (R+C+CC)}{imgQ21maxFreq}
   \img{Razão de potência consumida por frequência}{imgQ21potXfreq}
 \bigskip
 
