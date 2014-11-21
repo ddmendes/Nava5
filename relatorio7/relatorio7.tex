@@ -7,7 +7,7 @@
 \makecover
 \makelists
 
-\section*{Resumo}
+%\section*{Resumo}
 
 \section*{Introdução}
 
@@ -28,7 +28,7 @@ Arrays}), são dispositivos onde há a pré-difusão de partes dos dispositivos. A c
 
   O esquemático está representado na \fref{imgQ02esquematico}. Este esquemático representa um circuito de um \emph{Latch}, que funciona para baixas frequências, isso porque o valor da saida do circuito fica armazenado nas capacitâncias parasitas da chave. É um circuito útil por ser mais rápido e consumir menos energia que o \emph{latch} convencional, pois utiliza menos elementos.
 
-  \img{Esquemático do circuito \emph{Latch}}{imgQ02esquematico} % TODO adicionar figura
+  \img{Esquemático do circuito \emph{Latch}}{imgQ02esquematico}
 \bigskip
 
 \textbf{3.} Passe o DRC para verificar quais erros há. Corrigir os possíveis problemas.
@@ -46,31 +46,52 @@ Arrays}), são dispositivos onde há a pré-difusão de partes dos dispositivos. A c
 \bigskip
 
 \textbf{7.} *Salve a estrutura com um nome diferente. Nela desenhe um oscilador em anel com \textbf{5 NANDs} de duas entradas (aumente o \emph{gate array}, tanto na vertical como na horizontal para conseguir isso). Utilize apenas uma das entradas do \textbf{NAND} para o oscilador. A outra, \textbf{aquela ligada ao transistor mais próximo ao terra}, conecte a um porte de entrada chamado \textbf{CRT}. Verifique erros e apresente o \emph{layout} obtido.
-% TODO
-  O \empht{layout} obtido está representado na \fref{imgQ07layout}.
+
+  O \emph{layout} obtido está representado na \fref{imgQ07layout}.
   
-  \img{\emph{Layout} do oscilador em anel}{imgQ07layout} % TODO adicionar figura
+  \img{\emph{Layout} do oscilador em anel}{imgQ07layout}
 \bigskip
 
 \textbf{8.} *Extraia o \emph{netlist} do circuito e por simulação determine o período de oscilação e os atrasos médios na propagação para subida (\emph{low-to-high}) e para descida (\emph{high-to-low}) de uma porta \verb:NAND: (mantenha o sinal \textbf{$CRT = 3,3 V$}). Qual a relação entre essas grandezas? Apresente o arquivo de simulação e os sinais vistos no ezwave.
-% TODO
-  O arquivo de simulação está representado no \cref{srcQ08simu}. A relação entre as grandezas é de $XXX$ assim como mostra a \fref{imgQ08relacao}. % TODO colocar valor
 
-  \img{Relação entre propagação de subida e descida}{imgQ08relacao} % TODO adicionar figura
+  O arquivo de simulação está representado no \cref{srcQ08simu}.\\
+  O tempo de subida é $0,12ns$.\\
+  O tempo de descida é $0,08ns$.\\
+  O período medido foi de $1,04ns$. Utilizando a relação $Perído = 5 \cdot T_{subida} + 5 \cdot T_{descida}$.
+
+\begin{lstlisting}[caption=Arquivo de simulação, label=srcQ08simu]
+.PARAM period=10ns
+.PARAM input=3.3V
+.PARAM min=0.9V
+.PARAM max=3.3V
+.PARAM step=0.1V
+
+Vdd  VDD 0 input
+Vss  VSS 0 0V
+Vcrt CRT 0 input
+
+.TRAN 0ns 200ns 0 100ps
+.MEAS TRAN periodo TRIG V(N1) val='max/2' fall=2 TARG V(N1) val='max/2' fall=3
+.MEAS TRAN subida  TRIG V(N1) val='max/2' fall=1 TARG V(N2) val='max/2' rise=1
+.MEAS TRAN descida TRIG V(N1) val='max/2' rise=2 TARG V(N2) val='max/2' fall=1
+
+.PROBE TRAN V(N1) V(N2) V(N3) V(N4) V(N5)
+\end{lstlisting}
+
 \bigskip
 
 \textbf{9.} *Varie CRT de $0,9 V$ a $3,3 V$ (passos de $0,1 V$) e determine a freqüência de oscilação para cada valor de CRT (modelo típico). Trace o gráfico Freq. de Oscilação versus CRT. Caso se deseje utilizar o circuito como um VCO (\emph{Voltage-Controlled Oscillator}), qual a faixa de freqüências que ele com certeza pode cobrir (considere os três modelos aqui, típico, \emph{worstspeed} e \emph{worstpower})?
-% TODO
-  Os gráficos de frequência de oscilação por CRT estão representados nas \fref{imgQ09freqOsc_tipico}, \fref{imgQ09freqOsc_ws} e \fref{imgQ09freqOsc_wp}. Ao observar-se os resultados, pode-se concluir que a faixa de frequências que ele pode cobrir é de frequências até $XXX Hz$. % TODO colocar valor
 
-  \img{Frequência de oscilação versus CRT, modelo típico}{imgQ09freqOsc_tipico}        % TODO adicionar figura
-  \img{Frequência de oscilação versus CRT, modelo \emph{worstspeed}}{imgQ09freqOsc_ws} % TODO adicionar figura
-  \img{Frequência de oscilação versus CRT, modelo \emph{worstpower}}{imgQ09freqOsc_wp} % TODO adicionar figura
+  Os gráficos de frequência de oscilação por CRT estão representados nas \fref{imgQ09freqOsc_tipico}, \fref{imgQ09freqOsc_ws} e \fref{imgQ09freqOsc_wp}. Ao observar-se os resultados, pode-se concluir que a faixa de frequências que ele pode cobrir é de valores de frequências de até $1,4 GHz$.
+
+  \img{Frequência de oscilação versus CRT, modelo típico}{imgQ09freqOsc_tipico}
+  \img{Frequência de oscilação versus CRT, modelo \emph{worstspeed}}{imgQ09freqOsc_ws}
+  \img{Frequência de oscilação versus CRT, modelo \emph{worstpower}}{imgQ09freqOsc_wp}
 \bigskip
 
 \textbf{10.} *Gere um arquivo GDSII (\emph{File -- export}) com o oscilador em anel feito. Tente lê-lo para verificar se foi gerado corretamente. Qual o tamanho deste arquivo?
-% TODO
-  O arquivo exporta tem um total de $xxx KB$. % TODO colocar valor
+
+  O arquivo exportado tem um total de $50,5 KB$.
 \bigskip
 
 \end{document}

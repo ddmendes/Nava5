@@ -1,0 +1,160 @@
+
+\documentclass[openany,a4paper,12pt]{abnt}
+%\usepackage[num]{abntcite}
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tabela-simbolos}
+\usepackage[pdftex]{graphicx,lscape}
+\usepackage{subfigure}
+\usepackage{varioref}
+\usepackage{dsfont}
+\usepackage{xspace}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{rotating}
+\usepackage[htt]{hyphenat}
+\usepackage{fancyvrb}
+\usepackage[brazil,final]{loa1}
+\usepackage{afterpage}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{epigraph}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{ \textit{\disciplina} }
+\chead{}
+\rhead{ \textit{\titulo} }
+
+%Condensar listas
+%less spaced itemize
+\newenvironment{lsitemize}{
+    \begin{itemize}
+    \itemsep-10pt
+}{
+    \end{itemize}
+}
+%less spaced with small-case roman numerals enumerate
+\newenvironment{lsienumerate}{
+    \begin{enumerate}[i]
+    \itemsep-6pt
+}{
+    \end{enumerate}
+}
+
+%faz uma linha horizontal
+\newcommand{\lyxline}[1]{
+  {#1 \vspace{1ex} \hrule width \columnwidth \vspace{1ex}}
+}
+%Caixas de código fonte
+\usepackage{listings}
+\lstset{
+    breaklines=true,
+    basicstyle=\ttfamily\scriptsize,
+    numbers=left,
+    numberstyle=\tiny,
+    frame=single
+}
+\renewcommand{\lstlistingname}{Código Fonte}
+\renewcommand{\lstlistlistingname}{Códigos Fontes}
+
+%Inserção de imagens
+%\img{proportional width [optional]}{caption}{label}{path}
+\newcommand{\img}[3][0.75]{
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=#1\textwidth]{#3}
+    \caption{\label{#3}#2}
+\end{figure}
+}
+
+\newcommand{\fref}[1]{
+\textbf{Figura \ref{#1}}
+}
+
+\newcommand{\cref}[1]{
+\textbf{Código fonte \ref{#1}}
+}
+
+\newcommand{\tref}[1]{
+\textbf{Tabela \ref{#1}}
+}
+
+\newcommand{\eref}[1]{
+\textbf{Equação (\ref{#1})}
+}
+
+\tolerance=10000
+
+\usepackage[
+hyperindex=false,
+pagebackref,
+bookmarks=true, %makes the bookmark to appear in the left
+bookmarksnumbered=true, %make the sections to be numbered in the bookmark
+bookmarksopen=true, %controls the level of opening in the bookmark
+]{hyperref}
+\hypersetup{
+	colorlinks = true,
+	linkcolor = blue,
+	citecolor = blue,
+	pdftitle = { Monografia},
+	pdfsubject = {Titulo Trabalho},
+	pdfkeywords = { palavra chave, palavra chave, palavra chave },
+	pdfauthor = { Nome do Aluno },
+}
+
+\usepackage{backref}
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{
+    \ifcase #1
+        Não citado no texto.
+    \or
+        Citado na página~#2.
+    \else
+        Citado nas páginas #2.
+    \fi
+}
+\renewcommand{\backreftwosep}{ e~}
+\renewcommand{\backreflastsep}{, e~}
+
+\input{comandos}
+
+\DeclareGraphicsExtensions{.jpg, .pdf, .mps, .png, .PNG} 
+
+\renewcommand{\autor}[0]{
+    \begin{tabular}{lr}
+        Davi Diório Mendes          &   7546989 \\
+        Nivaldo Henrique Bondança   &   7143909
+    \end{tabular}
+}
+\renewcommand{\titulo}[0]{ Prática X }
+\renewcommand{\local}[0]{ São Carlos - SP }
+\renewcommand{\instituicao}[0]{ UNIVERSIDADE DE SÃO PAULO }
+\newcommand{\instituto}[0]{ Escola de Engenharia de São Carlos }
+\newcommand{\disciplina}[0]{ SEL0621 - Projetos de Circuitos Integrados Digitais I }
+\newcommand{\professor}[0]{ Prof. Dr. João Pereira do Carmo }
+\renewcommand{\data}[0]{ \today }
+
+\newcommand{\makecover}[0]{
+\begin{titlepage}
+\include{capa}
+\end{titlepage}
+}
+
+\newcommand{\makelists}{
+\listoffigures
+\newpage
+
+\listoftables
+\newpage
+
+\lstlistoflistings
+\newpage
+}

@@ -1,0 +1,64 @@
+\include{preambulo}
+
+\begin{document}
+
+\renewcommand{\titulo}{Projeto 13}
+\pagenumbering{arabic}
+\makecover
+\makelists
+
+\section*{Resumo}
+
+\section*{Introdução}
+
+   Neste trabalho será projetado um relógio especificado. No projeto serão aplicados os recursos aprendidos ao longo do ano, entre estes o uso de VHDL, simulação lógica com MODELSIM, síntese, geração automática de \emph{layout}, verificações com DRC e LVS, extração, simulação com ELDO e avaliação de consumo. Por fim, será analisado tempo de vida de uma bateria alimentando o circuito implementado.
+
+\textbf{1.} Considere que é fornecido um sinal de \emph{clock} na freqüência de $32,768 kHz$ (onda quadrada). Com este sinal projete um circuito que tenha as seguintes características: \\
+  sinais de entrada: \textbf{\emph{clk}, modo, ajuste}; \\
+  sinais de saída: \textbf{$m_0 \cdots m_5$, $H_0 \cdots H_3$}; \\
+  O circuito funciona como um relógio onde os minutos são codificados, binariamente, em $m_0 \cdots m_5$ e as horas, codificadas, binariamente, em $H_0 \cdots H_3$ (horas vai de 0 até 11). Os sinais ajuste e modo servem para indicar a operação do relógio conforme descrito abaixo; \\
+  \begin{itemize}
+    \item quando ajuste = "1" e modo = "0", os minutos são incrementados a cada $0,5$ segundo;
+    \item quando ajuste = "1" e modo = "1", as horas são incrementadas a cada 1 segundo;
+    \item quando ajuste = "0", o circuito opera como relógio.
+  \end{itemize}
+  O projeto envolve
+  \begin{itemize}
+    \item fazer o esquemático: o esquemático deve ser gerado da forma que achar mais conveniente;
+    \item fazer o símbolo com indicação de onde esta o \emph{layout};
+    \item fazer simulações: as simulações devem verificar se as operações de relógio e de ajuste estão corretas. Deve ser tomado cuidado com o procedimento de testes pois, dado o tamanho do circuito, ele pode demorar muito. Assim, testes de blocos separados serão necessários;
+    \item fazer o \emph{layout} com verificações de DRC e LVS.
+  \end{itemize}
+  Como características gerais, espera-se que:
+  \begin{itemize}
+    \item seja um circuito pequeno;
+    \item tenha consumo reduzido;
+    \item os \emph{ports} de entrada e saída estejam convenientemente colocados.
+  \end{itemize}
+\bigskip
+
+\textbf{2.} Apresente os esquemáticos do relógio completo e de seus blocos. Descreva sucintamente a função de cada bloco.
+\bigskip
+
+\textbf{3.} Quando uma célula de biblioteca tem mais de uma versão, por exemplo DF1 e DF3, escolha a versão mais apropriada para a aplicação. Justifique o critério aplicado na escolha.
+\bigskip
+
+\textbf{4.} Apresente os \emph{layouts} dos blocos e do circuito final.
+\bigskip
+
+\textbf{5.} Descreva as simulações realizadas dizendo a função (serve para verificar o quê?), quais são os sinais de comando e de entrada, tempo total que levou a simulação (tempo real) e o que foi observado como resultado (se for gráfico, acrescente o gráfico ao relatório).
+\bigskip
+
+\textbf{6.} Determine a área e estime a potência consumida pelo circuito completo.
+\bigskip
+
+\textbf{7.} Considere que o oscilador que gera o sinal de clock de $32,768 kHz$ consome uma corrente média de $10 \mu A$. Para uma bateria de $1,0 Ah$, por quanto tempo o relógio, circuito projetado mais oscilador, deverá operar (coloque em anos e dias, por exemplo, 4 anos e 36 dias)?
+\bigskip
+
+\textbf{8.} Considere que o sinal de clock da entrada apresente tempos de subida/descida de cerca de 30\% do seu período. Nessa situação o circuito continua funcionando? Caso não, qual é a razão?
+\bigskip
+
+\textbf{9.} Se necessário arrume o problema encontrado no \textbf{item 8}. Com o sinal de relógio como acima, tempos de subida/descida de cerca de 30\% do período, determine a nova potência consumida.
+\bigskip
+
+\end{document}
