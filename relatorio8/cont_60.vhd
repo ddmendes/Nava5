@@ -5,16 +5,20 @@ ENTITY cont_60 IS
 
 END cont_60;
 
-ARCHTECTURE cont_60_imp OF cont_60 IS
+ARCHITECTURE cont_60_imp OF cont_60 IS
 BEGIN
 
 	counter : PROCESS(clk)
-		VARIABLE icount : INTEGER RANGE 0 TO 59 := 0;
+		VARIABLE icount : INTEGER RANGE 0 TO 59;
 	BEGIN
 		IF(clk'event AND clk = '1') THEN
-			icount := icount + 1;
+			IF(icount = 59) THEN
+				icount := 0;
+			ELSE
+				icount := icount + 1;
+			END IF;
 		END IF;
 		count <= icount;
-	END counter;
+	END PROCESS;
 
 END cont_60_imp;
