@@ -38,27 +38,75 @@
 \bigskip
 
 \textbf{2.} Apresente os esquemáticos do relógio completo e de seus blocos. Descreva sucintamente a função de cada bloco.
+
+  O esquemático do relógio completo está representado na \fref{imgQ02relogioCompleto}. O relógio é composto de 3 blocos principais, divisor $32.768$, divisor 60 e divisor 12. Além destes blocos principais existem também alguns componentes lógicos simples, inseridos no circuito para realizar a seleção de modo de operação e também para solucionar problemas de pulsos extras de \emph{clock}. \\
+  Logo na entrada o \emph{clock} de $32.768 Hz$ é dividido pelo bloco referenciado na \fref{imgQ02contador32768}. A saída deste bloco é um sinal de $1 Hz$, assim como $2 Hz$, $4 Hz$ e $8 Hz$. A saída de $1 Hz$ é usada para contar os segundos normalmente. A saída de $2 Hz$ é usada em um dos modos de ajuste. As outras duas saídas, $4 Hz$ e $8 Hz$, são usadas em sincronia com as outras apenas para solucionar o problema gerar um pulso extra na transição entre modo de operação normal e de ajuste. Os primeiros \emph{flip-flops} concentram a maior parte da potência dissipada pelo circuito. \\
+  Os blocos divisor de 60 e divisor de 12, representados nas \fref{imgQ02contador60} e \fref{imgQ02contador12}, respectivamente, foram feitos em \verb:VHDL: e sintetizados pelo \emph{Leonardo Spectrum}. Como a frequência de operação destes blocos é baixa, seu consumo de potência é bastante baixo comparado ao resto do circuito.
+  
+  % TODO explicar o relógio e os blocos
+
+  \img{Esqumático do relógio completo}{imgQ02relogioCompleto}
+  \img{Esqumático do divisor de 32.768}{imgQ02contador32768} % TODO
+  \img{Esqumático do divisor de 60}{imgQ02contador60}
+  \img{Esqumático do divisor de 12}{imgQ02contador12}
+
 \bigskip
 
 \textbf{3.} Quando uma célula de biblioteca tem mais de uma versão, por exemplo DF1 e DF3, escolha a versão mais apropriada para a aplicação. Justifique o critério aplicado na escolha.
+  % TODO escolher as versão com melhor efificiência de potência
 \bigskip
 
 \textbf{4.} Apresente os \emph{layouts} dos blocos e do circuito final.
+
+  O \emph{layout} do divisor 32.768 está representado na \fref{imgQ04contador32768}. \\
+  O \emph{layout} do divisor 60 está representado na \fref{imgQ04contador60}. \\
+  O \emph{layout} do divisor 12 está representado na \fref{imgQ04contador12}. \\
+  O \emph{layout} do relógio completo está representado na \fref{imgQ04relogioCompleto}. \\
+
+  \img{\emph{Layout} do divisor de 32.768}{imgQ04contador32768} % TODO
+  \img{\emph{Layout} do divisor de 60}{imgQ04contador60}
+  \img{\emph{Layout} do divisor de 12}{imgQ04contador12}
+  \img{\emph{Layout} do relógio completo}{imgQ04relogioCompleto} % TODO
+
 \bigskip
 
 \textbf{5.} Descreva as simulações realizadas dizendo a função (serve para verificar o quê?), quais são os sinais de comando e de entrada, tempo total que levou a simulação (tempo real) e o que foi observado como resultado (se for gráfico, acrescente o gráfico ao relatório).
+
+  % TODO
+
 \bigskip
 
 \textbf{6.} Determine a área e estime a potência consumida pelo circuito completo.
+
+  % TODO preencher valores
+  As dimensões do circuito são $X \mu m$ e $Y \mu m$, lgoo a área total do circuito é de $X*Y \mu m^{2}$ . \\ % TODO preencher valores
+  A potência estimada do circuito está, basicamente, toda contida na primeira parte do circuito, que possui 15 \emph{Flip-flops}. Os \emph{Flip-flops} iniciais terão uma frequência de operção alta, logo eles concentrarão o consumo do circuito. \\ % TODO preencher valores
+  Foi constatado, através de algumas simulações que a potência média do circuito é de $Z W$. % TODO preencher valores
+
 \bigskip
 
 \textbf{7.} Considere que o oscilador que gera o sinal de clock de $32,768 kHz$ consome uma corrente média de $10 \mu A$. Para uma bateria de $1,0 Ah$, por quanto tempo o relógio, circuito projetado mais oscilador, deverá operar (coloque em anos e dias, por exemplo, 4 anos e 36 dias)?
+
+  Sabendo que a potência média consumida pelo relógio é de $Z \mu W$ e sua alimentação de $3,0 V$, tem-se uma corrente total de $10 \mu + \frac{Z}{3,0} = W A$, com uma bateria de $1,0 Ah$, esperá-se que o relógio opere por ... \\ % TODO preencher valores
+  Valores calculados segundo a equação simples
+  \begin{equation}
+    tempo = \frac{bateria}{corrente}
+  \end{equation}
+
 \bigskip
 
-\textbf{8.} Considere que o sinal de clock da entrada apresente tempos de subida/descida de cerca de 30\% do seu período. Nessa situação o circuito continua funcionando? Caso não, qual é a razão?
+\textbf{8.} Considere que o sinal de \emph{clock} da entrada apresente tempos de subida/descida de cerca de 30\% do seu período. Nessa situação o circuito continua funcionando? Caso não, qual é a razão?
+
+  % TODO
+  Utilizando a configuração com tempos de subida e descida de 30\% do período do \emph{clock}, o circuito para de funcionar. Uma provável 
+
 \bigskip
 
 \textbf{9.} Se necessário arrume o problema encontrado no \textbf{item 8}. Com o sinal de relógio como acima, tempos de subida/descida de cerca de 30\% do período, determine a nova potência consumida.
+
+  % TODO
+  Uma solução possível para o problema é colocar inversores na entrada do circuito, pois eles diminuem os tempo de subida e descida relativos ao período.
+
 \bigskip
 
 \end{document}
