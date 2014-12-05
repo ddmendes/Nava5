@@ -40,20 +40,23 @@
 \textbf{2.} Apresente os esquemáticos do relógio completo e de seus blocos. Descreva sucintamente a função de cada bloco.
 
   O esquemático do relógio completo está representado na \fref{imgQ02relogioCompleto}. O relógio é composto de 3 blocos principais, divisor $32.768$, divisor 60 e divisor 12. Além destes blocos principais existem também alguns componentes lógicos simples, inseridos no circuito para realizar a seleção de modo de operação e também para solucionar problemas de pulsos extras de \emph{clock}. \\
-  Logo na entrada o \emph{clock} de $32.768 Hz$ é dividido pelo bloco referenciado na \fref{imgQ02contador32768}. A saída deste bloco é um sinal de $1 Hz$, assim como $2 Hz$, $4 Hz$ e $8 Hz$. A saída de $1 Hz$ é usada para contar os segundos normalmente. A saída de $2 Hz$ é usada em um dos modos de ajuste. As outras duas saídas, $4 Hz$ e $8 Hz$, são usadas em sincronia com as outras apenas para solucionar o problema gerar um pulso extra na transição entre modo de operação normal e de ajuste. Os primeiros \emph{flip-flops} concentram a maior parte da potência dissipada pelo circuito. \\
-  Os blocos divisor de 60 e divisor de 12, representados nas \fref{imgQ02contador60} e \fref{imgQ02contador12}, respectivamente, foram feitos em \verb:VHDL: e sintetizados pelo \emph{Leonardo Spectrum}. Como a frequência de operação destes blocos é baixa, seu consumo de potência é bastante baixo comparado ao resto do circuito.
-  
-  % TODO explicar o relógio e os blocos
+  Logo na entrada o \emph{clock} de $32.768 Hz$ é dividido pelo bloco referenciado na \fref{imgQ02contador32768}. A saída deste bloco é um sinal de $1 Hz$, $2 Hz$, $4 Hz$ e $8 Hz$. A saída de $1 Hz$ é usada para contar os segundos normalmente. A saída de $2 Hz$ é usada em um dos modos de ajuste. As outras duas saídas, $4 Hz$ e $8 Hz$, são usadas em sincronia com as outras apenas para solucionar o problema gerar um pulso extra na transição entre modo de operação normal e de ajuste. \\
+  O bloco divisor de 32.768 concentra, em seus primeiros \emph{flip-flops}, a maior parte da potência dissipada pelo circuito, pois eles operam em uma faixa de frequência conideravelmente superior à dos outros blocos. \\
+  Os blocos divisor de 60 e divisor de 12, representados nas \fref{imgQ02contador60} e \fref{imgQ02contador12}, respectivamente, foram feitos em \verb:VHDL: e sintetizados no \emph{Leonardo Spectrum}. Como a frequência de operação destes blocos é baixa, seu consumo de potência é bastante baixo comparado ao resto do circuito. \\
+  A lógica de seleção de modo é bastante simples, apenas composta de portas lógicas NAND que controlam os \emph{multplex}s. Para evitar o pulso extra na mudança de modos, o que foi feito é um circuito lógico para que a tensão lógica baixa ocorra apenas em uma pequena parcela de tempo.
 
   \img{Esqumático do relógio completo}{imgQ02relogioCompleto}
-  \img{Esqumático do divisor de 32.768}{imgQ02contador32768} % TODO
+  \img{Esqumático do divisor de 32.768}{imgQ02contador32768}
   \img{Esqumático do divisor de 60}{imgQ02contador60}
   \img{Esqumático do divisor de 12}{imgQ02contador12}
 
 \bigskip
 
 \textbf{3.} Quando uma célula de biblioteca tem mais de uma versão, por exemplo DF1 e DF3, escolha a versão mais apropriada para a aplicação. Justifique o critério aplicado na escolha.
-  % TODO escolher as versão com melhor efificiência de potência
+
+  O critério para escolha das células, para quando existe mais de uma versão para a mesma, é o valor de potência consumida pela célula. \\
+  Das células com mais de uma opção, foram escolhidas as células \verb:DF1:, \verb:NAND20:, \verb:NAND30:, \verb:NAND40:, \verb:MUX21: e \verb:CLKINV0:. No caso do inversor, foi escolhido o de menor potência dentro dos inversores simétricos, pois os inversores simétricos possuem um sinal com melhor qualidade.
+
 \bigskip
 
 \textbf{4.} Apresente os \emph{layouts} dos blocos e do circuito final.
@@ -63,7 +66,7 @@
   O \emph{layout} do divisor 12 está representado na \fref{imgQ04contador12}. \\
   O \emph{layout} do relógio completo está representado na \fref{imgQ04relogioCompleto}. \\
 
-  \img{\emph{Layout} do divisor de 32.768}{imgQ04contador32768} % TODO
+  \img{\emph{Layout} do divisor de 32.768}{imgQ04contador32768}
   \img{\emph{Layout} do divisor de 60}{imgQ04contador60}
   \img{\emph{Layout} do divisor de 12}{imgQ04contador12}
   \img{\emph{Layout} do relógio completo}{imgQ04relogioCompleto} % TODO
