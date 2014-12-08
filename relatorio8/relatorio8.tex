@@ -106,15 +106,18 @@ logo a área total do circuito é de $29.075 \mu m^{2}$ . \\
 
 \textbf{8.} Considere que o sinal de \emph{clock} da entrada apresente tempos de subida/descida de cerca de 30\% do seu período. Nessa situação o circuito continua funcionando? Caso não, qual é a razão?
 
-  Utilizando a configuração com tempos de subida e descida de 30\% do período do \emph{clock}, o circuito para de funcionar corretamente, pois os primeiros \emph{flip-flops} não funcionam corretamente, logo a saída do primeiro componente (divisor 32.768) já não é a esperada. A razão disto é que os transistores N e P das chaves acabam conduzindo ao mesmo tempo, o que faz com que o \emph{flip-flop} não funcione direito.
+  Utilizando a configuração com tempos de subida e descida de 30\% do período do \emph{clock}, o circuito para de funcionar corretamente. O primeiro \emph{flip-flop} não funciona corretamente, logo a saída do primeiro componente (divisor 32.768) já não é a esperada. A razão disto é que os transistores N e P das chaves acabam conduzindo ao mesmo tempo, o que faz com que o \emph{flip-flop} não funcione direito. \\
+  A \fref{imgQ08waveforms} mostra a resposta do primeiro \emph{flip-flop} com um \emph{clock} com essas configurações.
+
+  \img{Saída dos \emph{flip-flops} com tempo de subida e descida de 30\%}{imgQ08waveforms}
 
 \bigskip
 
 \textbf{9.} Se necessário arrume o problema encontrado no \textbf{item 8}. Com o sinal de relógio como acima, tempos de subida/descida de cerca de 30\% do período, determine a nova potência consumida.
 
-  Uma solução possível para o problema é colocar inversores na entrada do circuito, pois eles diminuem os tempo de subida e descida relativos ao período. Esse resultado pode ser observado na \fref{imgQ09frequencia}.
+  Uma solução possível para o problema é colocar um inversor na entrada do circuito, pois ele diminuem os tempo de subida e descida relativos ao período. Esse resultado pode ser observado na \fref{imgQ09waveforms}.
 
-  \img{Inversor influenciando nos tempos de subida e descida}{imgQ09frequencia} % TODO
+  \img{Influencia do inversor nos tempos de subida e descida}{imgQ09waveforms}
 
 \bigskip
 
