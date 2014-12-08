@@ -69,28 +69,34 @@
   \img{\emph{Layout} do divisor de 32.768}{imgQ04contador32768}
   \img{\emph{Layout} do divisor de 60}{imgQ04contador60}
   \img{\emph{Layout} do divisor de 12}{imgQ04contador12}
-  \img{\emph{Layout} do relógio completo}{imgQ04relogioCompleto} % TODO
+  \img{\emph{Layout} do relógio completo}{imgQ04relogioCompleto}
 
 \bigskip
 
 \textbf{5.} Descreva as simulações realizadas dizendo a função (serve para verificar o quê?), quais são os sinais de comando e de entrada, tempo total que levou a simulação (tempo real) e o que foi observado como resultado (se for gráfico, acrescente o gráfico ao relatório).
 
-  % TODO
+  Resultados da simulação do divisor de 12 para verificar a frequência de operação estão representados na \fref{imgQ05cont12}. Como pode-se notar, a divisão ocorre da maneira esperada. O tempo de simulação para esse teste foi de aproximadamente $5,5$ segundos.
+  Resultados da simulação do divisor de 60 para verificar a frequência de operação estão representados na \fref{imgQ05cont60}. Como pode-se notar, a divisão ocorre da maneira esperada. O tempo de simulação para esse teste foi de aproximadamente $10$ segundos.
+  Resultados da simulação do divisor de 32.768 para verificar a frequência de operação estão representados na \fref{imgQ05cont32768}. Como pode-se notar, a divisão ocorre da maneira esperada. O tempo de simulação para esse teste foi de aproximadamente 1 hora e 25 minutos.
+
+  \img{Resultados do divisor de 12}{imgQ05cont12}
+  \img{Resultados do divisor de 60}{imgQ05cont60}
+  \img{Resultados do divisor de 32.768}{imgQ05cont32768}
 
 \bigskip
 
 \textbf{6.} Determine a área e estime a potência consumida pelo circuito completo.
 
-  % TODO preencher valores
-  As dimensões do circuito são $X \mu m$ e $Y \mu m$, lgoo a área total do circuito é de $X*Y \mu m^{2}$ . \\ % TODO preencher valores
-  A potência estimada do circuito está, basicamente, toda contida na primeira parte do circuito, que possui 15 \emph{Flip-flops}. Os \emph{Flip-flops} iniciais terão uma frequência de operção alta, logo eles concentrarão o consumo do circuito. \\ % TODO preencher valores
-  Foi constatado, através de algumas simulações que a potência média do circuito é de $Z W$. % TODO preencher valores
+  As dimensões do circuito são $258,69 \mu m$ e $112,39 \mu m$, % (84,1 ; 134,407) (342,793 ; 246,8)
+logo a área total do circuito é de $29.075 \mu m^{2}$ . \\
+  A potência estimada do circuito está, basicamente, toda contida na primeira parte do circuito, que possui 15 \emph{Flip-flops}. Os \emph{Flip-flops} iniciais terão uma frequência de operção alta, logo eles concentrarão o consumo do circuito. \\
+  Foi constatado, através de algumas simulações que a potência média do circuito é de $61,0 nW$.
 
 \bigskip
 
 \textbf{7.} Considere que o oscilador que gera o sinal de clock de $32,768 kHz$ consome uma corrente média de $10 \mu A$. Para uma bateria de $1,0 Ah$, por quanto tempo o relógio, circuito projetado mais oscilador, deverá operar (coloque em anos e dias, por exemplo, 4 anos e 36 dias)?
 
-  Sabendo que a potência média consumida pelo relógio é de $Z \mu W$ e sua alimentação de $3,0 V$, tem-se uma corrente total de $10 \mu + \frac{Z}{3,0} = W A$, com uma bateria de $1,0 Ah$, esperá-se que o relógio opere por ... \\ % TODO preencher valores
+  Sabendo que a potência média consumida pelo relógio é de $61,0 nW$ e sua alimentação de $3,0 V$, tem-se uma corrente total de $10 \mu + \frac{61,0}{3,0} = 10,02 \mu A$, com uma bateria de $1,0 Ah$, esperá-se que o relógio opere por 11 anos e 143 dias. \\
   Valores calculados segundo a equação simples
   \begin{equation}
     tempo = \frac{bateria}{corrente}
@@ -100,7 +106,7 @@
 
 \textbf{8.} Considere que o sinal de \emph{clock} da entrada apresente tempos de subida/descida de cerca de 30\% do seu período. Nessa situação o circuito continua funcionando? Caso não, qual é a razão?
 
-  Utilizando a configuração com tempos de subida e descida de 30\% do período do \emph{clock}, o circuito para de funcionar. A razão disto é que os transistores N e P das chaves acabam conduzindo ao mesmo tempo, o que faz com que o \emph{flip-flop} não funcione direito.
+  Utilizando a configuração com tempos de subida e descida de 30\% do período do \emph{clock}, o circuito para de funcionar corretamente, pois os primeiros \emph{flip-flops} não funcionam corretamente, logo a saída do primeiro componente (divisor 32.768) já não é a esperada. A razão disto é que os transistores N e P das chaves acabam conduzindo ao mesmo tempo, o que faz com que o \emph{flip-flop} não funcione direito.
 
 \bigskip
 
